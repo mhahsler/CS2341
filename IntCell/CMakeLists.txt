@@ -1,12 +1,14 @@
 # Minimal CMake file
 #
-# you can go to the directory in your shell and use
-# > cmake
+# You can open the folder in VS Code with
+# > code .
+# and push build in the bottom status bar. Choose gcc 11 as the compiler.
 #
+# you can also go to the directory in your shell and use
+# > cmake .
 # to create a Makefile and
 #
 # > make
-#
 # to compile the project
 
 cmake_minimum_required(VERSION 3.0.0)

@@ -10,4 +10,6 @@ int main(int, char **)
 
     test.write(12);
     cout << test.read() << endl;
+
+    return 0;
 }
