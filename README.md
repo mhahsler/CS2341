@@ -1,4 +1,4 @@
-# CS 2342 Code Examples
+# <img src="images/DS_Weiss_Book.jpg" align="right"> CS 2342 Code Examples
 
 Textbook: Data Structures and Algorithm Analysis in C++ (Fourth Edition), by Mark Allen Weiss
 
