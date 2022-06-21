@@ -1,6 +1,11 @@
 # CS 2342 Code Examples
 
-Requirements:
+Textbook: Data Structures and Algorithm Analysis in C++ (Fourth Edition), by Mark Allen Weiss
+
+Source Code by Mark Allen Weiss:
+https://users.cs.fiu.edu/~weiss/dsaa_c++4/code/
+
+## Tool Requirements
 
 * Install Visual Studio Code: https://code.visualstudio.com/
 * On Windows you will need to install WSL: https://code.visualstudio.com/docs/cpp/config-wsl
