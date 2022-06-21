@@ -14,6 +14,9 @@ public:
 
     /*
      * Destructor, copy constructor and copy assignment.
+     *
+     * Note: C++11 added move constructor and assignment for lvalues to avoud copying in some cases. We will
+     *       not use them in class.
      */
     ~IntCellPtrOK();
     IntCellPtrOK(const IntCellPtrOK & rhs);
