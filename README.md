@@ -21,18 +21,35 @@ Requirements:
 
 1. Make a directory.
 2. Create at least a `main.cpp` file.
-3. Configure cmake by going in the menu to `Help>Show All Commands` and type `cmake:Configure`. This creates
-   a file called `CMakeLists.txt`
+3. Configure cmake by going in the menu to `Help>Show All Commands` and type `cmake:Configure`. Choose a compiler 
+   (C++11) and that you want to create an executable. This creates a file called `CMakeLists.txt`.
 4. Additonal `.cpp` files can be added in the `add_executable()` instruction in `CMakeLists.txt`.
 
 You are now ready to build and execute the program.
 
+*Note:* Steps 2 and 3 can be done using `cmake:Quickstart` which will create a Hello World! program.
+
 ## How to debug
+
+### In VS Code:
 
 1. Set a breakpoint next to a line of code.
 2. Click the debug symbol in the status bar which starts a frontend for `gdb`.
 3. Use the navigation pannel and inspect and watch variables.
 
+### Command line debuging with `gdb`.
+
+1. Find the compiled executable (in VS Code it is in the build directory)
+2. Start `gdb executable`.
+3. set a break point with `b` and use `run`. See the [GDB QUICK REFERENCE](https://users.ece.utexas.edu/~adnan/gdb-refcard.pdf) for available commands.
+
+### Valgrind to detect memory leaks
+
+*Note:* `valgrind` is not available on Windows and the VS Code integration is not great. On Ubuntu it can be installed with
+`sudo apt install valgrind`.
+
+1. Find the compiled executable (in VS Code it is in the build directory)
+2. Run `valgrind --leak-check=full ./executable` and look for lost bytes.
 
 ## How to test
 
