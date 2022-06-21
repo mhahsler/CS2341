@@ -1,9 +1,9 @@
 # Code for Chapter 1: A general Overview
 
 
-* Classes: (IntCell)
-* STL vector and string: (vector_string)
-* Pointers: (pointers)
-* Parameter passing: (parameters)
-* Destructor, copy constructor and assignment: (big-five)
-* Templates: (templates)
+* Classes: [IntCell](IntCell)
+* STL vector and string: [vector_string](vector_string)
+* Pointers: [pointers](pointers)
+* Parameter passing: [parameters](parameters)
+* Destructor, copy constructor and assignment: [big-five](big-five)
+* Templates: [templates](templates)
