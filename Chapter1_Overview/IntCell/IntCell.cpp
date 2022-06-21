@@ -30,5 +30,6 @@ void IntCell::write(int x)
 /*
  * Notes:
  *  * no default values
- *  * constructor uses an ititialization list  
+ *  * constructor uses an ititialization list here. Regular assignment
+ *    can also be used.
  */

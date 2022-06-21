@@ -1,6 +1,10 @@
 #ifndef IntCell_H
 #define IntCell_H
 
+/*
+ * Remember: use define to guard for multiple inclusions during compilation
+ */
+
 /**
  * A class for storing a single Int
  */
