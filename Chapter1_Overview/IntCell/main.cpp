@@ -1,6 +1,9 @@
 #include <iostream>
 #include "IntCell.h"
 
+/* Remember: <...> is a standard library and "..." is a header in the 
+ * project (current directory). */
+
 using namespace std;
 
 int main(int, char **)
