@@ -6,4 +6,4 @@
 * Pointers: [pointers](pointers)
 * Parameter passing: [parameters](parameters)
 * Destructor, copy constructor and assignment: [big-five](big-five)
-* Templates: [templates](templates)
+* Templates: [function_templates](function_templates), [class_templates](class_templates)
