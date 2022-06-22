@@ -42,13 +42,13 @@ You are now ready to build and execute the program.
 
 1. Set a breakpoint next to a line of code.
 2. Click the debug symbol in the status bar which starts a frontend for `gdb`.
-3. Use the navigation pannel and inspect and watch variables.
+3. Use the navigation panel and inspect and watch variables.
 
-### Command line debuging with `gdb`.
+### Command line debugging with `gdb`.
 
 1. Find the compiled executable (in VS Code it is in the build directory)
 2. Start `gdb executable`.
-3. set a break point with `b` and use `run`. See the [GDB QUICK REFERENCE](https://users.ece.utexas.edu/~adnan/gdb-refcard.pdf) for available commands.
+3. Set a breakpoint with `b` and use `run`. See the [GDB QUICK REFERENCE](https://users.ece.utexas.edu/~adnan/gdb-refcard.pdf) for available commands.
 
 ### Valgrind to detect memory leaks
 
@@ -60,7 +60,7 @@ You are now ready to build and execute the program.
 
 ## How to Run Automatic Tests
 
-CMake comes with CTest. CTest is not a testing framework, but a tool to automate runing tests. We also need a testing framework. 
+CMake comes with CTest. CTest is not a testing framework but a tool to automate running tests. We also need a testing framework. 
 We will use a simple header-based framework called 
 [Catch2](https://github.com/catchorg/Catch2) which can be
 easily [integrated with CMake/CTest](https://github.com/catchorg/Catch2/blob/devel/docs/cmake-integration.md).
@@ -71,11 +71,11 @@ Steps:
 or [build it from GitHub](https://github.com/catchorg/Catch2/blob/v2.x/docs/cmake-integration.md#installing-catch2-from-git-repository). Caution: use version V2.x.
 2. You need a test file like `test.cpp` in the [testing example](Chapter1_Overview/testing/) to define test cases and required outputs. There are [more assertions](https://github.com/catchorg/Catch2/blob/v2.x/docs/assertions.md) available.
 3. Add a testing section to `CMakeLists.txt`.
-4. Building and testing is avaialble in the status bar.
+4. Building and testing is available in the status bar.
 
 Testing using GitHub Actions:
 
 1. At the repository on the Github page, click on Actions and find `CMake based projects`.
-2. If you want to use Catch2 for testing, then you need to install it for the test. [See example wotkflow file](.github/workflows/testing-example_cmake.yml). 
+2. If you want to use Catch2 for testing, then you need to install it for the test. [See example workflow file](.github/workflows/testing-example_cmake.yml). 
 
 
