@@ -8,6 +8,8 @@ using namespace std;
 
 int main(int, char **)
 {
+    int unused; // produces a warning
+    
     IntCell test = IntCell();
     cout << test.read() << endl;
 
