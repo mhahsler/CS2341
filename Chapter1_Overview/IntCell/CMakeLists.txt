@@ -5,9 +5,10 @@
 # and push build in the bottom status bar. Choose gcc 11 as the compiler.
 #
 # you can also go to the directory in your shell and use
-# > cmake .
+# > cmake . -B build
 # to create a Makefile and
 #
+# > cd build
 # > make
 # to compile the project
 
