@@ -1,3 +1,5 @@
+// NOTE: We use Catch2 V2
+#define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
 
 #include "factorial.h"

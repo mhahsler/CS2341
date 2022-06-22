@@ -8,7 +8,7 @@ add_executable(factorial main.cpp factorial.cpp)
 find_package(Catch2 2 REQUIRED)
 
 add_executable(tests test.cpp factorial.cpp)
-target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
+target_link_libraries(tests Catch2::Catch2)
 
 include(CTest)
 enable_testing()
