@@ -66,7 +66,8 @@ easily [integrated with CMake/CTest](https://github.com/catchorg/Catch2/blob/dev
 
 Steps:
 
-1. Download the the [`catch.hpp`](https://github.com/catchorg/Catch2/releases/download/v2.13.9/catch.hpp) header file and place it into your project. 
+1. Install Catch2 with `sudo apt-get install catch2`
+or [build it from GitHub](https://github.com/catchorg/Catch2/blob/v2.x/docs/cmake-integration.md#installing-catch2-from-git-repository). Caution: use version V2.x.
 2. You need a test file like `test.cpp` in the [testing example](Chapter1_Overview/testing/) to define test cases and required outputs. There are [more assertions](https://github.com/catchorg/Catch2/blob/v2.x/docs/assertions.md) available.
 3. Add a testing section to `CMakeLists.txt`.
 4. Building and testing is avaialble in the status bar.
