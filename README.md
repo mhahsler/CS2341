@@ -36,6 +36,27 @@ You are now ready to build and execute the program.
 
 *Note:* Steps 2 and 3 can be done using `CMake:Quickstart` which will create a Hello World! program.
 
+## How to Run Automatic Tests
+
+CMake comes with CTest. CTest is not a testing framework but a tool to automate running tests. We also need a testing framework. 
+We will use a simple header-based framework called 
+[Catch2](https://github.com/catchorg/Catch2) which can be
+easily [integrated with CMake/CTest](https://github.com/catchorg/Catch2/blob/devel/docs/cmake-integration.md).
+
+Steps:
+
+1. Install Catch2 with `sudo apt-get install catch2`
+or [build it from GitHub](https://github.com/catchorg/Catch2/blob/v2.x/docs/cmake-integration.md#installing-catch2-from-git-repository). Caution: use version V2.x.
+2. You need a test file like `test.cpp` in the [testing example](Chapter1_Overview/factorial/) to define test cases and required outputs. There are [more assertions](https://github.com/catchorg/Catch2/blob/v2.x/docs/assertions.md) available.
+3. Add a testing section to `CMakeLists.txt`.
+4. Building and testing is available in the status bar.
+
+Testing using GitHub Actions:
+
+1. At the repository on the Github page, click on Actions and find `CMake based projects`.
+2. If you want to use Catch2 for testing, then you need to install it for the test. [See example workflow file](.github/workflows/testing-example_cmake.yml). 
+
+
 ## How to Debug
 
 ### In VS Code:
@@ -57,25 +78,4 @@ You are now ready to build and execute the program.
 
 1. Find the compiled executable (in VS Code it is in the build directory)
 2. Run `valgrind --leak-check=full ./executable` and look for lost bytes.
-
-## How to Run Automatic Tests
-
-CMake comes with CTest. CTest is not a testing framework but a tool to automate running tests. We also need a testing framework. 
-We will use a simple header-based framework called 
-[Catch2](https://github.com/catchorg/Catch2) which can be
-easily [integrated with CMake/CTest](https://github.com/catchorg/Catch2/blob/devel/docs/cmake-integration.md).
-
-Steps:
-
-1. Install Catch2 with `sudo apt-get install catch2`
-or [build it from GitHub](https://github.com/catchorg/Catch2/blob/v2.x/docs/cmake-integration.md#installing-catch2-from-git-repository). Caution: use version V2.x.
-2. You need a test file like `test.cpp` in the [testing example](Chapter1_Overview/testing/) to define test cases and required outputs. There are [more assertions](https://github.com/catchorg/Catch2/blob/v2.x/docs/assertions.md) available.
-3. Add a testing section to `CMakeLists.txt`.
-4. Building and testing is available in the status bar.
-
-Testing using GitHub Actions:
-
-1. At the repository on the Github page, click on Actions and find `CMake based projects`.
-2. If you want to use Catch2 for testing, then you need to install it for the test. [See example workflow file](.github/workflows/testing-example_cmake.yml). 
-
 
