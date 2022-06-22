@@ -75,6 +75,6 @@ or [build it from GitHub](https://github.com/catchorg/Catch2/blob/v2.x/docs/cmak
 Testing using GitHub Actions:
 
 1. At the repository on the Github page, click on Actions and find `CMake based projects`.
-2. Click configure and 
+2. If you want to use Catch2 for testing, then you need to install it for the test. [See example wotkflow file](https://github.com/mhahsler/CS2341/blob/main/.github/workflows/testing-example_cmake.yml). 
 
 
