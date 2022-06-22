@@ -2,7 +2,7 @@
 
 Textbook: Data Structures and Algorithm Analysis in C++ (Fourth Edition), by Mark Allen Weiss
 
-Source Code by Mark Allen Weiss:
+Source Code by Mark Allen Weiss can be found here:
 https://users.cs.fiu.edu/~weiss/dsaa_c++4/code/
 
 ## Tool Requirements
@@ -10,6 +10,7 @@ https://users.cs.fiu.edu/~weiss/dsaa_c++4/code/
 * Install Visual Studio Code: https://code.visualstudio.com/
 * On Windows you will need to install WSL: https://code.visualstudio.com/docs/cpp/config-wsl
 * Install Extensions for C++ and cmake: https://code.visualstudio.com/docs/languages/cpp
+* Install git: https://git-scm.com/
 
 
 ## How to compile and run the examples in this repository
