@@ -47,7 +47,7 @@ Steps:
 
 1. Install Catch2 with `sudo apt-get install catch2`
 or [build it from GitHub](https://github.com/catchorg/Catch2/blob/v2.x/docs/cmake-integration.md#installing-catch2-from-git-repository). Caution: use version V2.x.
-2. You need a test file like `test.cpp` in the [testing example](Chapter1_Overview/factorial/) to define test cases and required outputs. There are [more assertions macros](https://github.com/catchorg/Catch2/blob/v2.x/docs/assertions.md) available.
+2. You need a test file like `test.cpp` in the [testing example](Chapter1_Overview/factorial/) to define test cases and required outputs. There are [more assertion macros](https://github.com/catchorg/Catch2/blob/v2.x/docs/assertions.md) available.
 3. Add a testing section to `CMakeLists.txt`.
 4. Building and testing is available in the status bar.
 
@@ -59,13 +59,13 @@ Testing using GitHub Actions:
 
 ## How to Debug
 
-### In VS Code:
+### In VS Code
 
 1. Set a breakpoint next to a line of code.
 2. Click the debug symbol in the status bar which starts a frontend for `gdb`.
 3. Use the navigation panel and inspect and watch variables.
 
-### Command line debugging with `gdb`.
+### Command line debugging with `gdb`
 
 1. Find the compiled executable (in VS Code it is in the build directory)
 2. Start `gdb executable`.
@@ -73,7 +73,9 @@ Testing using GitHub Actions:
 
 ### Valgrind to detect memory leaks
 
-*Note:* `valgrind` is not available on Windows and the VS Code integration is not great. On Ubuntu it can be installed with
+
+[Valgrind](https://valgrind.org/) tools that can automatically detect many memory management and threading bugs.
+*Note:* `valgrind` is not available on Windows and the VS Code integration is not great. It can be installed on Ubuntu with
 `sudo apt install valgrind`.
 
 1. Find the compiled executable (in VS Code it is in the build directory)
