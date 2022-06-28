@@ -1,4 +1,4 @@
-# Chapter 1: A general Overview
+# Chapter 1: A General Overview
 
 ## Code Examples
 
