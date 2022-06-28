@@ -1,5 +1,6 @@
-# Code for Chapter 1: A general Overview
+# Chapter 1: A General Overview
 
+## Code Examples
 
 * Recursion, compiling and testing: [factorial](factorial)
 * Classes: [IntCell](IntCell)
@@ -10,3 +11,10 @@
 * Templates: [function_templates](function_templates), [class_templates](class_templates)
 * Comparators: [comparator](comparator)
 * Command line parameters and file IO: [io](io)
+
+
+## Reading/Videos
+
+* [Memory Diagrams](http://vimeo.com/58710057)
+* [References vs. Pointers](https://isocpp.org/wiki/faq/references)
+* [The C++ Standard Template Library (STL)](https://www.geeksforgeeks.org/the-c-standard-template-library-stl/)
