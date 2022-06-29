@@ -1,4 +1,4 @@
-# <img src="images/DS_Weiss_Book.jpg" align="right"> Data Structure Code Examples
+# <img src="images/DS_Weiss_Book.jpg" align="right"> Code Examples for Data Structures
 
 Textbook: Data Structures and Algorithm Analysis in C++ (Fourth Edition), by Mark Allen Weiss
 
