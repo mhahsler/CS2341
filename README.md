@@ -12,4 +12,20 @@ https://users.cs.fiu.edu/~weiss/dsaa_c++4/code/
 * Install Extensions for C++ and CMake: https://code.visualstudio.com/docs/languages/cpp
 * Install git: https://git-scm.com/
 
+## Content
+
+| Chapter | Slides | Code |
+| :-------| :----: | :--: |
+| 1: Programming | - | [code](Chapter1_Programming)  |
+| 2. Algorithm Analysis | [slides]() | [code](Chapter2_Algorithm_Analysis) |
+| 3. Lists, Stacks, and Queues | - | [code](Chapter3_Lists_etc) |
+| 4. Trees | - | - |
+| 5. Hahsing | - | - |
+| 6. Heaps | - | - |
+| 9. Graphs | - | - |
+
+## License
+All code and documents in this repository are provided under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) License.](https://creativecommons.org/licenses/by-sa/4.0/)
+
+![CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/3.0/88x31.png)
 
