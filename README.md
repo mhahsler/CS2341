@@ -27,7 +27,7 @@ https://users.cs.fiu.edu/~weiss/dsaa_c++4/code/
 
 1. Make a directory.
 2. Create at least a `main.cpp` file.
-3. Configure CMake by going in the menu to `Help>Show All Commands` and type `CMake:Configure`. Choose a compiler 
+3. Configure CMake by going in the menu to `Help>Show All Commands` (or push `CTRL+Shift P`) and type `CMake:Configure`. Choose a compiler 
    (C++11) and that you want to create an executable. This creates a file called `CMakeLists.txt`.
 4. Enable warnings and verbose output like in this [example](Chapter1_Overview/IntCell/CMakeLists.txt).
 5. Additonal `.cpp` files can be added in the `add_executable()` instruction in `CMakeLists.txt`.
