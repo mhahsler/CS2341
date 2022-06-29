@@ -1,4 +1,4 @@
-// C++ program for implementation of Bubble sort
+// C++ program using the STL sort algorithm
 #include <vector>
 #include <algorithm>
 #include <iostream>
@@ -40,6 +40,7 @@ int main()
 
         auto start = high_resolution_clock::now();
 
+        // sorting a container (see https://cplusplus.com/reference/algorithm/sort/)
         sort(v.begin(), v.end());
         // printVector(v);
 
