@@ -22,3 +22,8 @@ Using the shell, you can open the folder in VS Code with
 ## CMake has not been configured
 
 Push `CTRL+Shift P`, type `CMake: Configure` and follow the instructions.
+
+# Testing
+
+`[test.cpp]` contains testing code using CTest and [Catch2](https://github.com/catchorg/Catch2). 
+
