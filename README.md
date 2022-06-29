@@ -17,7 +17,7 @@ https://users.cs.fiu.edu/~weiss/dsaa_c++4/code/
 | Chapter | Slides | Code |
 | :-------| :----: | :--: |
 | 1: Programming | - | [code](Chapter1_Programming)  |
-| 2. Algorithm Analysis | [slides]() | [code](Chapter2_Algorithm_Analysis) |
+| 2. Algorithm Analysis | [slides](https://github.com/mhahsler/CS2341/blob/main/slides/Chapter2_Algorithm_Analysis.pdf) | [code](Chapter2_Algorithm_Analysis) |
 | 3. Lists, Stacks, and Queues | - | [code](Chapter3_Lists_etc) |
 | 4. Trees | - | - |
 | 5. Hahsing | - | - |
