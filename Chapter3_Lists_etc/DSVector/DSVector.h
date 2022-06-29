@@ -14,6 +14,9 @@
 // * Implement a member function that lets you append an element to the vector. 
 //   We typically double the capacity if we run out of capacity. 
 
+// Note on templates: templates need to have all the code in the header file so the 
+//   compiler can create the templated classes/functions at compile time.
+
 template <typename Object>
 class DSVector
 {
