@@ -1,4 +1,4 @@
-# Chapter 1: A Programming
+# Chapter 1: Programming
 
 ## Code Examples
 
