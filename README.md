@@ -2,8 +2,7 @@
 
 Textbook: Data Structures and Algorithm Analysis in C++ (Fourth Edition), by Mark Allen Weiss
 
-Source Code by Mark Allen Weiss can be found here:
-https://users.cs.fiu.edu/~weiss/dsaa_c++4/code/
+Source Code by Mark Allen Weiss can be found [here.](https://users.cs.fiu.edu/~weiss/dsaa_c++4/code/)
 
 Course material and assignments for CS 2341 can be found on [Canvas](https://www.smu.edu/OIT/Services/Canvas/).
 
