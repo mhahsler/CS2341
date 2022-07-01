@@ -19,8 +19,9 @@ project(factorial VERSION 0.1.0)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 add_compile_options(-Wall -Wextra -pedantic)
 
-# regular main
+# executables
 add_executable(factorial main.cpp factorial.cpp)
+add_executable(factorial_iterative iterative.cpp)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 

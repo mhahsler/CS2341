@@ -18,5 +18,5 @@ TEST_CASE("Factorials are computed", "[factorial]")
 
 // TEST_CASE("Example of a test that fails.", "[factorial]")
 // {
-//     REQUIRE(Factorial(0) == 0); // this is a wrong 0! should be 1)
+//     REQUIRE(Factorial(0) == 0); // this is a wrong test: 0! should be 1)
 // }

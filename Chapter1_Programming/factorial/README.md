@@ -1,29 +1,21 @@
-# Opening, compiling and runing Code
+# Recursion
 
-Using the shell, you can open the folder in VS Code with
+The facorial function is defined as:
 
-`code .`
+$n! = n * (n-1) * (n-2) * \dots * 1$
 
-## CMake was already configured (i.e., there is a `CMakeLists.txt`)
 
-* Push build in the bottom status bar. Choose gcc11 as the compiler.
+Recursion needs:
 
-* You can also go to the directory in your shell and use
-  
-   `cmake . -B build`
+* A base case: 1! = 1
+* And a recursive call that works towards the base case.
 
-   to create a Makefile in the build directory and
 
-   `cd build`
-   `make`
+**Notes:** 
 
-   to compile the project.
-
-## CMake has not been configured
-
-Push `CTRL+Shift P`, type `CMake: Configure` and follow the instructions.
-
-# Testing
-
-`[test.cpp]` contains testing code using CTest and [Catch2](https://github.com/catchorg/Catch2). 
+* Recursions can be translated into an iteration and vice versa. 
+* The use of recursion is supposed to create shorter and simpler code that
+  can also be more efficient.
+* Using recursion instead of simple iterations like calculating the factorial
+  is not a good idea! A better implementation is [iterative.cpp].
 

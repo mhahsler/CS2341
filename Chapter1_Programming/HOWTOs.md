@@ -4,11 +4,25 @@
 
 1. Clone the repository.
 2. Go in your shell to an example and run `code .` Each folder can be seen as a project.
-3. Click `Build` in the status bar. `CMake` creates a `build` directory with a `Makefile` which is used to
+3. Click `Build` in the status bar, choose the compilter (gcc11) and select that you want to build an executable. 
+  `CMake` creates a `build` directory with a `Makefile` which is used to
    build the project.
 4. Click the run button in the status bar.
 
-*Note:* If you move a project directory, then you have to clean the project by removing the build folder.
+*Notes:* 
+* You can also manually run `CMake` and `make`:
+  Go to the project directory in your shell and use 
+   
+   `cmake . -B build` 
+ 
+  to create a Makefile in the `build` directory and use
+ 
+   `cd build` 
+   `make` 
+ 
+   to compile the project. 
+
+* If you move a project directory, then you have to clean the project by removing the build folder.
 
 ## How to Set Up a New Program
 
