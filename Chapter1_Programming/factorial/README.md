@@ -1,21 +1,21 @@
 # Recursion
 
-The facorial function is defined as:
+The factorial of an integer $n$ is defined as:
 
-$n! = n * (n-1) * (n-2) * \dots * 1$
+$n! = n (n-1) (n-2) \dots 1$
 
 
-Recursion needs:
+Recursion needs
 
-* A base case: 1! = 1
+* A base case: $1! = 1$
 * And a recursive call that works towards the base case.
 
 
 **Notes:** 
 
-* Recursions can be translated into an iteration and vice versa. 
-* The use of recursion is supposed to create shorter and simpler code that
-  can also be more efficient.
-* Using recursion instead of simple iterations like calculating the factorial
-  is not a good idea! A better implementation is [iterative.cpp].
+* A recursion can be translated into an iteration and vice versa. 
+* Recursion is slower than iteration. The use of recursion is supposed to create 
+  shorter and simpler code that can also be more efficient.
+* Using recursion instead of simple iteration like calculating the factorial
+  is not a good idea since the function call stack is slow and needs memory! A better implementation is [iterative.cpp](iterative.cpp).
 
