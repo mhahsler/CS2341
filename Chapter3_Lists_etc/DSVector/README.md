@@ -1,4 +1,4 @@
-# DSVecrot
+# DSVector
 
 A DSVector should be:
 
