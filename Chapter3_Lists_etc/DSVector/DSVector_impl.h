@@ -5,6 +5,18 @@
 #include <iostream>
 #include <stdexcept>
 
+// A DSVector should be:
+// * A wrapper around an array of objects.
+// * Know its size and checks bounds.
+// * Provide access with [].
+// * Be resizable. For efficiency, the internal array will sometimes be
+//   larger than the size. We call this the capacity.
+// * Implement a member function that lets you append an element to the vector.
+//   We typically double the capacity if we run out of capacity.
+
+// Note on templates: templates need to have all the code in the header file so the
+//   compiler can create the templated classes/functions at compile time.
+
 template <typename Object>
 class DSVector
 {
@@ -108,14 +120,18 @@ public:
     objects[theSize++] = x;
   }
 
-  // Iterators are just pointers. STL algorithms and ranges use begin() and end().
-  // Bounds not checked
-  Object *begin()
+  // STL algorithms and ranges use begin() and end() to obtain iterators.
+  // Iterators for arrays are just regular pointers. operator++ and operator--
+  // are already available, so we don't need to implement a nested class iterator,
+  // but just reuse Object * using a nested type definition. 
+  typedef Object *iterator;
+
+  iterator begin()
   {
     return &objects[0];
   }
 
-  Object *end()
+  iterator end()
   {
     return &objects[size()];
   }

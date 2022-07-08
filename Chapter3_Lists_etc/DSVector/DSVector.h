@@ -9,7 +9,7 @@
 // * A wrapper around an array of objects.
 // * Know its size and checks bounds.
 // * Provide access with [].
-// * Be resizeable. For efficiency, the internal array will sometimes be
+// * Be resizable. For efficiency, the internal array will sometimes be
 //   larger than the size. We call this the capacity. 
 // * Implement a member function that lets you append an element to the vector. 
 //   We typically double the capacity if we run out of capacity. 
@@ -24,7 +24,7 @@ public:
   // Create an new DSVector
   explicit DSVector(int initSize = 0)
   {
-    // create a vector with initSize objects and use the default construtor to fill it
+    // create a vector with initSize objects and use the default constructor to fill it
     // with objects.
   }
 
@@ -88,12 +88,17 @@ public:
     // make sure you have the capacity.
   }
 
-  // Iterators are just pointers. STL algorithms and ranges use begin() and end().
-  Object * begin()
+  // STL algorithms and ranges use begin() and end() to obtain iterators.
+  // Iterators for arrays are just regular pointers. operator++ and operator--
+  // are already available, so we don't need to implement a nested class iterator,
+  // but just reuse Object * using a nested type definition. 
+  typedef Object * iterator;
+  
+  iterator begin()
   {
   }
   
-  Object * end()
+  iterator end()
   {
   }
 

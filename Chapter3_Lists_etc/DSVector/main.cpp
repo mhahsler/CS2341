@@ -1,6 +1,6 @@
 #include <iostream>
-#include "DSVector.h"
-//#include "DSVector_impl.h"
+//#include "DSVector.h"
+#include "DSVector_impl.h"
 
 using namespace std;
 
@@ -33,11 +33,10 @@ int main()
     // print the vector using ranges from C++11. This requires v to have 
     // a begin() and end() method returning pointers to the 1st and last element
     // and ++ that works for the pointer. The for loop below is syntactic sugar for:
-    // for (Object* it = v.begin(); it != v.end(); ++it) { Object& x = *it ; ...}
+    //for (DSVector<int>::iterator it = v.begin(); it != v.end(); ++it) 
+    //{ int& x = *it ; cout << x << " "; }
     for (auto &x : v)
-    {
         cout << x << " ";
-    }
     cout << endl;
 
     v.resize(20);
