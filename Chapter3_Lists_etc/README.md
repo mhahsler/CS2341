@@ -1,20 +1,53 @@
 # Chapter 3: Lists, Stacks, and Queues 
 
-Basic data structures are defined as **ADT**s (Abstract Data Types). ADTs are not about the 
-implementation, but a mathematical abstraction which define
+## Abstract Data Types (ADT)
 
-* s set of objects, and
+ADT extend the idea of basic data types. They are not about the 
+implementation, but a mathematical abstraction which defines
+
+* a set of objects, and
 * operations (e.g., insert, delete).
 
+## Iterators
+
+Iterators are an abstraction to represent a position in a ADT. This is similar to the index in 
+an array.
+
+Iterators are:
+* pointers to elements in the ADT implementation.
+* implemented as a nested class in the ADT implementation.
+* know how to get to the next element with an overloaded `operator++()` and `operator++(int)` 
+  (bidirectional iterators also have `operator--()` and `operator--(int)`)
+* An ADT can be asked for an iterator with `begin()` and `end()`.
+
+STL provides: [std::iterator](https://cplusplus.com/reference/iterator/iterator/?kw=iterator)
+
+Example: [Iterator use](Iterator)
 
 ## Vectors
 
-* Vectors: [DSVector](DSVector)
+### Interface
+* `size()` number of elements.
+* `clear()` remove all elements.
+* `empty()` is the stack empty?
+* access via `operator[index]` ot `at(index)`.
+
+STL provides: [std::vector](https://cplusplus.com/reference/vector/vector/)
+
+Example: [DSVector](DSVector)
 
 ## Linked Lists
 
-* Linked lists: [DSVector](DSVector) 
+### Interface
+* `size()` number of elements.
+* `clear()` remove all elements.
+* `empty()` is the stack empty?
+* `insert(iterator)` add an element.
+* `erase(iterator)` delete an element.
 
+STL provides: [std::list](https://cplusplus.com/reference/list/list/)
+
+Example: [DSList](DSList) 
 
 
 Stacks and queues are implemented using vectors/array or lists. 
@@ -22,7 +55,7 @@ Stacks and queues are implemented using vectors/array or lists.
 ## Stacks
 
 ### Interface
-* `push()` add an element on top.
+* `push(value)` add an element on top.
 * `pop()`  remove the top element.
 * `top()` look at the top element.
 * `empty()` is the stack empty?
@@ -56,7 +89,7 @@ Insertion is done on one end and deletion on the other.
 _Note_: Simple queues are different from priority queues which are introduced under the name _heap_ later).
 
 ### Interface
-* `enqueue()` insertion
+* `enqueue(value)` insertion
 * `dequeue()` deletion
 
 STL provides: [`std::deque`](https://cplusplus.com/reference/deque/deque/) as a double-ended queue.
