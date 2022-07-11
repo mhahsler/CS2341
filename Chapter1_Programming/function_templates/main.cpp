@@ -9,9 +9,9 @@ using namespace std;
 /*
  * Templates let us define algorithms that are type independent.
  * 
- * Funciton templates define a pattern. The typename is just a placeholder for the 
+ * Function templates define a pattern. The typename is just a placeholder for the 
  * actual type and the compiler will compile all needed versions
- * of the funciton (can lead to code bloat).
+ * of the function (can lead to code bloat).
  * 
  
  * 

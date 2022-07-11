@@ -8,6 +8,19 @@ using namespace std;
 
 // Generic findMax, with a function object, C++ style.
 // Precondition: a.size( ) > 0.
+//
+// typename Object suggests that it has 
+//  * a default constructor 
+//  * a copy contractor, and
+//  * operator=
+//
+// typename Comparable suggests that it also has
+// * operator< for a total order
+//
+// typename Comparator is used as a placeholder for a comparator 
+//   function object. To make this clear we use the name isLessThan
+	    
+
 template <typename Object, typename Comparator>
 const Object &findMax(const vector<Object> &arr, Comparator isLessThan)
 {
@@ -21,7 +34,8 @@ const Object &findMax(const vector<Object> &arr, Comparator isLessThan)
 }
 
 // function object calls automatically operator() (this is called function call operator)
-// strcasecmp is a c-string function: https://pubs.opengroup.org/onlinepubs/009696799/functions/strcasecmp.html
+// strcasecmp is a c-string function: 
+// https://pubs.opengroup.org/onlinepubs/009696799/functions/strcasecmp.html
 class CaseInsensitiveCompare
 {
 public:
@@ -31,17 +45,6 @@ public:
     }
 };
 
-// Generic findMax, using default ordering. 
-// std::less provides a templated comparator function also for build-in datatypes which do not have a operator<()
-// See: https://en.cppreference.com/w/cpp/utility/functional/less
-#include <functional>
-template <typename Object>
-const Object &findMax(const vector<Object> &arr)
-{
-    return findMax(arr, less<Object>{});
-}
-
-
 
 int main()
 {
@@ -49,8 +52,11 @@ int main()
 
     cout << findMax(arr, CaseInsensitiveCompare{}) << endl;
     
-    // default ordering is case sensitive.
-    cout << findMax(arr) << endl;
+    // default ordering for string is case sensitive.
+    // std::less provides a templated comparator function that invokes operator<.
+    // Also works for primitive datatypes.
+    // See: https://en.cppreference.com/w/cpp/utility/functional/less
+    cout << findMax(arr, less<string>{}) << endl;
 
     return 0;
 }
