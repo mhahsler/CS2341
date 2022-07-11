@@ -21,14 +21,11 @@ More naming conventions:
 
 A collection of $N$ nodes (one is the root node) has $N - 1$ edges.
 
-## Interface
-
-STL provides the associative containers [std::set](https://cplusplus.com/reference/set/set/) and [std::map](https://cplusplus.com/reference/map/map/) based on binary search trees.
 
 ## Binary Tree
 In a binary tree is a tree in which no node can have more than two children.
 
-Complexity: The average depth of a binary tree is $O(\sqr{N})$. The worst case depth is $N - 1$ (a single branch going all the way down).
+Complexity: The average depth of a binary tree is $O(\sqrt{N})$. The worst case depth is $N - 1$ (a single branch going all the way down).
 
 The node structure is similar to a linked list node
 
@@ -46,21 +43,33 @@ public:
 `nullptr` represent missing children.
 
 
-### Application Examples
+### Application Examples: Expression Trees (parse trees) 
 
-* Expression Trees (parse trees) represent an expression with binary operators and 
-  can create 
-  - infix notation: inorder transversal = create left expression in parentheses. 
+An expression tree represent an expression with binary operators like $(a + b) * c * (d + e)$.
+It can be used to create 
+  - infix notation: inorder transversal = create left expression in parentheses first. 
   - postfix notations: postorder traversal = process operator after the children. 
 
   Construction from postfix notation with a stack: 
   1. Read postfix expression one symbol at a time
   2. If the next symbol is an operand then push a pointer to it on the stack.
-     If it is a operator then 
+  3. If it is a operator then 
      a. pop two operand pointers from the stack and 
      b. create a tree with the operator as its root and the two operands as its children. 
      c. Push a pointer to the tree on the stack
 
 ## Binary Search Tree
-Complexity: The average depth of a _binary search tree_ is $O(log N)$.
+
+_Assumption:_ Items can be ordered and the are no duplicates (i.e., a total order).
+
+_Definition:_ In a binary search tree, all items in each left subtree are smaller than the items in the right subtree.
+
+STL provides the associative containers [std::set](https://cplusplus.com/reference/set/set/) and [std::map](https://cplusplus.com/reference/map/map/) based on binary search trees.
+The stored objects need to be `Comparable` with a definition of `bool operator<(const &) const` or a function object (see [example in Chapter 1](../Chapter1_Programming/comparator)).
+
+
+Complexity: The average depth of a _binary search tree_ is lower than a general tree with $O(log N)$. Since this is relatively small, operations can be defined/implemented recursively without
+running out of stack space.
+
+
 
