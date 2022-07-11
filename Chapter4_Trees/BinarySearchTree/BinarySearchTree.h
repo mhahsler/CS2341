@@ -19,10 +19,26 @@ using namespace std;
 // boolean isEmpty( )     --> Return true if empty; else false
 // void makeEmpty( )      --> Remove all items
 // void printTree( )      --> Print tree in sorted order
+// int maxDepth( )        --> Find the maximal depth of the tree
 
 template <typename Comparable>
 class BinarySearchTree
 {
+    // define node structure as a nested class
+private:
+    class BinaryNode
+    {
+    public:
+        Comparable element;
+        BinaryNode *left;
+        BinaryNode *right;
+
+        BinaryNode(const Comparable &theElement, BinaryNode *lt, BinaryNode *rt)
+            : element{theElement}, left{lt}, right{rt} {}
+    };
+
+    BinaryNode *root;
+
 public:
     BinarySearchTree() : root{nullptr}
     {
@@ -126,20 +142,12 @@ public:
         remove(x, root);
     }
 
-private:
-    class BinaryNode
+    int maxDepth()
     {
-    public:
-        Comparable element;
-        BinaryNode *left;
-        BinaryNode *right;
+        return maxDepth(root, 0);
+    }
 
-        BinaryNode(const Comparable &theElement, BinaryNode *lt, BinaryNode *rt)
-            : element{theElement}, left{lt}, right{rt} {}
-    };
-
-    BinaryNode *root;
-
+private:
     /**
      * Internal method to insert into a subtree.
      * x is the item to insert.
@@ -279,6 +287,14 @@ private:
             return nullptr;
         else
             return new BinaryNode{t->element, clone(t->left), clone(t->right)};
+    }
+
+    int maxDepth(BinaryNode *t, int depth)
+    {
+        i if (t == nullptr) return depth;
+
+        return (std::max(maxDepth(t->left, depth + 1),
+                         maxDepth(t->right, depth + 1)));
     }
 };
 
