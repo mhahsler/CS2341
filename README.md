@@ -24,7 +24,7 @@ Here are [HOWTOs](Chapter1_Programming/HOWTOs.md) for running, testing, and debu
 | 1: Programming | - | [code](Chapter1_Programming)  |
 | 2. Algorithm Analysis | [slides](https://github.com/mhahsler/CS2341/blob/main/slides/Chapter2_Algorithm_Analysis.pdf) | [code](Chapter2_Algorithm_Analysis) |
 | 3. Lists, Stacks, and Queues | - | [code](Chapter3_Lists_etc) |
-| 4. Trees | - | - |
+| 4. Trees | - | [code](Chapter4_Trees) |
 | 5. Hahsing | - | - |
 | 6. Heaps | - | - |
 | 9. Graphs | - | - |
