@@ -11,7 +11,7 @@ By convention: $0! = 1$.
 
 Recursion (see [factorial.cpp](factorial.cpp)) needs
 
-* A base case: $1! = 1$
+* A base case: $0! = 1$.
 * And a recursive call that works towards the base case.
 
 
