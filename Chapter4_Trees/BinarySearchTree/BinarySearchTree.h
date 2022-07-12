@@ -17,7 +17,7 @@ using namespace std;
 // Comparable findMin( )  --> Return smallest item
 // Comparable findMax( )  --> Return largest item
 // boolean isEmpty( )     --> Return true if empty; else false
-// void makeEmpty( )      --> Remove all items
+// void makeEmpty( )      --> Remiove all items
 // void printTree( )      --> Print tree in sorted order
 // int maxDepth( )        --> Find the maximal depth of the tree
 
@@ -118,6 +118,11 @@ public:
             printTree(root, out);
     }
 
+    void prettyPrintTree() const
+    {
+        prettyPrintTree("", root, false);
+    }
+
     /**
      * Make the tree logically empty.
      */
@@ -164,7 +169,7 @@ private:
             insert(x, t->right);
         else
         {
-        }; // Duplicate; do nothing
+        }; // Duplicate: element == x; do nothing
     }
 
     /**
@@ -177,17 +182,25 @@ private:
     {
         if (t == nullptr)
             return; // Item not found; do nothing
+
+        // find the node using binary search
         if (x < t->element)
-            remove(x, t->left);
-        else if (t->element < x)
-            remove(x, t->right);
-        else if (t->left != nullptr && t->right != nullptr) // Two children
+            return remove(x, t->left);
+
+        if (t->element < x)
+            return remove(x, t->right);
+
+        // found element == x -> delete
+        if (t->left != nullptr && t->right != nullptr)
         {
+            // Two children case: replace element with the smallest element in
+            // the right subtree
             t->element = findMin(t->right)->element;
             remove(t->element, t->right);
         }
         else
         {
+            // One child case: replace the node with the only child, if any.
             BinaryNode *oldNode = t;
             t = (t->left != nullptr) ? t->left : t->right;
             delete oldNode;
@@ -202,8 +215,10 @@ private:
     {
         if (t == nullptr)
             return nullptr;
+
         if (t->left == nullptr)
             return t;
+
         return findMin(t->left);
     }
 
@@ -228,12 +243,14 @@ private:
     {
         if (t == nullptr)
             return false;
-        else if (x < t->element)
+
+        if (x < t->element)
             return contains(x, t->left);
-        else if (t->element < x)
+
+        if (t->element < x)
             return contains(x, t->right);
-        else
-            return true; // Match
+
+        return true; // Match
     }
     /****** NONRECURSIVE VERSION*************************
         bool contains( const Comparable & x, BinaryNode *t ) const
@@ -278,6 +295,22 @@ private:
         }
     }
 
+    // Modified from: https://stackoverflow.com/questions/36802354/print-binary-tree-in-a-pretty-way-using-c
+    void prettyPrintTree(const std::string &prefix, const BinaryNode *node, bool isRight) const
+    {
+        if (node != nullptr)
+        {
+            std::cout << prefix;
+            std::cout << (isRight ? "├──" : "└──");
+            // print the value of the node
+            std::cout << node->element << std::endl;
+
+            // enter the next tree level - left and right branch
+            prettyPrintTree(prefix + (isRight ? "│   " : "    "), node->right, true);
+            prettyPrintTree(prefix + (isRight ? "│   " : "    "), node->left, false);       
+        }
+    }
+
     /**
      * Internal method to clone subtree.
      */
@@ -291,7 +324,8 @@ private:
 
     int maxDepth(BinaryNode *t, int depth)
     {
-        i if (t == nullptr) return depth;
+        if (t == nullptr)
+            return depth;
 
         return (std::max(maxDepth(t->left, depth + 1),
                          maxDepth(t->right, depth + 1)));
