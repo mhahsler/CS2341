@@ -1,11 +1,15 @@
 # Recursion
 
-The factorial of an integer $n$ is defined as:
+The factorial of an integer $n$
+is the product of all positive integers less than or equal to $n$.
+That is:
 
-$n! = n (n-1) (n-2) \dots 1$
+$n! = n (n-1) (n-2) \dots 1 = \prod_{i=1}^n i$ for $n > 0$
+
+By convention: $0! = 1$.
 
 
-Recursion needs
+Recursion (see [factorial.cpp](factorial.cpp)) needs
 
 * A base case: $1! = 1$
 * And a recursive call that works towards the base case.
