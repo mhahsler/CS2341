@@ -4,7 +4,7 @@ The factorial of an integer $n$
 is the product of all positive integers less than or equal to $n$.
 That is:
 
-$$n! = n (n-1) (n-2) \dots 1 = \prod_{i=1}^n i$ for $n > 0$$
+$$n! = n (n-1) (n-2) \dots 1 = \prod_{i=1}^n i \ \text{for} \ n > 0$$
 
 By convention: $0! = 1$.
 
