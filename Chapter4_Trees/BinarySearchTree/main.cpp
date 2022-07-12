@@ -2,7 +2,6 @@
 #include "BinarySearchTree.h"
 using namespace std;
 
-    // Test program
 int main( )
 {
     BinarySearchTree<int> t;

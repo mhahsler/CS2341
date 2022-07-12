@@ -2,7 +2,6 @@
 #include "AvlTree.h"
 using namespace std;
 
-// Test program
 int main()
 {
     AvlTree<int> t;

@@ -41,8 +41,6 @@ public:
 
 `nullptr` represent missing children.
 
-See [BinarySearchTree](BinarySearchTree) for complete code.
-
 ### Application Examples: Expression Trees (parse trees) 
 
 An expression tree represent an expression with binary operators like $(a + b) * c * (d + e)$.
@@ -64,9 +62,7 @@ _Assumption:_ Items can be ordered and the are no duplicates (i.e., a total orde
 
 _Definition:_ In a binary search tree, all items in each left subtree are smaller than the items in the right subtree.
 
-STL provides the associative containers [std::set](https://cplusplus.com/reference/set/set/) and [std::map](https://cplusplus.com/reference/map/map/) based on binary search trees.
-The stored objects need to be `Comparable` with a definition of `bool operator<(const &) const` 
-(since $a < b$ can be used for $b < a$, we can also get $a == b$) or a function object (see [example in Chapter 1](../Chapter1_Programming/comparator)).
+See [BinarySearchTree](BinarySearchTree) for complete code.
 
 ### Complexity 
 
@@ -86,15 +82,23 @@ that the height (= max depth) of the left and right subtree can only differ by 1
 
 We can maintain the balance information (height) in the node structure. The height of an empty tree is defined as -1.
 
-Insertion: Insertion may break the balancing condition and we will need to rebalance the tree using a **rotation**. We need single rotation for "outside" insertions and double rotation for
-"inside" insertions.
+### Balancing
+
+Insertion/deletion may break the balancing condition and we will need to rebalance the tree using a **rotation**. We need 
+
+* a single rotation for "outside" insertions and 
+* a double rotation for "inside" insertions.
 
 See [AVLTree](AVLTree) for complete code.
 
 
 
+# STL Implementations
+
+STL provides the associative containers [std::set](https://cplusplus.com/reference/set/set/) and [std::map](https://cplusplus.com/reference/map/map/) based on binary search trees.
+The stored objects need to be `Comparable` with a definition of `bool operator<(const &) const` 
+(since $a < b$ can be used for $b < a$, we can also get $a == b$) or a function object (see [comparator example in Chapter 1](../Chapter1_Programming/comparator)).
 
 
-
-
+Examples: [How to use STL sets and maps](STLSetMap)
 
