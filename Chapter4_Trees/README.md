@@ -74,9 +74,9 @@ The depth of a _binary search tree_ $d$ leads to $O(d)$ operations (for all but 
 assumption that all insertion sequences are equally likely. Remember, $O(log\ N)$ means 
 that the problem size is halved with each step.
 
-Since $O(\mathem{log}\  N)$ is relatively small, operations can be defined/implemented recursively without running out of stack space.
+Since $O(log\ N)$ is relatively small, operations can be defined/implemented recursively without running out of stack space.
 
-_Problem:_ The assumption of $O(log \N)$ average running time is only true if no deletions are 
+_Problem:_ The assumption of $O(log\ N)$ average running time is only true if no deletions are 
 used! Deletions often replace a node with a node for the right subtree, resulting in an **unbalanced tree** that is left heavy!
 
 ## AVL Trees
@@ -86,11 +86,11 @@ that the height (= max depth) of the left and right subtree can only differ by 1
 
 We can maintain the balance information (height) in the node structure. The height of an empty tree is defined as -1.
 
-Insertion: We need to update the height information on the way back to the root. Issue: insertion may break the balancing condition and we will need to rebalance the tree using a **rotation**.
-
-Single vs double rotation.
+Insertion: Insertion may break the balancing condition and we will need to rebalance the tree using a **rotation**. We need single rotation for "outside" insertions and double rotation for
+"inside" insertions.
 
 See [AVLTree](AVLTree) for complete code.
+
 
 
 
