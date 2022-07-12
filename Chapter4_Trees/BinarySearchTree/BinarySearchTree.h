@@ -118,6 +118,10 @@ public:
             printTree(root, out);
     }
 
+    /**
+     * Print the tree structure. Only works for trees where
+     * element can be printed with a single character.
+     */
     void prettyPrintTree() const
     {
         prettyPrintTree("", root, false);

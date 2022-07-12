@@ -1,8 +1,7 @@
 # Chapter 4: Trees, Sets, and Maps
 
 Lists have for most operations $O(N)$ which is slow for large amounts of data.
-
-Trees have $O(log N)$.
+Trees can have an average runtime of $O(log\ N)$.
 
 Recursive definition: A tree $T$
 
@@ -22,10 +21,10 @@ More naming conventions:
 A collection of $N$ nodes (one is the root node) has $N - 1$ edges.
 
 
-## Binary Tree
+## Binary Trees
 In a binary tree is a tree in which no node can have more than two children.
 
-Complexity: The average depth of a binary tree is $O(\sqrt{N})$. The worst case depth is $N - 1$ (a single branch going all the way down).
+Complexity: The average depth of a binary tree is (under some assumptions of no deletions) $O(\sqrt{N})$. The worst case depth is $N - 1$ (a single branch going all the way down).
 
 The node structure is similar to a linked list node
 
@@ -42,6 +41,7 @@ public:
 
 `nullptr` represent missing children.
 
+See [BinarySearchTree](BinarySearchTree) for complete code.
 
 ### Application Examples: Expression Trees (parse trees) 
 
@@ -65,11 +65,36 @@ _Assumption:_ Items can be ordered and the are no duplicates (i.e., a total orde
 _Definition:_ In a binary search tree, all items in each left subtree are smaller than the items in the right subtree.
 
 STL provides the associative containers [std::set](https://cplusplus.com/reference/set/set/) and [std::map](https://cplusplus.com/reference/map/map/) based on binary search trees.
-The stored objects need to be `Comparable` with a definition of `bool operator<(const &) const` or a function object (see [example in Chapter 1](../Chapter1_Programming/comparator)).
+The stored objects need to be `Comparable` with a definition of `bool operator<(const &) const` 
+(since $a < b$ can be used for $b < a$, we can also get $a == b$) or a function object (see [example in Chapter 1](../Chapter1_Programming/comparator)).
+
+### Complexity 
+
+The depth of a _binary search tree_ $d$ leads to $O(d)$ operations (for all but deleting and copying the whole tree). The average tree depth $d$ is $O(log\ N)$ under the
+assumption that all insertion sequences are equally likely. Remember, $O(log\ N)$ means 
+that the problem size is halved with each step.
+
+Since $O(\mathem{log}\  N)$ is relatively small, operations can be defined/implemented recursively without running out of stack space.
+
+_Problem:_ The assumption of $O(log \N)$ average running time is only true if no deletions are 
+used! Deletions often replace a node with a node for the right subtree, resulting in an **unbalanced tree** that is left heavy!
+
+## AVL Trees
+
+An AVL (Adelson-Velskii and Landis) tree is a binary search tree with the **balance condition**
+that the height (= max depth) of the left and right subtree can only differ by 1. This keeps the tree depth close to $O(log\ N)$.
+
+We can maintain the balance information (height) in the node structure. The height of an empty tree is defined as -1.
+
+Insertion: We need to update the height information on the way back to the root. Issue: insertion may break the balancing condition and we will need to rebalance the tree using a **rotation**.
+
+Single vs double rotation.
+
+See [AVLTree](AVLTree) for complete code.
 
 
-Complexity: The average depth of a _binary search tree_ is lower than a general tree with $O(log N)$. Since this is relatively small, operations can be defined/implemented recursively without
-running out of stack space.
+
+
 
 
 
