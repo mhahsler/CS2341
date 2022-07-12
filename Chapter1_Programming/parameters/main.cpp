@@ -50,7 +50,7 @@ void swap(double &a, double &b)
  * @param arr 
  * @return string 
  */
-string randomItem(const vector<string> &arr)
+const string & randomItem(const vector<string> &arr)
 {
     return arr[rand() % arr.size()];
 }
@@ -65,13 +65,15 @@ int main()
 
     cout << "swap(a, b) - pass-by-reference: " << endl;
     swap(a, b);
-    cout << "a = " << a << "; b = " << b << endl;
+    cout << "Back in main: a = " << a << "; b = " << b << endl;
 
-    cout << "Pick a random string." << endl;
-    srand(time(NULL));
+    cout << "Pick a random string: ";
+    srand(time(NULL)); // we need to initialize the random number generator
     vector<string> words = {"Hello", "World", "how", "are", "you"};
-    cout << randomItem(words) << endl;
-
+    
+    const string & s = randomItem(words);
+    //const string s = randomItem(words); // would make a copy
+    cout << s << endl;
 
     return 0;
 }

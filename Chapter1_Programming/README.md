@@ -15,7 +15,7 @@ Here are the [HOWTOs](HOWTOs.md)
 * Video: [Memory Diagrams](http://vimeo.com/58710057)
 
 ### Recursion, Compiling, Debugging and Testing
-* Example: [Caclulation factorials](factorial)
+* Example: [Calculate factorials](factorial)
 
 ### Classes
 * Example: [IntCell](IntCell)
@@ -30,6 +30,8 @@ Here are the [HOWTOs](HOWTOs.md)
 
 ### Parameter passing
 * Example: [Call-by-value vs call-by-reference](parameters)
+* Use of [const in C++](https://docs.microsoft.com/en-us/cpp/cpp/const-cpp?view=msvc-170).
+
 
 ### Destructor, copy constructor and assignment
 * Example: [Big five for classes](big-five)
