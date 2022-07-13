@@ -91,9 +91,30 @@ Insertion/deletion may break the balancing condition and we will need to rebalan
 
 See [AVLTree](AVLTree) for complete code.
 
+## B-Trees
+
+We need secondary storage access for data that does not fit into main memory. Secondary storage
+is typically organized in blocks (file system, disk) and access is slow compared to main memory access so the Big-Oh method does not work (remember that it assumes that all operations take the same amount of time).
+
+_Problem:_ Every level in the tree requires a storage access.
+
+_Idea:_ Reduce tree depth by making the tree wider leading to an M-ary search tree.
+
+Common implementations are the [B-tree](https://en.wikipedia.org/wiki/B-tree) and the [B+ tree](https://en.wikipedia.org/wiki/B%2B_tree).
+
+B-tree properties:
+* Data is organized in sorted order.
+* All data is stored in the leaf nodes as a sorted array with space for $L$ values. 
+  At least $ceil(L/2)$ are occupied.
+* Each non-leaf node has space for $M$ key/pointer pairs. At least $ceil(M/2)$ are occupied. 
+  The key is the minimum value of the entries following the pointer.
+
+The requirement that at least half the places are filled balances the tree. Insertion may lead to a split of a node.
+
+Operations are $O(log\ N)$
 
 
-## STL Implementations
+## STL Implementations of Binary Search trees
 
 STL provides the associative containers [std::set](https://cplusplus.com/reference/set/set/) and [std::map](https://cplusplus.com/reference/map/map/) based on binary search trees.
 The stored objects need to be `Comparable` with a definition of `bool operator<(const &) const` 
