@@ -47,6 +47,7 @@ int main()
 
     cout << "We have " << colors.size() << " colors!" << endl;
 
+    cout << boolalpha;
     cout << "Do we have a code for color GREEN? " << (colors.find("GREEN") != colors.end()) << endl;
     cout << "Do we have a code for color BLUE? " << (colors.find("BLUE") != colors.end()) << endl;
     cout << "Code for color BLUE is " << colors["BLUE"] << endl;

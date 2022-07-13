@@ -30,7 +30,7 @@ Has to return the same hash value for the same key and should be
 * fast to calculate, and
 * distribute the keys well (does not cluster the items in a part of the table).
 
-[List of hash functions](https://en.wikipedia.org/wiki/List_of_hash_functions)
+See: [List of hash functions](https://en.wikipedia.org/wiki/List_of_hash_functions)
 
 ### For Integers
 $h(key) = key\ mod\ M$ and we typically choose $M$ to be prime.
@@ -67,6 +67,8 @@ Rehashing: If the loading factor gets too large, then allocate a table with doub
   insert the data in $O(N)$ operations. 
 
 Alternatives are probing, double hashing, perfect hashing, universal hashing and many more.
+
+See Example [DSHashTable](DSHashTable).
 
 ## STL Hash Tables
 
