@@ -5,25 +5,33 @@ Trees can have an average runtime of $O(log\ N)$.
 
 Recursive definition: A tree $T$
 
-* is a collection of _nodes_.
-* is empty or has a single _root node_ $r$.
+* is a collection of __nodes__.
+* is empty or has a single __root node__ $r$.
 * has zero or more nonempty subtrees $T_1, T_2, ..., T_k$ whose roots are connected by a 
-  _directed edge_ from $r$.
+  __directed edge__ from $r$.
+
 
 More naming conventions:
-* Two nodes are called _parent_ and _child_ of each other if the parent as a directed edge 
+* Two nodes are called __parent__ and __child__ of each other if the parent as a directed edge 
     to the child.
-* Nodes without children are called _leaves._
-* A _path_ is a sequence along edges. The _length_ of the path is the number of edges.
-* The _depth_ of a node is the length of the path from the root node $r$ to the node 
+* Nodes without children are called __leaves.__
+* A __path__ is a sequence along edges. The __path length__ is the number of edges.
+* The __depth__ of a node is the length of the path from the root node $r$ to the node 
   (there is only on path). 
-* The path from a node to the farthest leaf node is called the node's _height._
+* The path from a node to the farthest leaf node is called the node's __height.__
+* A tree where a node can have at most $M$ children is called an __$M$-ary tree.__
 
-A collection of $N$ nodes (one is the root node) has $N - 1$ edges.
+Observations:
+* A tree is a special type of graph with only as a single path from the root to each leaf.
+* A collection of $N$ nodes (one is the root node) has $N - 1$ edges.
 
-## General Tree
+Types of traversals:
 
-A tree where a node can have at most $M$ children is called an $M$-ary tree.
+* inorder: left subtree first (called depth-first for graphs).
+* postorder: process all subtrees before the node.
+* preorder: process node before children.
+* level-order: process the tree by level (needs extra data structures like a queue; 
+  called breath-first for graphs).
 
 ## Binary Trees
 In a binary tree is a tree in which no node can have more than two children.
@@ -45,7 +53,7 @@ public:
 
 `nullptr` represent missing children.
 
-### Application Examples: Expression Trees (parse trees) 
+### Application Examples: Expression Trees
 
 An expression tree represent an expression with binary operators like $(a + b) * c * (d + e)$.
 It can be used to create 
@@ -60,16 +68,22 @@ It can be used to create
      b. create a tree with the operator as its root and the two operands as its children. 
      c. Push a pointer to the tree on the stack
 
+[Parse trees](https://en.wikipedia.org/wiki/Parse_tree) are $M$-ary expression trees that are used in compiler design. In natural language processing such trees are called syntax trees. 
+
+
 ## Binary Search Tree
 
 _Assumption:_ Items can be ordered and the are no duplicates (i.e., a total order).
 
 _Definition:_ In a binary search tree, all items in each left subtree are smaller than the items in the right subtree.
 
-See [BinarySearchTree](BinarySearchTree) for complete code.
+See [BinarySearchTree](BinarySearchTree) for code.
+
+Since items are stored in sorted order, a simple inorder traversal results in sorted output which
+means that inserting $N$ items and traversing the tree is a $O(N\ log\ N)$ sorting algorithm. 
 
 ### Complexity 
-
+i
 The depth of a _binary search tree_ $d$ leads to $O(d)$ operations (for all but deleting and copying the whole tree). The average tree depth $d$ is $O(log\ N)$ under the
 assumption that all insertion sequences are equally likely. Remember, $O(log\ N)$ means 
 that the problem size is halved with each step.
@@ -102,7 +116,7 @@ is typically organized in blocks (file system, disk) and access is slow compared
 
 _Problem:_ Every level in the tree requires a storage access.
 
-_Idea:_ Reduce tree depth by making the tree wider leading to an M-ary search tree.
+_Idea:_ Reduce tree depth by making the tree wider leading to a balanced M-ary search tree.
 
 Common implementations are the [B-tree](https://en.wikipedia.org/wiki/B-tree) and the [B+ tree](https://en.wikipedia.org/wiki/B%2B_tree).
 
@@ -112,8 +126,10 @@ B-tree properties:
   At least $ceil(L/2)$ are occupied.
 * Each non-leaf node has space for $M$ key/pointer pairs. At least $ceil(M/2)$ are occupied. 
   The key is the minimum value of the entries following the pointer.
+* $M$ and $L$ are chosen to fit into a storage block that can be accessed with a single read.    
+  Pointers are block addresses.
 
-The requirement that at least half the places are filled balances the tree. Insertion may lead to a split of a node.
+The requirement that at least half the places are filled balances the tree. Insertion may lead to a split of a node into two half full nodes.
 
 Operations are $O(log\ N)$
 
