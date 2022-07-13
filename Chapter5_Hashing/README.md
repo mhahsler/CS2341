@@ -77,6 +77,8 @@ STL also provides hash functions as templated function objects as [`std::hash`](
 Unordered maps are often faster then regular maps, but this depends on the data and needs to be
 tested in an experiment.
 
+See: [STL example code](STL)
+
 ## Some Applications
 
 1. Lookup table with constant time. E.g., the compiler looks up variable names or a router looks up IP addresses.
