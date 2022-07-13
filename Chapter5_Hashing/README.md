@@ -7,15 +7,17 @@ The time to find items by data structure is
 * binary search tree: $O(log\ N)$
 * hash table: $O(1)$
 
+Hash tables are unsorted, while binary search trees are sorted.
+
 ## Hash Table
 
 A hash table is a table (array) of size $M$. 
 
-We want to insert a (key, value) pairs. The index for the table row is calculated using a hash function $h(key)$. 
+We want to insert a $(key, value)$ pairs. The index for the table row is calculated using a hash function $h(key)$. 
 
 Now we can look up values by key.
 
-The hash function should be fast and since its runtime does not depend on the number $N$ of items in the table, we get constant runtime of $O(1)$. 
+The hash function should be fast and since its runtime does not depend on the number $N$ of items in the table, we get constant runtime of $O(1).$ 
 
 Issues:
 
@@ -31,12 +33,11 @@ Has to return the same hash value for the same key and should be
 [List of hash functions](https://en.wikipedia.org/wiki/List_of_hash_functions)
 
 ### For Integers
-
-$key mod M$ + we typically choose $M$ to be prime.
+$h(key) = key\ mod\ M$ and we typically choose $M$ to be prime.
 
 ### For strings
 
-Convert the string into an integer and then hash the integer using mod. Note that letter frequencies depends on the language 
+Convert the string into an integer and then hash the integer using $mod$. Note that letter frequencies depends on the language 
 and encoding plays a role.
 
 A simple choice that works well is to use ASCII encoding for the letters $k_0, k_1, ...$ and the following polynomial:
@@ -67,7 +68,7 @@ Rehashing: If the loading factor gets too large, then allocate a table with doub
 
 Alternatives are probing, double hashing, perfect hashing, universal hashing and many more.
 
-## Hash Tables in the STL
+## STL Hash Tables
 
 STL provides [`std::unordered_set`](https://cplusplus.com/reference/unordered_set/unordered_set/) and [`std::unordered_map`](https://cplusplus.com/reference/unordered_map/unordered_map/). The keys need to have `operator==` and a `hash` function (or a provided function object).
 
@@ -75,3 +76,9 @@ STL also provides hash functions as templated function objects as [`std::hash`](
 
 Unordered maps are often faster then regular maps, but this depends on the data and needs to be
 tested in an experiment.
+
+## Some Applications
+
+1. Lookup table with constant time. E.g., the compiler looks up variable names or a router looks up IP addresses.
+2. Convert a name (a string) into a numeric ID used in an algorithm.
+3. Spell checker looks up words.
