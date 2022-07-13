@@ -17,9 +17,13 @@ More naming conventions:
 * A _path_ is a sequence along edges. The _length_ of the path is the number of edges.
 * The _depth_ of a node is the length of the path from the root node $r$ to the node 
   (there is only on path). 
+* The path from a node to the farthest leaf node is called the node's _height._
 
 A collection of $N$ nodes (one is the root node) has $N - 1$ edges.
 
+## General Tree
+
+A tree where a node can have at most $M$ children is called an $M$-ary tree.
 
 ## Binary Trees
 In a binary tree is a tree in which no node can have more than two children.
