@@ -54,7 +54,9 @@ Design a hash using hashes of all member variables.
 
 Collisions happen when $h(key_1) = h(key_2)$.
 
-Separate chaining uses a linked list for each cell in the hash table. A good hash function should have few collisions and lead to short lists.
+Separate chaining uses a linked list for each cell in the hash table. 
+We can insert at the beginning in $O(1)$ and a good hash function should 
+have few collisions and lead to short lists.
 
 How large should the hash table be? The loading factor is
 
