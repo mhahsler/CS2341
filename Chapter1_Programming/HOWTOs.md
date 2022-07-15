@@ -53,6 +53,8 @@ or [build it from GitHub](https://github.com/catchorg/Catch2/blob/v2.x/docs/cmak
 3. Add a testing section to `CMakeLists.txt`.
 4. Building and testing is available in the status bar.
 
+**Note:** Compiling the test with Catch2 takes a while. You can change the Build target in the Status Bar from `[all]` to `[main]` or whatever your executable is called to only compile the program.  
+
 Testing using GitHub Actions:
 
 1. At the repository on the Github page, click on Actions and find `CMake based projects`.
@@ -81,5 +83,8 @@ Testing using GitHub Actions:
 
 1. Find the compiled executable (in VS Code it is in the build directory)
 2. Run `valgrind --leak-check=full ./executable` and look for lost bytes.
+
+Valgrind can also be used for profiling (finding out where your code is slow).
+Here is a description of [how to profile with Valgrind](https://developer.mantidproject.org/ProfilingWithValgrind.html).
 
 

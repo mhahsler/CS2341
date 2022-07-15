@@ -300,14 +300,14 @@ private:
     }
 
     // Modified from: https://stackoverflow.com/questions/36802354/print-binary-tree-in-a-pretty-way-using-c
-    void prettyPrintTree(const std::string &prefix, const BinaryNode *node, bool isRight) const
+    void prettyPrintTree(const string &prefix, const BinaryNode *node, bool isRight) const
     {
         if (node != nullptr)
         {
-            std::cout << prefix;
-            std::cout << (isRight ? "├──" : "└──");
+            cout << prefix;
+            cout << (isRight ? "├──" : "└──");
             // print the value of the node
-            std::cout << node->element << std::endl;
+            cout << node->element << "\n";
 
             // enter the next tree level - left and right branch
             prettyPrintTree(prefix + (isRight ? "│   " : "    "), node->right, true);

@@ -17,7 +17,7 @@ int main()
 
         while (getline(file_input, line))
         {
-            cout << line << endl;
+            cout << line << "\n";
         }
 
         file_input.close();
@@ -27,3 +27,7 @@ int main()
 
     return 0;
 }
+
+// Notes:
+// endl flushes the stream (writes it) which is slow.
+// ostream should convert '\n' to the OS specific standard line break.
