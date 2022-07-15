@@ -7,6 +7,7 @@
  */
 IntCell::IntCell(int initialValue)
     : storedValue{initialValue} {}
+
 /**
  * @brief read the int value
  * 
@@ -32,4 +33,5 @@ void IntCell::write(int x)
  *  * no default values
  *  * constructor uses an ititialization list here. Regular assignment
  *    can also be used.
+ *  * {} instead of () in the initialization list is new in C++11
  */
