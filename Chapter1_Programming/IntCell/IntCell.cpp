@@ -31,7 +31,7 @@ void IntCell::write(int x)
 /*
  * Notes:
  *  * no default values
- *  * constructor uses an ititialization list here. Regular assignment
+ *  * constructor uses an initialization list here. Regular assignment
  *    can also be used.
  *  * {} instead of () in the initialization list is new in C++11
  */
