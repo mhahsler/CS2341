@@ -27,7 +27,7 @@ Here are [HOWTOs](Chapter1_Programming/HOWTOs.md) for running, testing, and debu
 | 4. Trees | - | [code](Chapter4_Trees) |
 | 5. Hashing | - | [code](Chapter5_Hashing) |
 | 6. Heaps | - | [code](Chapter6_Heaps) |
-| 9. Graphs | - | - |
+| 9. Graphs | - | [code](Chapter9_Graphs) |
 
 ## License
 
