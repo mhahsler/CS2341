@@ -5,6 +5,8 @@
 #include <iostream>
 #include <stdexcept>
 
+using namespace std;
+
 // A DSVector should be:
 // * A wrapper around an array of objects.
 // * Know its size and checks bounds.
@@ -20,6 +22,11 @@
 template <typename Object>
 class DSVector
 {
+private:
+  int theSize;
+  int theCapacity;
+  Object *objects;
+
 public:
   // Create an empty DSVector
   explicit DSVector(int initSize = 0)
@@ -37,6 +44,15 @@ public:
       objects[k] = rhs.objects[k];
   }
 
+  // C++11 Move constructor ... steal the pointer to objects
+  DSVector(DSVector &&rhs) 
+    : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{rhs.objects}
+  {
+    rhs.theSize = 0;
+    rhs.theCapacity = 0;
+    rhs.objects = nullptr; // so the destructor does not destroy the objects 
+  }
+
   // Destructor
   ~DSVector()
   {
@@ -52,6 +68,16 @@ public:
     objects = new Object[theCapacity];
     for (int k = 0; k < theSize; ++k)
       objects[k] = rhs.objects[k];
+
+    return *this;
+  }
+
+  // C++11 move assignment operator: move elements from rhs using std::swap()
+  DSVector &operator=(DSVector &&rhs)
+  {
+    swap(theSize, rhs.theSize);
+    swap(theCapacity, rhs.Capacity);
+    swap(objects, rhs.objects);
 
     return *this;
   }
@@ -123,7 +149,7 @@ public:
   // STL algorithms and ranges use begin() and end() to obtain iterators.
   // Iterators for arrays are just regular pointers. operator++ and operator--
   // are already available, so we don't need to implement a nested class iterator,
-  // but just reuse Object * using a nested type definition. 
+  // but just reuse Object * using a nested type definition.
   typedef Object *iterator;
 
   iterator begin()
@@ -135,11 +161,6 @@ public:
   {
     return &objects[size()];
   }
-
-private:
-  int theSize;
-  int theCapacity;
-  Object *objects;
 };
 
 #endif
