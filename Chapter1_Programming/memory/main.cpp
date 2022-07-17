@@ -18,7 +18,7 @@ int* create_array(int size)
     for (size_t i = 0; i < size; ++i)
         c[i] = i + 1;
 
-    //return b; // why does this not work? 
+    //return b; // why does this compile but crash? 
     return c;
 }
 
