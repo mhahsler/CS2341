@@ -30,11 +30,17 @@ Example: [Iterator use](Iterator)
 * `size()` number of elements.
 * `clear()` remove all elements.
 * `empty()` is the stack empty?
-* access via `operator[index]` ot `at(index)`.
+* access via `operator[index]` or `at(index)`.
 
 STL provides: [std::vector](https://cplusplus.com/reference/vector/vector/)
 
 Example: [DSVector](DSVector)
+
+## Matrix
+
+STL: Interestingly there is no support available.
+
+Example: [DSMatrix](DSMatrix)
 
 ## Linked Lists
 

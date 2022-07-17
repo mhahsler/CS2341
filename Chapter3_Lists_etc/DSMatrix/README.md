@@ -36,5 +36,3 @@ For a $(m \times n)$-dimensional matrix and $0 <= i < m$, $0 <= j < n$ every ele
 $m_i, j$ is mapped to the $(i \times n + j)$-th element of the container for row major
 orientation or the $(i + j \times m)$-th element of the container for column major
 orientation.
-
-Code Example [DSMatrix](DSMatrix).
