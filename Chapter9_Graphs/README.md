@@ -40,3 +40,8 @@ Tuple representation.
 Compressed sparse row (or column) representation.
 
 See [Sparse matrix](https://en.wikipedia.org/wiki/Sparse_matrix).
+
+## Implementation in the Boost Graph Library (BGL)
+
+The [C++ Boost Libraries](https://www.boost.org/) are the second place after the STL, you should look for data structures and algorithms. It contains the [BGL](https://www.boost.org/doc/libs/1_79_0/libs/graph/doc/index.html) which implements
+templated data structures (like [adjacency lists](https://www.boost.org/doc/libs/1_79_0/libs/graph/doc/adjacency_list.html)) and algorithms in a portable way.
