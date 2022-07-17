@@ -13,6 +13,8 @@ Here are the [HOWTOs](HOWTOs.md)
   - Why do we need dynamic memory allocation?
   - Differences between memory management in C, C++, Java and Python.
 * Video: [Memory Diagrams](http://vimeo.com/58710057)
+* Example: [Memory allocation](memory)
+
 
 ### Recursion, Compiling, Debugging and Testing
 * Example: [Calculate factorials](factorial)
