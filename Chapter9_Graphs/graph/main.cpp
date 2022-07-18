@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <forward_list>
-#include <unordered_map>
+#include <unordered_set>
 
 // You need boost installed
 #include <boost/functional/hash/hash.hpp>
@@ -26,6 +26,7 @@ int main()
 
     // Notes: forward_list is singly linked
 
+    cout << "adjacency list:\n";
     for (size_t v = 0; v < adjacencyList.size(); ++v)
     {
         cout << v << ":";
@@ -33,24 +34,25 @@ int main()
             cout << " " << v2;
         cout << "\n";
     }
+    cout << "\n";
 
     // Dictionary of keys
-    unordered_map<edge, bool, boost::hash<edge>> dictOfKeys = unordered_map<edge, bool, boost::hash<edge>>(edges.size());
+    unordered_set<edge, boost::hash<edge>> dictOfKeys = unordered_set<edge, boost::hash<edge>>(edges.size());
     for (auto &e : edges)
-        dictOfKeys[e] = true;
+        dictOfKeys.insert(e);
 
-    // Notes: * unordered_map is a hash so we get O(1) access.
+    // Notes: * unordered_set is a hash so we get O(1) access.
     //        * the STL does not provide hash functions for pairs. Boost libraries do.
     //        * Constructor for a load factor of 1 (table size should be N)
 
-    cout << std::boolalpha;
+    // print all edges. loop can also be used to dump the has into a tuple presentation.
+    cout << "edges in dictionary:\n";
+    for (auto &e : dictOfKeys)
+        cout << e.first << " -> " << e.second << "\n";
 
     // try an non-existing edge
-    cout << dictOfKeys[edge(4, 1)] << "\n";
-
-    // print all edges. loop can also be used to dump the has into a tuple presentation. 
-    for (auto &[e, b] : dictOfKeys)
-        cout << e.first << " -> " << e.second << ": " << b << "\n";
+    cout << std::boolalpha;
+    cout << "4 -> 1? " << (dictOfKeys.find(edge(4, 1)) != dictOfKeys.end()) << "\n\n";
 
     return 0;
 }
