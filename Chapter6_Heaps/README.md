@@ -24,22 +24,24 @@ Note: This tree is always balanced (structure property) and simpler to maintain 
 
 ### Operations
 
-insert: move the next empty node (called a hole) up the tree till the new element can be inserted in the hole without violating the heap-order property. This operation is called _percolate up_. The worst case is to insert a new minimum with $O(log\ N)$.
+**insert:** move the next empty node (called a hole) up the tree till the new element can be inserted in the hole without violating the heap-order property. This operation is called _percolate up_. The worst case is to insert a new minimum with $O(log\ N)$.
 
-deleteMin: remove the root node and then slide the resulting hole down the smaller of the children till the last element can be placed in the hole. This operation is called _percolate down_. Worst case is $O(log\ N)$
+**deleteMin:** remove the root node and then slide the resulting hole down the smaller of the children till the last element can be placed in the hole. This operation is called _percolate down_. Worst case is $O(log\ N)$
 
-Note: This data structure is not good for finding an arbitrary element. We would have to scan the complete tree with $O(N)$!
+_Note:_ This data structure is not good for finding an arbitrary element. We would have to scan the complete tree with $O(N)$!
 
 ### Implementation
 
-Since the tree is complete, it can be efficiently stored in an array/vector (with the element at index 0 left empty). 
+Since the binary tree is complete, it can be efficiently stored in an array/vector filled level-wise, left-to-right from the tree (the element at index 0 left empty to make access very simple). 
 
 There is no need for pointers, since the tree is completely symmetric. 
 For element at index $i$:
 
 * left child is at index $2i$
 * right child is at index $2i + 1$
-* parent is at index $floor(i/2)$
+* parent is at index $\lfloor i/2 \rfloor$ (floor function).
+
+_Note:_ this is an effective storage format for any balanced tree.
 
 See example: [DSHeap](DSHeap)
 
