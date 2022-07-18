@@ -45,12 +45,12 @@ public:
   }
 
   // C++11 Move constructor ... steal the pointer to objects
-  DSVector(DSVector &&rhs) 
-    : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{rhs.objects}
+  DSVector(DSVector &&rhs)
+      : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{rhs.objects}
   {
     rhs.theSize = 0;
     rhs.theCapacity = 0;
-    rhs.objects = nullptr; // so the destructor does not destroy the objects 
+    rhs.objects = nullptr; // so the destructor does not destroy the objects
   }
 
   // Destructor
@@ -150,7 +150,7 @@ public:
   // Iterators for arrays are just regular pointers. operator++ and operator--
   // are already available, so we don't need to implement a nested class iterator,
   // but just reuse Object * using a nested type definition.
-  typedef Object *iterator;
+  typedef Object* iterator;
 
   iterator begin()
   {
