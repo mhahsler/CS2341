@@ -3,13 +3,11 @@
 #include <string>
 #include <string.h>
 
+// Note: <string> it the C++ header for the string class and
+//       <string.h> is the header for functions to manipulate c-style strings
+
 using namespace std;
 
-/**
- * @brief Use STD library vectors and string!
- *
- * @return int
- */
 int main()
 {
     // Array vs STL vector
@@ -45,6 +43,8 @@ int main()
      * C++11 lets us initialize vectors like this
      */
     vector<int> squares = {1, 4, 9, 16, 25};
+    cout << "size: " << squares.size() << "\n"
+         << "capacity:" << squares.capacity() << "\n\n";
 
     /* Vectors know how long they are and check boundaries */
     int sum = 0;
@@ -61,10 +61,7 @@ int main()
     /* Use C++11 ranges */
     sum = 0;
     for (auto x : squares)
-    {
         sum += x;
-    }
-
     cout << "The sum is " << sum << endl;
 
     // cstring vs. STL string
