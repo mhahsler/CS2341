@@ -19,15 +19,15 @@ Course material and assignments for CS 2341 can be found on [Canvas](https://www
 
 Here are [HOWTOs](Chapter1_Programming/HOWTOs.md) for running, testing, and debugging the code examples.
 
-| Chapter | Slides | Notes and Code |
-| :-------| :----: | :--: |
-| 1: Programming | - | [notes and code](Chapter1_Programming)  |
-| 2. Algorithm Analysis | [slides](https://github.com/mhahsler/CS2341/blob/main/slides/Chapter2_Algorithm_Analysis.pdf) | [notes and code](Chapter2_Algorithm_Analysis) |
-| 3. Lists, Stacks, and Queues | - | [notes and code](Chapter3_Lists_etc) |
-| 4. Trees | - | [notes and code](Chapter4_Trees) |
-| 5. Hashing | - | [notes and code](Chapter5_Hashing) |
-| 6. Heaps | - | [notes and code](Chapter6_Heaps) |
-| 9. Graphs | - | [notes and code](Chapter9_Graphs) |
+| Chapter |  Notes and Code |
+| :-------|  :--: |
+| 1 | [Programming](Chapter1_Programming)  |
+| 2 |[Algorithm Analysis](Chapter2_Algorithm_Analysis) |
+| 3 | [Lists, Stacks, and Queues](Chapter3_Lists_etc) |
+| 4 | [Trees](Chapter4_Trees) |
+| 5 | [Hashing](Chapter5_Hashing) |
+| 6 | [Heaps](Chapter6_Heaps) |
+| 9 | [Graphs](Chapter9_Graphs) |
 
 ## License
 
