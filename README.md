@@ -19,8 +19,8 @@ Course material and assignments for CS 2341 can be found on [Canvas](https://www
 
 Here are [HOWTOs](Chapter1_Programming/HOWTOs.md) for running, testing, and debugging the code examples.
 
-| Chapter |  Notes and Code |
-| :-------|  :--: |
+| Book Chapter |  Notes and Code |
+| :-----: |  :--- |
 | 1 | [Programming](Chapter1_Programming)  |
 | 2 |[Algorithm Analysis](Chapter2_Algorithm_Analysis) |
 | 3 | [Lists, Stacks, and Queues](Chapter3_Lists_etc) |
