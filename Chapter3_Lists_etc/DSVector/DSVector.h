@@ -92,13 +92,23 @@ public:
   // Iterators for arrays are just regular pointers. operator++ and operator--
   // are already available, so we don't need to implement a nested class iterator,
   // but just reuse Object * using a nested type definition. 
+  // const iterators are used whenever the compiler wants to make sure that the
+  // object does not get modified.
   typedef Object * iterator;
   
   iterator begin()
   {
   }
   
+  const iterator begin() const
+  {
+  }
+
   iterator end()
+  {
+  }
+
+  const iterator end() const
   {
   }
 
