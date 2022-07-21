@@ -31,8 +31,7 @@ Here are the [HOWTOs](HOWTOs.md)
 * Reading: [The C++ Standard Template Library (STL)](https://www.geeksforgeeks.org/the-c-standard-template-library-stl/)
 
 ### Parameter passing
-* Example: [Call-by-value vs call-by-reference](parameters)
-* Use of [const in C++](https://docs.microsoft.com/en-us/cpp/cpp/const-cpp?view=msvc-170).
+* Example: [Call-by-value vs call-by-reference](parameters) and using `const`.
 
 
 ### Destructor, copy constructor and assignment
