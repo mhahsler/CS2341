@@ -71,6 +71,9 @@ public:
   }
 
   const Object &operator[](size_t index) const
+  {
+    // In case we use [] on a cont object.
+  }
 
 
   // reserve more space
