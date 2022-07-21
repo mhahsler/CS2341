@@ -132,7 +132,7 @@ public:
   void resize(size_t newSize)
   {
     if (newSize > theCapacity)
-      reserve(newSize * 2);
+      reserve(newSize);
     theSize = newSize;
   }
 
