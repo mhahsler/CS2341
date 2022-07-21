@@ -62,13 +62,12 @@ const LargeObject & chooseRandomItem(const vector<LargeObject> & arr) {
 ```
 
 Without the `const` keywords, the caller of `chooseRandomItem()` would
-have modifyable access to the object.
+have modifiable access to the object.
 
 Note that const references can only be assigned to const references or need to be copied.
 
 # Use of the keyword `const`
 
-The compiler enforces the keyword `const`.
 
 ## Constants
 
@@ -85,19 +84,40 @@ const char * text = "test"; // the value pointed to cannot be modified.
 
 ## Const references
 
+```cpp
+int a = 10;
+const &b = a;
+```
+
 The referenced value cannot be modified.
 
 ## Const member functions
 
-Creates a read-only function that cannot modify the object.
+Creates a read-only function that cannot modify the calling object. It is technically an 
+overloaded function and `const` becomes part of the signature.
+
+non-`const` objects can also be used to call `const` member functions, but not the other 
+way round.
 
 ```cpp
 class ...
 {
+private:
+  int x;
 public:
-    int getSomeValue() const;  
+    int getSomeValue() const
+    {
+      // this is not allowed! 
+      // x++; 
+      return x;
+    }  
     ...
 }
 ```
 
+## Some Rules for `const`
 
+* `const` objects cannot be modified. The compiler enforces this at compile time.
+* `const` is a safeguard so the programmer does not make a mistake and changes an object inadvertently. 
+* With a `const` object, You can only call a `const` member function. Therefore, we often need to provide also a `const` version of some member functions. 
+* The STL uses `const` objects a lot, so your classes should be prepared to provide `const` versions. 
