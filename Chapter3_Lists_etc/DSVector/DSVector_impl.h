@@ -156,13 +156,14 @@ public:
   // are already available, so we don't need to implement a nested class iterator,
   // but just reuse Object * using a nested type definition.
   typedef Object *iterator;
+  typedef const Object *const_iterator;
 
   iterator begin()
   {
     return &objects[0];
   }
 
-  const iterator begin() const
+  const_iterator begin() const
   {
     return &objects[0];
   }
@@ -172,7 +173,7 @@ public:
     return &objects[size()];
   }
 
-  const iterator end() const
+  const_iterator end() const
   {
     return &objects[size()];
   }

@@ -98,12 +98,13 @@ public:
   // const iterators are used whenever the compiler wants to make sure that the
   // object does not get modified.
   typedef Object * iterator;
+  typedef const Object *const_iterator;
   
   iterator begin()
   {
   }
   
-  const iterator begin() const
+  const_iterator begin() const
   {
   }
 
@@ -111,7 +112,7 @@ public:
   {
   }
 
-  const iterator end() const
+  const_iterator end() const
   {
   }
 
