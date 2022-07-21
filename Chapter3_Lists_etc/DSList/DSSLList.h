@@ -17,7 +17,7 @@ public:
 
 // We need:
 // Default construction
-// Copy contructor
+// Copy constructor
 // Destructor
 // size
 // empty?
