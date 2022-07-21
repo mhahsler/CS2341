@@ -7,32 +7,30 @@
 
 using namespace std;
 
-// A DSVector should be:
-// * A wrapper around an array of objects.
-// * Know its size and checks bounds.
-// * Provide access with [].
-// * Be resizable. For efficiency, the internal array will sometimes be
-//   larger than the size. We call this the capacity.
-// * Implement a member function that lets you append an element to the vector.
-//   We typically double the capacity if we run out of capacity.
-
-// Note on templates: templates need to have all the code in the header file so the
-//   compiler can create the templated classes/functions at compile time.
-
 template <typename Object>
 class DSVector
 {
 private:
-  int theSize;
-  int theCapacity;
+  size_t theSize;
+  size_t theCapacity;
   Object *objects;
 
 public:
   // Create an empty DSVector
-  explicit DSVector(int initSize = 0)
-      : theSize{initSize}, theCapacity{initSize * 2}
+  explicit DSVector(size_t initSize = 0)
+      : theSize{initSize}, theCapacity{initSize}
   {
     objects = new Object[theCapacity];
+  }
+
+  // C++11 initializer list with {}
+  DSVector(const initializer_list<Object> &v)
+  {
+    theSize = 0;
+    theCapacity = v.size();
+    objects = new Object[theCapacity];
+    for (auto itm : v)
+      this->push_back(itm);
   }
 
   // Copy constructor
@@ -40,7 +38,7 @@ public:
       : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{nullptr}
   {
     objects = new Object[theCapacity];
-    for (int k = 0; k < theSize; ++k)
+    for (size_t k = 0; k < theSize; ++k)
       objects[k] = rhs.objects[k];
   }
 
@@ -66,7 +64,7 @@ public:
     theSize = rhs.theSize;
     theCapacity = rhs.theCapacity;
     objects = new Object[theCapacity];
-    for (int k = 0; k < theSize; ++k)
+    for (size_t k = 0; k < theSize; ++k)
       objects[k] = rhs.objects[k];
 
     return *this;
@@ -101,7 +99,14 @@ public:
   }
 
   // subscript operator
-  Object &operator[](int index)
+  Object &operator[](size_t index)
+  {
+    if (index < 0 || index >= size())
+      throw std::runtime_error("out of bounds!");
+    return objects[index];
+  }
+
+  const Object &operator[](size_t index) const
   {
     if (index < 0 || index >= size())
       throw std::runtime_error("out of bounds!");
@@ -109,13 +114,13 @@ public:
   }
 
   // reserve more space
-  void reserve(int newCapacity)
+  void reserve(size_t newCapacity)
   {
     if (newCapacity < theSize)
       return;
 
     Object *newArray = new Object[newCapacity];
-    for (int k = 0; k < theSize; ++k)
+    for (size_t k = 0; k < theSize; ++k)
       newArray[k] = objects[k];
 
     delete[] objects;
@@ -124,7 +129,7 @@ public:
   }
 
   // resize the vector
-  void resize(int newSize)
+  void resize(size_t newSize)
   {
     if (newSize > theCapacity)
       reserve(newSize * 2);
@@ -150,8 +155,6 @@ public:
   // Iterators for arrays are just regular pointers. operator++ and operator--
   // are already available, so we don't need to implement a nested class iterator,
   // but just reuse Object * using a nested type definition.
-  // const iterators are used whenever the compiler wants to make sure that the
-  // object does not get modified.
   typedef Object *iterator;
 
   iterator begin()

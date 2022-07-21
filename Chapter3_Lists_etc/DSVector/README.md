@@ -9,6 +9,8 @@ A DSVector should be:
    larger than the size. We call this the capacity. 
 * Implement a member function that lets you append an element to the vector. 
    We typically double the capacity if we run out of capacity. 
+* use [`size_t`](https://en.cppreference.com/w/cpp/types/size_t) for sizes and indexing 
+  to be portable and compatible with the STL.
 
 __Note on templates:__ templates need to have all the code in the header file so the 
    compiler can create the templated classes/functions at compile time.

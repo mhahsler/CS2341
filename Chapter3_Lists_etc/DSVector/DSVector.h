@@ -22,7 +22,7 @@ class DSVector
 {
 public:
   // Create an new DSVector
-  explicit DSVector(int initSize = 0)
+  explicit DSVector(size_t initSize = 0)
   {
     // create a vector with initSize objects and use the default constructor to fill it
     // with objects.
@@ -54,31 +54,34 @@ public:
   }
 
   // how many elements are in the vector?
-  int size() const
+  size_t size() const
   {
   }
 
   // what is the capacity?
-  int capacity() const
+  size_t capacity() const
   {
   }
 
   // subscript operator
-  Object &operator[](int index)
+  Object &operator[](size_t index)
   {
     // Checking bounds is important. For errors, you can use 
     //     throw std::runtime_error("out of bounds!");
   }
 
+  const Object &operator[](size_t index) const
+
+
   // reserve more space
-  void reserve(int newCapacity)
+  void reserve(size_t newCapacity)
   {
     // Allocate new space, copy the data and deallocate the old space.
     // This function can be used by other functions.
   }
 
   // resize the vector
-  void resize(int newSize)
+  void resize(size_t newSize)
   {
   }
 
