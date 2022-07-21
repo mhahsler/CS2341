@@ -22,7 +22,9 @@ Iterators are:
 
 STL provides: [std::iterator](https://cplusplus.com/reference/iterator/iterator/?kw=iterator)
 
-Example: [Iterator use](Iterator)
+Examples: 
+* [Iterator use](Iterator)
+* Implement your own iterator: See Vector and Lists below.
 
 ## Vectors
 
