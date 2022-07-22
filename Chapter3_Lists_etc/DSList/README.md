@@ -23,12 +23,37 @@ Linked lists allocate each element separately and link them with pointers. Linke
 * managing the pointers is easier.
 * STL provides [`std::forward_list<T>`](https://cplusplus.com/reference/forward_list/forward_list/)
 
+Nodes are defined as:
+
+```cpp
+ struct Node
+    {
+        Object data;
+        Node *next;
+    };
+```
+
+Exercise: Implement a [singly-linked list using position](DSList.h)
+
+Example: A [singly-linked list using iterators](DSList_iter.h) and [main.cpp](main.cpp).
+
 
 ### Doubly Linked List
 
 * we can only move forward and backward.
 * managing the pointers is more difficult for insertion/deletion.
 * STL provides [`std::list<T>`](https://cplusplus.com/reference/list/list/)
+
+Nodes are defined as:
+
+```cpp
+ struct Node
+    {
+        Object data;
+        Node *prev;
+        Node *next;
+    };
+```
 
 ### Time Complexity
 
