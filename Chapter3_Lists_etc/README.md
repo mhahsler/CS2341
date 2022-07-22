@@ -11,19 +11,19 @@ implementation, but a mathematical abstraction which defines
 ## Iterators
 
 Iterators are an abstraction to represent a position in a ADT. This is similar to the index in 
-an array.
+an array. STL provides [std::iterator](https://cplusplus.com/reference/iterator/iterator/?kw=iterator) and we use the STL notation below.
 
 Iterators are:
 * pointers to elements in the ADT implementation.
 * implemented as a nested class in the ADT implementation.
 * know how to get to the next element with an overloaded `operator++()` and `operator++(int)` 
   (bidirectional iterators also have `operator--()` and `operator--(int)`)
-* An ADT can be asked for an iterator with `begin()` and `end()`.
+* An ADT can be asked for an iterator pointing to the first element (`begin()`) and 
+an iterator pointing to the _past-the-end_ element (`end()`).
 
-STL provides: [std::iterator](https://cplusplus.com/reference/iterator/iterator/?kw=iterator)
 
 Examples: 
-* [Iterator use](Iterator)
+* [STL iterator use](Iterator)
 * Implement your own iterator: See Vector and Lists below.
 
 ## Vectors
