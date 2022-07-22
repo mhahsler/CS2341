@@ -20,3 +20,8 @@ int main(int argc, char** argv) {
 
     return 0;
 }
+
+// open the terminal, go to the build directory and try:
+// ./CLInterface a b c=d e = f "g = h"
+// ./CLInterface *
+// ./CLInterface *.cmake
