@@ -18,7 +18,7 @@ private:
 
 public:
     // default constructor
-    explicit DSHashTable(int size = 101)
+    explicit DSHashTable(size_t size = 101)
     {
         table.resize(size);
     }
@@ -47,10 +47,9 @@ public:
         return find(begin(whichEntry), end(whichEntry), x) != end(whichEntry);
     }
 
-    bool makeEmpty()
+    void makeEmpty()
     {
         cout << "Needs to be implemented!" << endl;
-        return false;
     }
 
     // size, get keys, iterator, etc. are missing
