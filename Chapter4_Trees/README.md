@@ -83,7 +83,6 @@ Since items are stored in sorted order, a simple inorder traversal results in so
 means that inserting $N$ items and traversing the tree is a $O(N\ log\ N)$ sorting algorithm. 
 
 ### Complexity 
-i
 The depth of a _binary search tree_ $d$ leads to $O(d)$ operations (for all but deleting and copying the whole tree). The average tree depth $d$ is $O(log\ N)$ under the
 assumption that all insertion sequences are equally likely. Remember, $O(log\ N)$ means 
 that the problem size is halved with each step.
@@ -95,17 +94,39 @@ used! Deletions often replace a node with a node for the right subtree, resultin
 
 ## AVL Trees
 
-An AVL (Adelson-Velskii and Landis) tree is a binary search tree with the **balance condition**
-that the height (= max depth) of the left and right subtree can only differ by 1. This keeps the tree depth close to $O(log\ N)$.
+An AVL (Adelson-Velskii and Landis) tree is a binary search tree with the following **balance condition:**
+
+* For every node in the tree, the height of the left and the right subtree can
+differ by at most 1.
 
 We can maintain the balance information (height) in the node structure. The height of an empty tree is defined as -1.
 
+```cpp
+template <typename T>
+class AVLNode
+{
+public:
+    T element;
+    AVLNode *left;
+    AVLNode *right;
+    int height;
+}
+```
+
+If the difference is larger, then the tree needs to be organized where the 
+last insertion happened.
+This keeps the tree balanced with a depth close to $O(log\ N)$.
+
+
 ### Balancing
 
-Insertion/deletion may break the balancing condition and we will need to rebalance the tree using a **rotation**. We need 
+Insertion/deletion may break the balancing condition and we will need to rebalance the tree using a **rotation**. 
+We need 
 
 * a single rotation for "outside" insertions and 
 * a double rotation for "inside" insertions.
+
+See [slides](https://github.com/mhahsler/CS2341/blob/main/Chapter4_Trees/slides/AVL_trees.pdf).
 
 See [AVLTree](AVLTree) for complete code.
 
