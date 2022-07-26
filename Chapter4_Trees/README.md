@@ -22,15 +22,32 @@ More naming conventions:
 * A tree where a node can have at most $M$ children is called an __$M$-ary tree.__
 
 Observations:
-* A tree is a special type of graph with only as a single path from the root to each leaf.
+* A tree is a special type of graph with only a single path from the root to each leaf.
 * A collection of $N$ nodes (one is the root node) has $N - 1$ edges.
 
-Types of traversals:
+### Implementation
 
-* inorder: left subtree first (called depth-first for graphs).
-* postorder: process all subtrees before the node.
-* preorder: process node before children.
-* level-order: process the tree by level (needs extra data structures like a queue; 
+Since each node can have a variable list of children which can be stored in a linked list.
+
+```cpp
+template <typename Comparable>
+class MAryNode
+{
+public:
+    Comparable element;
+    forward_list<MAryNode> children;
+}
+```
+
+![m-ary tree](m-ary_tree.png)
+
+
+### Types of tree traversals:
+
+* **inorder**: left subtree first (called depth-first for graphs).
+* **postorder**: process all subtrees before the node.
+* **preorder**: process node before children.
+* **level-order**: process the tree by level (needs extra data structures like a queue; 
   called breath-first for graphs).
 
 ## Binary Trees
@@ -41,11 +58,11 @@ Complexity: The average depth of a binary tree is (under some assumptions of no 
 The node structure is similar to a linked list node
 
 ```cpp
-template <typename T>
+template <typename Comparable>
 class BinaryNode
 {
 public:
-    T element;
+    Comparable element;
     BinaryNode *left;
     BinaryNode *right;
 }
@@ -96,17 +113,17 @@ used! Deletions often replace a node with a node for the right subtree, resultin
 
 An AVL (Adelson-Velskii and Landis) tree is a binary search tree with the following **balance condition:**
 
-* For every node in the tree, the height of the left and the right subtree can
+> For every node in the tree, the height of the left and the right subtree can
 differ by at most 1.
 
 We can maintain the balance information (height) in the node structure. The height of an empty tree is defined as -1.
 
 ```cpp
-template <typename T>
+template <typename Comparable>
 class AVLNode
 {
 public:
-    T element;
+    Comparable element;
     AVLNode *left;
     AVLNode *right;
     int height;
@@ -123,10 +140,10 @@ This keeps the tree balanced with a depth close to $O(log\ N)$.
 Insertion/deletion may break the balancing condition and we will need to rebalance the tree using a **rotation**. 
 We need 
 
-* a single rotation for "outside" insertions and 
-* a double rotation for "inside" insertions.
+* a single rotation for "outside" insertions (left-left and right-rigth) and 
+* a double rotation for "inside" insertions (left-right and right-left).
 
-See [slides](https://github.com/mhahsler/CS2341/blob/main/Chapter4_Trees/slides/AVL_trees.pdf).
+See [slides](https://github.com/mhahsler/CS2341/blob/main/Chapter4_Trees/slides/AVL_trees.pdf) for details.
 
 See [AVLTree](AVLTree) for complete code.
 
