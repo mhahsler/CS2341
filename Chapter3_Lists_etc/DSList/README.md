@@ -33,10 +33,9 @@ Nodes are defined as:
     };
 ```
 
-Exercise: Implement a [singly-linked list using position](DSList.h)
-
 Example: A [singly-linked list using iterators](DSList_iter.h) and [main.cpp](main.cpp).
 
+Exercise: Implement a [singly-linked list using position and a sentinel node](DSList.h).
 
 ### Doubly Linked List
 
