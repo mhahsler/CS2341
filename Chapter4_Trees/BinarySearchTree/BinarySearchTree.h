@@ -6,21 +6,11 @@
 
 using namespace std;
 
-// BinarySearchTree class
-//
-// CONSTRUCTION: zero parameter
-//
-// ******************PUBLIC OPERATIONS*********************
-// void insert( x )       --> Insert x
-// void remove( x )       --> Remove x
-// bool contains( x )     --> Return true if x is present
-// Comparable findMin( )  --> Return smallest item
-// Comparable findMax( )  --> Return largest item
-// boolean isEmpty( )     --> Return true if empty; else false
-// void makeEmpty( )      --> Remiove all items
-// void printTree( )      --> Print tree in sorted order
-// int maxDepth( )        --> Find the maximal depth of the tree
-
+/**
+ * @brief Simple implementation of an (unbalanced) binary search tree
+ * 
+ * @tparam Comparable 
+ */
 template <typename Comparable>
 class BinarySearchTree
 {
@@ -40,12 +30,16 @@ private:
     BinaryNode *root;
 
 public:
+    /**
+     * @brief Construct a new Binary Search Tree object
+     * 
+     */
     BinarySearchTree() : root{nullptr}
     {
     }
 
     /**
-     * Copy constructor
+     * @brief Copy constructor
      */
     BinarySearchTree(const BinarySearchTree &rhs) : root{nullptr}
     {
@@ -53,7 +47,8 @@ public:
     }
 
     /**
-     * Destructor for the tree
+     * @brief Destroy the Binary Search Tree object
+     * 
      */
     ~BinarySearchTree()
     {
@@ -61,7 +56,7 @@ public:
     }
 
     /**
-     * Copy assignment
+     * @brief Copy assignment
      */
     BinarySearchTree &operator=(const BinarySearchTree &rhs)
     {
@@ -71,7 +66,7 @@ public:
     }
 
     /**
-     * Find the smallest item in the tree.
+     * @brief Find the smallest item in the tree.
      */
     const Comparable &findMin() const
     {
@@ -81,7 +76,7 @@ public:
     }
 
     /**
-     * Find the largest item in the tree.
+     * @brief find the largest item in the tree.
      */
     const Comparable &findMax() const
     {
@@ -91,7 +86,7 @@ public:
     }
 
     /**
-     * Returns true if x is found in the tree.
+     * @brief Returns true if x is found in the tree.
      */
     bool contains(const Comparable &x) const
     {
@@ -99,8 +94,7 @@ public:
     }
 
     /**
-     * Test if the tree is logically empty.
-     * Return true if empty, false otherwise.
+     * @brief Test if the tree is logically empty.
      */
     bool isEmpty() const
     {
@@ -108,7 +102,7 @@ public:
     }
 
     /**
-     * Print the tree contents in sorted order.
+     * @brief Print the tree contents in sorted order (i.e., inorder traversal).
      */
     void printTree(ostream &out = cout) const
     {
@@ -119,8 +113,7 @@ public:
     }
 
     /**
-     * Print the tree structure. Only works for trees where
-     * element can be printed with a single character.
+     * @brief Print the tree structure.
      */
     void prettyPrintTree() const
     {
@@ -128,7 +121,7 @@ public:
     }
 
     /**
-     * Make the tree logically empty.
+     * @brief Make the tree empty.
      */
     void makeEmpty()
     {
@@ -136,7 +129,7 @@ public:
     }
 
     /**
-     * Insert x into the tree; duplicates are ignored.
+     * @brief Insert x into the tree; duplicates are ignored.
      */
     void insert(const Comparable &x)
     {
@@ -144,7 +137,7 @@ public:
     }
 
     /**
-     * Remove x from the tree. Nothing is done if x is not found.
+     * @brief Remove x from the tree. Nothing is done if x is not found.
      */
     void remove(const Comparable &x)
     {
@@ -156,24 +149,33 @@ public:
         return maxDepth(root, 0);
     }
 
+    double avgDepth()
+    {
+        cout << "Needs to be implemented!\n" << endl;
+        return 0;
+    }
+
+
 private:
     /**
      * Internal method to insert into a subtree.
      * x is the item to insert.
      * t is the node that roots the subtree.
-     * Set the new root of the subtree.
      */
     void insert(const Comparable &x, BinaryNode *&t)
     {
+        // found an empty spot? insert a new node
         if (t == nullptr)
             t = new BinaryNode{x, nullptr, nullptr};
+        
+        // recursively find the insert position
         else if (x < t->element)
             insert(x, t->left);
         else if (t->element < x)
             insert(x, t->right);
         else
         {
-        }; // Duplicate: element == x; do nothing
+        }; // Duplicate: element == x; do nothing... we could do other things.
     }
 
     /**
@@ -187,7 +189,7 @@ private:
         if (t == nullptr)
             return; // Item not found; do nothing
 
-        // find the node using binary search
+        // recursively find the node using binary search
         if (x < t->element)
             return remove(x, t->left);
 
@@ -217,9 +219,12 @@ private:
      */
     BinaryNode *findMin(BinaryNode *t) const
     {
+        // recursive implementation
+        // special case: no root node
         if (t == nullptr)
             return nullptr;
 
+        // traverse down left to the leaf
         if (t->left == nullptr)
             return t;
 
@@ -232,8 +237,13 @@ private:
      */
     BinaryNode *findMax(BinaryNode *t) const
     {
-        if (t != nullptr)
-            while (t->right != nullptr)
+        // iterative implementation of going down right to the leaf.
+        // special case: no root node
+        if (t == nullptr)
+            return nullptr;
+
+        // traverse down right to the leaf
+        while (t->right != nullptr)
                 t = t->right;
         return t;
     }
@@ -272,7 +282,7 @@ private:
     *****************************************************/
 
     /**
-     * Internal method to make subtree empty.
+     * Internal method to make subtree empty uses postorder traversal (LRN)
      */
     void makeEmpty(BinaryNode *&t)
     {
@@ -287,7 +297,7 @@ private:
 
     /**
      * Internal method to print a subtree rooted at t in sorted order.
-     * This is a depth-first traversal.
+     * This is inorder traversal (LNR)
      */
     void printTree(BinaryNode *t, ostream &out) const
     {
@@ -299,7 +309,12 @@ private:
         }
     }
 
-    // Modified from: https://stackoverflow.com/questions/36802354/print-binary-tree-in-a-pretty-way-using-c
+    /**
+     *  Pretty print the tree structure
+     *  Uses preorder traversal with R and L swapped (NRL)
+     * 
+     *  Modified from: https://stackoverflow.com/questions/36802354/print-binary-tree-in-a-pretty-way-using-c
+     */
     void prettyPrintTree(const string &prefix, const BinaryNode *node, bool isRight) const
     {
         if (node != nullptr)
@@ -316,7 +331,8 @@ private:
     }
 
     /**
-     * Internal method to clone subtree.
+     * Internal method to clone subtree. 
+     * -> preorder traversal (NLR)
      */
     BinaryNode *clone(BinaryNode *t) const
     {
@@ -326,11 +342,17 @@ private:
             return new BinaryNode{t->element, clone(t->left), clone(t->right)};
     }
 
+    /**
+     * maxDepth = height of the node
+     * 
+     * -> postorder traversal (LRN)
+     */
     int maxDepth(BinaryNode *t, int depth)
     {
         if (t == nullptr)
             return depth;
 
+        // traverse down
         return (std::max(maxDepth(t->left, depth + 1),
                          maxDepth(t->right, depth + 1)));
     }
