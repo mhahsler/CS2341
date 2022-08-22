@@ -42,13 +42,6 @@ public:
 ![m-ary tree](m-ary_tree.png)
 
 
-### Types of tree traversals:
-
-* **inorder**: left subtree first (called depth-first for graphs).
-* **postorder**: process all subtrees before the node.
-* **preorder**: process node before children.
-* **level-order**: process the tree by level (needs extra data structures like a queue; 
-  called breath-first for graphs).
 
 ## Binary Trees
 In a binary tree is a tree in which no node can have more than two children.
@@ -70,12 +63,31 @@ public:
 
 `nullptr` represent missing children.
 
+### Types of tree traversals
+
+Visiting nodes is called [tree traversal](https://en.wikipedia.org/wiki/Tree_traversal). Traversal works for m-ary trees, but we define it here for the special case of binary trees with 
+a node N and a left (L) and right (R) subtree as children.
+
+**Depth-first traversals:**
+
+* **preorder** (NLR): process node before children.
+* **inorder** (LNR) follow each path to the leaf-node (left to right). 
+* **postorder** (LRN): process all subtrees before the node.
+
+Coming back up from a leaf to a node to process a different subtree is called _backtracking_.
+
+**Breath-first traversal***
+
+* **level-order**: process the tree by level (may need an extra data structure like a queue or a stack).
+
+
 ### Application Examples: Expression Trees
 
 An expression tree represent an expression with binary operators like $(a + b) * c * (d + e)$.
 It can be used to create 
-  - infix notation: inorder transversal = create left expression in parentheses first. 
-  - postfix notations: postorder traversal = process operator after the children. 
+  - infix notation: inorder transversal (LNR) = left expression in parentheses then operator and then the right subtree in parentheses. 
+  - postfix notations: postorder traversal (LRN) = process operator after the children (no need for parentheses). 
+  - prefix notations: preorder traversal (NLR) = process operator first (no need for parentheses). 
 
   Construction from postfix notation with a stack: 
   1. Read postfix expression one symbol at a time
@@ -85,10 +97,12 @@ It can be used to create
      b. create a tree with the operator as its root and the two operands as its children. 
      c. Push a pointer to the tree on the stack
 
-[Parse trees](https://en.wikipedia.org/wiki/Parse_tree) are $M$-ary expression trees that are used in compiler design. In natural language processing such trees are called syntax trees. 
+[Parse trees](https://en.wikipedia.org/wiki/Parse_tree) are $M$-ary expression trees that are used in co1mpiler design. In natural language processing such trees are called syntax trees. 
 
 
 ## Binary Search Tree
+
+Binary search trees are one of the most important tree structures used to find elements quickly.
 
 _Assumption:_ Items can be ordered and the are no duplicates (i.e., a total order).
 
@@ -96,11 +110,12 @@ _Definition:_ In a binary search tree, all items in each left subtree are smalle
 
 See [BinarySearchTree](BinarySearchTree) for code.
 
-Since items are stored in sorted order, a simple inorder traversal results in sorted output which
-means that inserting $N$ items and traversing the tree is a $O(N\ log\ N)$ sorting algorithm. 
+Since items are stored in sorted order, a simple **inorder traversal** results in sorted output.
+Inserting $N$ items takes $O(N log\ N)$ time and traversing the tree takes $O(N)$
+which gives a sorting algorithm that is $O(N\ log\ N)$. 
 
 ### Complexity 
-The depth of a _binary search tree_ $d$ leads to $O(d)$ operations (for all but deleting and copying the whole tree). The average tree depth $d$ is $O(log\ N)$ under the
+The depth $d$ of a _binary search tree_ leads to $O(d)$ operations (for all but deleting and copying the whole tree). The average tree depth $d$ is $O(log\ N)$ under the
 assumption that all insertion sequences are equally likely. Remember, $O(log\ N)$ means 
 that the problem size is halved with each step.
 

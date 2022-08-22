@@ -4,12 +4,12 @@
 /**
  * @brief Singly-linked list that uses position 
  *
- *
- * 1. Use a postion index to refer to an element. This is simpler to 
+ * 1. Use a position index to refer to an element. This is simpler to 
  *    implement compared to iterators (see iterator version), but does not
  *    play as nicely with the STL.
  * 2. Use a sentinel node (a node without data that represents the 
- *    begining of the list).
+ *    beginning of the list) to avoid special cases for inserting and deleting 
+ *    the first element.
  * 
  * @tparam Object 
  */
