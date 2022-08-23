@@ -1,6 +1,7 @@
 unsigned int Factorial(unsigned int number)
 {
-    // base case
+    // base case: 0! = 1 
+    // but also 1! = 1 and the unsigned data type makes sure we have no negative numbers
     if (number <= 1) 
     return 1;
     
