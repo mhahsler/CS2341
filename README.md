@@ -9,10 +9,10 @@ Course material and assignments for CS 2341 can be found on [Canvas](https://www
 
 ## Required Tools
 
-* Install [Visual Studio Code](https://code.visualstudio.com/)
-* On Windows you will need to [install WSL](https://code.visualstudio.com/docs/cpp/config-wsl) ([here is a video](https://www.youtube.com/watch?v=NY5izJWXi0U))
-* Install [Extensions for C++ and CMake](https://code.visualstudio.com/docs/languages/cpp)
-* Install [git](https://git-scm.com/)
+* Install [Visual Studio Code](https://code.visualstudio.com/) (VSC)
+* On Windows you will need to [install WSL](https://code.visualstudio.com/docs/cpp/config-wsl) and use the VSC remotely ([here is a video](https://www.youtube.com/watch?v=NY5izJWXi0U). 
+* Install [VSC extensions for C++ and CMake](https://code.visualstudio.com/docs/languages/cpp)
+* Install [git](https://git-scm.com/) and [VSC integration](https://code.visualstudio.com/docs/editor/versioncontrol).
 
 
 ## Content
