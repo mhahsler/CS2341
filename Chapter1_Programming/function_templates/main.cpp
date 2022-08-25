@@ -5,22 +5,7 @@
 
 using namespace std;
 
-
-/*
- * Templates let us define algorithms that are type independent.
- * 
- * Function templates define a pattern. The typename is just a placeholder for the 
- * actual type and the compiler will compile all needed versions
- * of the function (can lead to code bloat).
- * 
- 
- * 
- * Note: 
- * * Always assume that the type is not a primitive type (this is why findMax returns a const reference).
- * * IntCell does not have operator< implemented and compilation fails.
- * * Template function matching can be ambiguous which will lead to a compilation error.
- */
-
+// Template function example
 
 // Figures 1.19 and 1.20, but with illegal lines commented out
 
