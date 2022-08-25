@@ -8,7 +8,8 @@ All classes need a default constructor and
  2. Copy constructor
  3. copy assignment operator `operator=` 
 
-Typically, the default big five provided by C++ works. **Exception:** If a member variable contains a pointer (i.e., we use dynamic memory allocation with new/delete), destructor, constructors and operators 
+Typically, the default behavior provided by C++ works. **Exception:** If a member variable contains a pointer (i.e., we use dynamic memory allocation with `new`/`delete`) then we need 
+to provide custom destructors, constructors and operators 
 need to be overloaded. See [operator overloading](https://en.cppreference.com/w/cpp/language/operators).
 
 ## 4 and 5 of the Big Five
@@ -19,7 +20,8 @@ when they are returned from functions.
 
 * This is done with overloading the constructor and `operator=` with parameters of the new reference type called _rvalue reference_ which is denoted
 by `datatype &&`. lvalue means a storage location (e.g., a variable) and
-rvalue means a temporary value that gets lost if it is not assigned to a variable.
+rvalue means a temporary value that gets lost if it is not assigned to a variable (e.g., 
+the result of an evaluation or a return value).
 * They are only useful if the class uses dynamic memory allocation. 
 * If they are missing then the regular copy versions are used.
 
