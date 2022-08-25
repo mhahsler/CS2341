@@ -1,17 +1,26 @@
 # HOWTOs
 
-## How to Compile and Run the Examples in this Repository
+## How to Set Up a New Program
 
-1. Clone the repository.
-2. Go in your shell to an example and run `code .` Each folder can be seen as a project.
-3. Click `Build` in the status bar, choose the compilter (gcc11) and select that you want to build an executable. 
+1. Make a project directory using the file manager, start VS Code and open the directory 
+   (for WSL click on the green area and use open folder in WSL; MacOS/Linux use `File>Open Folder`).
+2. Create at least a `main.cpp` file in the directory (right-click and choose new file).
+3. Configure CMake by going in the menu to `Help>Show All Commands` (or push `CTRL+Shift P`) and type `CMake:Configure`. Choose a compiler
+   (latest version of GCC or clang), a project name and that you want to create an executable. This creates a file called `CMakeLists.txt`.
+4. Optional: Enable warnings and verbose output like in this [example](IntCell/CMakeLists.txt).
+5. Optional: Additional `.cpp` files can be added in the `add_executable()` instruction in `CMakeLists.txt`.
+6. Click `Build` in the status bar (at the bottom).
   `CMake` creates a `build` directory with a `Makefile` which is used to
    build the project.
-4. Click the run button in the status bar.
+7. Click the `Run` button in the status bar to execute the compiled program.
+
 
 *Notes:* 
+
+* Only use the buttons in the bottom task bar! These will use CMake. There are other buttons (e.g., in VS Codes top right corner). Do not use these because they will use VS Code's internal build tools which are not compatible with CMake. You see a `.vscode` instead of a `build` folder if you used the wrong button.
+* Steps 2 and 3 can be done using `CMake:Quickstart` which will create a Hello World! program.
 * You can also manually run `CMake` and `make`:
-  Go to the project directory in your shell and use 
+  Go to the project directory in your shell (a WSL shell for windows) and use 
    
    `cmake . -B build` 
  
@@ -21,21 +30,15 @@
    `make` 
  
    to compile the project. 
+* Some times the `build` or `.vscode` folder are out of date and compilation fails. You can safely delete these folders (right-click delete) and then building should work again.
 
-* If you move a project directory, then you have to clean the project by removing the build folder.
 
-## How to Set Up a New Program
+## How to Compile and Run the Examples in this Repository
 
-1. Make a directory.
-2. Create at least a `main.cpp` file.
-3. Configure CMake by going in the menu to `Help>Show All Commands` (or push `CTRL+Shift P`) and type `CMake:Configure`. Choose a compiler
-   (C++11) and that you want to create an executable. This creates a file called `CMakeLists.txt`.
-4. Enable warnings and verbose output like in this [example](IntCell/CMakeLists.txt).
-5. Additonal `.cpp` files can be added in the `add_executable()` instruction in `CMakeLists.txt`.
-
-You are now ready to build and execute the program.
-
-*Note:* Steps 2 and 3 can be done using `CMake:Quickstart` which will create a Hello World! program.
+1. Clone the repository.
+2. Go in your shell to an example and run `code .` You can also start VS Code and
+  open the folder. 
+3. Follow steps above.
 
 
 ## How to Run Automatic Tests
@@ -53,7 +56,7 @@ or [build it from GitHub](https://github.com/catchorg/Catch2/blob/v2.x/docs/cmak
 3. Add a testing section to `CMakeLists.txt`.
 4. Building and testing is available in the status bar.
 
-**Note:** Compiling the test with Catch2 takes a while. You can change the Build target in the Status Bar from `[all]` to `[main]` or whatever your executable is called to only compile the program.  
+**Note:** Compiling the test with Catch2 takes a while. You can change the Build target in the Status Bar from `[all]` to `[main]` or whatever your executable is called to only compile the program and not the tests.  
 
 Testing using GitHub Actions:
 
@@ -68,23 +71,21 @@ Testing using GitHub Actions:
 2. Click the debug symbol in the status bar which starts a frontend for `gdb`.
 3. Use the navigation panel and inspect and watch variables.
 
-### Command line debugging with `gdb`
+### Command Line Debugging With `gdb`
 
 1. Find the compiled executable (in VS Code it is in the build directory)
 2. Start `gdb executable`.
 3. Set a breakpoint with `b` and use `run`. See the [GDB QUICK REFERENCE](https://users.ece.utexas.edu/~adnan/gdb-refcard.pdf) for available commands.
 
-### Valgrind to detect memory leaks
-
+### Valgrind to Detect Memory Leaks
 
 [Valgrind](https://valgrind.org/) tools that can automatically detect many memory management and threading bugs.
-*Note:* `valgrind` is not available on Windows and the VS Code integration is not great. It can be installed on Ubuntu with
+These are issues happening at run-time and the compiler cannot find them.
+*Note:* `valgrind` is not available on Windows and the VS Code integration is not great. It can be installed on Ubuntu (Windows with WSL) with the shell command
 `sudo apt install valgrind`.
 
-1. Find the compiled executable (in VS Code it is in the build directory)
+1. Find the compiled executable (in VS Code + CMake it is in the build directory)
 2. Run `valgrind --leak-check=full ./executable` and look for lost bytes.
 
 Valgrind can also be used for profiling (finding out where your code is slow).
 Here is a description of [how to profile with Valgrind](https://developer.mantidproject.org/ProfilingWithValgrind.html).
-
-
