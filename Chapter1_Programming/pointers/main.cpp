@@ -5,18 +5,13 @@ using namespace std;
 
 int main()
 {
-    /*
-     * Pointers
-     * * new: dynamic memory allocation on the heap
-     * * delete: C++ does not use garbage collection! Memory leaks!!!
-     *     use new only when it is needed (it is not needed in the following program!)
-     * * -> (arrow operator) accesses members with a pointer to an object
-     * * == pointer addresses are compared not the objects
-     * * & (address-of-operator) returns the address of a variable (i.e., a pointer to the variable)
-     * * (dereference operator) returns the object at the address the pointer points to.
-     */
+    // We dynamically allocate a IntCell object
+    // Note that this is not necessary, since we know at compile time how much memory we have!
+    // To allocate the memory on the stack, we would use:
+    // IntCell m{0}; 
+    // and there would be no need for a delete.
+    
     IntCell *m;
-
     m = new IntCell{0};
     m->write(5);
 
@@ -25,17 +20,25 @@ int main()
     IntCell *n = new IntCell{5};
     cout << "Cell n: " << n->read() << endl;
 
-    /* comparison */
+    /* comparison does not work as expected, it compares the pointers */
     if (m == n)
         cout << "m == n" << endl;
     else
         cout << "m != n" << endl;
+
 
     /* addresses and dereferencing */
     cout << "m: " << m << endl;
     cout << "Address of m (&m): " << &m << endl;
     cout << "Derefereced m ( *m.read() ): " << (*m).read() << endl;
 
+    /* this works */
+    if (m->read() == n->read())
+        cout << "m->read() == n->read()" << endl;
+    else
+        cout << "m->read() != n->read()" << endl;
+
+    /* every new needs a delete! */
     delete m, n;
 
     /*
