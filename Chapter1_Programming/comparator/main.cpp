@@ -9,11 +9,6 @@ using namespace std;
 // Generic findMax, with a function object, C++ style.
 // Precondition: a.size( ) > 0.
 //
-// typename Object suggests that it has 
-//  * a default constructor 
-//  * a copy contractor, and
-//  * operator=
-//
 // typename Comparable suggests that it also has
 // * operator< for a total order
 //
@@ -21,8 +16,8 @@ using namespace std;
 //   function object. To make this clear we use the name isLessThan
 	    
 
-template <typename Object, typename Comparator>
-const Object &findMax(const vector<Object> &arr, Comparator isLessThan)
+template <typename Comparable, typename Comparator>
+const Comparable &findMax(const vector<Comparable> &arr, Comparator isLessThan)
 {
     int maxIndex = 0;
 
@@ -50,13 +45,13 @@ int main()
 {
     vector<string> arr = {"ZEBRA", "alligator", "crocodile"};
 
-    cout << findMax(arr, CaseInsensitiveCompare{}) << endl;
+    cout << "case insensitive: " << findMax(arr, CaseInsensitiveCompare{}) << endl;
     
     // default ordering for string is case sensitive.
     // std::less provides a templated comparator function that invokes operator<.
     // Also works for primitive datatypes.
     // See: https://en.cppreference.com/w/cpp/utility/functional/less
-    cout << findMax(arr, less<string>{}) << endl;
+    cout << "default string comparator: " <<  findMax(arr, less<string>{}) << endl;
 
     return 0;
 }
