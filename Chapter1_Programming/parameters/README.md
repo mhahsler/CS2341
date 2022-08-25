@@ -15,11 +15,11 @@
   ```
 
   `x` and `y` become aliases for the variables in the calling function. 
-  Changing them changes the values there. The purpose is to use this
+  Changing them changes the values there. The purpose is use this
   side effect.
  
-  C++11 Note: [std::swap()](https://en.cppreference.com/w/cpp/algorithm/swap) is already available in the STL. It can be used together with std::move() to avoid copying large objects. std::move() moves rvalues instead of copying the object. rvalues are temorary objects (e.g., the
- result of an evaluation) and  
+  **C++11 Note:** [std::swap()](https://en.cppreference.com/w/cpp/algorithm/swap) is already available in the STL. It can be used together with std::move() to avoid copying large objects. std::move() moves rvalues instead of copying the object. rvalues are temporary objects (e.g., the
+ result of an evaluation or a return value) and  
  lvalues are permanent storage (e.g., variables). 
  Typical assignment `lval = rval;`. STL containers (vector, string) 
  use move automatically.
@@ -32,7 +32,8 @@
   ```
 
   `a` and `b` become aliases for the variables in the calling function.
-  They cannot be changed. The purpose is to avoid copying large objects.
+  The compiler makes sure that they are not changed. The purpose is to avoid copying large objects when passing them to a 
+  function.
 
 
 ## Call-by-pointer (used in C)
@@ -42,14 +43,14 @@
   ```
 
   copies the string in `source` to `destination`. This is typically not 
-  used in C++.
+  used in C++ unless we deal with C-style arrays which we want to avoid.
   
 
 # Return passing
 
 ## Return-by-value
 
-This is the typical way of returning values. C++11 makes returning STL data structures efficient using move semantics.
+This is the typical way of returning values. C++11 makes returning STL data structures efficient using automatically move semantics.
 
 ## Return-by (constant) reference
 
@@ -62,14 +63,15 @@ const LargeObject & chooseRandomItem(const vector<LargeObject> & arr) {
 ```
 
 Without the `const` keywords, the caller of `chooseRandomItem()` would
-have modifiable access to the object.
+have modifiable access to the returned object.Note that const references can only be assigned to const references or need to be copied.
 
-Note that const references can only be assigned to const references or need to be copied.
+Be careful, you can only return references to objects that persist after the function finishes!
+In this case `arr` is still in memory after `chooseRandomItem()` finishes.
 
 # Use of the keyword `const`
 
 
-## Constants
+## Constant Values
 
 ```cpp
 const int i;
@@ -78,7 +80,7 @@ const int i;
 ## Const pointers
 
 ```cpp
-char const * text = "test"; // the pointer cannot be modified.
+char const * text = "test"; // the location pointed to cannot be modified.
 const char * text = "test"; // the value pointed to cannot be modified.
 ```
 
@@ -86,7 +88,7 @@ const char * text = "test"; // the value pointed to cannot be modified.
 
 ```cpp
 int a = 10;
-const &b = a;
+const int &b = a;
 ```
 
 The referenced value cannot be modified.
@@ -107,7 +109,7 @@ private:
 public:
     int getSomeValue() const
     {
-      // this is not allowed! 
+      // this results in a compilation error: 
       // x++; 
       return x;
     }  
@@ -119,5 +121,4 @@ public:
 
 * `const` objects cannot be modified. The compiler enforces this at compile time.
 * `const` is a safeguard so the programmer does not make a mistake and changes an object inadvertently. 
-* With a `const` object, You can only call a `const` member function. Therefore, we often need to provide also a `const` version of some member functions. 
-* The STL uses `const` objects a lot, so your classes should be prepared to provide `const` versions. 
+* With a `const` object, you can only call a `const` member function. Therefore, we often need to provide also a `const` version of some member functions. The STL uses `const` objects a lot, so your classes should be prepared to provide `const` versions. 
