@@ -20,6 +20,6 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 add_compile_options(-Wall -Wextra -pedantic)
 
 # add all the .cpp files here
-add_executable(IntCell main.cpp IntCell.cpp)
+add_executable(IntCell main.cpp IntCell)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
