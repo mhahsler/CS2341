@@ -29,6 +29,10 @@ We will mostly skip the move versions in the code example to make the code short
 
 ## Examples
 
-* [IntCell](IntCell.h) uses **no** dynamic memory allocation so we do not implement the big 3.
-* [IntCellPtr](IntCellPtr.h) does use **dynamic memory allocation** for the stored `int` (unnecessarily, but to show what happens) so we have to implement the big 3. Unfortunately, the programmer forgot to add a destructor and overload the assignment operator which leads to problems.
+(main.cpp)[main.cpp] uses the following classes and shows how to detect problems with the big 5:
+
+* [IntCell](IntCell.h) uses **no** dynamic memory allocation so we do not implement the big 5.
+* [IntCellPtr](IntCellPtr.h) does use **dynamic memory allocation** for the stored `int` (unnecessarily, but to show what happens) so we have to implement the big 5. Unfortunately, the programmer forgot to add a destructor and overload the assignment operator which leads to problems.
 * [IntCellPtrOK](IntCellPtrOK.h) correctly adds the destructor and the assignment operator.
+
+See how to debug and how to detect memory leaks on the [HOWTO page](../HOWTOs.md).

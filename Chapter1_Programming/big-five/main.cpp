@@ -33,7 +33,8 @@ int main()
     /* the pointer gets copied: we need a copy constructor and a copy assignment. Also, there is a new but no
        delete (destructor is missing) so we have a memory leak!
 
-       Run valgrind in the VS Code terminal to detect memory leaks: 
+       You can activate the AddressSanitizer library in CMakeLists.txt (and run the program) or
+       run valgrind in the VS Code terminal to detect memory leaks: 
        > valgrind --leak-check=full ./build/big-five
        
        valgrind says:
