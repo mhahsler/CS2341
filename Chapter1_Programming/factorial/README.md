@@ -24,3 +24,11 @@ Recursion (see [factorial.cpp](factorial.cpp)) needs
 * Using recursion instead of simple iteration like calculating the factorial
   is not a good idea since the function call stack is slow and needs memory! A better implementation is [iterative.cpp](iterative.cpp).
 
+  ## Testing
+
+  I have placed the function into its own file and added a header, so I can use it in multiple 
+  executables (`main` and `test`).
+
+  Algorithms need tests. We use `ctest` and `Catch2` library. Details on writing tests and how to setup `CMakeLists.txt` can be found in the [HOWTOs.](../HOWTOs.md)
+
+
