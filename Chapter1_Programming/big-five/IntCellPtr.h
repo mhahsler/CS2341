@@ -16,3 +16,7 @@ public:
 };
 
 #endif
+
+/* Note: storedValue is a pointer -> dynamic memory allocation!
+ *       Destructor and operator= are missing (Rule of 3)
+ */

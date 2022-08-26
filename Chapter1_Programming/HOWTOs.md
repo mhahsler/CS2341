@@ -77,9 +77,12 @@ Testing using GitHub Actions:
 2. Start `gdb executable`.
 3. Set a breakpoint with `b` and use `run`. See the [GDB QUICK REFERENCE](https://users.ece.utexas.edu/~adnan/gdb-refcard.pdf) for available commands.
 
-### Valgrind to Detect Memory Leaks
+## How to Detect Memory Leaks
 
-[Valgrind](https://valgrind.org/) tools that can automatically detect many memory management and threading bugs.
+Example code: [Big-Five for Classes](big-five)
+
+### Option 1: Valgrind 
+[Valgrind](https://valgrind.org/) contains tools that can automatically detect many memory management and threading bugs.
 These are issues happening at run-time and the compiler cannot find them.
 *Note:* `valgrind` is not available on Windows and the VS Code integration is not great. It can be installed on Ubuntu (Windows with WSL) with the shell command
 `sudo apt install valgrind`.
@@ -89,3 +92,16 @@ These are issues happening at run-time and the compiler cannot find them.
 
 Valgrind can also be used for profiling (finding out where your code is slow).
 Here is a description of [how to profile with Valgrind](https://developer.mantidproject.org/ProfilingWithValgrind.html).
+
+### Option 2: AddressSanitizer Library
+
+Recent versions of GCC and clang come with the [`asan` (AddressSanitizer) library.](https://github.com/google/sanitizers/wiki/AddressSanitizer)
+All you need to do is add the following to your `CMakeLists.txt`:
+
+```
+# Use the AddressSanitizer library to detect memory leaks at run-time. 
+add_compile_options(-fsanitize=address -fno-omit-frame-pointer)
+link_libraries(asan)
+```
+
+You need to comment these lines out if you want to compile the program for use (the sanitizer checks  slow the code down).

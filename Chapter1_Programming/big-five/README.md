@@ -26,3 +26,9 @@ the result of an evaluation or a return value).
 * If they are missing then the regular copy versions are used.
 
 We will mostly skip the move versions in the code example to make the code shorter, but for production C++11 code, you should add them.
+
+## Examples
+
+* [IntCell](IntCell.h) uses **no** dynamic memory allocation so we do not implement the big 3.
+* [IntCellPtr](IntCellPtr.h) does use **dynamic memory allocation** for the stored `int` (unnecessarily, but to show what happens) so we have to implement the big 3. Unfortunately, the programmer forgot to add a destructor and overload the assignment operator which leads to problems.
+* [IntCellPtrOK](IntCellPtrOK.h) correctly adds the destructor and the assignment operator.
