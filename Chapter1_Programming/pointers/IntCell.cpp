@@ -26,9 +26,8 @@ void IntCell::write(int x)
     storedValue = x;
 }
 
-
 /*
  * Notes:
- *  * no default values
- *  * constructor uses an ititialization list  
+ *  * no default values and explicit in .cpp file (they are specified in the header)
+ *  * constructor uses an initialization list  
  */

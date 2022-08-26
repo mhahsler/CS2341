@@ -30,7 +30,7 @@ int main()
     /* addresses and dereferencing */
     cout << "m: " << m << endl;
     cout << "Address of m (&m): " << &m << endl;
-    cout << "Derefereced m ( *m.read() ): " << (*m).read() << endl;
+    cout << "Dereferenced m ( *m.read() ): " << (*m).read() << endl;
 
     /* this works */
     if (m->read() == n->read())
@@ -41,12 +41,10 @@ int main()
     /* every new needs a delete! */
     delete m, n;
 
-    /*
-     * References (lvalue references)
-     * * & used in a declaration (not as an operator like above!!!)
-     * * used as an alias (avoid copying memory, e.g., for a function call)
-     * * auto can be used. The compiler figures out the data type.
-     */
+    //  References (lvalue references)
+    // & used in a declaration (not as an operator like above!!!)
+    // used as an alias (avoid copying memory, e.g., for a function call)
+    // `auto` can be used. The compiler figures out the data type.
     int a = 12;
     auto &b = a;
 
