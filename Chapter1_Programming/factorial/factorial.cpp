@@ -1,3 +1,5 @@
+#include "factorial.h"
+
 unsigned int Factorial(unsigned int number)
 {
     // base case: 0! = 1 
