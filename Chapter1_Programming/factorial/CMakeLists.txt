@@ -25,14 +25,6 @@ add_executable(factorial_iterative iterative.cpp)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
-# testing (needs Catch2 V2 installed)
-find_package(Catch2 2 REQUIRED)
-
+# testing with the single_invlude verions of Catch2 V2 (in directory catch2)
+# run target: tests
 add_executable(tests test.cpp factorial.cpp)
-target_link_libraries(tests Catch2::Catch2)
-
-include(CTest)
-enable_testing()
-
-include(Catch)
-catch_discover_tests(tests)
