@@ -5,7 +5,7 @@
    - Memory leaks!!! Every `new` needs a `delete`.
    - Use `new` only when you have to. Data structures in the STL often do dynamic memory allocation for us.
  * `datatype *` declares a pointer variable.
- * `->` (arrow operator) accesses members with a pointer to an object.
+ * `->` (arrow operator) accesses members with a pointer to an object. Same as the `.` operator but instead of the object name, we have a pointer to the object.
  * `==` pointer addresses are compared not the objects!
  * `&` (address-of-operator) returns the address of a variable (can be stored in a pointer to the variable).
  * `*` (dereference operator) returns the object at the address the pointer points to.
