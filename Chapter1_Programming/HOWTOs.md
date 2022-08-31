@@ -52,7 +52,9 @@ Steps:
 1. Add the directory with the single include version of Catch2 to your project (directory catch2 from [this example.](factorial)). 
 2. You need a test file like `test.cpp` in the [testing example](factorial/) to define test cases and required outputs. There are [more assertion macros](https://github.com/catchorg/Catch2/blob/v2.x/docs/assertions.md) available.
 3. Add a target called `tests` with `test.cpp` to `CMakeLists.txt`. The line should look like
-  `add_executable(tests test.cpp <other.cpo files needed>)`. 
+  `add_executable(tests test.cpp <other.cpp files needed>)`.
+  With some compilers you also need to specify the C++ standard with 
+  `set(CMAKE_CXX_STANDARD17)`.
 4. Build the project and then run the target tests (select `[tests]` next to the run symbol in the status bar).
 
 **Note:** Compiling the test with Catch2 takes a while. You can change the build target in the status bar from `[all]` to `[main]` or whatever your executable is called to only compile the program and not the tests.  
