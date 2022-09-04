@@ -41,8 +41,7 @@
 * Example: [Big five for classes](big-five)
 
 ### Templates
-* Example: [Function templates](function_templates)
-* Example: [Class templates](class_templates)
+* Examples: [Function and class templates](templates)
 
 ### Comparators
 * Example: [Comparator](comparator)
