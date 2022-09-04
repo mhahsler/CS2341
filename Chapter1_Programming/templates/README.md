@@ -27,5 +27,5 @@ The templated datatype becomes part of the function signature/class name.
    - **Comparable**: Also can be compared with `operator<`.
 
 Examples:
-* [Funciton Template](function_templates)
-* [Class Template](class_templates/)
+* [Function Template](function_templates)
+* [Class Template](class_templates)
