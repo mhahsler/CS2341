@@ -36,7 +36,6 @@ class CaseInsensitiveCompare
 public:
     bool operator()(const string &lhs, const string &rhs) const
     {
-        //return strcasecmp(lhs.c_str(), rhs.c_str()) < 0;
         return strcasecmp(lhs.c_str(), rhs.c_str()) < 0;
     }
 };
