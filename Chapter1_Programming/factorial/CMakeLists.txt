@@ -26,6 +26,7 @@ add_executable(factorial_iterative iterative.cpp)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
-# testing with the single_invlude verions of Catch2 V2 (in directory catch2)
-# run target: tests
+# testing with the single_include versions of Catch2 V2 (in directory catch2)
+include(CTest)
 add_executable(tests test.cpp factorial.cpp)
+add_test(NAME SimpleTest COMMAND tests)
