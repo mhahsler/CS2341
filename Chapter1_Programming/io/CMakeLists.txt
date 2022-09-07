@@ -8,5 +8,3 @@ file(COPY test.txt DESTINATION .)
 
 add_executable(CLInterface CLInterface_main.cpp)
 add_executable(fileIO fileIO_main.cpp)
-
-
