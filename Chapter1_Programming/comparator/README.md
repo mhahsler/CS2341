@@ -10,21 +10,37 @@ Comparing if two objects are the same or one is "larger" or before the other in 
   * `operator=`
 
 * typename `Comparable` in templates suggests that it also has an
-  * `operator<` for a total order which can also be used to infer equality `operator==` by if
-`a !> b` and `b !> a` then `a == b`.
+  * `operator<` for a total order which can also be used to infer 
+    equality (if `!(a > b) && !(b > a)` then `a == b`), and
+    `>=` (`a >= b ` if ` !(b > a)`). 
 
-Once a class has `operator<` overloaded, it can be used by algorithms on ADTs.
+    `operator>` and `operator==` are often implemented in terms of `operator<`. 
+
+
+  **Important:** Once a class has `operator<` overloaded, it can be used in ADSs by any algorithm that requires sorting.
 
 ## Function Objects
 
 Many algorithm implementations also allow the use of a _function object_
-to define potentially several ways to order object (e.g, people can be ordered by last name, height, age, income, etc.)
+to define several different ways to order object (e.g, people can be ordered by last name, height, age, income, etc.)
 
-A function object is a class with only an overloaded `operator()` function.
+A function object is just a class with only an overloaded `operator()` function which is called when the function object is used. Here is an example:
+
+```cpp
+class CaseInsensitiveCompare
+{
+public:
+    bool operator()(const string &lhs, const string &rhs) const
+    {
+        return strcasecmp(lhs.c_str(), rhs.c_str()) < 0;
+    }
+};
+```
+
 
 The STL provides the templated function object [`std::less<Comparable>`](https://cplusplus.com/reference/functional/less/) which uses the object's `operator<`.
 
-typename `Comparator` in templates is used as a placeholder for a comparator
+The typename `Comparator` is typically used in templates used as a placeholder for a comparator
 function object. To make this clear we typically use the parameter 
-name `isLessThan`.
+name `isLessThan`. See [main.cpp](main.cpp).
 
