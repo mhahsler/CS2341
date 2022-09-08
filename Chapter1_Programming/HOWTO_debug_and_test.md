@@ -5,9 +5,10 @@
 
 ### In VS Code
 
-1. Set a breakpoint next to a line of code.
-2. Click the debug symbol in the status bar which starts a frontend for `gdb`.
-3. Use the navigation panel and inspect and watch variables.
+1. You may have to configure CMake for debugging by clicking in the status bar on `CMake: [Debug]` and select `Debug`.
+2. Set a breakpoint (red dot) to the left of a line number in the source code.
+3. Click the debug symbol in the status bar which starts a frontend for `gdb`.
+4. Use the navigation panel (appearing on the top of VS Code) and inspect and watch variables.
 
 ### Command Line Debugging With `gdb`
 
@@ -24,13 +25,20 @@ Here is an [example with tests.](factorial)
 
 Steps:
 
-1. Add the directory with the single include version of Catch2 to your project (directory `catch2` from [this example.](factorial)). 
+1. Add the directory with the single include version of Catch2 to your project (copy directory `catch2` from [this example.](factorial)). 
 2. You need a test file like `test.cpp` in the [testing example](factorial/) to define test cases and required outputs. There are [more assertion macros](https://github.com/catchorg/Catch2/blob/v2.x/docs/assertions.md) available.
-3. Add a target called `tests` with `test.cpp` to `CMakeLists.txt`. The line should look like
-  `add_executable(tests test.cpp <other.cpp files needed>)`.
+3. Add the test to `CMakeLists.txt`. The lines should look like (see [testing example](factorial/) for complete file):
+   ```
+   # testing with the single_include versions of Catch2 V2 (in directory catch2)
+   include(CTest)
+   add_executable(tests test.cpp <other.cpp you need for compiling the test>)
+   add_test(NAME SimpleTest COMMAND tests)
+   ```
+
   With some compilers you also need to specify the C++ standard with 
   `set(CMAKE_CXX_STANDARD17)`.
-4. Build the project and then run the target tests (select `[tests]` next to the run symbol in the status bar). The test program will print the test results to the screen.
+
+4. Build the project and then run the tests using the button on the status bar. The test program will print the test results to the screen.
 
 **Note:** Compiling the test with Catch2 takes a while. You can change the build target in the status bar from `[all]` to `[main]` or whatever your executable is called to only compile the program and not the tests.  
 
