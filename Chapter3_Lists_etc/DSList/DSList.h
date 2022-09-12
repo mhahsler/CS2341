@@ -33,18 +33,18 @@ private:
 
 public:
 
-// You need to implement
+// You need to implement:
 // Default construction
 // Copy constructor
 // Destructor
 // size
 // empty?
 // clear
-// find an element with a specific value (and return the position. First element in list is pos 0).
 // insert in front (push_front).
 // insert at a specified position.
 // remove the element in front (pop_front)
 // remove using position.
+// find an element with a specific value (and return the position. First element in list is pos 0).
 // remove an element with a specific value (find and remove)
 
 private:
