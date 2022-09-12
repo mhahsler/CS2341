@@ -31,7 +31,7 @@ int main()
 
     // Use C++11 ranges. x is a reference to the element in squares.
     sum = 0;
-    for (auto x : squares)
+    for (const auto &x : squares)
         sum += x;
 
     cout << "The sum (ranges) is " << sum << endl;
@@ -48,6 +48,11 @@ int main()
 
 
     // C++11 ranges also work, but index does not!
+     sum = 0;
+    for (const auto &x : squaresList)
+        sum += x;
+
+    cout << "The sum (list + ranges) is " << sum << endl;
 
    return 0;
 }
