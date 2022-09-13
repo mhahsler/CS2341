@@ -35,6 +35,8 @@ Nodes are defined as:
 
 Example: A [singly-linked list using iterators](DSList_iter.h) and [main.cpp](main.cpp).
 
+A sentinel node is an "empty" node that is used to avoid special code for empty lists.
+
 Exercise: Implement a [singly-linked list using position and a sentinel node](DSList.h).
 
 ### Doubly Linked List

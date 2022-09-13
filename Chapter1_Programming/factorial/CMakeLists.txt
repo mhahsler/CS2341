@@ -15,6 +15,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(factorial VERSION 0.1.0)
 
+set(CMAKE_CXX_STANDARD17)
 # show compiler output
 set(CMAKE_VERBOSE_MAKEFILE ON)
 add_compile_options(-Wall -Wextra -pedantic)
@@ -25,14 +26,7 @@ add_executable(factorial_iterative iterative.cpp)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
-# testing (needs Catch2 V2 installed)
-find_package(Catch2 2 REQUIRED)
-
-add_executable(tests test.cpp factorial.cpp)
-target_link_libraries(tests Catch2::Catch2)
-
+# testing with the single_include versions of Catch2 V2 (in directory catch2)
 include(CTest)
-enable_testing()
-
-include(Catch)
-catch_discover_tests(tests)
+add_executable(tests test.cpp factorial.cpp)
+add_test(NAME SimpleTest COMMAND tests)

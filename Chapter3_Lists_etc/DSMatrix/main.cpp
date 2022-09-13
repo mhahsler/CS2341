@@ -1,49 +1,59 @@
 #include <iostream>
 #include <vector>
+#include "DSMatrix.h"
 
 using namespace std;
 
 int main()
 {
-    // Use a vector of vectors
     int rows = 3;
     int cols = 4;
 
-    int **m = new int *[rows];
+    cout << "Array of arrays: m1\n";
+    // allocate the array for the rows and then allocate each row
+    int **m1 = new int *[rows];
     for (int r = 0; r < rows; ++r)
-        m[r] = new int[cols];
+        m1[r] = new int[cols];
 
-    m[0][0] = 1;
-    m[1][1] = 1;
-    m[2][2] = 1;
+    m1[0][0] = 1;
+    m1[1][1] = 1;
+    m1[2][2] = 1;
 
-    cout << "m:\n";
     for (int r = 0; r < rows; ++r)
     {
         for (int c = 0; c < cols; ++c)
-            cout << m[r][c] << " ";
+            cout << m1[r][c] << " ";
         cout << "\n";
     }
 
     // clean up memory
     for (int r = 0; r < rows; ++r)
-        delete[] m[r];
+        delete[] m1[r];
 
-    delete[] m;
+    delete[] m1;
 
-    // we could also use STL vectors
-    // vector<vector<int>> m = vector<vector<int>>(rows);
-    // for (auto &r : m)
-    //     r = vector<int>(cols);
-    // for (auto &r : m)
-    // {
-    //     for (auto &c : r)
-    //         cout << c << " ";
-    //     cout << "\n";
-    // }
+    cout << "\nVector of vectors (STL): m2\n";
+    // This makes memory management a lot easier
+    
+    // make the vector of rows and then create each row vector
+    vector<vector<int>> m2 = vector<vector<int>>(rows);
+    for (auto &r : m2)
+        r = vector<int>(cols);
 
-    // ********************* Don't do this! ***********************
-    // *************** Even if textbooks describe it! *************
+    m2[0][0] = 1;
+    m2[1][1] = 1;
+    m2[2][2] = 1;
+
+    for (auto &r : m2)
+    {
+        for (auto &c : r)
+            cout << c << " ";
+        cout << "\n";
+    }
+
+    // ********************* IMPORTANT **************************
+    // Don't use array of arrays or vector of vectors unless you have a very good reason!
+    // Even if textbooks describe it!
     // For matrices you should think BLAS (Basic Linear Algebra Subprograms)
     // see https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms
     // Especially you should look at uBLAS in the C++ Boost Libraries
@@ -60,52 +70,24 @@ int main()
     //   double * data;
     // } matrix;
     //
-    // Written as a class definition
+    // Written as a templated class definition in DSMatrix.h
 
-    class DSMatrix
+    // I use a typedef so I don't need to write DSMatrix<int> several times 
+    typedef DSMatrix<int> intmat;
+
+    cout << "\nDSMatrix (a single array): m3\n";
+    intmat m3 = intmat(3, 4);
+
+    m3(0, 0) = 1;
+    m3(1, 1) = 1;
+    m3(2, 2) = 1;
+
+    for (int r = 0; r < m3.nrows(); ++r)
     {
-    private:
-        int rows;
-        int cols;
-        double *data;
-
-    public:
-        DSMatrix(int _rows, int _cols) : rows{_rows}, cols(_cols)
-        {
-            data = new double[_cols * _rows];
-        }
-
-        ~DSMatrix()
-        {
-            delete[] data;
-        }
-
-        // we would overload [], but C++ currently does not
-        // allow more then one parameters for []
-        double &operator()(int col, int row)
-        {
-            return data[col * rows + row];
-        }
-
-        void print()
-        {
-            for (int r = 0; r < rows; ++r)
-            {
-                for (int c = 0; c < cols; ++c)
-                    cout << (*this)(c, r) << " ";
-                cout << "\n";
-            }
-        }
-    };
-
-    DSMatrix m2 = DSMatrix(3, 4);
-
-    m2(0, 0) = 1;
-    m2(1, 1) = 1;
-    m2(2, 2) = 1;
-
-    cout << "m2:\n";
-    m2.print();
+        for (int c = 0; c < m3.ncols(); ++c)
+            cout << m3(c, r) << " ";
+        cout << "\n";
+    }
 
     return 0;
 }

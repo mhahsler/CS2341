@@ -2,7 +2,7 @@
 
 ## The rule of Three
 
-All classes need a default constructor and
+The [Rule of three](https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_programming)#:~:text=The%20rule%20of%20three%20(also,copy%20assignment%20operator) states that all classes need a default constructor and
 
  1. Destructor
  2. Copy constructor
@@ -32,7 +32,7 @@ We will mostly skip the move versions in the code example to make the code short
 (main.cpp)[main.cpp] uses the following classes and shows how to detect problems with the big 5:
 
 * [IntCell](IntCell.h) uses **no** dynamic memory allocation so we do not implement the big 5.
-* [IntCellPtr](IntCellPtr.h) does use **dynamic memory allocation** for the stored `int` (unnecessarily, but to show what happens) so we have to implement the big 5. Unfortunately, the programmer forgot to add a destructor and overload the assignment operator which leads to problems.
+* [IntCellPtr](IntCellPtr.h) does use **dynamic memory allocation** for the stored `int` (unnecessarily, but to show what happens) so we have to implement the big 5. Unfortunately, the programmer forgot to add a destructor and overload the assignment operator which leads to problems. Use `valgrind` or the `AddressSanitizer` library to identify the issue.
 * [IntCellPtrOK](IntCellPtrOK.h) correctly adds the destructor and the assignment operator.
 
 See how to debug and how to detect memory leaks on the [HOWTO page](../HOWTOs.md).

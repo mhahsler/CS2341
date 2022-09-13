@@ -195,7 +195,7 @@ public:
     };
 
     /**
-     * @brief Construct a new dslist iter<object> object
+     * @brief Construct a new DSlist iter<object> object
      * 
      */
     DSList_iter<Object>()
@@ -204,7 +204,7 @@ public:
     // missing: Copy constructor
     
     /**
-     * @brief Destroy the dslist iter object
+     * @brief Destroy the DSlist iter object
      * 
      */
     ~DSList_iter()

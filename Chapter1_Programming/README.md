@@ -2,7 +2,10 @@
 
 ## How to Run Examples, Debug and Test Code
 
-Here are the [HOWTOs](HOWTOs.md)
+## HOWTOs
+
+* [HOWTO Compile Programs With VS Code and CMake](HOWTO_compile_programs_with_CMake.md)
+* [HOWTO Debug and Test](HOWTO_debug_and_test.md)
 
 ## Code Examples
 
@@ -38,8 +41,7 @@ Here are the [HOWTOs](HOWTOs.md)
 * Example: [Big five for classes](big-five)
 
 ### Templates
-* Example: [Function templates](function_templates)
-* Example: [Class templates](class_templates)
+* Examples: [Function and class templates](templates)
 
 ### Comparators
 * Example: [Comparator](comparator)
