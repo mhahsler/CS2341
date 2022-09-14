@@ -57,8 +57,8 @@ These are issues happening at run-time and the compiler cannot find them.
 *Note:* `valgrind` is not available on Windows and the VS Code integration is not great. It can be installed on Ubuntu (Windows with WSL) with the WSL shell command
 `sudo apt install valgrind`.
 
-1. Find the compiled executable (in VS Code + CMake it is in the build directory)
-2. Run `valgrind --leak-check=full ./executable` and look for lost bytes.
+1. Find the compiled executable (in VS Code + CMake it is in the build directory). use `cd build` in the terminal to get there.
+2. Run `valgrind --leak-check=full --track-origins=yes ./executable` and look for lost bytes. `executible` is your compiled program.
 
 Valgrind can also be used for profiling (finding out where your code is slow).
 Here is a description of [how to profile with Valgrind](https://developer.mantidproject.org/ProfilingWithValgrind.html).
