@@ -55,7 +55,7 @@ public:
   ~DSVector()
   {
     delete[] objects;
-    //delete objects; // this would be a mistake check with valgrind --leak-check=full ./DSVector
+    //delete objects; // this would be a mistake check with valgrind --leak-check=full --track-origins=yes ./DSVector
     // also check without any delete to see what valgrind says
   }
 
@@ -89,13 +89,13 @@ public:
   }
 
   // how many elements?
-  int size() const
+  size_t size() const
   {
     return theSize;
   }
 
   // what is the capacity?
-  int capacity() const
+  size_t capacity() const
   {
     return theCapacity;
   }
@@ -103,14 +103,16 @@ public:
   // subscript operator
   Object &operator[](size_t index)
   {
-    if (index < 0 || index >= size())
+    // size_t is always >=0!
+    if (index >= size())
       throw std::runtime_error("out of bounds!");
     return objects[index];
   }
 
   const Object &operator[](size_t index) const
   {
-    if (index < 0 || index >= size())
+    // size_t is always >=0!
+    if (index >= size())
       throw std::runtime_error("out of bounds!");
     return objects[index];
   }

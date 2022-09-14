@@ -23,7 +23,7 @@ int main()
          << "empty? " << v.empty() << "\n\n";
 
     // populate the vector
-    for (int i = 0; i < v.size(); ++i)
+    for (size_t i = 0; i < v.size(); ++i)
         v[i] = i * 10;
 
     // print the vector using an iterator
