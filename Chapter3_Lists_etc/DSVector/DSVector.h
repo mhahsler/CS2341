@@ -5,122 +5,180 @@
 #include <iostream>
 #include <stdexcept>
 
-// A DSVector should be:
-// * A wrapper around an array of objects.
-// * Know its size and checks bounds.
-// * Provide access with [].
-// * Be resizable. For efficiency, the internal array will sometimes be
-//   larger than the size. We call this the capacity. 
-// * Implement a member function that lets you append an element to the vector. 
-//   We typically double the capacity if we run out of capacity. 
-
-// Note on templates: templates need to have all the code in the header file so the 
-//   compiler can create the templated classes/functions at compile time.
+using namespace std;
 
 template <typename Object>
 class DSVector
 {
+private:
+  size_t theSize;
+  size_t theCapacity;
+  Object *objects;
+
 public:
-  // Create an new DSVector
+  // Create an empty DSVector
   explicit DSVector(size_t initSize = 0)
+      : theSize{initSize}, theCapacity{initSize}
   {
-    // create a vector with initSize objects and use the default constructor to fill it
-    // with objects.
+    objects = new Object[theCapacity];
+  }
+
+  // C++11 initializer list with {}
+  DSVector(const initializer_list<Object> &v)
+  {
+    theSize = 0;
+    theCapacity = v.size();
+    objects = new Object[theCapacity];
+    for (auto itm : v)
+      this->push_back(itm);
   }
 
   // Copy constructor
   DSVector(const DSVector &rhs)
+      : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{nullptr}
   {
-    // allocate space and copy rhs
+    objects = new Object[theCapacity];
+    for (size_t k = 0; k < theSize; ++k)
+      objects[k] = rhs.objects[k];
+  }
+
+  // C++11 Move constructor ... steal the pointer to objects
+  DSVector(DSVector &&rhs)
+      : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{rhs.objects}
+  {
+    rhs.theSize = 0;
+    rhs.theCapacity = 0;
+    rhs.objects = nullptr; // so the destructor does not destroy the objects
   }
 
   // Destructor
   ~DSVector()
   {
+    delete[] objects;
+    //delete objects; // this would be a mistake check with valgrind --leak-check=full ./DSVector
+    // also check without any delete to see what valgrind says
   }
 
   // Assignment operator
   DSVector &operator=(const DSVector &rhs)
   {
-    // allocate space and copy rhs
+    delete[] objects;
+    theSize = rhs.theSize;
+    theCapacity = rhs.theCapacity;
+    objects = new Object[theCapacity];
+    for (size_t k = 0; k < theSize; ++k)
+      objects[k] = rhs.objects[k];
+
+    return *this;
+  }
+
+  // C++11 move assignment operator: move elements from rhs using std::swap()
+  DSVector &operator=(DSVector &&rhs)
+  {
+    swap(theSize, rhs.theSize);
+    swap(theCapacity, rhs.Capacity);
+    swap(objects, rhs.objects);
 
     return *this;
   }
 
   // is the vector empty?
-  // const means that the function will not modify the object
   bool empty() const
   {
+    return size() == 0;
   }
 
-  // how many elements are in the vector?
-  size_t size() const
+  // how many elements?
+  int size() const
   {
+    return theSize;
   }
 
   // what is the capacity?
-  size_t capacity() const
+  int capacity() const
   {
+    return theCapacity;
   }
 
   // subscript operator
   Object &operator[](size_t index)
   {
-    // Checking bounds is important. For errors, you can use 
-    //     throw std::runtime_error("out of bounds!");
+    if (index < 0 || index >= size())
+      throw std::runtime_error("out of bounds!");
+    return objects[index];
   }
 
   const Object &operator[](size_t index) const
   {
-    // In case we use [] on a const object.
+    if (index < 0 || index >= size())
+      throw std::runtime_error("out of bounds!");
+    return objects[index];
   }
-
 
   // reserve more space
   void reserve(size_t newCapacity)
   {
-    // Allocate new space, copy the data and deallocate the old space.
-    // This function can be used by other functions.
+    if (newCapacity < theSize)
+      return;
+
+    Object *newArray = new Object[newCapacity];
+    for (size_t k = 0; k < theSize; ++k)
+      newArray[k] = objects[k];
+
+    delete[] objects;
+    objects = newArray;
+    theCapacity = newCapacity;
   }
 
   // resize the vector
   void resize(size_t newSize)
   {
+    if (newSize > theCapacity)
+      reserve(newSize);
+    theSize = newSize;
+  }
+
+  const Object &back() const
+  {
+    if (empty())
+      throw std::runtime_error("stack is empty!");
+    return objects[theSize - 1];
   }
 
   // add an element at the end. STL calls this push_back().
   void push_back(const Object &x)
   {
-    // make sure you have the capacity.
+    if (theSize == theCapacity)
+      reserve((theCapacity > 0) ? 2 * theCapacity : 2);
+    objects[theSize++] = x;
   }
 
   // STL algorithms and ranges use begin() and end() to obtain iterators.
   // Iterators for arrays are just regular pointers. operator++ and operator--
   // are already available, so we don't need to implement a nested class iterator,
-  // but just reuse Object * using a nested type definition. 
-  // const iterators are used whenever the compiler wants to make sure that the
-  // object does not get modified.
-  typedef Object * iterator;
+  // but just reuse Object * using a nested type definition.
+  typedef Object *iterator;
   typedef const Object *const_iterator;
-  
+
   iterator begin()
   {
+    return &objects[0];
   }
-  
+
   const_iterator begin() const
   {
+    return &objects[0];
   }
 
   iterator end()
   {
+    return &objects[size()];
   }
 
   const_iterator end() const
   {
+    return &objects[size()];
   }
-
-private:
-  // add members including an array of the template type
 };
 
 #endif
