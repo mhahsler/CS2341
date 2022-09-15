@@ -17,10 +17,11 @@ using namespace std;
  */
 int main()
 {  
-    DSString myString = "Hello, World!";
+    // Note: string literals are char arrays (char *) with `\0` terminators. 
+    DSString myString("Hello, World!");
     cout << myString << endl;
 
-    // this uses the one argument constructor in DSString and then the inherited operator=
+    // this uses the operator= for char*
     myString = "Good bye!";
     cout << myString << endl;
 
