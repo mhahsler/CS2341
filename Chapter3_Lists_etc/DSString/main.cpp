@@ -8,6 +8,13 @@
 
 using namespace std;
 
+/**
+ * @brief Test the string class
+ * 
+ * Always run tests for code with new/delete with valgrind: valgrind --leak-check=full ./string 
+ * 
+ * @return int 
+ */
 int main()
 {  
     DSString myString = "Hello, World!";
