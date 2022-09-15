@@ -96,6 +96,11 @@ public:
     // make sure you have the capacity.
   }
 
+  // remove the last element.
+  void pop_back()
+  {
+  }
+
   // STL algorithms and ranges use begin() and end() to obtain iterators.
   // Iterators for arrays are just regular pointers. operator++ and operator--
   // are already available, so we don't need to implement a nested class iterator,
