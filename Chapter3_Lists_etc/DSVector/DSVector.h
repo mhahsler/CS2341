@@ -10,7 +10,7 @@ using namespace std;
 template <typename Object>
 class DSVector
 {
-private:
+protected:
   size_t theSize;
   size_t theCapacity;
   Object *objects;
@@ -80,7 +80,7 @@ public:
   DSVector &operator=(DSVector &&rhs)
   {
     swap(theSize, rhs.theSize);
-    swap(theCapacity, rhs.Capacity);
+    swap(theCapacity, rhs.theCapacity);
     swap(objects, rhs.objects);
 
     return *this;
