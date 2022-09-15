@@ -21,8 +21,12 @@ If you have access to a Linux host server with all development tools installed (
 
 ## Content
 
-* [HOWTO Compile Programs With VS Code and CMake](Chapter1_Programming/HOWTO_compile_programs_with_CMake.md)
-* [HOWTO Debug and Test](Chapter1_Programming/HOWTO_debug_and_test.md)
+### HOWTOs
+
+* [HOWTO Compile Programs With VS Code and CMake](HOWTO_compile_programs_with_CMake.md)
+* [HOWTO Debug and Test](HOWTO_debug_and_test.md)
+
+### Book Chapters
 
 | Book Chapter |  Notes and Code |
 | :-----: |  :--- |

@@ -29,4 +29,4 @@ Recursion (see [factorial.cpp](factorial.cpp)) needs
 I have placed the function into its own file and added a header, so I can use it in multiple 
 executables (`main` and `test`).
 
-Algorithms need tests. We use `ctest` and `Catch2` library. Details on writing tests and how to setup `CMakeLists.txt` can be found in the [HOWTOs.](../HOWTO_debug_and_test.md)
+Algorithms need tests. We use `ctest` and `Catch2` library. Details on writing tests and how to setup `CMakeLists.txt` can be found in the [HOWTOs.](../../HOWTO_debug_and_test.md)

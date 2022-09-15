@@ -35,4 +35,4 @@ We will mostly skip the move versions in the code example to make the code short
 * [IntCellPtr](IntCellPtr.h) does use **dynamic memory allocation** for the stored `int` (unnecessarily, but to show what happens) so we have to implement the big 5. Unfortunately, the programmer forgot to add a destructor and overload the assignment operator which leads to problems. Use `valgrind` or the `AddressSanitizer` library to identify the issue.
 * [IntCellPtrOK](IntCellPtrOK.h) correctly adds the destructor and the assignment operator.
 
-See how to debug and how to detect memory leaks on the [HOWTO page](../HOWTOs.md).
+See how to debug and how to detect memory leaks on the [HOWTO page](../../HOWTOs.md).

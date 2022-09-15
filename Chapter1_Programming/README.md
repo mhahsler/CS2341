@@ -4,8 +4,8 @@
 
 ## HOWTOs
 
-* [HOWTO Compile Programs With VS Code and CMake](HOWTO_compile_programs_with_CMake.md)
-* [HOWTO Debug and Test](HOWTO_debug_and_test.md)
+* [HOWTO Compile Programs With VS Code and CMake](../HOWTO_compile_programs_with_CMake.md)
+* [HOWTO Debug and Test](../HOWTO_debug_and_test.md)
 
 ## Code Examples
 
