@@ -3,11 +3,18 @@
 
 using namespace std;
 
+
+/**
+ * @brief Main to test different DSVector functions.
+ * 
+ * @return int 
+ */
 int main()
 {
-    DSVector<int> e{0};
-
     cout << boolalpha;
+    
+    // create an empty vector
+    DSVector<int> e(0);
     cout << "size: " << e.size() << "\n"
          << "capacity: " << e.capacity() << "\n"
          << "empty? " << e.empty() << "\n\n";
@@ -17,7 +24,12 @@ int main()
          << "capacity: " << e.capacity() << "\n"
          << "empty? " << e.empty() << "\n\n";
 
-    DSVector<int> v{5};
+    e.pop_back();
+    cout << "size: " << e.size() << "\n"
+         << "capacity: " << e.capacity() << "\n"
+         << "empty? " << e.empty() << "\n\n";
+
+    DSVector<int> v{5, 6, 7};
     cout << "size: " << v.size() << "\n"
          << "capacity: " << v.capacity() << "\n"
          << "empty? " << v.empty() << "\n\n";
@@ -69,6 +81,10 @@ int main()
     v[0] = 99;
 
     for (auto &x : v2)
+        cout << x << " ";
+    cout << endl;
+
+    for (auto &x : v)
         cout << x << " ";
     cout << endl;
 

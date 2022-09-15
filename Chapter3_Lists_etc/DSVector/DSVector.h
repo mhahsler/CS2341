@@ -16,14 +16,14 @@ private:
   Object *objects;
 
 public:
-  // Create an empty DSVector
+  // Create an empty DSVector. Call this as DSVector<int> v(4);
   explicit DSVector(size_t initSize = 0)
       : theSize{initSize}, theCapacity{initSize}
   {
     objects = new Object[theCapacity];
   }
 
-  // C++11 initializer list with {}
+  // C++11 initializer list with {}: Call this as DSVector<int> v{5};
   DSVector(const initializer_list<Object> &v)
   {
     theSize = 0;
@@ -33,7 +33,7 @@ public:
       this->push_back(itm);
   }
 
-  // Copy constructor
+  // Copy constructor needed because we use new!
   DSVector(const DSVector &rhs)
       : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{nullptr}
   {
@@ -42,7 +42,8 @@ public:
       objects[k] = rhs.objects[k];
   }
 
-  // C++11 Move constructor ... steal the pointer to objects
+  // C++11 Move constructor ... "steals" the pointer from the rhs 
+  // (you don't need to implement the move version in your code)
   DSVector(DSVector &&rhs)
       : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{rhs.objects}
   {
@@ -51,18 +52,20 @@ public:
     rhs.objects = nullptr; // so the destructor does not destroy the objects
   }
 
-  // Destructor
+  // Destructor needed because we use new!
   ~DSVector()
   {
     delete[] objects;
     //delete objects; // this would be a mistake check with valgrind --leak-check=full --track-origins=yes ./DSVector
     // also check without any delete to see what valgrind says
+    // Note: You can also compile with the asan library (see CMakeLists.txt) as an alternative to valgrind
   }
 
-  // Assignment operator
+  // Copy assignment operator needed because we use new!
   DSVector &operator=(const DSVector &rhs)
   {
     delete[] objects;
+    
     theSize = rhs.theSize;
     theCapacity = rhs.theCapacity;
     objects = new Object[theCapacity];
@@ -72,7 +75,8 @@ public:
     return *this;
   }
 
-  // C++11 move assignment operator: move elements from rhs using std::swap()
+  // C++11 move assignment operator: swaps all elements with rhs using std::swap()
+  // (you don't need to implement the move version in your code)
   DSVector &operator=(DSVector &&rhs)
   {
     swap(theSize, rhs.theSize);
@@ -155,10 +159,19 @@ public:
     objects[theSize++] = x;
   }
 
+  // delete the last element
+  void pop_back()
+  {
+    if (empty())
+      throw std::runtime_error("stack is empty!");
+    
+    --theSize;
+  }
+
   // STL algorithms and ranges use begin() and end() to obtain iterators.
-  // Iterators for arrays are just regular pointers. operator++ and operator--
-  // are already available, so we don't need to implement a nested class iterator,
-  // but just reuse Object * using a nested type definition.
+  // Iterators for arrays are just regular pointers so we can reuse pointers where 
+  // operator++ and operator-- are already available, so we don't need to implement a 
+  // nested class iterator but just reuse Object * using a nested type definition.
   typedef Object *iterator;
   typedef const Object *const_iterator;
 
