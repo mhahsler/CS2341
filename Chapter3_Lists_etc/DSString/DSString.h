@@ -19,7 +19,7 @@ public:
      **/
 
     // we get those from DSVector by using default in C++11
-    DSString() = default;
+    DSString(size_t initSize = 0) : DSVector(initSize) {};
     DSString(const DSString &) = default;
     DSString(DSString &&rhs) = default;
     ~DSString() = default;
@@ -69,6 +69,7 @@ public:
      * pointer.
      **/
     const char *c_str() const;
+    const char *c_str();
 
     /**
      * Overloaded stream insertion operator to print the contents of this

@@ -10,6 +10,11 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 add_compile_options(-Wall -Wextra -pedantic)
 
+# Use the AddressSanitizer library to detect memory leaks at run-time.
+#add_compile_options(-fsanitize=address -fno-omit-frame-pointer)
+#link_libraries(asan)
+
+
 # Create the executable
 add_executable(string main.cpp DSString)
 

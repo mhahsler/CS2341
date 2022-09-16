@@ -30,9 +30,15 @@ DSString &DSString::operator=(const char *rhs)
 
 DSString DSString::operator+(const DSString &rhs) const
 {
-    // add the characters in rhs to the object using push_back()
-    cerr << *this << " + " << rhs << " not implemented!" << endl;
-    DSString tmp;
+    DSString tmp( size() + rhs.size() );
+
+    for (size_t i = 0; i < size(); ++i)
+        tmp[i] = (*this)[i];
+
+    for (size_t i = 0; i < rhs.size(); ++i)
+        tmp[size() + i] = rhs[i];
+    
+
     return tmp;
 }
 
@@ -102,19 +108,29 @@ DSString DSString::substring(size_t start, size_t numChars) const
 }
 
 /**
- * the c_str function returns a null-terminated c-string holding the
- * contents of this object.
- **/
+ * This function adds `\0` and then returns a const pointer to the array
+ */
+const char *DSString::c_str()
+{
+    resize( size() + 1 );
+    (*this)[ size() - 1 ] = '\0';
+    
+    return objects;
+}
+
+/**
+ * Unfortunately, this does not work for a const DSString!!!
+ */
 const char *DSString::c_str() const
 {
-    // I would need to keep an extra `\0` to make this work.
-    cerr << "not implemented" << endl; 
+    cerr << "Cannot return a cstring from a const DSString!" << endl; 
     return nullptr;
 }
 
 /**
  * Overloaded stream insertion operator to print the contents of this
- * string to the output stream in the first argument.
+ * string to the output stream in the first argument. Note: this is 
+ * not a member function, but a friend outside the class namespace.
  **/
 std::ostream &operator<<(std::ostream &out, const DSString &x)
 {

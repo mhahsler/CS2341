@@ -33,6 +33,10 @@ int main()
     cout << boolalpha;
     cout << (a == b) << endl;
 
+    cout << myString + " - C++" << endl;
+
+    cout << myString.c_str() << endl;
+
     // use initialization list (see DSVector.h)
     DSVector<DSString> strings = {
         DSString("bbb"),
