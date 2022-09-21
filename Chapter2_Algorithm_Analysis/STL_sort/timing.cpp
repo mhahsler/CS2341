@@ -33,6 +33,8 @@ int main()
 
     cout << "N, time [micro sec.]" << endl;
 
+    
+    // Note that this goes up to 10 million!
     for (int N = 1; N <= 10000000; N *= 10)
     // for (int N = 1; N <= 20000; N += 1000)
     {
