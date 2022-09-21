@@ -38,7 +38,10 @@ int* randomArray(int size)
 // Driver code
 int main()
 {
-    
+
+    // set the seed for the random number generator
+    // srand(time(NULL));
+
     int N = 10;
     int* arr = randomArray(N);
 

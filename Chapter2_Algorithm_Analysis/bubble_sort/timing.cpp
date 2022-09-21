@@ -39,12 +39,13 @@ int *randomArray(int size)
 // Driver code
 int main()
 {
+    // set the seed for the random number generator
     srand(time(NULL));
 
     cout << "N, time [micro sec.]" << endl;
 
-    for (int N = 1; N <= 100000; N *= 10)
-    //for (int N = 1; N <= 20000; N += 1000)
+    for (int N = 1; N <= 20000; N += 1000)
+    //for (int N = 1; N <= 100000; N *= 10)
     {
     int *arr = randomArray(N);
 
