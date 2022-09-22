@@ -9,12 +9,15 @@ using namespace std;
 int main()
 {
     // read a single file using fstream
+    ifstream file_input("./test.txt");
+    
+    // line buffer
     string line;
 
-    ifstream file_input("./test.txt");
-
-    // https://cplusplus.com/doc/tutorial/files/
-    // It gets very confusing with functions for cstrings and C++ STL strings
+    // It gets very confusing with functions if you mix cstrings and C++ STL strings!!!
+    // I suggest that you stick with C++ std::getline to read line-by-line 
+    // here is a tutorial: https://cplusplus.com/doc/tutorial/files/
+    // see https://en.cppreference.com/w/cpp/string/basic_string/getline
 
     if (file_input.is_open())
     {
