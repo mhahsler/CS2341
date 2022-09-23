@@ -42,6 +42,7 @@ public:
 // clear
 // insert in front (push_front).
 // insert at a specified position.
+// get the value at a specified position.
 // remove the element in front (pop_front)
 // remove using position.
 // find an element with a specific value (and return the position. First element in list is pos 0).
