@@ -40,6 +40,8 @@ public:
      *
      * A const iterator is used for const objects and does not allow the code to
      * change the data. Getting const right is very tricky!
+     * 
+     * Here we use a pointer to the current node as the iterator.
      */
     class const_iterator
     {
@@ -54,19 +56,13 @@ public:
             : current{nullptr} {}
 
         /**
-         * @brief Construct a new const iterator object from a Node pointer
-         *
-         * @param p
+         * @brief Construct a new const iterator object from a Node pointer (used internally)
          */
         const_iterator(Node *p)
             : current{p} {}
 
         /**
          * @brief Dereferencing operator
-         *
-         * const does not allow the Object to be changed.
-         *
-         * @return const Object&
          */
         const Object &operator*() const
         {
@@ -74,11 +70,7 @@ public:
         }
 
         /**
-         * @brief Increment (prefix)
-         *
-         * Move to the next element and return an iterator for that element.
-         *
-         * @return const_iterator
+         * @brief Increment (prefix) - Move to the next element and return an iterator for that element.
          */
         const_iterator &operator++()
         {
@@ -87,11 +79,7 @@ public:
         }
 
         /**
-         * @brief Increment (postfix)
-         *
-         * Return an iterator to the current element and move to the next element.
-         *
-         * @return const_iterator
+         * @brief Increment (postfix) - Return an iterator to the current element and move to the next element.
          */
         const_iterator operator++(int)
         {
@@ -101,12 +89,7 @@ public:
         }
 
         /**
-         * @brief Equal-to operator
-         *
-         * Do the iterators reference the same element?
-         *
-         * @param rhs
-         * @return bool
+         * @brief Equal-to operator - Do the iterators reference the same element?
          */
         bool operator==(const const_iterator &rhs) const
         {
@@ -114,12 +97,7 @@ public:
         }
 
         /**
-         * @brief Not-equal-to operator
-         *
-         * Based on operator==
-         *
-         * @param rhs
-         * @return bool
+         * @brief Not-equal-to operator - Based on operator==
          */
         bool operator!=(const const_iterator &rhs) const
         {
@@ -149,15 +127,11 @@ public:
 
         /**
          * @brief Construct a new iterator object from a Node
-         * 
-         * @param p 
          */
         iterator(Node *p) : const_iterator(p) {}
 
         /**
          * @brief Non-const dereferencing operator
-         *
-         * @return Object&
          */
         Object &operator*()
         {
@@ -166,10 +140,6 @@ public:
 
         /**
          * @brief Non-const Increment (prefix)
-         *
-         * Move to the next element and return an iterator for that element.
-         *
-         * @return iterator
          */
         iterator &operator++()
         {
@@ -179,10 +149,6 @@ public:
 
         /**
          * @brief Non-const Increment (postfix)
-         *
-         * Return an iterator to the current element and move to the next element.
-         *
-         * @return iterator
          */
         iterator operator++(int)
         {
@@ -196,7 +162,6 @@ public:
 
     /**
      * @brief Construct a new DSlist iter<object> object
-     * 
      */
     DSList_iter<Object>()
         : head{nullptr} {}
@@ -205,7 +170,6 @@ public:
     
     /**
      * @brief Destroy the DSlist iter object
-     * 
      */
     ~DSList_iter()
     {
@@ -214,8 +178,6 @@ public:
 
     /**
      * @brief Returns an iterator to the first element
-     * 
-     * @return iterator 
      */
     iterator begin() const
     {
@@ -224,8 +186,6 @@ public:
 
     /**
      * @brief Returns an iterator to the past-the-end element
-     *
-     * @return iterator
      */
     iterator end() const
     {
@@ -234,8 +194,6 @@ public:
 
     /**
      * @brief Number of elements
-     * 
-     * @return size_t 
      */
     size_t size() const
     {
@@ -248,8 +206,6 @@ public:
 
     /**
      * @brief Is the list empty?
-     * 
-     * @return bool
      */
     bool empty() const
     {
@@ -258,7 +214,6 @@ public:
 
     /**
      * @brief Empty the list
-     * 
      */
     void clear()
     {
@@ -270,8 +225,6 @@ public:
     
     /**
      * @brief insert in front
-     * 
-     * @param x 
      */
     void push_front(const Object &x)
     {
@@ -281,7 +234,9 @@ public:
 
     // insert using an iterator
 
-    // remove the element in front (pop_front)
+    /**
+     * @brief remove the element in front (pop_front)
+     */
     Object pop_front()
     {
         if (empty())
