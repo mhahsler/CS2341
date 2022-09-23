@@ -3,7 +3,8 @@
 
 #include <iostream>
 
-template <typename Object> class DSMatrix
+template <typename Object> 
+class DSMatrix
 {
 private:
     int rows;
@@ -25,6 +26,7 @@ public:
 
     // we would overload [], but C++ currently does not
     // allow more then one parameters for []
+    // checking bounds for col and row would be a good idea
     Object &operator()(int col, int row)
     {
         return data[col * rows + row];
