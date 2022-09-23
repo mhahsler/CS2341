@@ -64,6 +64,8 @@ Stacks and queues are implemented using vectors/array or lists.
 
 ## Stacks
 
+For stacks information is added to the top and taken from the top. Stacks are said to operate in a LIFO (Last-In-First-Out) fashion.
+
 ### Interface
 * `push(value)` add an element on top.
 * `pop()`  remove the top element.
@@ -94,9 +96,9 @@ STL provides: [`std::stack`](https://cplusplus.com/reference/stack/stack/)
 
 ## Queues
 
-Insertion is done on one end and deletion on the other.
+Insertion is done on one end and deletion on the other. This is called FIFO (First-In-First-Out).
 
-_Note_: Simple queues are different from priority queues which are introduced under the name _heap_ later).
+_Note_: Simple queues are different from **priority queues** which are introduced under the name **heap** later.
 
 ### Interface
 * `enqueue(value)` insertion
