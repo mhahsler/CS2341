@@ -5,10 +5,10 @@
 
 /**
  * @brief Singly-linked list using iterators.
- * 
+ *
  * Partial implementation
- * 
- * @tparam Object 
+ *
+ * @tparam Object
  */
 template <typename Object>
 class DSList_iter
@@ -16,7 +16,7 @@ class DSList_iter
 private:
     /**
      * @brief The Node data structure
-     * 
+     *
      * struct is a class with all public members
      */
     struct Node
@@ -28,9 +28,11 @@ private:
             : data{d}, next{n} {};
     };
 
+    Node *head;
+
 public:
     /**
-     * @brief Nested iterator class for Const Objects
+     * @brief Public nested iterator class for const objects
      *
      * Iterators need
      * * Constructor
@@ -40,7 +42,7 @@ public:
      *
      * A const iterator is used for const objects and does not allow the code to
      * change the data. Getting const right is very tricky!
-     * 
+     *
      * Here we use a pointer to the current node as the iterator.
      */
     class const_iterator
@@ -107,7 +109,7 @@ public:
     };
 
     /**
-     * @brief Nested iterator class for Non-Const Objects
+     * @brief Public nested iterator class for non-const objects
      *
      * This is a const_iterator plus some non-const additions. We use inheritance.
      * So that iterator can access the current pointer, it is declared protected.
@@ -167,7 +169,7 @@ public:
         : head{nullptr} {}
 
     // missing: Copy constructor
-    
+
     /**
      * @brief Destroy the DSlist iter object
      */
@@ -222,7 +224,7 @@ public:
     }
 
     // missing: find an element with a specific value (and return an iterator)
-    
+
     /**
      * @brief insert in front
      */
@@ -242,8 +244,11 @@ public:
         if (empty())
             throw std::runtime_error("List is empty!");
 
-        Node *tmpNode = head;
+        // save the data
         Object tmpObject = head->data;
+        
+        // delete the node
+        Node *tmpNode = head;
         head = head->next;
         delete tmpNode;
 
@@ -253,8 +258,6 @@ public:
     // missing: remove using an iterator
     // missing: remove an element with a specific value (find and then remove)
 
-private:
-    Node *head;
 };
 
 #endif

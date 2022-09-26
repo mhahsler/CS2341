@@ -7,7 +7,7 @@
  * 1. Use a position index to refer to an element. This is simpler to 
  *    implement compared to iterators (see iterator version), but does not
  *    play as nicely with the STL.
- * 2. Use a sentinel node (a node without data that represents the 
+ * 2. You can use a sentinel node (a node without data that represents the 
  *    beginning of the list) to avoid special cases for inserting and deleting 
  *    the first element.
  * 
