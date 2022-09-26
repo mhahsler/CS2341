@@ -58,10 +58,16 @@ Nodes are defined as:
 
 ### Time Complexity
 
-Each element is allocated individually so we do not need contiguous memory and all the copying.
-What is the time complexity for 
+Each element is allocated in a linked list individually, so we do not need contiguous memory and all the copying.
+What is the time complexity for the following operations using lists or arrays (Big-Oh notation)?
 
-* inserting a new element?
-* finding an element?
-* removing an element?
-* deleting the list?
+
+| Operation      | Array | Linked List |
+| ----------- | ----------- | ---------|
+| insert a new element      | | |
+| access an element (with index) | | |
+| access an element (with iterator) | | |
+| find an element by value  | | |
+| delete an element (with index) | | |
+| delete an element (with iterator) | | |
+| delete the whole data structure | | |
