@@ -1,11 +1,12 @@
 # HOWTO Compile Programs With CMake
 
-Compiling C++ code can be done with one of two popular tool chains:
+Compiling C++ code can be done with one of two popular toolchains:
 
-* [GCC](https://en.wikipedia.org/wiki/GNU_Compiler_Collection) (Gnu Compiler Collection)
-* [Clang/LLVM](https://en.wikipedia.org/wiki/Clang)  (C language family frontend for LLVM)
+* [GCC](https://en.wikipedia.org/wiki/GNU_Compiler_Collection) (GNU Compiler Collection) contains compilers for 
+   various compiled languages. The C++ compiler is often called `g++`.
+* [Clang/LLVM](https://en.wikipedia.org/wiki/Clang) (C language family frontend for the [LLVM compiler toolchain](https://llvm.org/))
 
-Compilation consists of two steps (LLVM uses a few more to allow for a language-independent intermediate representation):
+Compilation consists of two steps (LLVM uses a few more to allow for a source and target-independent intermediate representation):
 
 1. Compilation of each `.cpp` file to object code ending in `.o`
 2. Linking all `.o` files and external libraries together to create the executable.
