@@ -1,5 +1,19 @@
 # HOWTO Compile Programs With CMake
 
+Compiling C++ code can be done with one of two popular tool chains:
+
+* [GCC](https://en.wikipedia.org/wiki/GNU_Compiler_Collection) (Gnu Compiler Collection)
+* [Clang/LLVM](https://en.wikipedia.org/wiki/Clang)  (C language family frontend for LLVM)
+
+Compilation consists of two steps (LLVM uses a few more to allow for a language-independent intermediate representation):
+
+1. Compilation of each `.cpp` file to object code ending in `.o`
+2. Linking all `.o` files and external libraries together to create the executable.
+
+CMake organizes the compilation process. It will find/configure your compiler tool chain and produce a `Makefile` that does the actual compilation. CMake is run from the terminal using `cmake .` and the Makefile is run using `make`. VSCode puts everything in the `build` subdirectory. CMake is configured using the `CMakeLists.txt` file. All files `.cpp`
+files need to be specified in the `add_executable()` line or linking will fail. 
+
+
 ## How to Set Up a New Program
 
 1. Make a project directory using the file manager, start VS Code and open the directory 
@@ -35,9 +49,9 @@
 
 ## How to Compile and Run the Examples in this Repository
 
-1. Clone the repository.
+1. Clone the repository using `git clone https://github.com/mhahsler/CS2341.git`
 2. Go in your shell to an example and run `code .` You can also start VS Code and
-  open the folder. 
+  use `Open Folder` (on Windows you need to use `Open Folder in WSL`; click on the green square in the bottom-left corner). 
 3. Follow steps above.
 
 

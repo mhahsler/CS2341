@@ -3,6 +3,9 @@
 
 ## How to Debug
 
+You need to have `gdb` ([GNU Project Debugger](https://www.sourceware.org/gdb/)) installed. 
+
+
 ### In VS Code
 
 1. You may have to configure CMake for debugging by clicking in the status bar on `CMake: [Debug]` and select `Debug`.
@@ -54,11 +57,11 @@ Example code: [Big-Five for Classes](big-five)
 ### Option 1: Valgrind 
 [Valgrind](https://valgrind.org/) contains tools that can automatically detect many memory management and threading bugs.
 These are issues happening at run-time and the compiler cannot find them.
-*Note:* `valgrind` is not available on Windows and the VS Code integration is not great. It can be installed on Ubuntu (Windows with WSL) with the WSL shell command
-`sudo apt install valgrind`.
+*Note:* `valgrind` is not available on Windows or MacOS and the VS Code integration is not great. It can be installed on Ubuntu (Windows with WSL) with the WSL shell command
+`sudo apt install valgrind`. 
 
-1. Find the compiled executable (in VS Code + CMake it is in the build directory). use `cd build` in the terminal to get there.
-2. Run `valgrind --leak-check=full --track-origins=yes ./executable` and look for lost bytes. `executible` is your compiled program.
+1. Find the compiled executable (in VSCode + CMake it is in the `build` subdirectory). use `cd build` in the terminal to get there.
+2. Run `valgrind --leak-check=full --track-origins=yes ./executable` and look for lost bytes. `executable` is your compiled program.
 
 Valgrind can also be used for profiling (finding out where your code is slow).
 Here is a description of [how to profile with Valgrind](https://developer.mantidproject.org/ProfilingWithValgrind.html).
@@ -78,4 +81,4 @@ You need to comment these lines out if you want to compile the program for use (
 
 ### MacOS
 
-Unfortunately, `valgrind` is not available for MacOS and the standard compilers in Xcode are missing the `asan` library. You will need to run memory leak tests on a Linux host that has the needed tools installed (e.g., using the VS code extension `Remote - ssh`). 
+Unfortunately, `valgrind` is not available for MacOS and the standard compilers in Xcode are missing the `asan` library. You will need to run memory leak tests on a Linux host that has the needed tools installed (e.g., using the VSCode extension `Remote - ssh`). 
