@@ -27,7 +27,7 @@ Observations:
 
 ### Implementation
 
-Since each node can have a variable list of children which can be stored in a linked list.
+Since each node can have a variable list of children which can be stored in a [singly-linked list](https://en.cppreference.com/w/cpp/container/forward_list).
 
 ```cpp
 template <typename Comparable>
@@ -35,7 +35,7 @@ class MAryNode
 {
 public:
     Comparable element;
-    forward_list<MAryNode> children;
+    std::forward_list<MAryNode> children;
 }
 ```
 
@@ -44,9 +44,9 @@ public:
 
 
 ## Binary Trees
-In a binary tree is a tree in which no node can have more than two children.
+A binary tree is a tree in which no node can have more than two children.
 
-Complexity: The average depth of a binary tree is (under some assumptions of no deletions) $O(\sqrt{N})$. The worst case depth is $N - 1$ (a single branch going all the way down).
+Complexity: The average depth of a binary tree is (under some assumptions: random insertion and no deletions) $O(\sqrt{N})$. The worst case depth is $N - 1$ (a single branch going all the way down).
 
 The node structure is similar to a linked list node
 
@@ -61,7 +61,8 @@ public:
 }
 ```
 
-`nullptr` represent missing children.
+`nullptr` represents missing children.
+
 
 ### Types of tree traversals
 
