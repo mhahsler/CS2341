@@ -1,7 +1,8 @@
 # Chapter 4: Trees, Sets, and Maps
 
-Lists have for most operations $O(N)$ which is slow for large amounts of data.
-Trees can have an average runtime of $O(log\ N)$.
+Lists have for many operations $O(N)$ (e.g., search, insertion at an arbitrary location) 
+which is slow for large amounts of data.
+Trees can have an average time complexity of $O(log\ N)$.
 
 Recursive definition: A tree $T$
 
@@ -27,20 +28,34 @@ Observations:
 
 ### Implementation
 
-Since each node can have a variable list of children which can be stored in a [singly-linked list](https://en.cppreference.com/w/cpp/container/forward_list).
+We implement a tree as a set of connected `Nodes`.
+
+Each node in a general tree ($M$-ary tree) can have a variable list of children. We can store it
+in a [singly-linked list](https://en.cppreference.com/w/cpp/container/forward_list).
 
 ```cpp
 template <typename Comparable>
-class MAryNode
-{
-public:
+class MaryTree {
+
+private:
+  class Node
+  {
+  public:
     Comparable element;
-    std::forward_list<MAryNode> children;
-}
+    std::forward_list<Node> children;
+  };
+
+  Node *root;
+
+public:
+  // Rule-of-3 + functions to add, find and remove nodes
+};
 ```
 
 ![m-ary tree](m-ary_tree.png)
 
+
+Note: Some implementations only implement the node class and represent the tree as a reference or pointer to the root node.
 
 
 ## Binary Trees
