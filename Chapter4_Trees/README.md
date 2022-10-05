@@ -55,7 +55,7 @@ public:
 ![m-ary tree](m-ary_tree.png)
 
 
-Note: Some implementations only implement the node class and represent the tree as a reference or pointer to the root node.
+Note: Some implementations only use the node class and represent the tree as a reference or pointer to the root node.
 
 
 ## Binary Trees
