@@ -31,10 +31,18 @@ Note that arguments cannot have a space unless they are in (escaped) quotation m
 
 # File I/O
 
-I/O is organized as streams.
 
-Example: [How to read from a file.](fileIO_main.cpp)
+## C
+C file I/O uses cstring buffers.
 
-To perform operations on the filesystem (copy files, deal with paths, iterate over files, etc.),
+Example: [C file I/O example](fileIO_cstring_main.cpp)
+
+## C++
+
+C++ file I/O uses streams and `std::string`.
+C++ also provides convenient access to filesystem operations (copy files, deal with paths, iterate over files, etc.),
 C++17 incorporates `boost.filesystem` as library [filesystem.h](https://en.cppreference.com/w/cpp/filesystem). You need add `set(CMAKE_CXX_STANDARD 17)` to 
 `CMakeLists.txt` to use this standard C++ version.
+
+Example: [C++ file I/O example]](fileIO_cpp_main.cpp)
+

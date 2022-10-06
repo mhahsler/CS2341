@@ -7,4 +7,5 @@ set(CMAKE_CXX_STANDARD 17)
 file(COPY test.txt DESTINATION .)
 
 add_executable(CLInterface CLInterface_main.cpp)
-add_executable(fileIO fileIO_main.cpp)
+add_executable(fileIO_cstring fileIO_cstring_main.cpp)
+add_executable(fileIO_cpp fileIO_cpp_main.cpp)
