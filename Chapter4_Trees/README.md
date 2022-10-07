@@ -87,7 +87,9 @@ public:
 Visiting nodes is called [tree traversal](https://en.wikipedia.org/wiki/Tree_traversal). Traversal works for m-ary trees, but we define it here for the special case of binary trees with 
 a node N and a left (L) and right (R) subtree as children.
 
-**Depth-first traversals:**
+#### Depth-first traversal
+
+Follow each path all the way to the leaf node.
 
 * **preorder** (NLR): process node before children.
 * **inorder** (LNR) follow each path to the leaf-node (left to right). 
@@ -95,28 +97,46 @@ a node N and a left (L) and right (R) subtree as children.
 
 Coming back up from a leaf to a node to process a different subtree is called _backtracking_.
 
-**Breath-first traversal***
+#### Breadth-first traversal
 
-* **level-order**: process the tree by level (may need an extra data structure like a queue or a stack).
+Also called level-order: process the tree by level (may need an extra data structure like a queue to store unprocessed nodes).
+You will learn more about breadth-first traversal when you learn about graphs in algorithms. 
+
 
 
 ### Application Examples: Expression Trees
 
-An expression tree represent an expression with binary operators like $(a + b) * c * (d + e)$.
-It can be used to create 
+An expression tree represent an expression with binary operators like $6 * (5 + (2 + 3) * 8 + 3)$.
+
+**Construction** 
+
+If we have infix notation then we can convert it first to postfix notation using a stack: `6 * (5 + (2 + 3) * 8 + 3)  => 6 5 2 3 + 8 * + 3 + *`
+Algorithm: Read the expression left-to-right.
+  - Add any numbers directly to the output.
+  - Push `(` on the stack.
+  - For `)` do: pop from the stack and add the value to the output till an opening
+    parenthesis is reached on the stack (also pop the `(` and ignore it).
+  - For operators: while the operators on the stack have higher precedence (note that `(` has the highest precedence),
+    pop them and add them to the output.
+    Then push the new operator on the stack.
+  - Once the expression is done, pop any remaining operator and add it to the output.
+
+We can create a expression tree from postfix notation with a stack: 
+  1. Read postfix expression one symbol at a time
+  2. If the next symbol is an operand then create two nodes and push pointers to the stack.
+  3. If it is an operator then 
+     a. pop two operand nodes from the stack and 
+     b. create a tree with the operator as its root and the two operands as its children. 
+     c. Push a pointer to the tree on the stack
+
+
+Applications of the parse tree: create 
   - infix notation: inorder transversal (LNR) = left expression in parentheses then operator and then the right subtree in parentheses. 
   - postfix notations: postorder traversal (LRN) = process operator after the children (no need for parentheses). 
   - prefix notations: preorder traversal (NLR) = process operator first (no need for parentheses). 
 
-  Construction from postfix notation with a stack: 
-  1. Read postfix expression one symbol at a time
-  2. If the next symbol is an operand then push a pointer to it on the stack.
-  3. If it is a operator then 
-     a. pop two operand pointers from the stack and 
-     b. create a tree with the operator as its root and the two operands as its children. 
-     c. Push a pointer to the tree on the stack
 
-[Parse trees](https://en.wikipedia.org/wiki/Parse_tree) are $M$-ary expression trees that are used in co1mpiler design. In natural language processing such trees are called syntax trees. 
+[Parse trees](https://en.wikipedia.org/wiki/Parse_tree) are $M$-ary expression trees that are used in compiler design. In natural language processing such trees are called syntax trees. 
 
 
 ## Binary Search Tree
