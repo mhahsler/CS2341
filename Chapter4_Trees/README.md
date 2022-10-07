@@ -57,15 +57,8 @@ public:
 
 Note: Some implementations only use the node class and represent the tree as a reference or pointer to the root node.
 
-Example: Unix file system. Try the `tree` command on a linux machine. 
+Example: Unix file system. Try the `tree` command on a linux machine. It performs a preorder traversal (depth-first; children are processed after the parent).
 
-
-What is the time complexity for the following operations:
-
-* Inserting a node?
-* Finding a node?
-* Deleting a node?
-* Deleting a whole tree?
 
 
 ## Binary Trees
