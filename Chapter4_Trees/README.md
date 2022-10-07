@@ -57,6 +57,9 @@ public:
 
 Note: Some implementations only use the node class and represent the tree as a reference or pointer to the root node.
 
+Example: Unix file system. Try the `tree` command on a linux machine. 
+
+
 What is the time complexity for the following operations:
 
 * Inserting a node?
