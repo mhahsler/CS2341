@@ -57,6 +57,13 @@ public:
 
 Note: Some implementations only use the node class and represent the tree as a reference or pointer to the root node.
 
+What is the time complexity for the following operations:
+
+* Inserting a node?
+* Finding a node?
+* Deleting a node?
+* Deleting a whole tree?
+
 
 ## Binary Trees
 A binary tree is a tree in which no node can have more than two children.
