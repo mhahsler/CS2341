@@ -110,32 +110,40 @@ An expression tree represent an expression with binary operators like $6 * (5 + 
 
 **Construction** 
 
-If we have infix notation then we can convert it first to postfix notation using a stack: `6 * (5 + (2 + 3) * 8 + 3)  => 6 5 2 3 + 8 * + 3 + *`
-Algorithm: Read the expression left-to-right.
-  - Add any numbers directly to the output.
-  - Push `(` on the stack.
-  - For `)` do: pop from the stack and add the value to the output till an opening
-    parenthesis is reached on the stack (also pop the `(` and ignore it).
-  - For operators: while the operators on the stack have higher precedence (note that `(` has the highest precedence),
-    pop them and add them to the output.
-    Then push the new operator on the stack.
-  - Once the expression is done, pop any remaining operator and add it to the output.
+If we have infix notation then we can convert it first to postfix notation using a stack: `6 * (5 + (2 + 3) * 8 + 3) => 6 5 2 3 + 8 * + 3 + *`
 
-We can create a expression tree from postfix notation with a stack: 
-  1. Read postfix expression one symbol at a time
-  2. If the next symbol is an operand then create two nodes and push pointers to the stack.
-  3. If it is an operator then 
+*Algorithm:* 
+```
+Read the expression left-to-right. Do the following for:
+  - Operand: Add any operand (here a number) directly to the output.
+  - `(`: push on the stack.
+  - `)`: pop all operators from the stack and add them to the output till an opening
+    parenthesis is reached on the stack (also pop the `(` and ignore it).
+  - Operator: pop all operators with higher or equal precedence ([order of operations](https://en.wikipedia.org/wiki/Order_of_operations)) than the new operator from the stack and add them to the output (if any).
+    Push the new operator on the stack.
+  Once the expression is done, pop any remaining operator and add it to the output.
+```
+
+
+We can create a expression tree from postfix notation with a stack.
+
+*Algorithm:*
+```
+  Read postfix expression one symbol at a time.
+  - If the next symbol is an operand then create two nodes and push pointers to the nodes to the stack.
+  - If it is an operator then 
      a. pop two operand nodes from the stack and 
      b. create a tree with the operator as its root and the two operands as its children. 
-     c. Push a pointer to the tree on the stack
-
+     c. push a pointer to the tree on the stack
+  Once the expression is completely processes, you should have a pointer to the expression tree on the stack.
+```
 
 Example: [Converter](https://www.web4college.com/converters/infix-to-postfix-prefix.php) 
 
 Applications of the parse tree: create 
-  - infix notation: inorder transversal (LNR) = left expression in parentheses then operator and then the right subtree in parentheses. 
-  - postfix notations: postorder traversal (LRN) = process operator after the children (no need for parentheses). 
-  - prefix notations: preorder traversal (NLR) = process operator first (no need for parentheses). 
+  - infix notation: inorder tree transversal (LNR) = left expression in parentheses then operator and then the right subtree in parentheses. 
+  - postfix notations: postorder tree traversal (LRN) = process operator after the children (no need for parentheses). 
+  - prefix notations: preorder tree traversal (NLR) = process operator first (no need for parentheses). 
 
 
 [Parse trees](https://en.wikipedia.org/wiki/Parse_tree) are $M$-ary expression trees that are used in compiler design. In natural language processing such trees are called syntax trees. 
