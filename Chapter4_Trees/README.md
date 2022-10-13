@@ -110,7 +110,8 @@ An expression tree represent an expression with binary operators like $6 * (5 + 
 
 **Construction** 
 
-If we have infix notation then we can convert it first to postfix notation using a stack: `6 * (5 + (2 + 3) * 8 + 3) => 6 5 2 3 + 8 * + 3 + *`
+If we have infix notation then we can convert it first to postfix notation using a stack: 
+  `6 * (5 + (2 + 3) * 8 + 3) => 6 5 2 3 + 8 * + 3 + *`
 
 *Algorithm:* 
 ```
@@ -119,7 +120,8 @@ Read the expression left-to-right. Do the following for:
   - `(`: push on the stack.
   - `)`: pop all operators from the stack and add them to the output till an opening
     parenthesis is reached on the stack (also pop the `(` and ignore it).
-  - Operator: pop all operators with higher or equal precedence ([order of operations](https://en.wikipedia.org/wiki/Order_of_operations)) than the new operator from the stack and add them to the output (if any).
+  - Operator: pop all operators with higher or equal precedence (order of operations) 
+    than the new operator from the stack and add them to the output (if any).
     Push the new operator on the stack.
   Once the expression is done, pop any remaining operator and add it to the output.
 ```
