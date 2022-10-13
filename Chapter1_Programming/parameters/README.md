@@ -80,8 +80,8 @@ const int i;
 ## Const pointers
 
 ```cpp
-char const * text = "test"; // the location pointed to cannot be modified.
-const char * text = "test"; // the value pointed to cannot be modified.
+const char *text = "test"; // the value pointed to cannot be modified.
+char* const text = "test"; // the location pointed to cannot be modified.
 ```
 
 ## Const references
