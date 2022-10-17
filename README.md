@@ -10,10 +10,15 @@ Course material and assignments for CS 2341 can be found on [Canvas](https://www
 ## Required Tools
 
 * Install [Visual Studio Code](https://code.visualstudio.com/) (VS Code)
-* On **Windows** you will need to [install WSL](https://code.visualstudio.com/docs/cpp/config-wsl) and use the CS Code Remote WSL ([here is a video](https://www.youtube.com/watch?v=NY5izJWXi0U)). You also should install `cmake` and `valgrind` in the WSL shell using `sudo apt get install`. You will need to open folders by clicking on the green `><` at the bottom left corner of VS Code and select open folder in WSL.
-* On **MacOS** you need to set up the [shell command](https://code.visualstudio.com/docs/setup/mac). This includes installing Xcode (for compilers) and [cMake](https://cmake.org/install/). 
-* Install [git](https://git-scm.com/) and [VS Code integration](https://code.visualstudio.com/docs/editor/versioncontrol).
-* Install [VS Code extensions for C++ and CMake](https://code.visualstudio.com/docs/languages/cpp). The extensions are: `C/C++`, `C/C++ Extension Pack`, `CMake Tools`. Make sure that you install the extensions **after** you have the software above installed or it might not find it. 
+* Install compilers and `cmake`:
+    - On **Linux** you most likely have already everything you need installed (`gcc`, `cmake`, `valgrind`). If not, 
+      then install the missing packages using your package manager. 
+    - On **Windows** you will need to also [install WSL](https://code.visualstudio.com/docs/cpp/config-wsl) and use the VS Code Remote WSL ([here is a video](https://www.youtube.com/watch?v=NY5izJWXi0U)) this process will install `gcc`. You also need to install `cmake` and `valgrind` in the WSL shell using `sudo apt get install`. You will always need to open folders by clicking on the green `><` at the bottom left corner of VS Code and select open folder in WSL.
+    - On **MacOS** you need to also install [clang on MacOS](https://code.visualstudio.com/docs/cpp/config-clang-mac) and 
+      set up the path using [shell command](https://code.visualstudio.com/docs/setup/mac). You also need to install [cMake](https://cmake.org/install/). 
+* Install [git](https://git-scm.com/) and the [VS Code integration](https://code.visualstudio.com/docs/editor/versioncontrol).
+* Install [VS Code extensions for C++ and CMake](https://code.visualstudio.com/docs/languages/cpp). 
+  The extensions are: `C/C++`, `C/C++ Extension Pack`, `CMake Tools`. VS Code will prompt you to install these. Make sure that you install the extensions **after** you have the software above installed or it might not find it.
 
 ## Using VS Code With a Remote Linux Server
 
