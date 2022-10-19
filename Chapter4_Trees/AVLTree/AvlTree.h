@@ -17,8 +17,6 @@ using namespace std;
 // void insert( x )       --> Insert x (with rebalancing)
 // void remove( x )       --> Remove x (with rebalancing)
 // bool contains( x )     --> Return true if x is present
-// Comparable findMin( )  --> Return smallest item
-// Comparable findMax( )  --> Return largest item
 // boolean isEmpty( )     --> Return true if empty; else false
 // void makeEmpty( )      --> Remove all items
 // void printTree( )      --> Print tree in sorted order
@@ -42,11 +40,16 @@ private:
     AvlNode *root;
 
 public:
-
+    /**
+     * @brief Construct a new Avl Tree object
+     */
     AvlTree() : root{nullptr}
     {
     }
 
+    /**
+     * @brief Copy constructor
+     */
     AvlTree(const AvlTree &rhs) : root{nullptr}
     {
         root = clone(rhs.root);
@@ -58,34 +61,15 @@ public:
     }
 
     /**
-     * Deep copy.
+     * Copy assignment operator
      */
     AvlTree &operator=(const AvlTree &rhs)
     {
-        AvlTree copy = rhs;
-        std::swap(*this, copy);
+        makeEmpty();
+        root = clone(rhs.root);
         return *this;
     }
 
-    /**
-     * Find the smallest item in the tree.
-     */
-    const Comparable &findMin() const
-    {
-        if (isEmpty())
-            throw std::runtime_error("tree is empty!");
-        return findMin(root)->element;
-    }
-
-    /**
-     * Find the largest item in the tree.
-     */
-    const Comparable &findMax() const
-    {
-        if (isEmpty())
-            throw std::runtime_error("tree is empty!");
-        return findMax(root)->element;
-    }
 
     /**
      * Returns true if x is found in the tree.
@@ -239,18 +223,6 @@ private:
     }
 
     /**
-     * Internal method to find the largest item in a subtree t.
-     * Return node containing the largest item.
-     */
-    AvlNode *findMax(AvlNode *t) const
-    {
-        if (t != nullptr)
-            while (t->right != nullptr)
-                t = t->right;
-        return t;
-    }
-
-    /**
      * Internal method to test if an item is in a subtree.
      * x is item to search for.
      * t is the node that roots the tree.
@@ -335,9 +307,6 @@ private:
         }
     }
 
-
-
-
     // Avl manipulations
     /**
      * Return the height of node t or -1 if nullptr.
@@ -360,11 +329,11 @@ private:
     void rotateWithLeftChild(AvlNode *&k2)
     {
 #ifdef DEBUG
-            cout << "rotateWithLeftChild" << endl;
-            cout << "Before:" << endl;
-            prettyPrintTree();
+        cout << "rotateWithLeftChild" << endl;
+        cout << "Before:" << endl;
+        prettyPrintTree();
 #endif
-        
+
         AvlNode *k1 = k2->left;
         k2->left = k1->right;
         k1->right = k2;
@@ -372,8 +341,8 @@ private:
         k1->height = max(height(k1->left), k2->height) + 1;
         k2 = k1;
 #ifdef DEBUG
-            cout << "After:" << endl;
-            prettyPrintTree();
+        cout << "After:" << endl;
+        prettyPrintTree();
 #endif
     }
 
@@ -385,9 +354,9 @@ private:
     void rotateWithRightChild(AvlNode *&k1)
     {
 #ifdef DEBUG
-            cout << "rotateWithRightChild" << endl;
-            cout << "Before:" << endl;
-            prettyPrintTree();
+        cout << "rotateWithRightChild" << endl;
+        cout << "Before:" << endl;
+        prettyPrintTree();
 
 #endif
 
@@ -398,8 +367,8 @@ private:
         k2->height = max(height(k2->right), k1->height) + 1;
         k1 = k2;
 #ifdef DEBUG
-            cout << "After:" << endl;
-            prettyPrintTree();
+        cout << "After:" << endl;
+        prettyPrintTree();
 #endif
     }
 
