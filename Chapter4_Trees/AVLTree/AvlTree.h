@@ -100,8 +100,7 @@ public:
     }
 
     /**
-     * Print the tree structure. Only works for trees where
-     * element can be printed with a single character.
+     * Print the tree structure.
      */
     void prettyPrintTree() const
     {
