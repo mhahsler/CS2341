@@ -15,10 +15,18 @@ the tree takes $O(N)$ which gives a sorting algorithm  called [**tree sort**](ht
 ## Operations
 * Insertion: Descend the tree (smaller values go to the left and larger values go to the right) till a new leaf can be created.
 
+* Find $x$: Follow the tree down (maybe using recursion).
+    1. Return failure if the current node does not exist (we followed a `nullptr`).
+    2. Return node if the current node $c == x$.
+    3. if $x < c$ go to left child, otherwise go right child. 
+
 * Deletion: 
-    1. recursively find the node to delete using binary search.
-    2. (a) Two children case: replace element with the smallest element in
-            the right subtree (b) One child case: replace the node with the only child, if any.
+    1. Find the node to delete using binary search.
+    2. Cases:
+        - A. No children: Just remove the node.
+        - B. One child case: replace the node with the only child.
+        - C. Two children case: replace element with the smallest element in
+            the right subtree.
 
 
 ## Exercises 
