@@ -154,9 +154,8 @@ public:
 
     double avgDepth()
     {
-        cout << "Needs to be implemented!\n"
-             << endl;
-        return 0;
+        throw std::runtime_error("Not implemented yet!");
+        return 0.0;
     }
 
 private:
