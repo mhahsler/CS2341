@@ -28,22 +28,25 @@ the tree takes $O(N)$ which gives a sorting algorithm  called [**tree sort**](ht
         - C. Two children case: replace element with the smallest element in
             the right subtree.
 
+## Complexity 
+The depth $d$ of a _binary search tree_ leads to $O(d)$ operations (for all but deleting and copying the whole tree). The **average tree depth** $d$ is $O(log\ N)$ under the
+assumption that all insertion sequences are equally likely (i.e., random insertion). Remember, $O(log\ N)$ means 
+that the problem size is halved with each step.
+
+Since $O(log\ N)$ is relatively small, operations can be defined/implemented recursively without running out of stack memory (called a stack overflow).
+
 
 ## Exercises 
 1. Insert the following numbers into a binary search tree: 12, 90, 3, 5, 18, 9, 99, 91
 2. Delete the following nodes from the tree: 3, 90
-
-
-## Complexity 
-The depth $d$ of a _binary search tree_ leads to $O(d)$ operations (for all but deleting and copying the whole tree). The average tree depth $d$ is $O(log\ N)$ under the
-assumption that all insertion sequences are equally likely. Remember, $O(log\ N)$ means 
-that the problem size is halved with each step.
-
-Since $O(log\ N)$ is relatively small, operations can be defined/implemented recursively without running out of stack space.
+3. Read the values in the tree using inorder traversal (LNR).
 
 
 ## Balance Problem
-The assumption of $O(log\ N)$ average running time is only true for a random insertion order and if no 
-deletions are used! 
-Deletions often replace a node with a node for the right subtree, resulting in an **unbalanced tree** that is left heavy!
+$O(log\ N)$ average running time (= tree depth) is only true under the **assumption of random insertion order** and if 
+**no deletions** are used! 
+
+* Worst case insertion order is to insert sorted values.
+* Deletions for case C replace a node with a node for the right subtree, resulting in an **unbalanced tree** that 
+  is left heavy!
 
