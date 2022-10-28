@@ -70,7 +70,6 @@ public:
         return *this;
     }
 
-
     /**
      * Returns true if x is found in the tree.
      */
@@ -158,25 +157,10 @@ private:
      */
     void remove(const Comparable &x, AvlNode *&t)
     {
-        if (t == nullptr)
-            return; // Item not found; do nothing
+        throw std::runtime_error("Not implemented yet!");
+        // same as in a binary search tree
 
-        if (x < t->element)
-            remove(x, t->left);
-        else if (t->element < x)
-            remove(x, t->right);
-        else if (t->left != nullptr && t->right != nullptr) // Two children
-        {
-            t->element = findMin(t->right)->element;
-            remove(t->element, t->right);
-        }
-        else
-        {
-            AvlNode *oldNode = t;
-            t = (t->left != nullptr) ? t->left : t->right;
-            delete oldNode;
-        }
-
+        // don't forget to balance
         balance(t);
     }
 
@@ -216,6 +200,7 @@ private:
     {
         if (t == nullptr)
             return nullptr;
+
         if (t->left == nullptr)
             return t;
         return findMin(t->left);
@@ -230,6 +215,7 @@ private:
     {
         if (t == nullptr)
             return false;
+
         else if (x < t->element)
             return contains(x, t->left);
         else if (t->element < x)
@@ -257,26 +243,13 @@ private:
      */
     void makeEmpty(AvlNode *&t)
     {
-        if (t != nullptr)
-        {
-            makeEmpty(t->left);
-            makeEmpty(t->right);
-            delete t;
-        }
-        t = nullptr;
-    }
+        if (t == nullptr)
+            return;
 
-    /**
-     * Internal method to print a subtree rooted at t in sorted order.
-     */
-    void printTree(AvlNode *t) const
-    {
-        if (t != nullptr)
-        {
-            printTree(t->left);
-            cout << t->element << endl;
-            printTree(t->right);
-        }
+        makeEmpty(t->left);
+        makeEmpty(t->right);
+        delete t;
+        t = nullptr;
     }
 
     /**
@@ -286,24 +259,24 @@ private:
     {
         if (t == nullptr)
             return nullptr;
-        else
-            return new AvlNode{t->element, clone(t->left), clone(t->right), t->height};
+
+        return new AvlNode{t->element, clone(t->left), clone(t->right), t->height};
     }
 
     // Modified from: https://stackoverflow.com/questions/36802354/print-binary-tree-in-a-pretty-way-using-c
     void prettyPrintTree(const std::string &prefix, const AvlNode *node, bool isRight) const
     {
-        if (node != nullptr)
-        {
-            std::cout << prefix;
-            std::cout << (isRight ? "├──" : "└──");
-            // print the value of the node
-            std::cout << node->element << std::endl;
+        if (node == nullptr)
+            return;
 
-            // enter the next tree level - left and right branch
-            prettyPrintTree(prefix + (isRight ? "│   " : "    "), node->right, true);
-            prettyPrintTree(prefix + (isRight ? "│   " : "    "), node->left, false);
-        }
+        std::cout << prefix;
+        std::cout << (isRight ? "├──" : "└──");
+        // print the value of the node
+        std::cout << node->element << std::endl;
+
+        // enter the next tree level - left and right branch
+        prettyPrintTree(prefix + (isRight ? "│   " : "    "), node->right, true);
+        prettyPrintTree(prefix + (isRight ? "│   " : "    "), node->left, false);
     }
 
     // Avl manipulations
