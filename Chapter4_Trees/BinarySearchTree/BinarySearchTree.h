@@ -40,7 +40,7 @@ public:
 
     /**
      * @brief Rule-of-3 Part 1: Copy constructor uses internal function clone().
-     * 
+     *
      */
     BinarySearchTree(const BinarySearchTree &rhs) : root{nullptr}
     {
@@ -48,7 +48,7 @@ public:
     }
 
     /**
-     * @brief Rule-of-3 Part 2: Destroy the Binary Search Tree object using the internal 
+     * @brief Rule-of-3 Part 2: Destroy the Binary Search Tree object using the internal
      *   function makeEmpty().
      */
     ~BinarySearchTree()
@@ -63,53 +63,16 @@ public:
     {
         makeEmpty();
         root = clone(rhs.root);
-        
+
         return *this;
     }
-    
+
     /**
      * @brief Test if the tree is logically empty.
      */
     bool isEmpty() const
     {
         return root == nullptr;
-    }
-
-    /**
-     * @brief Returns true if x is found in the tree using an internal function.
-     */
-    bool contains(const Comparable &x) const
-    {
-        return contains(x, root);
-    }
-
-    
-    /**
-     * @brief Print the tree contents in sorted order (i.e., inorder traversal). 
-     * This is Tree Sort.
-     */
-    void printTree(ostream &out = cout) const
-    {
-        if (isEmpty())
-            out << "Empty tree" << endl;
-        else
-            printTree(root, out);
-    }
-
-    /**
-     * @brief Print the tree structure (for debugging)
-     */
-    void prettyPrintTree() const
-    {
-        prettyPrintTree("", root, false);
-    }
-
-    /**
-     * @brief Make the tree empty.
-     */
-    void makeEmpty()
-    {
-        makeEmpty(root);
     }
 
     /**
@@ -126,6 +89,42 @@ public:
     void remove(const Comparable &x)
     {
         remove(x, root);
+    }
+
+    /**
+     * @brief Returns true if x is found in the tree using an internal function.
+     */
+    bool contains(const Comparable &x) const
+    {
+        return find(x, root) != nullptr;
+    }
+
+    /**
+     * @brief Print the tree contents in sorted order (i.e., inorder traversal).
+     * This is Tree Sort.
+     */
+    void printTreeSort(ostream &out = cout) const
+    {
+        if (isEmpty())
+            out << "Empty tree" << endl;
+        else
+            printTreeSort(root, out);
+    }
+
+    /**
+     * @brief Print the tree structure (for debugging)
+     */
+    void prettyPrintTree() const
+    {
+        prettyPrintTree("", root, false);
+    }
+
+    /**
+     * @brief Make the tree empty.
+     */
+    void makeEmpty()
+    {
+        makeEmpty(root);
     }
 
     /**
@@ -164,7 +163,7 @@ private:
     /**
      * Internal method to insert into a subtree.
      * x is the item to insert.
-     * t is the node that roots the subtree.
+     * t a non-const reference to the node that roots the subtree.
      */
     void insert(const Comparable &x, BinaryNode *&t)
     {
@@ -190,33 +189,15 @@ private:
      */
     void remove(const Comparable &x, BinaryNode *&t)
     {
-        if (t == nullptr)
-            return; // Item not found; do nothing
+        throw std::runtime_error("Not implemented yet!");
 
-        // recursively find the node using binary search
-        if (x < t->element)
-            return remove(x, t->left);
-
-        if (t->element < x)
-            return remove(x, t->right);
-
-        // found element == x -> delete
-        if (t->left != nullptr && t->right != nullptr)
-        {
-            // Two children case: replace element with the smallest element in
-            // the right subtree
-            t->element = findMin(t->right)->element;
-            remove(t->element, t->right);
-        }
-        else
-        {
-            // One child case: replace the node with the only child, if any.
-            BinaryNode *oldNode = t;
-            t = (t->left != nullptr) ? t->left : t->right;
-            delete oldNode;
-        }
-    }
-
+        // Recursively find the node to delete using binary search.
+        // Cases:
+        // A. No children: Just remove the node.
+        // B. One child case: replace the node with the only child.
+        // C. Two children case: replace element with the smallest element in the right subtree.
+       }
+    
     /**
      * Internal method to find the smallest item in a subtree t.
      * Return node containing the smallest item.
@@ -234,6 +215,8 @@ private:
 
         return findMin(t->left);
     }
+
+
 
     /**
      * Internal method to find the largest item in a subtree t.
@@ -253,25 +236,27 @@ private:
     }
 
     /**
-     * Internal method to test if an item is in a subtree.
+     * Internal method to find a node.
      * x is item to search for.
      * t is the node that roots the subtree.
      */
-    bool contains(const Comparable &x, BinaryNode *t) const
+    BinaryNode *find(const Comparable &x, BinaryNode *t) const
     {
         if (t == nullptr)
-            return false;
+            return nullptr;
 
+        // recursion
         if (x < t->element)
-            return contains(x, t->left);
+            return find(x, t->left);
 
         if (t->element < x)
-            return contains(x, t->right);
+            return find(x, t->right);
 
-        return true; // Match
+        // we have t->element == x
+        return t; // Match
     }
     /****** NONRECURSIVE VERSION*************************
-        bool contains( const Comparable & x, BinaryNode *t ) const
+    BinaryNode* find( const Comparable & x, BinaryNode *t ) const
         {
             while( t != nullptr )
                 if( x < t->element )
@@ -279,23 +264,38 @@ private:
                 else if( t->element < x )
                     t = t->right;
                 else
-                    return true;    // Match
+                    return t;    // Match
 
-            return false;   // No match
+            return nullptr;   // No match
         }
     *****************************************************/
 
     /**
+     * Internal method to clone subtree.
+     * -> preorder traversal (NLR)
+     */
+    BinaryNode *clone(BinaryNode *t) const
+    {
+        if (t == nullptr)
+            return nullptr;
+
+        // recursion
+        return new BinaryNode{t->element, clone(t->left), clone(t->right)};
+    }
+
+    /**
      * Internal method to make subtree empty uses postorder traversal (LRN)
+     * Note the pointer reference for t.
      */
     void makeEmpty(BinaryNode *&t)
     {
-        if (t != nullptr)
-        {
-            makeEmpty(t->left);
-            makeEmpty(t->right);
-            delete t;
-        }
+        if (t == nullptr)
+            return;
+
+        // recursion
+        makeEmpty(t->left);
+        makeEmpty(t->right);
+        delete t;
         t = nullptr;
     }
 
@@ -303,14 +303,15 @@ private:
      * Internal method to print a subtree rooted at t in sorted order.
      * This is inorder traversal (LNR)
      */
-    void printTree(BinaryNode *t, ostream &out) const
+    void printTreeSort(BinaryNode *t, ostream &out) const
     {
-        if (t != nullptr)
-        {
-            printTree(t->left, out);
-            out << t->element << endl;
-            printTree(t->right, out);
-        }
+        if (t == nullptr)
+            return;
+
+        // recursion
+        printTreeSort(t->left, out);
+        out << t->element << endl;
+        printTreeSort(t->right, out);
     }
 
     /**
@@ -321,29 +322,17 @@ private:
      */
     void prettyPrintTree(const string &prefix, const BinaryNode *node, bool isRight) const
     {
-        if (node != nullptr)
-        {
-            cout << prefix;
-            cout << (isRight ? "├──" : "└──");
-            // print the value of the node
-            cout << node->element << "\n";
+        if (node == nullptr)
+            return;
 
-            // enter the next tree level - left and right branch
-            prettyPrintTree(prefix + (isRight ? "│   " : "    "), node->right, true);
-            prettyPrintTree(prefix + (isRight ? "│   " : "    "), node->left, false);
-        }
-    }
+        // N: print the value of the node
+        cout << prefix;
+        cout << (isRight ? "├──" : "└──");
+        cout << node->element << "\n";
 
-    /**
-     * Internal method to clone subtree.
-     * -> preorder traversal (NLR)
-     */
-    BinaryNode *clone(BinaryNode *t) const
-    {
-        if (t == nullptr)
-            return nullptr;
-        else
-            return new BinaryNode{t->element, clone(t->left), clone(t->right)};
+        // R, L: enter the next tree level - right and left branch
+        prettyPrintTree(prefix + (isRight ? "│   " : "    "), node->right, true);
+        prettyPrintTree(prefix + (isRight ? "│   " : "    "), node->left, false);
     }
 
     /**

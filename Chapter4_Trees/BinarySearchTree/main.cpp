@@ -14,24 +14,27 @@ int main( )
     }
 
     t.prettyPrintTree();
+    
+    cout << "Tree Sort:" << endl;
+    t.printTreeSort();
 
     cout << "Max: " << t.findMax() << endl;
     cout << "Min: " << t.findMin() << endl;
     cout << "Max depth:" <<  t.maxDepth() << endl;
 
     cout << "Contains 10?: " << t.contains(10) << endl;
-
     cout << "Contains 4?: " << t.contains(4) << endl;
-    t.remove(4);
-
-    t.prettyPrintTree();
-
-    cout << "Contains 4?: " << t.contains(4) << endl;
-
-    cout << "Max depth:" <<  t.maxDepth() << endl;
+    
+    // remove is not implemented...
+    // cout << "\nRemove 4" << endl;
+    // t.remove(4);
+    // cout << "Contains 4?: " << t.contains(4) << endl;
+    // t.prettyPrintTree();
+    // cout << "Max depth:" <<  t.maxDepth() << endl;
 
     // worst case tree depth.
     // use the debugger to see why
+    cout << "\nCreate tree from sorted data" << endl;
     t.makeEmpty();
     int data2[] = {1, 2, 3, 4, 5, 6};
 
