@@ -1,5 +1,5 @@
-#ifndef DSList_ITER_H
-#define DSList_ITER_H
+#ifndef DSITERATORLIST_H
+#define DSiTERATORLIST_H
 
 #include <stdexcept>
 
@@ -11,7 +11,7 @@
  * @tparam Object
  */
 template <typename Object>
-class DSList_iter
+class DSIteratorList
 {
 private:
     /**
@@ -159,23 +159,53 @@ public:
             return old;
         }
 
+        // So remove can access the current pointer
+        friend void DSIteratorList<Object>::remove(iterator &it);
+
         // equal and non-equal is inherited.
     };
 
     /**
-     * @brief Construct a new DSlist iter<object> object
+     * @brief Default constructor
      */
-    DSList_iter<Object>()
+    DSIteratorList<Object>()
         : head{nullptr} {}
 
-    // missing: Copy constructor
+    /**
+     * @brief Rule-of-Three 1: Copy constructor
+     * 
+     * This is easier in a doubly linked list.
+     */
+    DSIteratorList<Object>(const DSIteratorList<Object> &rhs)
+        : head{nullptr}
+    {
+        Node **prev_next = &head;
+
+        for (const Object &v : rhs)
+        {
+            *prev_next = new Node{v, nullptr};
+            prev_next = &((*prev_next)->next);
+        }
+    }
 
     /**
-     * @brief Destroy the DSlist iter object
+     * @brief Rule-of-Three 2: Destructor
      */
-    ~DSList_iter()
+    ~DSIteratorList()
     {
         clear();
+    }
+
+    /**
+     * @brief Rule-of-Three 3: Copy assignment operator
+     * 
+     * Copy constructor and swap is the standard implementation.
+     */
+    DSIteratorList<Object> &operator=(const DSIteratorList<Object> &rhs)
+    {
+        DSIteratorList<Object> copy{rhs}; // call copy constructor
+        std::swap(*this, copy);           // make this the copy
+        return *this;                     // copy gets destroyed
     }
 
     /**
@@ -183,7 +213,7 @@ public:
      */
     iterator begin() const
     {
-        return head;
+        return iterator{head};
     }
 
     /**
@@ -191,7 +221,7 @@ public:
      */
     iterator end() const
     {
-        return nullptr;
+        return iterator{nullptr};
     }
 
     /**
@@ -220,7 +250,7 @@ public:
     void clear()
     {
         while (!empty())
-            pop_front();
+            remove_front();
     }
 
     // missing: find an element with a specific value (and return an iterator)
@@ -228,25 +258,23 @@ public:
     /**
      * @brief insert in front
      */
-    void push_front(const Object &x)
+    void insert_front(const Object &x)
     {
         Node *n = new Node{x, head};
         head = n;
     }
 
-    // insert using an iterator
-
     /**
-     * @brief remove the element in front (pop_front)
+     * @brief remove the element in front
      */
-    Object pop_front()
+    Object remove_front()
     {
         if (empty())
             throw std::runtime_error("List is empty!");
 
         // save the data
         Object tmpObject = head->data;
-        
+
         // delete the node
         Node *tmpNode = head;
         head = head->next;
@@ -255,9 +283,50 @@ public:
         return tmpObject;
     }
 
-    // missing: remove using an iterator
-    // missing: remove an element with a specific value (find and then remove)
+    /**
+     * @brief find an element. Returns an iterator
+     * to the element or end() if not found.
+     */
+    iterator find(const Object &x)
+    {
+        iterator it = begin();
+        while (it != end() && *it != x)
+            ++it;
+        return it;
+    }
 
+    /**
+     * @brief insert after iterator
+     * 
+     * Does not work on empty list!
+     */
+    void insert(const Object &x, iterator &it)
+    {
+        if (it == end())
+            throw std::runtime_error("Cannot insert after end()");
+
+        Node *n = new Node{x, it.current->next};
+        it.current = n;
+    }
+
+    /**
+     * @brief remove after iterator
+     *
+     * Note: removing the element the iterator points to
+     * is not possible since we do not have a previous pointer.
+     */
+    void remove(iterator &it)
+    {
+        if (it == end())
+            throw std::runtime_error("Cannot remove after end()");
+
+        Node *tmpNode = it.current->next;
+        if (tmpNode == nullptr)
+            throw std::runtime_error("No node after the iterator!");
+
+        it.current->next = tmpNode->next;
+        delete tmpNode;
+    }
 };
 
 #endif
