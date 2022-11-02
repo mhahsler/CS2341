@@ -140,12 +140,21 @@ private:
     void insert(const Comparable &x, AvlNode *&t)
     {
         if (t == nullptr)
-            t = new AvlNode{x, nullptr, nullptr};
-        else if (x < t->element)
+        {
+            t = new AvlNode{x, nullptr, nullptr, 0};
+            return; // a single node is always balanced
+        }
+
+        if (x < t->element)
             insert(x, t->left);
         else if (t->element < x)
             insert(x, t->right);
+        else
+        {
+        } // Duplicate; do nothing
 
+        // This will call balance on the way back up the tree. It will only balance once where 
+        // the tree got imbalanced.
         balance(t);
     }
 
@@ -164,34 +173,6 @@ private:
         balance(t);
     }
 
-    static const int ALLOWED_IMBALANCE = 1;
-
-    // Assume t is balanced or within one of being balanced
-    void balance(AvlNode *&t)
-    {
-        if (t == nullptr)
-            return;
-
-        if (height(t->left) - height(t->right) > ALLOWED_IMBALANCE)
-        {
-            if (height(t->left->left) >= height(t->left->right))
-                rotateWithLeftChild(t);
-            else
-                doubleWithLeftChild(t);
-        }
-        else
-        {
-            if (height(t->right) - height(t->left) > ALLOWED_IMBALANCE)
-            {
-                if (height(t->right->right) >= height(t->right->left))
-                    rotateWithRightChild(t);
-                else
-                    doubleWithRightChild(t);
-            }
-        }
-        t->height = max(height(t->left), height(t->right)) + 1;
-    }
-
     /**
      * Internal method to find the smallest item in a subtree t.
      * Return node containing the smallest item.
@@ -203,6 +184,7 @@ private:
 
         if (t->left == nullptr)
             return t;
+
         return findMin(t->left);
     }
 
@@ -280,12 +262,41 @@ private:
     }
 
     // Avl manipulations
+
     /**
      * Return the height of node t or -1 if nullptr.
      */
     int height(AvlNode *t) const
     {
         return t == nullptr ? -1 : t->height;
+    }
+
+    static const int ALLOWED_IMBALANCE = 1; // 1 is the default; more will make balancing cheaper
+                                            // but the search less efficient.
+
+    // Assume t is balanced or within one of being balanced since we check this after each manipulation
+    void balance(AvlNode *&t)
+    {
+        if (t == nullptr)
+            return;
+
+        if (height(t->left) - height(t->right) > ALLOWED_IMBALANCE)  // unbalancing insertion was left
+        {
+            if (height(t->left->left) >= height(t->left->right)) 
+                rotateWithLeftChild(t); // case 1 (outside)
+            else
+                doubleWithLeftChild(t); // case 2 (inside)
+        }
+        else if (height(t->right) - height(t->left) > ALLOWED_IMBALANCE) // unbalancing insertion was right
+        {
+            if (height(t->right->right) >= height(t->right->left))
+                rotateWithRightChild(t); // case 4 (outside)
+            else
+                doubleWithRightChild(t); // case 3 (inside)
+        }
+
+        // update height
+        t->height = max(height(t->left), height(t->right)) + 1;
     }
 
     int max(int lhs, int rhs) const
@@ -301,7 +312,7 @@ private:
     void rotateWithLeftChild(AvlNode *&k2)
     {
 #ifdef DEBUG
-        cout << "rotateWithLeftChild" << endl;
+        cout << "need to rotateWithLeftChild for node " << k2->element << endl;
         cout << "Before:" << endl;
         prettyPrintTree();
 #endif
@@ -326,7 +337,7 @@ private:
     void rotateWithRightChild(AvlNode *&k1)
     {
 #ifdef DEBUG
-        cout << "rotateWithRightChild" << endl;
+        cout << "need to rotateWithRightChild for node " << k1->element << endl;
         cout << "Before:" << endl;
         prettyPrintTree();
 
@@ -352,6 +363,9 @@ private:
      */
     void doubleWithLeftChild(AvlNode *&k3)
     {
+#ifdef DEBUG
+        cout << "doubleWithLeftChild" << endl;
+#endif
         rotateWithRightChild(k3->left);
         rotateWithLeftChild(k3);
     }
@@ -364,6 +378,9 @@ private:
      */
     void doubleWithRightChild(AvlNode *&k1)
     {
+#ifdef DEBUG
+        cout << "doubleWithRightChild" << endl;
+#endif
         rotateWithLeftChild(k1->right);
         rotateWithRightChild(k1);
     }

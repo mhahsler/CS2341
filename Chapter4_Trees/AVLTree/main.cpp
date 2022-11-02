@@ -19,9 +19,10 @@ int main()
 
 
 
-    cout << "\n\nExample that needs a double rotation.\n" << endl;
+    cout << "\n\nExample that needs a double rotation\n" 
+        << " (inside: inserting 2 on the left side into the right subtree of 1).\n" << endl;
     t.makeEmpty();
-    int data2[] = {6, 5, 3, 1, 2};
+    int data2[] = {5, 1, 6, 3, 2};
 
     for (auto &d : data2)
     {
