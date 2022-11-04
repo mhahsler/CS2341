@@ -44,4 +44,4 @@ Insert the following sequences into an AVL tree:
 
 ## Code
 
-See [AVLTree.h](AVLTree.h) for code.
+See [AvlTree.h](AvlTree.h) for code.
