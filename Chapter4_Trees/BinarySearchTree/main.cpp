@@ -23,14 +23,14 @@ int main( )
     cout << "Max depth:" <<  t.maxDepth() << endl;
 
     cout << "Contains 10?: " << t.contains(10) << endl;
-    cout << "Contains 4?: " << t.contains(4) << endl;
+    cout << "Contains 2?: " << t.contains(2) << endl;
     
     // remove is not implemented...
-    // cout << "\nRemove 4" << endl;
-    // t.remove(4);
-    // cout << "Contains 4?: " << t.contains(4) << endl;
-    // t.prettyPrintTree();
-    // cout << "Max depth:" <<  t.maxDepth() << endl;
+    cout << "\nRemove 2" << endl;
+    t.remove(2);
+    cout << "Contains 2?: " << t.contains(2) << endl;
+    t.prettyPrintTree();
+    cout << "Max depth:" <<  t.maxDepth() << endl;
 
     // worst case tree depth.
     // use the debugger to see why

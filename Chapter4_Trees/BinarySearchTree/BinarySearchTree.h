@@ -188,15 +188,77 @@ private:
      */
     void remove(const Comparable &x, BinaryNode *&t)
     {
-        throw std::runtime_error("Not implemented yet!");
-
         // Recursively find the node to delete using binary search.
+
+        if (t == nullptr)
+            return; // Item not found; do nothing
+
+        // must be in left subtree
+        if (x < t->element)
+            return remove(x, t->left);
+
+        // must be in right subtree
+        if (t->element < x)
+            return remove(x, t->right);
+
+        // we get here only for t->element == x
+
         // Cases:
         // A. No children: Just remove the node.
-        // B. One child case: replace the node with the only child.
+        if (t->left == nullptr && t->right == nullptr)
+        {
+            delete t;
+            t = nullptr;
+            return;
+        }
+
         // C. Two children case: replace element with the smallest element in the right subtree.
-       }
-    
+        if (t->left != nullptr && t->right != nullptr)
+        {
+            BinaryNode *replacement = removeMin(t->right);
+            replacement->right = t->right;
+            replacement->left = t->left;
+
+            delete t;
+            t = replacement;
+            return;
+        }
+
+        // B. One child case: replace the node with the only child.
+        BinaryNode *oldNode = t;
+        t = (t->left != nullptr) ? t->left : t->right;
+        delete oldNode;
+    }
+
+   /**
+     * Internal method to find, remove and return the smallest item in a subtree t.
+     */
+    BinaryNode *removeMin(BinaryNode *&t)
+    {
+        // recursive implementation
+        // special case: no root node
+        if (t == nullptr)
+            return nullptr;
+
+        // special case: root is the minimum
+        if (t->left == nullptr)
+        {
+            BinaryNode *min = t;
+            t = t->right;
+            return min;
+        }
+
+        // traverse down left to the leaf
+        if (t->left->left == nullptr)
+        {
+            BinaryNode *min = t->left;
+            t->left = min->right;
+            return min;
+        }
+
+        return removeMin(t->left);
+    }
+
     /**
      * Internal method to find the smallest item in a subtree t.
      * Return node containing the smallest item.
