@@ -33,7 +33,7 @@ public:
       this->push_back(itm);
   }
 
-  // Copy constructor needed because we use new!
+  // Rule-of-Three 1: Copy constructor needed because we use new!
   DSVector(const DSVector &rhs)
       : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{nullptr}
   {
@@ -42,7 +42,7 @@ public:
       objects[k] = rhs.objects[k];
   }
 
-  // C++11 Move constructor ... "steals" the pointer from the rhs 
+  // Rule-of-Five: C++11 Move constructor ... "steals" the pointer from the rhs 
   // (you don't need to implement the move version in your code)
   DSVector(DSVector &&rhs)
       : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{rhs.objects}
@@ -52,7 +52,7 @@ public:
     rhs.objects = nullptr; // so the destructor does not destroy the objects
   }
 
-  // Destructor needed because we use new!
+  // Rule-of-Three 2: Destructor needed because we use new!
   ~DSVector()
   {
     delete[] objects;
@@ -61,7 +61,7 @@ public:
     // Note: You can also compile with the asan library (see CMakeLists.txt) as an alternative to valgrind
   }
 
-  // Copy assignment operator needed because we use new!
+  // Rule-of-Three 3: Copy assignment operator needed because we use new!
   DSVector &operator=(const DSVector &rhs)
   {
     delete[] objects;
@@ -75,7 +75,7 @@ public:
     return *this;
   }
 
-  // C++11 move assignment operator: swaps all elements with rhs using std::swap()
+  // Rule-of-Five: C++11 move assignment operator: swaps all elements with rhs using std::swap()
   // (you don't need to implement the move version in your code)
   DSVector &operator=(DSVector &&rhs)
   {
