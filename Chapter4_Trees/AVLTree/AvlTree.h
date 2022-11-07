@@ -153,8 +153,8 @@ private:
         {
         } // Duplicate; do nothing
 
-        // This will call balance on the way back up the tree. It will only balance once where 
-        // the tree got imbalanced.
+        // This will call balance on the way back up the tree. It will only balance 
+        // once at node the where the tree got imbalanced (called node alpha in the textbook).
         balance(t);
     }
 
@@ -275,6 +275,7 @@ private:
                                             // but the search less efficient.
 
     // Assume t is balanced or within one of being balanced since we check this after each manipulation
+    // t represents alpha in the textbook
     void balance(AvlNode *&t)
     {
         if (t == nullptr)
