@@ -44,7 +44,7 @@ int main()
 
     /* Vectors know how long they are and check boundaries */
     int sum = 0;
-    for (int i = 0; i < squares.size(); ++i)
+    for (size_t i = 0; i < squares.size(); ++i)
     {
         sum += squares[i];
     }
