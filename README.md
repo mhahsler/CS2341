@@ -11,6 +11,7 @@ Source Code by Mark Allen Weiss can be found [here.](https://users.cs.fiu.edu/~w
 | 4 | [Trees](Chapter4_Trees) |
 | 5 | [Hashing](Chapter5_Hashing) |
 | 6 | [Heaps](Chapter6_Heaps) |
+| 7 | [Sorting](Chapter7_Sorting) |
 | 9 | [Graphs](Chapter9_Graphs) |
 
 Course material and assignments for CS 2341 at SMU can be found on [Canvas](https://www.smu.edu/OIT/Services/Canvas/).
