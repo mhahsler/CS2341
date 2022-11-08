@@ -9,9 +9,9 @@
  * Order these and hide the pivot.
  */
 template <typename Comparable>
-const Comparable &median3(std::vector<Comparable> &a, int left, int right)
+const Comparable &median3(std::vector<Comparable> &a, std::size_t left, std::size_t right)
 {
-    int center = (left + right) / 2;
+    std::size_t center = (left + right) / 2;
 
     if (a[center] < a[left])
         std::swap(a[left], a[center]);
@@ -33,12 +33,12 @@ const Comparable &median3(std::vector<Comparable> &a, int left, int right)
  * right is the right-most index of the subarray.
  */
 template <typename Comparable>
-void insertionSort(std::vector<Comparable> &a, int left, int right)
+void insertionSort(std::vector<Comparable> &a, std::size_t left, std::size_t right)
 {
-    for (int p = left + 1; p <= right; ++p)
+    for (std::size_t p = left + 1; p <= right; ++p)
     {
         Comparable tmp = std::move(a[p]);
-        int j;
+        std::size_t j;
 
         for (j = p; j > left && tmp < a[j - 1]; --j)
             a[j] = std::move(a[j - 1]);
@@ -54,14 +54,14 @@ void insertionSort(std::vector<Comparable> &a, int left, int right)
  * right is the right-most index of the subarray.
  */
 template <typename Comparable>
-void quicksort(std::vector<Comparable> &a, int left, int right)
+void quicksort(std::vector<Comparable> &a, std::size_t left, std::size_t right)
 {
     if (left + 10 <= right)
     {
         const Comparable &pivot = median3(a, left, right);
 
         // Begin partitioning
-        int i = left, j = right - 1;
+        std::size_t i = left, j = right - 1;
         for (;;)
         {
             while (a[++i] < pivot)
@@ -94,97 +94,5 @@ void quicksort(std::vector<Comparable> &a)
     quicksort(a, 0, a.size() - 1);
 }
 
-/**
- * Internal selection method that makes recursive calls.
- * Uses median-of-three partitioning and a cutoff of 10.
- * Places the kth smallest item in a[k-1].
- * a is an array of Comparable items.
- * left is the left-most index of the subarray.
- * right is the right-most index of the subarray.
- * k is the desired rank (1 is minimum) in the entire array.
- */
-template <typename Comparable>
-void quickSelect(std::vector<Comparable> &a, int left, int right, int k)
-{
-    if (left + 10 <= right)
-    {
-        const Comparable &pivot = median3(a, left, right);
-
-        // Begin partitioning
-        int i = left, j = right - 1;
-        for (;;)
-        {
-            while (a[++i] < pivot)
-            {
-            }
-            while (pivot < a[--j])
-            {
-            }
-            if (i < j)
-                std::swap(a[i], a[j]);
-            else
-                break;
-        }
-
-        std::swap(a[i], a[right - 1]); // Restore pivot
-
-        // Recurse; only this part changes
-        if (k <= i)
-            quickSelect(a, left, i - 1, k);
-        else if (k > i + 1)
-            quickSelect(a, i + 1, right, k);
-    }
-    else // Do an insertion sort on the subarray
-        insertionSort(a, left, right);
-}
-
-/**
- * Quick selection algorithm.
- * Places the kth smallest item in a[k-1].
- * a is an array of Comparable items.
- * k is the desired rank (1 is minimum) in the entire array.
- */
-template <typename Comparable>
-void quickSelect(std::vector<Comparable> &a, int k)
-{
-    quickSelect(a, 0, a.size() - 1, k);
-}
-
-template <typename Comparable>
-void SORT(std::vector<Comparable> &items)
-{
-    if (items.size() > 1)
-    {
-        std::vector<Comparable> smaller;
-        std::vector<Comparable> same;
-        std::vector<Comparable> larger;
-
-        auto chosenItem = items[items.size() / 2];
-
-        for (auto &i : items)
-        {
-            if (i < chosenItem)
-                smaller.push_back(std::move(i));
-            else if (chosenItem < i)
-                larger.push_back(std::move(i));
-            else
-                same.push_back(std::move(i));
-        }
-
-        SORT(smaller); // Recursive call!
-        SORT(larger);  // Recursive call!
-
-        std::move(begin(smaller), end(smaller), begin(items));
-        std::move(begin(same), end(same), begin(items) + smaller.size());
-        std::move(begin(larger), end(larger), end(items) - larger.size());
-
-        /*
-                items.clear( );
-                items.insert( end( items ), begin( smaller ), end( smaller ) );
-                items.insert( end( items ), begin( same ), end( same ) );
-                items.insert( end( items ), begin( larger ), end( larger ) );
-        */
-    }
-}
 
 #endif
