@@ -5,14 +5,18 @@
 // Modified by MFH to fix compiler warnings
 
 /**
- * Return median of left, center, and right.
+ * Return a pivot. This implementation uses the median of left, center, and right.
  * Order these and hide the pivot.
  */
 template <typename Comparable>
 const Comparable &median3(std::vector<Comparable> &a, std::size_t left, std::size_t right)
 {
+
+    // calculate center position of the subarray. This is an int division.
     std::size_t center = (left + right) / 2;
 
+    // move the largest value to position right, the smallest to position left
+    // and the "median" to position center using fast swaps.
     if (a[center] < a[left])
         std::swap(a[left], a[center]);
     if (a[right] < a[left])
@@ -20,69 +24,82 @@ const Comparable &median3(std::vector<Comparable> &a, std::size_t left, std::siz
     if (a[right] < a[center])
         std::swap(a[center], a[right]);
 
-    // Place pivot at position right - 1
+    // place pivot (the median) in the second to last position of the subarray.
+    // note the last position is larger than the pivot.
     std::swap(a[center], a[right - 1]);
+
+    // return pivot
     return a[right - 1];
 }
 
 /**
  * Internal insertion sort routine for subarrays
- * that is used by quicksort.
- * a is an array of Comparable items.
- * left is the left-most index of the subarray.
- * right is the right-most index of the subarray.
+ * that is used by quicksort once subarrays become small and
+ * insertion sort is faster than quicksort.
  */
 template <typename Comparable>
 void insertionSort(std::vector<Comparable> &a, std::size_t left, std::size_t right)
 {
+    // go through all elements in the array starting with the second one
     for (std::size_t p = left + 1; p <= right; ++p)
     {
+        // take out the element
         Comparable tmp = std::move(a[p]);
-        std::size_t j;
 
+        // shift the elements to the right until the right position is found
+        std::size_t j;
         for (j = p; j > left && tmp < a[j - 1]; --j)
             a[j] = std::move(a[j - 1]);
+
+        // insert the element into the right position   
         a[j] = std::move(tmp);
     }
 }
 
 /**
- * Internal quicksort method that makes recursive calls.
- * Uses median-of-three partitioning and a cutoff of 10.
- * a is an array of Comparable items.
- * left is the left-most index of the subarray.
- * right is the right-most index of the subarray.
+ * Internal quicksort method that makes recursive calls on a subarray (left to right).
+ * Uses median-of-three partitioning for pivot and a use insertion sort for subarrays smaller than 10.
  */
 template <typename Comparable>
 void quicksort(std::vector<Comparable> &a, std::size_t left, std::size_t right)
 {
-    if (left + 10 <= right)
+    if (right - left < 10)
+        // do insertion sort for small subarrays
+        insertionSort(a, left, right);
+    else
     {
+        // find pivot and do recursive quicksort for large subarrays
         const Comparable &pivot = median3(a, left, right);
 
-        // Begin partitioning
+        // swap large values (larger than pivot) in the left subarray with small (smaller than pivot) 
+        // values in to the right
         std::size_t i = left, j = right - 1;
-        for (;;)
+        while (true)
         {
+            // find the next element in the left subarray that is larger than the pivot
             while (a[++i] < pivot)
             {
             }
-            while (pivot < a[--j])
+            // find the next element in the right subarray that is smaller than the pivot
+            while (a[--j] > pivot)
             {
             }
+            
+            // swap or stop if we run into the pivot
             if (i < j)
                 std::swap(a[i], a[j]);
             else
                 break;
         }
 
-        std::swap(a[i], a[right - 1]); // Restore pivot
+        // put pivot back in the right position
+        std::swap(a[i], a[right - 1]); 
 
-        quicksort(a, left, i - 1);  // Sort small elements
-        quicksort(a, i + 1, right); // Sort large elements
+        // sort small elements
+        quicksort(a, left, i - 1); 
+        // sort large elements
+        quicksort(a, i + 1, right); 
     }
-    else // Do an insertion sort on the subarray
-        insertionSort(a, left, right);
 }
 
 /**
@@ -93,6 +110,5 @@ void quicksort(std::vector<Comparable> &a)
 {
     quicksort(a, 0, a.size() - 1);
 }
-
 
 #endif
