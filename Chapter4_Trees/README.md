@@ -31,7 +31,7 @@ Observations:
 We implement a tree as a set of connected `Nodes`.
 
 Each node in a general tree ($M$-ary tree) can have a variable list of children. We can store it
-in a [singly-linked list](https://en.cppreference.com/w/cpp/container/forward_list).
+in a singly-linked list like the [`std::forward_list`](https://en.cppreference.com/w/cpp/container/forward_list).
 
 ```cpp
 template <typename Comparable>
@@ -163,7 +163,7 @@ Applications of the parse tree: create
   [std::set](https://cplusplus.com/reference/set/set/) and [std::map](https://cplusplus.com/reference/map/map/) based on binary search trees.
   The stored objects need to be `Comparable` with a definition of `bool operator<(const &) const` 
   (since $a < b$ can be used for $b < a$, we can also get $a == b$) or a function object 
-  (see [comparator example in Chapter 1](../Chapter1_Programming/comparator)).
+  (see [comparator example in Chapter 1](../../Chapter1_Programming/comparator)).
 
   Examples: [How to use STL sets and maps](STLSetMap)
 
