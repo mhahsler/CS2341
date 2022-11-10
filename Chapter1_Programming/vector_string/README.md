@@ -39,3 +39,5 @@ index. Since it is an signed datatype, it will eventually overflow produce a neg
 * `std::ptrdiff_t` for the difference between indices (or pointers). Can be positive and negative.
 
 You should use these two datatypes consistently instead of `int`.
+
+Example: [Indexing problem](index_problem.cpp)
