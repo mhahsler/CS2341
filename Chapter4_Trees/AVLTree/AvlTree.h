@@ -10,17 +10,6 @@
 using namespace std;
 
 // AvlTree class
-//
-// CONSTRUCTION: zero parameter
-//
-// ******************PUBLIC OPERATIONS*********************
-// void insert( x )       --> Insert x (with rebalancing)
-// void remove( x )       --> Remove x (with rebalancing)
-// bool contains( x )     --> Return true if x is present
-// boolean isEmpty( )     --> Return true if empty; else false
-// void makeEmpty( )      --> Remove all items
-// void printTree( )      --> Print tree in sorted order
-// ******************ERRORS********************************
 
 template <typename Comparable>
 class AvlTree
