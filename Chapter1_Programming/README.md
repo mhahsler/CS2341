@@ -2,6 +2,7 @@
 
 ## How to Run Examples, Debug and Test Code
 
+* [HOWTO Use a Shell and SSH](../HOWTO_shell_and_ssh.md)
 * [HOWTO Compile Programs With VS Code and CMake](../HOWTO_compile_programs_with_CMake.md)
 * [HOWTO Debug and Test](../HOWTO_debug_and_test.md)
 
