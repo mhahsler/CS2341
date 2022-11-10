@@ -25,34 +25,60 @@ Here are some popular algorithms:
 
 
 
-## Bubble Sort
+### Bubble Sort
 A simple sorting algorithm that repeatedly steps through the input list element by element, comparing the current element with the one after it, swapping their values if needed. These passes through the list are repeated until no swaps had to be performed during a pass, meaning that the list has become fully sorted. 
 
-## Insertion Sort
+### Insertion Sort
 Insertion sort goes through the array once from left to right.
 At each iteration, insertion sort removes the element from the input data, finds the location it belongs within the sorted list (to the left), and inserts it there.
 
-## Shell Sort
+### Shell Sort
 Shell Sort can be seen as either a generalization of sorting by exchange (bubble sort) or sorting by insertion (insertion sort). Instead of sorting pairs of elements next to each other, it compares elements far apart from each other, then progressively reducing the gap between elements to be compared. By starting with far apart elements, it can move some out-of-place elements into position faster than a simple nearest neighbor exchange.
 
-## Heapsort
+### Heapsort
 The algorithm first builds a max-heap stored in the original array and then repeatedly removes the top item to produce a sorted array.
 
-## Mergesort
+### Mergesort
 Merge sort consists of the steps:
 
 1. Divide the unsorted list into $n$ sublists, each containing one element (a list of one element is considered sorted).
 2. Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining. This will be the sorted list.
 
-## Quicksort
+### Quicksort
 Quicksort is a type of divide and conquer algorithm for sorting an array, based on a partitioning routine; the details of this partitioning can vary somewhat, so that quicksort is a family of closely related algorithms. Applied to a range of at least two elements, partitioning produces a division into two consecutive non empty sub-ranges, in such a way that no element of the first sub-range is greater than any element of the second sub-range. After applying this partition, quicksort then recursively sorts the sub-ranges.
 
-Choice of pivot: Originally, the leftmost element of the partition would often be chosen as the pivot element. Unfortunately, this causes worst-case behavior on already sorted arrays, which is a rather common use-case. The problem was easily solved by choosing either a random index for the pivot, choosing the middle index of the partition or (especially for longer partitions) choosing the median of the first, middle and last element of the partition for the pivot.
+_Choice of pivot:_ Originally, the leftmost element of the partition would often be chosen as the pivot element. Unfortunately, this causes worst-case behavior on already sorted arrays, which is a rather common use-case. The problem was easily solved by choosing either a random index for the pivot, choosing the middle index of the partition or (especially for longer partitions) choosing the median of the first, middle and last element of the partition for the pivot.
 
-## IntroSort
+### IntroSort
 The STL currently implements a hybrid sorting algorithm using Quicksort, Heapsort and Insertion Sort to consistently 
 provide good performance.
 
 ## Visualization of different algorithms
 
 https://math.hws.edu/eck/js/sorting/xSortLab.html
+
+## Profiling Code
+
+[Profiling Software](https://en.wikipedia.org/wiki/Profiling_(computer_programming)) measures the space (memory) or time complexity of a program, the usage of particular instructions, or the frequency and duration of function calls. Most commonly, profiling information serves to aid program optimization.
+
+Several open-source and commercial profilers are available. Here I use 
+`callgrind` and `KCachegrind`. Alternatives are [`perf`](https://perf.wiki.kernel.org/) for Linux and WSL2, and  [Dtrace](http://dtrace.org/blogs/about/) for MacOS.
+
+Details on `callgrind` can be found in the [callgrind manual](https://developer.mantidproject.org/ProfilingWithValgrind.html). callgrind records each function call and how many machine code instructions were fetched. It can also calculate approximate run time by translating the instructions into cycle estimates.
+
+### How to use callgrind/KCachgrind to Profile Runtime
+
+**Installation:** You need to install `valgrind` and `KCachgrind` on your machine (Linux, WSL2; not available for Mac; for use on SMU's genuse machines, you need to [set up putty and VNC](https://www.smu.edu/OIT/Services/genuse)).
+
+1. Run your executable with `valgrind`:
+   ```
+   valgrind --tool=callgrind --dump-instr=yes --simulate-cache=yes --collect-jumps=yes ./<executable> [args...]
+   ```
+
+2. This will produce a `callgrind.out.xxxxx` file. Open the file with:
+   ```
+   kcachegrind callgrind.out.xxxxx
+   ```
+
+3. Find the file/class you are interested in (e.g., `main.cpp`), click on the function below and choose `Call Graph` in the bottom right window. You should now see what gets called, how often, and how long it takes (in % of the caller). By default only calls that take long are shown. You can change his by right-click on the graph `Graph > Min. Node Cost`. 
+4. Identify the functions that takes the most time and are called often. Optimize the code (loops, used algorithms, and data structure) there and profile again to se if and by how much you have improved the runtime (this can be judged by the number of instructions fetched).
