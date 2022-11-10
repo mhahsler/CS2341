@@ -90,14 +90,14 @@ public:
     /**
      * Print the tree contents in sorted order.
      */
-    void printTree() const
+    void printTreeSort(ostream &out = cout) const
     {
         if (isEmpty())
-            cout << "Empty tree" << endl;
+            out << "Empty tree" << endl;
         else
-            printTree(root);
+            printTreeSort(root, out);
     }
-
+    
     /**
      * Print the tree structure.
      */
@@ -243,6 +243,21 @@ private:
             return nullptr;
 
         return new AvlNode{t->element, clone(t->left), clone(t->right), t->height};
+    }
+
+    /**
+     * Internal method to print a subtree rooted at t in sorted order.
+     * This is inorder traversal (LNR)
+     */
+    void printTreeSort(AvlNode *t, ostream &out) const
+    {
+        if (t == nullptr)
+            return;
+
+        // recursion
+        printTreeSort(t->left, out);
+        out << t->element << endl;
+        printTreeSort(t->right, out);
     }
 
     // Modified from: https://stackoverflow.com/questions/36802354/print-binary-tree-in-a-pretty-way-using-c
