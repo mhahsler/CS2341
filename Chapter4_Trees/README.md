@@ -167,13 +167,17 @@ Applications of the parse tree: create
 
   Examples: [How to use STL sets and maps](STLSetMap)
 
+Example: Binary Tree Search vs. Binary Search 
+
 
 ## B-Trees
 
-We need secondary storage access for data that does not fit into main memory. Secondary storage
-is typically organized in blocks (file system, disk) and access is slow compared to main memory access so the Big-Oh method does not work (remember that it assumes that all operations take the same amount of time).
+We need **secondary storage** access for data that does not fit into main memory. Secondary storage
+is typically organized in blocks (file system, disk) and access is slow compared to main memory access 
+(takes 100,000x for random access)
+so the **Big-Oh method does not work** (remember that it assumes that all operations take the same amount of time).
 
-_Problem:_ Every level in the tree requires a storage access.
+_Problem:_ Every level in the tree requires a storage access. 
 
 _Idea:_ Reduce tree depth by making the tree wider leading to a balanced M-ary search tree.
 
@@ -191,4 +195,8 @@ B-tree properties:
 The requirement that at least half the places are filled balances the tree. Insertion may lead to a split of a node into two half full nodes.
 
 Operations are $O(log\ N)$
+
+### Applications 
+* File systems: Quick random access to an arbitrary block in a particular file. 
+* Databases: Store auxiliary index structures for faster retrieval in very large databases.
 
