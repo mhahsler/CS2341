@@ -8,20 +8,7 @@ using namespace std;
 
 int main()
 {
-    const int hashSize = 11;
-    srand(time(0));
-
-    // Example: Hash ints using % (mod)
-
-    // Generate a vector with random numbers
-    vector<int> ints(10, 0);
-    generate(ints.begin(), ints.end(), rand);
-
-    // Calculate mod hash
-    for (const auto &d : ints)
-        cout << "h(" << d << ") = " << d % hashSize << endl;
-
-    // Example: Hash strings using STL's hash class
+    cout << "Hash strings using STL's hash class" << endl;
     vector<string> strings = {"Michael", "Sam", "Peter", "Lara", "Mike", "Ian", "Lin",
                               "Sue", "Erica"};
 
@@ -30,30 +17,28 @@ int main()
     for (const auto &d : strings)
         cout << "h(\"" << d << "\") = " << str_hasher(d)
              << " mod 11 = " << str_hasher(d) % 11 << endl;
+    
+    cout << "\nCreate an empty unordered set." << endl;
 
-    // Example: Store strings in a Hash using STL's unordered set
     std::unordered_set<std::string> employees;
 
     cout << "Bucket count: " << employees.bucket_count() << endl;
     cout << "Size: " << employees.size() << endl;
     cout << "Load factor: " << employees.load_factor() << endl;
 
+    cout << "\nAdd the strings to the set. The set rehashes if the load factor gets too high." << endl;
     for (const auto &d : strings)
         employees.insert(d);
 
-    // The data structure automatically changes the bucket count and rehashes
-    // when the load factor gets too high.
-    // (see https://cplusplus.com/reference/unordered_set/unordered_set/rehash/)
-    
     cout << "Bucket count: " << employees.bucket_count() << endl;
     cout << "Size: " << employees.size() << endl;
     cout << "Load factor: " << employees.load_factor() << endl;
-
+    
     cout << boolalpha;
-    cout << "Do we have \"Peter\"? " << (employees.find("Peter") != employees.end()) << endl;
+    cout << "\nDo we have \"Peter\"? " << (employees.find("Peter") != employees.end()) << endl;
 
 
-    // Example: Use STL's unordered map which stores <key, value> tuples (std::pair)
+    cout << "\n\nUse STL's unordered map which stores <key, value> tuples (std::pair)." << endl;
     std::unordered_map<std::string, std::string> colors = {
         {"RED", "#FF0000"},
         {"GREEN", "#00FF00"},
