@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <numeric> // for std::iota
 #include <chrono>
 #include <time.h>
 
@@ -15,14 +16,6 @@
 using namespace std;
 using namespace std::chrono;
 
-// This return is efficient in C++ because it uses move (see std::move)
-// instead of a copy.
-vector<int> randomIntVector(std::size_t size)
-{
-     vector<int> v(size);
-     generate(v.begin(), v.end(), std::rand);
-     return (v);
-}
 
 // Function to print a vector
 template <typename T>
@@ -36,11 +29,24 @@ void printVector(const vector<T> &v)
 int main()
 {
      const size_t NUM_ITEMS = 1000;
+     vector<int> v(NUM_ITEMS);
+
+     // a random vector
+     cout << "Random vector of size " << NUM_ITEMS << endl;
      srand(time(NULL));
+     generate(v.begin(), v.end(), std::rand);
 
-     vector<int> v = randomIntVector(NUM_ITEMS);
+     // a sorted vector 0, 1, 2,...
+     // cout << "Sorted vector of size " << NUM_ITEMS << endl;
+     // iota(begin(v), end(v), 0);
 
-     cout << "Algorithm, time in milliseconds" << endl;
+     // reverse the vector
+     // cout << "Reversed vector of size " << NUM_ITEMS << endl;
+     // iota(begin(v), end(v), 0);
+     // reverse(v.begin(), v.end());
+
+
+     cout << "\nAlgorithm, time in milliseconds" << endl;
 
      // Bubble sort
      vector<int> v2 = v;
