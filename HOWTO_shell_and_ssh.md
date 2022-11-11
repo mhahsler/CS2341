@@ -11,6 +11,6 @@ scientist with cloud-based servers. Here are a [brief introduction](https://ubun
 a short [Linux command cheat sheet.](https://files.fosswire.com/2007/08/fwunixref.pdf)
 
 To securely log into a Unix/Linux server, the [secure shell protocol (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) is used. It opens a shell on the server that you can use from your computer. You need a ssh client. Linux and Mac use
-the client called `ssh`. A popular client for windows is [putty](https://www.putty.org/).
+the client called `ssh`. A popular client for windows is [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/).
 
 For SMU students: [Information on how to use SMU's Genuse servers](https://www.smu.edu/OIT/Services/genuse).
