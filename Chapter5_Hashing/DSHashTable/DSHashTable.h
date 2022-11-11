@@ -2,36 +2,40 @@
 #ifndef DSHASHTABLE_H
 #define DSHASHTABLE_H
 
+#include <string>
 #include <vector>
-#include <list>
+#include <forward_list>
 
 #include<iostream>
 
 using namespace std;
 
-template <typename Object>
 class DSHashTable
 {
 private:
-    vector<list<Object>> table;
-    hash<Object> hasher;
+    // a hash table with a singly-linked list for separate chaining
+    vector<forward_list<string>> table;
 
 public:
     // default constructor
     explicit DSHashTable(size_t size = 101)
     {
+        // call resize for vector to get the empty lists
         table.resize(size);
     }
 
-    // needs a copy constructor, assignment etc.
-
-    bool insert(const Object &x)
+    bool insert(const string &x)
     {
+        // find bucket using hash function
         auto &whichEntry = table[calcHash(x)];
+        
+        // check the list to see if the item is already there
         if (find(begin(whichEntry), end(whichEntry), x) != end(whichEntry))
             return false;
 
-        whichEntry.push_back(x);
+        // add the item to the front of the list in O(1)
+        whichEntry.push_front(x);
+        
         return true;
     }
 
@@ -41,9 +45,12 @@ public:
         return false;
     }
 
-    bool contains(const Object &x) const
+    bool contains(const string &x) const
     {
+        // find bucket
         auto &whichEntry = table[calcHash(x)];
+        
+        // search list
         return find(begin(whichEntry), end(whichEntry), x) != end(whichEntry);
     }
 
@@ -55,9 +62,15 @@ public:
     // size, get keys, iterator, etc. are missing
 
 private:
-    size_t calcHash(const Object &x) const
+    size_t calcHash(const string &x) const
     {
-        return hasher(x) % table.size();
+        // calculate hash value for a string using a polynomial hash function
+        size_t hashVal = 0;
+        
+        for (const auto &c : x)
+            hashVal = 37 * hashVal + c;
+            
+        return hashVal % table.size();
     }
 };
 
