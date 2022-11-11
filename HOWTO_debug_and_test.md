@@ -22,7 +22,7 @@ You need to have `gdb` ([GNU Project Debugger](https://www.sourceware.org/gdb/))
 
 ## How to Run Tests
 
-We will use a simple header-based testing framework called
+We will use a simple header-based unit testing framework called
 [Catch2](https://github.com/catchorg/Catch2). It can be can be [integrated with CMake/CTest](https://github.com/catchorg/Catch2/blob/devel/docs/cmake-integration.md), but we will use the stand alone version.
 Here is an [example with tests.](factorial)
 
@@ -81,4 +81,4 @@ You need to comment these lines out if you want to compile the program for use (
 
 ### MacOS
 
-Unfortunately, `valgrind` is not available for MacOS and the standard compilers in Xcode are missing the `asan` library. You will need to run memory leak tests on a Linux host that has the needed tools installed (e.g., using the VSCode extension `Remote - ssh`). 
+Unfortunately, `valgrind` is not available for MacOS (new M1 and M2 architecture) and the standard compilers in Xcode are missing the `asan` library. You will need to run memory leak tests on a Linux host that has the needed tools installed (e.g., using the VS Code extension `Remote - ssh`). 
