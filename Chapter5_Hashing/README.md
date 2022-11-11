@@ -42,7 +42,6 @@ Has to return the **same hash value for the same key** and should be
 * fast to calculate, and
 * distribute the keys well (does not cluster the items in a part of the table).
 
-See: [List of hash functions](https://en.wikipedia.org/wiki/List_of_hash_functions)
 
 ### For Integers
 $$h(key) = key\ mod\ M$$ 
@@ -56,7 +55,8 @@ Convert the string into an integer and then hash the integer using $mod$. Note t
 A simple choice that works well is to use ASCII encoding for the letters to get the numbers $k_0, k_1, ..., k_{n-1}$ and then the following polynomial:
 $$h(k) = (k_0 + 37 k_1 + 37^2 k_2, ...)\ mod\ M = \sum_{i=0}^{n-1} 37^i k_i\ mod\ M$$  
 
-Alternatives are cryptographic hash functions like MD5 and SHA-1.
+Alternatives are cryptographic hash functions like MD5 and SHA-1. See [List of hash functions](https://en.wikipedia.org/wiki/List_of_hash_functions). These hash functions convert a sequence of byte into an integer key and we use then the modulo to 
+calculate the index for the hash table. 
 
 ### For Objects
 
