@@ -1,90 +1,111 @@
 # Chapter 5: Hashing
 
 Hash tables are used to store and find items based on a __key__.
-The time to find items by data structure is
+The time complexity to find or insert items by data structure is
 
-* list/vector: $O(N)$
-* binary search tree: $O(log\ N)$
-* hash table: $O(1)$
+* Vector: $O(N)$
+* List: $O(N)$
+* Binary search tree: $O(log\ N)$
+* **Hash table: $O(1)$**
 
-Hash tables are unsorted, while binary search trees are sorted.
 
 ## Hash Table
 
-A hash table is a table (array) of size $M$. 
+A hash table is an auxiliary data structure with a table (array) of size $M$ to store keys that help us with 
+finding the stored elements again.
 
-We want to insert a $(key, value)$ pairs. The index for the table row is calculated using a hash function $h(key)$. 
+Insert Operation for a $(key, value)$ pair.
 
-Now we can look up values by key.
+1. Calculate the index for the table row using a hash function $h(key)$ that maps each possible key to a 
+valid row in the table. 
+2. Place the $(key, value)$ pair in that row.
 
-The hash function should be fast and since its runtime does not depend on the number $N$ of items in the table, we get constant runtime of $O(1).$ 
+Lookup Operation for a key
+1. Calculate the index for the table row using a hash function $h(key)$.
+2. Retrieve the value the table row.
 
-Issues:
+The runtime of the hash function only depends on how the key is represented and not on the number elements $N$ in the table. Therefore, we get constant runtime of $O(1)$. 
 
-1. Does the hash function distribute the items well over the whole table?
-2. What about collisions where $h(key_1) = h(key_2)$
+**Example:** Hash SMUID, name pairs using the first digits of the ID as the hash function.
+
+Note: Hash tables do not store entries in any particular order! 
+
+**Issues:**
+
+1. We need to choose the hash table size $M$. 
+2. We want a function that distributes the items well over the whole table. We do not want to allocate a very large table that is mostly empty!
+3. What about collisions where $h(key_1) = h(key_2)$?
 
 ## Hash Function
 
-Has to return the same hash value for the same key and should be
+Has to return the **same hash value for the same key** and should be
 * fast to calculate, and
 * distribute the keys well (does not cluster the items in a part of the table).
 
 See: [List of hash functions](https://en.wikipedia.org/wiki/List_of_hash_functions)
 
 ### For Integers
-$h(key) = key\ mod\ M$ and we typically choose $M$ to be prime.
+$$h(key) = key\ mod\ M$$ 
 
-### For strings
+We typically choose $M$ to be prime.
 
-Convert the string into an integer and then hash the integer using $mod$. Note that letter frequencies depends on the language 
-and encoding plays a role.
+### For Strings
 
-A simple choice that works well is to use ASCII encoding for the letters $k_0, k_1, ...$ and the following polynomial:
-$$h_k = k_0 + 37 k_1 + 37^2 k_2, ...$$  
+Convert the string into an integer and then hash the integer using $mod$. Note that letter frequencies depends on the language and encoding plays a role.
+
+A simple choice that works well is to use ASCII encoding for the letters to get the numbers $k_0, k_1, ..., k_{n-1}$ and then the following polynomial:
+$$h(k) = (k_0 + 37 k_1 + 37^2 k_2, ...)\ mod\ M = \sum_{i=0}^{n-1} 37^i k_i\ mod\ M$$  
 
 Alternatives are cryptographic hash functions like MD5 and SHA-1.
 
-### For objects
+### For Objects
 
 Design a hash using hashes of all member variables.
 
 
 ## Collisions
 
-Collisions happen when $h(key_1) = h(key_2)$.
+Collisions happen when $h(key_1) == h(key_2)$ and cannot be prevented.
 
-Separate chaining uses a linked list for each cell in the hash table. 
-We can insert at the beginning in $O(1)$ and a good hash function should 
+The standard method is to use **separate chaining.** It uses a linked list for each cell in the hash table. 
+We can insert at the beginning of the list in $O(1)$. A good hash function should 
 have few collisions and lead to short lists.
 
-How large should the hash table be? The loading factor is
+See Example [DSHashTable](DSHashTable).
+
+## Hash Table Size
+
+How large should the hash table be? The loading factor of a hash table is defined as
 
 $$\lambda = \frac{\text{number of items in table}}{\text{table size}}= \frac{N}{M}.$$
 
-$\lambda$ is the average length of the linked list. Search requires on average 
- $1 + (\lambda / 2)$ link traversals. General rule is to choose $M \approx N \rightarrow \lambda \approx 1$.
+$\lambda$ gives the average number of collisions which is also the average length of the linked list. 
+Search therefore requires on average $1 + (\lambda / 2)$ link traversals. A general rule is to choose 
 
-Rehashing: If the loading factor gets too large, then allocate a table with double the size and
-  insert the data in $O(N)$ operations. 
+$$M \approx N \rightarrow \lambda \approx 1$$
+
+## Rehashing
+
+If the loading factor gets too large, then allocate a table with double the size and insert the data from the old table in $O(N)$ operations. 
 
 Alternatives are probing, double hashing, perfect hashing, universal hashing and many more.
 
-See Example [DSHashTable](DSHashTable).
 
 ## STL Hash Tables
 
 STL provides [`std::unordered_set`](https://cplusplus.com/reference/unordered_set/unordered_set/) and [`std::unordered_map`](https://cplusplus.com/reference/unordered_map/unordered_map/). The keys need to have `operator==` and a `hash` function (or a provided function object).
 
-STL also provides hash functions as templated function objects as [`std::hash`](https://cplusplus.com/reference/functional/hash/)
+The STL structures automatically [rehash](https://cplusplus.com/reference/unordered_set/unordered_set/rehash/) when the load factor gets to high.
 
-Unordered maps are often faster then regular maps, but this depends on the data and needs to be
-tested in an experiment.
+STL also provides hash functions as templated function objects as [`std::hash`](https://en.cppreference.com/w/cpp/utility/hash)
+
+Unordered maps (hash maps) are often faster than regular maps which use binary search trees, 
+but this depends on the data and needs to be tested in an experiment.
 
 See: [STL example code](STL)
 
 ## Some Applications
 
 1. Lookup table with constant time. E.g., the compiler looks up variable names or a router looks up IP addresses.
-2. Convert a name (a string) into a numeric ID used in an algorithm.
+2. Convert a name (a string) into a numeric ID used in an algorithm (e.g., filename to an object identifier).
 3. Spell checker looks up words.
