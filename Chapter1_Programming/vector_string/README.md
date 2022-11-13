@@ -36,6 +36,7 @@ and for `char *` use [std::string](https://en.cppreference.com/w/cpp/string/basi
 index. Since it is an signed datatype, it will eventually overflow produce a negative index and break your program. The STL introduces two new datatypes that are guaranteed to be able to represent all possible index values. These are:
 
 * `std::size_t` for an index. It is unsigned and can only be positive.
+On many systems it is an `unsigned long`.
 * `std::ptrdiff_t` for the difference between indices (or pointers). Can be positive and negative.
 
 You should use these two datatypes consistently instead of `int`.
