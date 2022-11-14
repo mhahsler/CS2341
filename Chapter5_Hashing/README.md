@@ -14,26 +14,29 @@ The time complexity to find or insert items by data structure is
 A hash table is an auxiliary data structure with a table (array) of size $M$ to store keys that help us with 
 finding the stored elements again.
 
+### Insert
 Insert Operation for a $(key, value)$ pair.
 
 1. Calculate the index for the table row using a hash function $h(key)$ that maps each possible key to a 
 valid row in the table. 
 2. Place the $(key, value)$ pair in that row.
 
+### Lookup
 Lookup Operation for a key
 1. Calculate the index for the table row using a hash function $h(key)$.
 2. Retrieve the value the table row.
 
 The runtime of the hash function only depends on how the key is represented and not on the number elements $N$ in the table. Therefore, we get constant runtime of $O(1)$. 
 
-**Example:** Hash SMUID, name pairs using the first digits of the ID as the hash function.
+**Note:** Hash tables do not store entries in any particular order! 
 
-Note: Hash tables do not store entries in any particular order! 
+**Example:** Hash (SMUID, name) pairs to allow for fast SMUID to name lookup. We can use the first digits of the ID as the hash function (this may not be a great hash function!).
 
-**Issues:**
+
+### Issues
 
 1. We need to choose the hash table size $M$. 
-2. We want a function that distributes the items well over the whole table. We do not want to allocate a very large table that is mostly empty!
+2. We want a hash function that distributes the items well over the whole table. We do not want to allocate a very large table that is mostly empty!
 3. What about collisions where $h(key_1) = h(key_2)$?
 
 ## Hash Function
@@ -50,9 +53,9 @@ We typically choose $M$ to be prime.
 
 ### For Strings
 
-Convert the string into an integer and then hash the integer using $mod$. Note that letter frequencies depends on the language and encoding plays a role.
+Convert the string into an integer and then hash the integer using $mod$. This is technically a composition of two hash functions $h_{mod}(h_{int}(string))$.
 
-A simple choice that works well is to use ASCII encoding for the letters to get the numbers $k_0, k_1, ..., k_{n-1}$ and then the following polynomial:
+A simple choice that works well is to use ASCII encoding for the letters to get the numbers $k_0, k_1, ..., k_{n-1}$ and then the following polynomial (remember [numeral systems](https://en.wikipedia.org/wiki/Numeral_system)):
 $$h(k) = (k_0 + 37 k_1 + 37^2 k_2, ...)\ mod\ M = \sum_{i=0}^{n-1} 37^i k_i\ mod\ M$$  
 
 Alternatives are cryptographic hash functions like MD5 and SHA-1. See [List of hash functions](https://en.wikipedia.org/wiki/List_of_hash_functions). These hash functions convert a sequence of byte into an integer key and we use then the modulo to 
@@ -60,12 +63,12 @@ calculate the index for the hash table.
 
 ### For Objects
 
-Design a hash using hashes of all member variables.
+Design a hash using hashes of all member variables and combine them into a single hash.
 
 
 ## Collisions
 
-Collisions happen when $h(key_1) == h(key_2)$ and cannot be prevented.
+Collisions happen when $h(key_1) == h(key_2)$. Collisions cannot be prevented.
 
 The standard method is to use **separate chaining.** It uses a linked list for each cell in the hash table. 
 We can insert at the beginning of the list in $O(1)$. A good hash function should 
