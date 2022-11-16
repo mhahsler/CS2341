@@ -28,6 +28,10 @@ Here are some popular algorithms:
 ### Bubble Sort
 A simple sorting algorithm that repeatedly steps through the input list element by element, comparing the current element with the one after it, swapping their values if needed. These passes through the list are repeated until no swaps had to be performed during a pass, meaning that the list has become fully sorted. 
 
+### Selection Sort
+Select the minimum and place it at the beginning of the array. Repeat the procedure with all but the first element till all
+elements are sorted.
+
 ### Insertion Sort
 Insertion sort goes through the array once from left to right.
 At each iteration, insertion sort removes the element from the input data, finds the location it belongs within the sorted list (to the left), and inserts it there.
