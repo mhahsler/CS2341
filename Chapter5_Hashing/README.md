@@ -30,7 +30,7 @@ The runtime of the hash function only depends on how the key is represented and 
 
 **Note:** Hash tables do not store entries in any particular order! 
 
-**Example:** Hash (SMUID, name) pairs to allow for fast SMUID to name lookup. We can use the first digits of the ID as the hash function (this may not be a great hash function!).
+**Example:** Hash (SMUID, name) pairs to allow for fast SMUID to name lookup. We can use the first digit of the ID as a simple hash function (this may not be a great hash function!).
 
 
 ### Issues
