@@ -6,6 +6,7 @@
 #include <time.h>
 #include <string>
 
+#include "selectionSort.h"
 #include "bubbleSort.h"
 #include "insertionSort.h"
 #include "shellSort.h"
@@ -111,6 +112,23 @@ int main(int argc, char *argv[])
           << endl;
      
      // printVector(v2);
+     
+     // Selection sort
+     v2 = v;
+     start = high_resolution_clock::now();
+     selectionSort(v2);
+
+     stop = high_resolution_clock::now();
+     duration = duration_cast<microseconds>(stop - start);
+
+     cout << "Selection Sort"
+          << ", "
+          << duration.count() 
+          << ", "
+          << checkSorted(v2)
+          << endl;
+     
+     // printVector(v);
 
 
      // Insertion sort
