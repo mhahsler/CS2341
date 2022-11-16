@@ -16,6 +16,7 @@ Here are some popular algorithms:
 | Algorithm      | Worst Case Time Complexity | Auxiliary Data Structure | Stable? | 
 | -------------- | -------------------------- | ---------------- | ------- |
 | Bubble Sort    |  $O(n^2)$                  | no      | yes     |
+| Selection Sort |  $O(n^2)$                  | no      | no      |
 | Insertion Sort |  $O(n^2)$                  | no      | yes     |
 | Shell Sort     |  $O(n^2)$                  | no      | no      |
 | Heap Sort      |  $O(n\ log\ n)$            | no      | no      |
