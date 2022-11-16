@@ -10,6 +10,8 @@
 
 using namespace std;
 
+// Hash example for a set of strings. Only uses keys (no values).
+
 class DSHashTable
 {
 private:

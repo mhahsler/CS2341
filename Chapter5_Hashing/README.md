@@ -74,7 +74,9 @@ The standard method is to use **separate chaining.** It uses a linked list for e
 We can insert at the beginning of the list in $O(1)$. A good hash function should 
 have few collisions and lead to short lists.
 
-See Example [DSHashTable](DSHashTable).
+See Example [DSHashTable](DSHashTable) which implements a hashed set.
+
+Alternatives to separate chaining are probing, double hashing, perfect hashing, universal hashing and many more.
 
 ## Hash Table Size
 
@@ -87,11 +89,8 @@ Search therefore requires on average $1 + (\lambda / 2)$ link traversals. A gene
 
 $$M \approx N \rightarrow \lambda \approx 1$$
 
-## Rehashing
+**Rehashing:** If the loading factor gets too large, then allocate a table with double the size and insert the data from the old table in $O(N)$ operations. 
 
-If the loading factor gets too large, then allocate a table with double the size and insert the data from the old table in $O(N)$ operations. 
-
-Alternatives are probing, double hashing, perfect hashing, universal hashing and many more.
 
 
 ## STL Hash Tables
