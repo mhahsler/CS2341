@@ -18,7 +18,7 @@ void insertionSort(std::vector<Comparable> &a)
         // remove the element from the array
         Comparable tmp = std::move(a[p]);
 
-        // shift the elements to the right until the right position is found
+        // shift the elements to the left of the element to the right until the right position is found
         std::size_t j;
         for (j = p; j > 0 && tmp < a[j - 1]; --j)
             a[j] = std::move(a[j - 1]);
