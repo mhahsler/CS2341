@@ -1,6 +1,6 @@
 # Chapter 6: Priority Queues (Heaps)
 
-**Goal:** Find and remove the smallest element in a collection quickly.
+**Goal:** Always find and remove the smallest element in a collection quickly.
 
 Basic Operations:
 * insert (= enqueue)
@@ -8,8 +8,8 @@ Basic Operations:
 
 Options:
 * Unsorted array: $O(N)$
-* Binary search tree: $O(log\ N)$, but tree will get right-heavy because we always delete the minimum from the left side.
-* Use a **new binary heap data structure.**
+* A balanced binary search tree: $O(log\ N)$. With out balancing the tree would get right-heavy because we always delete the minimum from the left side.
+* Use a **new specialized binary heap data structure** that has faster access to the minimum and does not need rotations for balancing.
 
 ## Binary Heap
 
@@ -18,31 +18,38 @@ A binary tree with
 1. **Structure property:** a complete tree with no missing nodes. 
   The bottom level is filled left-to-right ending in "last element." The missing node next to the last element is called 
   the "hole."
-  The structure property ensures that the tree height is $O(log\ N)$.
+  The structure property ensures that the tree has a height of $O(log\ N)$.
 2. **Heap-order property:** Any node has to be smaller than its descendants. 
-  The root node is the smallest, so we do not need to search for the smallest value resulting in $O(1)$.
+  The root node is the smallest, so we do not need to search for the smallest value.
 
-Note: This tree is always balanced (structure property) but it is much simpler to maintain than a balanced binary search tree (e.g., an AVL tree). 
+Note: This tree is always balanced (structure property) but the heap-order property makes it much simpler to maintain than a balanced binary search tree (e.g., an AVL tree). 
 
 ### Operations
 
 **insert:** move the "hole" up the tree till the new element can be inserted in the hole without violating the heap-order property. This operation is called _percolate up_. The worst case is to insert a new minimum with $O(log\ N)$ because the hole has to be moved up all the way to the root.
 
-**deleteMin:** remove the root node (the minimum) and then slide the resulting hole down the smaller of the children till the "last element" in the tree can be placed in the hole. This operation is called _percolate down_. Worst case is $O(log\ N)$
+**deleteMin:** remove the root node (the minimum) and then slide the resulting hole down the smaller of the children till the "last element" in the tree can be placed in the hole. This operation is called _percolate down_. 
+Worst case is $O(log\ N)$.
 
-_Note:_ This data structure is not good for finding an arbitrary element. We would have to scan the complete tree with $O(N)$ operations!
+**Note:** This data structure is not good for finding an arbitrary element. We would have to scan the complete tree with $O(N)$ operations!
+
+**Example:** Add 30, 100, 80, 25, 40 to a heap and then use delete Min to get the values back.
 
 ### Implementation
 
-Since the binary tree is complete, it can be efficiently stored in an array/vector filled level-wise, left-to-right from the tree (the element at index 0 is left empty to make access very simple). For the element at index $i$:
+Since the binary tree is complete, it can be efficiently stored in an array/vector filled level-wise, left-to-right from the tree (the element at index 0 is left empty to make access very simple). 
 
+For the element at index $i$:
 * the left child is at index $2i$
 * the right child is at index $2i + 1$
 * the parent is at index $\lfloor i/2 \rfloor$ (floor function).
 
-_Note:_ this is an effective storage format for any balanced tree.
+_Note:_ this is also an effective storage format for any balanced tree.
 
 See example: [DSHeap](DSHeap)
+
+There exist other variants of heaps: Leftist, Binomial Fibonacci, ...
+
 
 ### Min vs. Max-Heap
 

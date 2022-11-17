@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <stdexcept>
+#include <iostream>
 
 using namespace std;
 
@@ -15,6 +16,7 @@ private:
 public:
     explicit DSHeap()
     {
+        // an empty heap is represented by vector of size 1 (the first element is not used)
         array = vector<Comparable>(1);
     }
 
@@ -25,91 +27,66 @@ public:
 
     void insert(const Comparable &x)
     {
-        // add hole
-        array.resize(array.size() + 1);
+        // add hole (capacity is handled by vector)
+        array.push_back(x);
 
         size_t hole = array.size() - 1;
-        size_t holeParent = hole / 2;
+        size_t holeParent = hole / 2; // this is an integer division so it includes floor
 
-        // percolate up
+        // percolate up till x fits
         while (x < array[holeParent] && hole > 1)
         {
-
             swap(array[hole], array[holeParent]);
             hole = holeParent;
             holeParent = hole / 2;
         }
 
-        array[hole] = x;
+        // Note x is already in the hole
     }
 
     Comparable deleteMin()
     {
         if (empty())
-            throw std::runtime_error("heap is empty!");
+            throw runtime_error("heap is empty!");
 
-        Comparable min = array[1];
+        // create hole at root
+        Comparable min;
+        swap(min, array[1]);
         size_t hole = 1;
-        size_t childLeft, childRight;
-        size_t x = array.size() - 1;
 
-        // percolate down till x fits
+        size_t lastElement = array.size() - 1;
+        Comparable &last = array[lastElement];
+        size_t child, childLeft, childRight;
+
+        // percolate hole down till last element fits or hole is a leaf (has no left child)
         while (true)
         {
-            childLeft = 2 * hole;
-            childRight = 2 * hole + 1;
+            childLeft = hole * 2;
+            childRight = childLeft + 1;
 
-            // Case 1: 2 children (not x)
-            // Case 2: left child and x on the right
-            // Case 3: only x as the left child, right is empty
-
-            // Case 1
-            if (childRight < x)
-            {
-                // x fits
-                if (array[x] < array[childLeft] && array[x] < array[childRight])
-                {
-                    swap(array[x], array[hole]);
-                    array.resize(array.size() - 1);
-                    break;
-                }
-
-                // move hole
-                if (array[childLeft] < array[childRight])
-                {
-                    swap(array[childLeft], array[hole]);
-                    hole = childLeft;
-                }
-                else
-                {
-                    swap(array[childRight], array[hole]);
-                    hole = childRight;
-                }
-            }
-            else if (childRight == x) // Case 2
-            {
-                if (array[childLeft] < array[x])
-                {
-                    swap(array[childLeft], array[hole]);
-                    hole = childLeft;
-                    swap(array[x], array[hole]);
-                    array.resize(array.size() - 1);
-                    break;
-                }
-                else
-                {
-                    swap(array[x], array[hole]);
-                    array.resize(array.size() - 1);
-                    break;
-                }
-            }
-            else // Case 3: childLeft == x
-            {
-                swap(array[x], array[hole]);
-                array.resize(array.size() - 1);
+            // break if hole is a leaf
+            if (childLeft >= lastElement)
                 break;
-            }
+
+            // find smaller child (if right child exists)
+            if (childRight < lastElement && array[childRight] < array[childLeft])
+                child = childRight;
+            else
+                child = childLeft;
+
+            // break if last element fits
+            if (last < array[child])
+                break;
+
+            // otherwise, move child up
+            swap(array[hole], array[child]);
+            hole = child;
         }
+
+        // move last element to hole and remove the last element
+        swap(array[hole], array[lastElement]);
+        array.pop_back();
+
         return min;
     }
 
@@ -117,14 +94,14 @@ public:
     {
         array.resize(1);
     }
-  
+
     void prettyPrintTree() const
     {
         prettyPrintTree(1, "", false);
     }
 
 private:
-  // Modified from: https://stackoverflow.com/questions/36802354/print-binary-tree-in-a-pretty-way-using-c
+    // Modified from: https://stackoverflow.com/questions/36802354/print-binary-tree-in-a-pretty-way-using-c
 
     void prettyPrintTree(size_t nodeID, const string &prefix, bool isRight) const
     {
@@ -136,7 +113,8 @@ private:
         cout << prefix;
         cout << (isRight ? "├──" : "└──");
         // print the value of the node
-        cout << array[nodeID] << " [" << nodeID << "]" << "\n";
+        cout << array[nodeID] << " [" << nodeID << "]"
+             << "\n";
 
         // enter the next tree level - left and right branch
         prettyPrintTree(2 * nodeID + 1, prefix + (isRight ? "│   " : "    "), true);

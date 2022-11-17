@@ -1,6 +1,5 @@
 #include <iostream>
 
-// DSHeap needs to be implemented.
 #include "DSHeap.h"
 
 using namespace std;
@@ -11,11 +10,11 @@ int main()
 
     myheap.insert(30);
     myheap.insert(100);
- //   myheap.insert(80);
+    myheap.insert(80);
     myheap.insert(25);
     myheap.insert(40);
-
- //   myheap.prettyPrintTree();
+    
+    myheap.prettyPrintTree();
 
     cout << "Removing elements...\n";
     while (!myheap.empty())

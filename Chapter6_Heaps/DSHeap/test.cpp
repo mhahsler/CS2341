@@ -1,11 +1,11 @@
 // NOTE: We use Catch2 V2
 #define CATCH_CONFIG_MAIN
+#include "catch2/catch.hpp"
+
 #include <vector>
 #include <string>
 #include <algorithm>
 #include <ctime>
-
-#include <catch2/catch.hpp>
 
 #include "DSHeap.h"
 
