@@ -15,6 +15,10 @@ using namespace std;
  * Return the maximum item in array a.
  * Assumes a.size( ) > 0 
  * The objects must provide operator< and operator=
+ * 
+ * This is a template function which means that it only exists
+ * if the compiler finds a call to the function an then write code
+ * for the data type used in that call.
  */
 template <typename Comparable>
 const Comparable & findMax( const vector<Comparable> & a )
@@ -35,12 +39,13 @@ int main( )
     vector<string>  v3 = { "hello", "world", "apple" };
     vector<IntCell> v4( 75 );
 
-    // Additional code to fill in the vectors
+    // the compiler will analyze the calls below, determine the type of the argument, and then
+    // generate multiple version of the template function with each needed type. 
     cout << "Templated findMax() function\n"; 
-    cout << findMax( v1 ) << endl;  // OK: Comparable = int
-    cout << findMax( v2 ) << endl;  // OK: Comparable = double
-    cout << findMax( v3 ) << endl;  // OK: Comparable = string
-//    cout << findMax( v4 ).read() << endl;  // Illegal; operator< undefined for IntCell
+    cout << findMax(v1) << endl;  // OK: Comparable = int
+    cout << findMax(v2) << endl;  // OK: Comparable = double
+    cout << findMax(v3) << endl;  // OK: Comparable = string
+//    cout << findMax(v4).read() << endl;  // Illegal; operator< undefined for IntCell
 // compiler error!
 // [build] main.cpp: In instantiation of ‘const Comparable& findMax(const std::vector<Comparable>&) [with Comparable = IntCell]’:
 // [build] main.cpp:43:20:   required from here
@@ -49,6 +54,7 @@ int main( )
 // See Section Comparator on how to fix this by adding an `operator<` to your class.
 
 
+    // we can call the function as findMax<int>(v1) to force the compiler to use int in the template 
 
     // by the way, the STL already provides https://en.cppreference.com/w/cpp/algorithm/max_element
     cout << "\nSTL max_element()\n"; 
