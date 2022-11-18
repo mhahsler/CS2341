@@ -1,18 +1,27 @@
 # <img src="images/DS_Weiss_Book.jpg" align="right"> Code Examples for Data Structures
 
+C++ is widely used to implement performance-critical components of
+applications. It provides access to low-level memory management facilities
+and is therefore
+well-suited for learning about data structures and their
+efficient implementations. It will also give you a deeper understanding of how
+data structures work in programming languages that use automatic memory
+management (e.g., Java and Python).
+
+
 **Textbook:** Data Structures and Algorithm Analysis in C++ (Fourth Edition), by Mark Allen Weiss.
 Source Code by Mark Allen Weiss can be found [here.](https://users.cs.fiu.edu/~weiss/dsaa_c++4/code/)
 
-| Book Chapter |  Lecture Notes and Code |
-| :-----: |  :--- |
-| 1 | [Programming](Chapter1_Programming)  |
-| 2 |[Algorithm Analysis](Chapter2_Algorithm_Analysis) |
-| 3 | [Lists, Stacks, and Queues](Chapter3_Lists_etc) |
-| 4 | [Trees](Chapter4_Trees) |
-| 5 | [Hashing](Chapter5_Hashing) |
-| 6 | [Heaps](Chapter6_Heaps) |
-| 7 | [Sorting](Chapter7_Sorting) |
-| 9 | [Graphs](Chapter9_Graphs) |
+| Book Chapter | Lecture Notes and Code                            |
+| :----------: | :------------------------------------------------ |
+|      1       | [Programming](Chapter1_Programming)               |
+|      2       | [Algorithm Analysis](Chapter2_Algorithm_Analysis) |
+|      3       | [Lists, Stacks, and Queues](Chapter3_Lists_etc)   |
+|      4       | [Trees](Chapter4_Trees)                           |
+|      5       | [Hashing](Chapter5_Hashing)                       |
+|      6       | [Heaps](Chapter6_Heaps)                           |
+|      7       | [Sorting](Chapter7_Sorting)                       |
+|      9       | [Graphs](Chapter9_Graphs)                         |
 
 Course material and assignments for CS 2341 at SMU can be found on [Canvas](https://www.smu.edu/OIT/Services/Canvas/).
 

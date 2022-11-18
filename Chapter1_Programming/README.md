@@ -1,15 +1,11 @@
 # Chapter 1: Programming
 
-## How to Run Examples, Debug and Test Code
+This chapter is a review of important concepts and their C++ implementation 
+used in this course. Very good short explanations can be found in this
+[C++ YouTube Playlist](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb).
 
-* [HOWTO Use a Shell and SSH](../HOWTO_shell_and_ssh.md)
-* [HOWTO Compile Programs With VS Code and CMake](../HOWTO_compile_programs_with_CMake.md)
-* [HOWTO Good Coding Practice](../HOWTO_good_coding_practice.md)
-* [HOWTO Debug and Test](../HOWTO_debug_and_test.md)
 
-## Code Examples
-
-### Memory Management
+## Memory Management
 * Some Questions:
   - Where do programs store variables and objects?
   - Where does memory come from and how is memory returned?
@@ -19,33 +15,33 @@
 * Example: [Memory allocation](memory)
 
 
-### Recursion, Compiling, Debugging and Testing
+## Recursion, Compiling, Debugging and Testing
 * Example: [Calculate factorials](factorial)
 
-### Classes
+## Classes
 * Example: [IntCell](IntCell)
 
-### Pointers and Dynamic Memory Allocation
+## Pointers and Dynamic Memory Allocation
 * Example: [Pointers](pointers)
 * Reading: [References vs. Pointers](https://isocpp.org/wiki/faq/references)
 
-### STL vector and string
+## STL vector and string
 * Example: [Arrays and cstrings vs STL vectors and strings](vector_string)
 * Reading: [The C++ Standard Template Library (STL)](https://www.geeksforgeeks.org/the-c-standard-template-library-stl/)
 
-### Parameter passing
+## Parameter passing
 * Example: [Call-by-value vs call-by-reference](parameters) and using `const`.
 
 
-### Destructor, copy constructor and assignment
+## Destructor, copy constructor and assignment
 * Example: [Big five for classes](big-five)
 
-### Templates
+## Templates
 * Examples: [Function and class templates](templates)
 
-### Comparators
+## Comparators
 * Example: [Comparator](comparator)
 
-### Command Line Interface and File IO
+## Command Line Interface and File IO
 * Example: [CLI and file IO](io)
 
