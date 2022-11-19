@@ -276,12 +276,12 @@ private:
 
         while (!q.empty())
         {
-            // take the next node from the queue
+            // take the next node from the front of the queue
             current = q.front();
             q.pop();
             out << current->element << " ";
 
-            // add children to the queue
+            // add children to the end of the queue
             if (current->left != nullptr)
                 q.push(current->left);
 
