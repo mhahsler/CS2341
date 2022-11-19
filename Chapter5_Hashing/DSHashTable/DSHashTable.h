@@ -10,7 +10,7 @@
 
 using namespace std;
 
-// Hash example for a set of strings. Only uses keys (no values).
+// Hash example for a hashed set of strings. Only uses keys (no values).
 
 class DSHashTable
 {
@@ -66,7 +66,9 @@ public:
 private:
     size_t calcHash(const string &x) const
     {
-        // calculate hash value for a string using a polynomial hash function
+        // calculate hash value for a string using the standard polynomial hash function.
+        // Note that 37^i is broken down to repeated multiplications with 37 which is 
+        // a lot faster then calling `pow()` from cmath (math.h)
         size_t hashVal = 0;
         
         for (const auto &c : x)
