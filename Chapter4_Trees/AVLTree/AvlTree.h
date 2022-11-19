@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <algorithm>
 #include <iostream>
+#include <queue> // for level-order traversal
 
 using namespace std;
 
@@ -30,27 +31,32 @@ private:
 
 public:
     /**
-     * @brief Construct a new Avl Tree object
+     * @brief Default constructor
      */
     AvlTree() : root{nullptr}
     {
     }
 
     /**
-     * @brief Copy constructor
+     * @brief Rule-of-3 Part 1: Copy constructor uses internal function clone().
+     *
      */
     AvlTree(const AvlTree &rhs) : root{nullptr}
     {
         root = clone(rhs.root);
     }
 
+    /**
+     * @brief Rule-of-3 Part 2: Destroy the Binary Search Tree object using the internal
+     *   function makeEmpty().
+     */
     ~AvlTree()
     {
         makeEmpty();
     }
 
     /**
-     * Copy assignment operator
+     * @brief Rule-of-3 Part 1: Copy constructor uses internal function clone().
      */
     AvlTree &operator=(const AvlTree &rhs)
     {
@@ -81,12 +87,14 @@ public:
      */
     void printTreeSort(ostream &out = cout) const
     {
-        if (isEmpty())
-            out << "Empty tree" << endl;
-        else
-            printTreeSort(root, out);
+        printTreeSort(root, out);
     }
-    
+
+    void printTreeByLevel(ostream &out = cout) const
+    {
+        printTreeByLevel(root, out);
+    }
+
     /**
      * Print the tree structure.
      */
@@ -142,8 +150,9 @@ private:
         {
         } // Duplicate; do nothing
 
-        // This will call balance on the way back up the tree. It will only balance 
-        // once at node the where the tree got imbalanced (called node alpha in the textbook).
+        // This will call balance on the way back up the tree. It will only balance
+        // once at node the where the tree got imbalanced (called node alpha in the textbook)
+        // and update the height all the way back up the tree.
         balance(t);
     }
 
@@ -235,7 +244,7 @@ private:
     }
 
     /**
-     * Internal method to print a subtree rooted at t in sorted order.
+     * Internal recursive method to print a subtree rooted at t in sorted order.
      * This is inorder traversal (LNR)
      */
     void printTreeSort(AvlNode *t, ostream &out) const
@@ -245,11 +254,48 @@ private:
 
         // recursion
         printTreeSort(t->left, out);
-        out << t->element << endl;
+        out << t->element << " ";
         printTreeSort(t->right, out);
     }
 
-    // Modified from: https://stackoverflow.com/questions/36802354/print-binary-tree-in-a-pretty-way-using-c
+    /**
+     * Internal method to print a subtree rooted.
+     * This is level-order traversal.
+     * We use a loop and a queue an auxiliary data structure to remember what node to process next.
+     */
+    void printTreeByLevel(AvlNode *t, ostream &out) const
+    {
+        if (t == nullptr)
+            return;
+
+        AvlNode *current;
+        queue<AvlNode *> q;
+
+        // start with the root node in the queue
+        q.push(t);
+
+        while (!q.empty())
+        {
+            // take the next node from the queue
+            current = q.front();
+            q.pop();
+            out << current->element << " ";
+
+            // add children to the queue
+            if (current->left != nullptr)
+                q.push(current->left);
+
+            if (current->right != nullptr)
+                q.push(current->right);
+        }
+    }
+
+    /**
+     * Pretty print the tree structure
+     * Uses preorder traversal with R and L swapped (NRL)
+     *
+     * Modified from: https://stackoverflow.com/questions/36802354/print-binary-tree-in-a-pretty-way-using-c
+     */
     void prettyPrintTree(const std::string &prefix, const AvlNode *node, bool isRight) const
     {
         if (node == nullptr)
@@ -285,9 +331,9 @@ private:
         if (t == nullptr)
             return;
 
-        if (height(t->left) - height(t->right) > ALLOWED_IMBALANCE)  // unbalancing insertion was left
+        if (height(t->left) - height(t->right) > ALLOWED_IMBALANCE) // unbalancing insertion was left
         {
-            if (height(t->left->left) >= height(t->left->right)) 
+            if (height(t->left->left) >= height(t->left->right))
                 rotateWithLeftChild(t); // case 1 (outside)
             else
                 doubleWithLeftChild(t); // case 2 (inside)
