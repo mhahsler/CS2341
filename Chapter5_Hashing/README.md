@@ -1,18 +1,21 @@
 # Chapter 5: Hashing
 
-Hash tables are used to store and find items based on a __key__.
+Hash tables are used to store and find items based on a __key__ very quickly.
+For __sets,__ we only have a $key$ representing the 
+values in the set and we can check if the key is in the set.
+For __maps,__ we use $(key, value)$ pair to quickly
+map a key to its value.
+
 The time complexity to find or insert items by data structure is
 
 * Vector: $O(N)$
-* List: $O(N)$
+* List: $O(N)$ (insertion at the front can be done in $O(1)$)
 * Binary search tree: $O(log\ N)$
 * **Hash table: $O(1)$**
 
-
 ## Hash Table
 
-A hash table is an auxiliary data structure with a table (array) of size $M$ to store keys that help us with 
-finding the stored elements again.
+A hash table is an auxiliary data structure with a table (array) of size $M$ to store keys that help us with finding the stored elements again.
 
 ### Insert
 Insert Operation for a $(key, value)$ pair.
@@ -49,7 +52,7 @@ Has to return the **same hash value for the same key** and should be
 ### For Integers
 $$h(key) = key\ mod\ M$$ 
 
-We typically choose $M$ to be prime.
+We typically choose $M$ to be prime since this greatly reduces the occurrence of collisions (see below).
 
 ### For Strings
 
@@ -70,7 +73,8 @@ Design a hash using hashes of all member variables and combine them into a singl
 
 Collisions happen when $h(key_1) == h(key_2)$. Collisions cannot be prevented.
 
-The standard method is to use **separate chaining.** It uses a linked list for each cell in the hash table. 
+The standard method is to use **separate chaining.** It uses a linked list for each cell in the hash table to store all
+the items that hash to the same value. 
 We can insert at the beginning of the list in $O(1)$. A good hash function should 
 have few collisions and lead to short lists.
 
