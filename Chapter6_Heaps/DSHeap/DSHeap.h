@@ -55,7 +55,6 @@ public:
         size_t hole = 1;
 
         size_t lastElement = array.size() - 1;
-        Comparable &last = array[lastElement];
         size_t child, childLeft, childRight;
 
         // percolate hole down till last element fits or hole is a leaf (has no left child)
@@ -75,7 +74,7 @@ public:
                 child = childLeft;
 
             // break if last element fits
-            if (last < array[child])
+            if (array[lastElement] < array[child])
                 break;
 
             // otherwise, move child up
