@@ -4,6 +4,9 @@
 #include <unordered_set>
 
 // You need boost installed
+// Ubuntu: sudo apt-get install libboost-all-dev
+// Windows: http://www.boost.org/users/download/    
+// MacOS: brew install boost
 #include <boost/functional/hash/hash.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/numeric/ublas/io.hpp>
