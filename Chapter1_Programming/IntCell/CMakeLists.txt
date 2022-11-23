@@ -19,6 +19,8 @@ project(IntCell VERSION 0.1.0)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 add_compile_options(-Wall -Wextra -pedantic)
 
+# for more GCC compiler options see https://gcc.gnu.org/onlinedocs/gcc/Invoking-GCC.html
+
 # add all the .cpp files here
 add_executable(IntCell main.cpp IntCell)
 

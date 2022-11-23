@@ -1,6 +1,7 @@
 # HOWTO Compile Programs With CMake
 
-Compiling C++ code can be done with one of two popular toolchains:
+Compiling C++ code can be done with several toolchains.
+The two popular toolchains used in this class are:
 
 * [GCC](https://en.wikipedia.org/wiki/GNU_Compiler_Collection) (GNU Compiler Collection) contains compilers for 
    various compiled languages. The C++ compiler is often called `g++`.
@@ -8,10 +9,14 @@ Compiling C++ code can be done with one of two popular toolchains:
 
 Compilation consists of two steps (LLVM uses a few more to allow for a source and target-independent intermediate representation):
 
-1. Compilation of each `.cpp` file to object code ending in `.o`
-2. Linking all `.o` files and external libraries together to create the executable.
+1. **Compilation** of each `.cpp` file to object code ending in `.o`. During this step code optimization is typically performed.
+2. **Linking** all `.o` files and external libraries together to create the executable.
 
-CMake organizes the compilation process. It will find/configure your compiler tool chain and produce a `Makefile` that does the actual compilation. CMake is run from the terminal using `cmake .` and the Makefile is run using `make`. VSCode puts everything in the `build` subdirectory. CMake is configured using the `CMakeLists.txt` file. All files `.cpp`
+CMake organizes the compilation process. It will find/configure your compiler tool chain and produce a `Makefile` that does the actual compilation. CMake is 
+either run by your development environment or from the terminal 
+using `cmake .` and the Makefile is run using `make`. 
+VS Code puts everything in the `build` subdirectory. 
+CMake is configured using the `CMakeLists.txt` file. All files `.cpp`
 files need to be specified in the `add_executable()` line or linking will fail. 
 
 
@@ -22,12 +27,13 @@ files need to be specified in the `add_executable()` line or linking will fail.
 2. Create at least a `main.cpp` file in the directory (right-click and choose new file).
 3. Configure CMake by going in the menu to `Help>Show All Commands` (or push `CTRL+Shift P`) and type `CMake:Configure`. Choose a compiler
    (latest version of GCC or clang), a project name and that you want to create an executable. This creates a file called `CMakeLists.txt`.
-4. Optional: Enable warnings and verbose output like in this [example](IntCell/CMakeLists.txt).
-5. Optional: Additional `.cpp` files can be added in the `add_executable()` instruction in `CMakeLists.txt`.
-6. Click `Build` in the status bar (at the bottom).
+4. Add all used `.cpp` files in the `add_executable()` instruction in `CMakeLists.txt`.
+5. Optional: Enable warnings, other compiler options, and verbose output like in this [example](Chapter1_Programming/IntCell/CMakeLists.txt).
+6. Choose the CMake build variant `CMake: [Debug]` (no code optimization for debugging) or `CMake: [Release]` (fast code with code optimization).
+7. Click `Build` in the status bar (at the bottom). You can choose to only build individual executables.
   `CMake` creates a `build` directory with a `Makefile` which is used to
    build the project.
-7. Click the `Run` button in the status bar to execute the compiled program.
+8. Click the `Run` button in the status bar to execute the compiled program.
 
 
 *Notes:* 
