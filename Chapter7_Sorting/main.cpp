@@ -48,7 +48,7 @@ bool checkSorted(const vector<T> &v)
 int main(int argc, char *argv[])
 {
      const size_t NUM_ITEMS = 1000;
-     string mode = "random"; // default
+     string mode = "small"; // default
      
      if(argc > 1)
           mode = argv[1];

@@ -6,6 +6,8 @@
 // A function to implement bubble sort: Swap adjacent elements if they are not in order
 template <typename Comparable>
 void bubbleSort(std::vector<Comparable> &a)
+// this tells GCC not to inline the function
+//void __attribute__ ((noinline)) bubbleSort(std::vector<Comparable> &a)
 {
     bool swaps = true;
 

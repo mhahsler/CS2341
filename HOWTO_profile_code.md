@@ -2,6 +2,11 @@
 
 [Profiling Software](https://en.wikipedia.org/wiki/Profiling_(computer_programming)) measures the space (memory) or time complexity of a program, the usage of particular instructions, or the frequency and duration of function calls. Most commonly, profiling information serves to aid program optimization.
 
+**A note on compiler optimization:** 
+Compilers use [code optimization](https://en.wikipedia.org/wiki/Optimizing_compiler) ([GCC optimizations](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html)).
+In VS Code, compile the code using in the bottom bar `CMake:[Release]` (i.e., with speed optimization) instead of `CMake: [Debug]` (optimizer disabled). 
+
+
 Several open-source and commercial profilers are available (see [List of performance analysis tools](https://en.wikipedia.org/wiki/List_of_performance_analysis_tools)). Here I use 
 `callgrind` and `KCachegrind`. Alternatives are [`perf`](https://perf.wiki.kernel.org/) for Linux and WSL2, and  [Dtrace](http://dtrace.org/blogs/about/) for MacOS.
 
