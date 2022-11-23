@@ -61,6 +61,16 @@ provide good performance.
 
 ##  Comparing different algorithms
 
+### Understanding how Different Algorithms Work
+
+You can use the debugger to analyze what the different sorting algorithms do. By default,
+`sort` uses a small, manually defined array which can be used for debugging. Set the breakpoint 
+in `main.cpp` right before the algorithm you are interested in.
+
+
+Here is a website with a useful visualization: https://math.hws.edu/eck/js/sorting/xSortLab.html
+
+
 ### Compare Runtime
 
 Run 
@@ -78,14 +88,9 @@ Then run
 
 to see how the algorithms perform if the array is already sorted.
 
-### Understanding how Different Algorithms Work
-
-You can use the debugger to analyze what the different sorting algorithms do. By default,
-`sort` uses a small, manually defined array which can be used for debugging. Set the breakpoint 
-in `main.cpp` right before the algorithm you are interested in.
-
-
-Here is a website with a useful visualization: https://math.hws.edu/eck/js/sorting/xSortLab.html
+**A note on compiler optimization:**      
+Compilers use [code optimization](https://en.wikipedia.org/wiki/Optimizing_compiler) ([GCC optimizations](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html)).
+In VS Code, compile the code using in the bottom bar `CMake:[Release]` (i.e., with speed optimization) instead of `CMake: [Debug]` (optimizer disabled). 
 
 
 ## Profiling Code
@@ -100,16 +105,10 @@ valgrind --tool=callgrind --dump-instr=yes --simulate-cache=yes --collect-jumps=
 kcachegrind callgrind.out.xxxxx
 ```
 
-**A note on compiler optimization:**      
-Compilers use [code optimization](https://en.wikipedia.org/wiki/Optimizing_compiler) ([GCC optimizations](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html)).
-In VS Code, compile the code using in the bottom bar `CMake:[Release]` (i.e., with speed optimization) instead of `CMake: [Debug]` (optimizer disabled). 
-
-One important optimization is inlining functions (see bubbleSort).
-
+Check the impact of optimization on profiling (use `[CMake: RelWithDebInfo]`). One important optimization is inlining functions (see bubbleSort).
 
 ## License
 
 <img src="https://licensebuttons.net/l/by-sa/3.0/88x31.png" alt="CC BY-SA 4.0" align="left">
 
 All code and documents in this repository are provided under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) License.](https://creativecommons.org/licenses/by-sa/4.0/)
-
