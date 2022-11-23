@@ -17,6 +17,7 @@ vector<int> randomVector(int size)
 }
 
 // Driver code
+// Make sure you compile this code with Release optimization (`CMake: [Release]`)
 int main()
 {
     srand(time(NULL));
@@ -24,6 +25,7 @@ int main()
     cout << "N, \"build time [micro sec.]\", \"build time per entry\", \"query time [micro sec.]\",  \"query time per entry\"" << endl;
 
     for (int N = 1; N <= 10000000; N *= 10)
+    //for (int N = 10000; N <= 10000; N *= 10)
     // for (int N = 1; N <= 1000000; N += 10000)
     {
         DSHeap<int> heap;

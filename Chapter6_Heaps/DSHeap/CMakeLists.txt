@@ -7,6 +7,10 @@ set(CMAKE_CXX_STANDARD17)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 add_compile_options(-Wall -Wextra -pedantic)
 
+# do not inline functions for profiling
+# add_compile_options(-fno-inline)
+# for more GCC compiler options see https://gcc.gnu.org/onlinedocs/gcc/Invoking-GCC.html
+
 # add all the .cpp files here
 add_executable(main main.cpp)
 add_executable(timing timing.cpp)

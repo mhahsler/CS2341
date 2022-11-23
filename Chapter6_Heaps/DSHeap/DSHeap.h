@@ -49,25 +49,19 @@ public:
         if (empty())
             throw runtime_error("heap is empty!");
 
-        // create hole at root
+        // create hole at root and extract the minimum so it can be returned later
         Comparable min;
         swap(min, array[1]);
         size_t hole = 1;
 
         size_t lastElement = array.size() - 1;
-        size_t child, childLeft, childRight;
+        size_t child, childLeft = hole * 2, childRight = childLeft + 1;
 
-        // percolate hole down till last element fits or hole is a leaf (has no left child)
-        while (true)
+        // percolate hole down till it is a leaf (has no left child)
+        // or last element fits or hole
+        while (childLeft < lastElement)
         {
-            childLeft = hole * 2;
-            childRight = childLeft + 1;
-
-            // break if hole is a leaf
-            if (childLeft >= lastElement)
-                break;
-
-            // find smaller child (if right child exists)
+            // if right child exists, find smaller child
             if (childRight < lastElement && array[childRight] < array[childLeft])
                 child = childRight;
             else
@@ -77,9 +71,11 @@ public:
             if (array[lastElement] < array[child])
                 break;
 
-            // otherwise, move child up
+            // otherwise, move hole down
             swap(array[hole], array[child]);
             hole = child;
+            childLeft = hole * 2;
+            childRight = childLeft + 1;
         }
 
         // move last element to hole and remove the last element
