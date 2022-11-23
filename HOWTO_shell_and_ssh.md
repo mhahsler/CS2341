@@ -15,3 +15,10 @@ a short [Linux command cheat sheet.](https://files.fosswire.com/2007/08/fwunixre
 To use a server remotely, you can securely log into a Unix/Linux server using the [secure shell protocol (SSH)](https://en.wikipedia.org/wiki/Secure_Shell). It opens a shell on the server that you can use from your computer. You need an ssh client. Linux, Mac and WSL2 contain a client called `ssh`. A popular client for windows is [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/).
 
 For SMU students: [Information on how to use SMU's Genuse servers](https://www.smu.edu/OIT/Services/genuse).
+
+
+## License
+
+<img src="https://licensebuttons.net/l/by-sa/3.0/88x31.png" alt="CC BY-SA 4.0" align="left">
+
+All code and documents in this repository are provided under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) License.](https://creativecommons.org/licenses/by-sa/4.0/)

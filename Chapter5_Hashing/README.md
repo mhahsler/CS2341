@@ -115,3 +115,10 @@ See: [STL example code](STL)
 1. Lookup table with constant time. E.g., the compiler looks up variable names or a router looks up IP addresses.
 2. Convert a name (a string) into a numeric ID used in an algorithm (e.g., filename to an object identifier).
 3. Spell checker looks up words.
+
+
+## License
+
+<img src="https://licensebuttons.net/l/by-sa/3.0/88x31.png" alt="CC BY-SA 4.0" align="left">
+
+All code and documents in this repository are provided under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) License.](https://creativecommons.org/licenses/by-sa/4.0/)

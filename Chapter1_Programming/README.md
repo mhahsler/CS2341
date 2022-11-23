@@ -45,3 +45,10 @@ used in this course. Very good short explanations can be found in this
 ## Command Line Interface and File IO
 * Example: [CLI and file IO](io)
 
+
+
+## License
+
+<img src="https://licensebuttons.net/l/by-sa/3.0/88x31.png" alt="CC BY-SA 4.0" align="left">
+
+All code and documents in this repository are provided under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) License.](https://creativecommons.org/licenses/by-sa/4.0/)

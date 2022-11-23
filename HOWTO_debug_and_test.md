@@ -82,3 +82,9 @@ You need to comment these lines out if you want to compile the program for use (
 ### MacOS
 
 Unfortunately, `valgrind` is not available for MacOS (new M1 and M2 architecture) and the standard compilers in Xcode are missing the `asan` library. You will need to run memory leak tests on a Linux host that has the needed tools installed (e.g., using the VS Code extension `Remote - ssh`). 
+
+## License
+
+<img src="https://licensebuttons.net/l/by-sa/3.0/88x31.png" alt="CC BY-SA 4.0" align="left">
+
+All code and documents in this repository are provided under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) License.](https://creativecommons.org/licenses/by-sa/4.0/)

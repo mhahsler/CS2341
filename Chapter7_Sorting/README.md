@@ -58,32 +58,23 @@ _Choice of pivot:_ Originally, the leftmost element of the partition would often
 The STL currently implements a hybrid sorting algorithm using Quicksort, Heapsort and Insertion Sort to consistently 
 provide good performance.
 
-## Visualization of different algorithms
 
-https://math.hws.edu/eck/js/sorting/xSortLab.html
+## Visualization of different algorithms
+You can use the debugger to analyze what the different sorting algorithms do.
+
+Here is a website with a useful visualization: https://math.hws.edu/eck/js/sorting/xSortLab.html
+
 
 ## Profiling Code
+To write efficient code, it is often useful to see what parts of the code take the most time 
+to run or use the most amount of memory. This process is called profiling. 
+Here is how to [profile with `valgrind`](../HOWTO_profile_code.md).
 
-[Profiling Software](https://en.wikipedia.org/wiki/Profiling_(computer_programming)) measures the space (memory) or time complexity of a program, the usage of particular instructions, or the frequency and duration of function calls. Most commonly, profiling information serves to aid program optimization.
 
-Several open-source and commercial profilers are available (see [List of performance analysis tools](https://en.wikipedia.org/wiki/List_of_performance_analysis_tools)). Here I use 
-`callgrind` and `KCachegrind`. Alternatives are [`perf`](https://perf.wiki.kernel.org/) for Linux and WSL2, and  [Dtrace](http://dtrace.org/blogs/about/) for MacOS.
 
-Details on `callgrind` can be found in the [callgrind manual](https://developer.mantidproject.org/ProfilingWithValgrind.html). callgrind records each function call and how many machine code instructions were fetched. It can also calculate approximate run time by translating the instructions into cycle estimates.
+## License
 
-### How to use callgrind/KCachgrind to Profile Runtime
+<img src="https://licensebuttons.net/l/by-sa/3.0/88x31.png" alt="CC BY-SA 4.0" align="left">
 
-**Installation:** You need to install `valgrind` and `KCachgrind` on your machine (Linux, WSL2; not available for Mac; for use on SMU's genuse machines, you need to [set up putty and VNC](https://www.smu.edu/OIT/Services/genuse)).
+All code and documents in this repository are provided under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) License.](https://creativecommons.org/licenses/by-sa/4.0/)
 
-1. Run your executable with `valgrind`:
-   ```
-   valgrind --tool=callgrind --dump-instr=yes --simulate-cache=yes --collect-jumps=yes ./<executable> [args...]
-   ```
-
-2. This will produce a `callgrind.out.xxxxx` file. Open the file with:
-   ```
-   kcachegrind callgrind.out.xxxxx
-   ```
-
-3. Find the file/class you are interested in (e.g., `main.cpp`), click on the function below and choose [`Call Graph`](https://en.wikipedia.org/wiki/Call_graph) in the bottom right window. You should now see what gets called, how often, and how long it takes (in % of the caller). By default only calls that take long are shown. You can change his by right-click on the graph `Graph > Min. Node Cost`. 
-4. Identify the functions that takes the most time and are called often. Optimize the code (loops, used algorithms, and data structure) there and profile again to se if and by how much you have improved the runtime (this can be judged by the number of instructions fetched).

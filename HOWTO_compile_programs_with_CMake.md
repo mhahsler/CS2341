@@ -55,5 +55,8 @@ files need to be specified in the `add_executable()` line or linking will fail.
   use `Open Folder` (on Windows you need to use `Open Folder in WSL`; click on the green square in the bottom-left corner). 
 3. Follow steps above.
 
+## License
 
- 
+<img src="https://licensebuttons.net/l/by-sa/3.0/88x31.png" alt="CC BY-SA 4.0" align="left">
+
+All code and documents in this repository are provided under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) License.](https://creativecommons.org/licenses/by-sa/4.0/)
