@@ -22,8 +22,10 @@ You need to have `gdb` ([GNU Project Debugger](https://www.sourceware.org/gdb/))
 
 ## How to Run Tests
 
+You can write a main function that contains test code that throws `std::runtime_error` if a test fails. However, it
+is much easier to use a unit testing framework.
 We will use a simple header-based unit testing framework called
-[Catch2](https://github.com/catchorg/Catch2). It can be can be [integrated with CMake/CTest](https://github.com/catchorg/Catch2/blob/devel/docs/cmake-integration.md), but we will use the stand alone version.
+[Catch2](https://github.com/catchorg/Catch2). It can be [integrated with CMake/CTest](https://github.com/catchorg/Catch2/blob/devel/docs/cmake-integration.md), but we will use the stand alone version.
 Here is an [example with tests.](factorial)
 
 Steps:
@@ -62,6 +64,9 @@ These are issues happening at run-time and the compiler cannot find them.
 
 1. Find the compiled executable (in VSCode + CMake it is in the `build` subdirectory). use `cd build` in the terminal to get there.
 2. Run `valgrind --leak-check=full --track-origins=yes ./executable` and look for lost bytes. `executable` is your compiled program.
+
+To make this easier, CTest automatically finds valgrind (if installed) and runs it on the tests by typing `ctest -T MemCheck` in the build directory. Note that it does not 
+run it on your main program, just on the tests.
 
 Valgrind can also be used for profiling (finding out where your code is slow).
 Here is a description of [how to profile with Valgrind](https://developer.mantidproject.org/ProfilingWithValgrind.html).
