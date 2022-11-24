@@ -13,3 +13,6 @@ add_executable(sort main.cpp)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
+include(CTest)
+add_executable(tests tests.cpp)
+add_test(NAME tests COMMAND tests)
