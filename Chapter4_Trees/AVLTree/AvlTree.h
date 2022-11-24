@@ -302,6 +302,8 @@ private:
             return;
 
         std::cout << prefix;
+        // Note: this uses unicode characters for the tree structure. They might not print correctly on 
+        // all systems (Windows!?!) and all types of output devices.
         std::cout << (isRight ? "├──" : "└──");
         // print the value of the node
         std::cout << node->element << std::endl;
