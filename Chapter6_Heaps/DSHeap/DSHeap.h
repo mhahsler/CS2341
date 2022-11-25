@@ -49,12 +49,15 @@ public:
         if (empty())
             throw runtime_error("heap is empty!");
 
-        // create hole at root and extract the minimum so it can be returned later
-        Comparable min;
-        swap(min, array[1]);
+        // get minimum and create hole
+        Comparable min = std::move(array[1]);
         size_t hole = 1;
-
+   
+        // move last element to hole and reduce array size
         size_t lastElement = array.size() - 1;
+        array[1] = std::move(array[lastElement]);
+        array.pop_back();
+        
         size_t child, childLeft = hole * 2, childRight = childLeft + 1;
 
         // percolate hole down till it is a leaf (has no left child)
@@ -67,21 +70,19 @@ public:
             else
                 child = childLeft;
 
-            // break if last element fits
-            if (array[lastElement] < array[child])
+            // break if last element in the hole fits
+            if (array[hole] < array[child])
                 break;
 
             // otherwise, move hole down
-            swap(array[hole], array[child]);
+            std::swap(array[hole], array[child]);
             hole = child;
             childLeft = hole * 2;
             childRight = childLeft + 1;
         }
 
-        // move last element to hole and remove the last element
-        swap(array[hole], array[lastElement]);
-        array.pop_back();
-
+        // last element is already in the hole.
+        
         return min;
     }
 
