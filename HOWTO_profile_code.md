@@ -1,10 +1,20 @@
 # HOWTO Profile Code
 
-[Profiling Software](https://en.wikipedia.org/wiki/Profiling_(computer_programming)) measures the space (memory) or time complexity of a program, the usage of particular instructions, or the frequency and duration of function calls. Most commonly, profiling information serves to aid program optimization.
 
-**A note on compiler optimization:** 
+Looks like you want to improve the runtime of your code. Before you resort to a profiler you should:
+
+* **Turn on compiler optimization.** 
 Compilers use [code optimization](https://en.wikipedia.org/wiki/Optimizing_compiler) ([GCC optimizations](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html)).
 In VS Code, compile the code using in the bottom bar `CMake:[Release]` (i.e., with speed optimization) instead of `CMake: [Debug]` (optimizer disabled). 
+* **Use appropriate data structures and algorithms.** Determine what you need (fast lookup or fast insertion) and then choose each data structure based on the Big-O notation and experiments. It is highly recommended to use standard library implementations. 
+* **Copying objects.** Assigning objects happen in many algorithms. Assigning larger objects by copying is expensive. Make sure you implement move semantics for these objects.
+* **Avoid recursion and nested loops.** Recursions can be replaced by iteration. Often, better algorithms can be used to avoid nested loops.
+
+
+
+
+## Profiling Software
+[Profiling Software](https://en.wikipedia.org/wiki/Profiling_(computer_programming)) measures the space (memory) or time complexity of a program, the usage of particular instructions, or the frequency and duration of function calls. Most commonly, profiling information serves to aid program optimization.
 
 
 Several open-source and commercial profilers are available (see [List of performance analysis tools](https://en.wikipedia.org/wiki/List_of_performance_analysis_tools)). Here I use 
@@ -12,7 +22,7 @@ Several open-source and commercial profilers are available (see [List of perform
 
 Details on `callgrind` can be found in the [callgrind manual](https://developer.mantidproject.org/ProfilingWithValgrind.html). callgrind records each function call and how many machine code instructions were fetched. It can also calculate approximate run time by translating the instructions into cycle estimates.
 
-### How to use callgrind/KCachgrind to Profile Runtime
+## How to use callgrind/KCachgrind to Profile Runtime
 
 **Installation:** You need to install `valgrind` and `KCachgrind` on your machine (Linux, WSL2; not available for Mac; for use on SMU's genuse machines, you need to [set up putty and VNC](https://www.smu.edu/OIT/Services/genuse)).
 
