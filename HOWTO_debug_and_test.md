@@ -25,7 +25,10 @@ You need to have `gdb` ([GNU Project Debugger](https://www.sourceware.org/gdb/))
 You can write a main function that contains test code that throws `std::runtime_error` if a test fails. However, it
 is much easier to use a unit testing framework.
 We will use a simple header-based unit testing framework called
-[Catch2](https://github.com/catchorg/Catch2). It can be [integrated with CMake/CTest](https://github.com/catchorg/Catch2/blob/devel/docs/cmake-integration.md), but we will use the stand alone version.
+[Catch2](https://github.com/catchorg/Catch2). It can be [integrated with CMake/CTest](https://github.com/catchorg/Catch2/blob/devel/docs/cmake-integration.md), but we will use the stand alone version. Another popular framework is
+[GoogleTest](https://google.github.io/googletest/).
+
+
 Here is an [example with tests.](factorial)
 
 Steps:
