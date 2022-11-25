@@ -19,11 +19,11 @@ void quicksort_orig(std::vector<Comparable> &a, std::size_t left, std::size_t ri
         return;
     }
 
-    // use the fists element as pivot
+    // define an alias for the pivot value (we use the left-most value)
     const Comparable &pivot = a[left];
 
-    // swap large values (larger than pivot) from left to  with small (smaller than pivot)
-    // values from the right (start left after the pivot)
+    // swap values larger than pivot from the left with values smaller 
+    // than pivot from the right (start left after the pivot).
     std::size_t i = left + 1, j = right;
     while (true)
     {
@@ -34,21 +34,23 @@ void quicksort_orig(std::vector<Comparable> &a, std::size_t left, std::size_t ri
         while (j >= left && a[j] > pivot)
             --j;
 
-        // stop if left and right cross 
+        // stop if the left and the right indices cross 
         if (i >= j)
             break;
 
-        // swap the values
+        // exchange a large value from the left with a small value from the right
         std::swap(a[i], a[j]);
     }
 
     // swap the pivot with the last element that is less than the pivot.
     std::swap(a[left], a[j]);
 
-    // sort subarray below the pivot
+    // sort subarray below the pivot 
+    // (check for special case that the pivot is the smallest element!)
     if (j != left)
         quicksort_orig(a, left, j - 1);
     // sort subarray above the pivot
+    // (check for special case that the pivot is the largest element!)
     if (j != right)
         quicksort_orig(a, j + 1, right);
 

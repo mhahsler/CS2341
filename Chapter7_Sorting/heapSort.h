@@ -57,7 +57,7 @@ void percDown(std::vector<Comparable> &a, std::size_t i, std::size_t n)
 template <typename Comparable>
 void heapSort(std::vector<Comparable> &a)
 {
-    // convert the array into a heap. Perculate down n/2 times to make sure the max is on top.
+    // convert the array into a heap. Percolate down n/2 times to make sure the max is on top.
     for (std::ptrdiff_t i = a.size() / 2 - 1; i >= 0; --i)
         percDown(a, i, a.size());
 
@@ -66,7 +66,7 @@ void heapSort(std::vector<Comparable> &a)
     {
         // deleteMax (a[0]) from the heap and place at the end of the unsorted part of the array (j)
         std::swap(a[0], a[j]);
-        // fix the heap (perculate down twice)
+        // fix the heap (percolate down twice)
         percDown(a, 0, j);
         percDown(a, 0, j);
     }

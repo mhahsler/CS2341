@@ -27,30 +27,46 @@ Here are some popular algorithms:
 
 
 ### Bubble Sort
-A simple sorting algorithm that repeatedly steps through the input list element by element, comparing the current element with the one after it, swapping their values if needed. These passes through the list are repeated until no swaps had to be performed during a pass, meaning that the list has become fully sorted. 
+A simple sorting algorithm that repeatedly steps through the input list element by element, comparing the current element with the one after it, swapping their values if needed. Note that the last element is the maximum after the first pass.
+These passes through the list are repeated until no swaps had to be performed during a pass, meaning that the list has become fully sorted. The maximum number of passes is $n$. 
 
 ### Selection Sort
-Select the minimum and place it at the beginning of the array. Repeat the procedure with all but the first element till all
-elements are sorted.
+Find (i.e., select) the minimum in one pass over the array and place it at the beginning of the array. Repeat the procedure with all but the first element till all elements are sorted. Instead of the minimum, the maximum can be selected and placed at
+the end of the array. 
+
+This is similar to bubble sort, but performs fewer swaps.
 
 ### Insertion Sort
 Insertion sort goes through the array once from left to right.
-At each iteration, insertion sort removes the element from the input data, finds the location it belongs within the sorted list (to the left), and inserts it there.
+At each iteration, insertion sort removes the current element from the input data, finds the location it belongs within the sorted list (to the left), and inserts it there.
+
+Goes only once through the array and performs moves.
 
 ### Shell Sort
-Shell Sort can be seen as either a generalization of sorting by exchange (bubble sort) or sorting by insertion (insertion sort). Instead of sorting pairs of elements next to each other, it compares elements far apart from each other, then progressively reducing the gap between elements to be compared. By starting with far apart elements, it can move some out-of-place elements into position faster than a simple nearest neighbor exchange.
+Shell Sort can be seen as either a generalization of sorting by exchange (bubble sort) or sorting by insertion (insertion sort). Instead of sorting pairs of elements next to each other, it compares elements far apart from each other, then progressively reducing the gap between elements to be compared. 
+
+By starting with far apart elements, it can move some out-of-place elements into position faster than a simple neighbor exchange.
 
 ### Heapsort
 The algorithm first builds a max-heap stored in the original array and then repeatedly removes the top item to produce a sorted array.
 
 ### Mergesort
-Merge sort consists of the steps:
+Merge sort always merges two sorted lists into a new sorted list. It consists of the steps:
 
 1. Divide the unsorted list into $n$ sublists, each containing one element (a list of one element is considered sorted).
-2. Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining. This will be the sorted list.
+2. Repeatedly merge pairs of adjacent sublists to produce new sorted sublists until there is only one list remaining. This will be the sorted list.
+
+Mergesort needs an external data structure for the sublists.
 
 ### Quicksort
 Quicksort is a type of divide and conquer algorithm for sorting an array, based on a partitioning routine; the details of this partitioning can vary somewhat, so that quicksort is a family of closely related algorithms. Applied to a range of at least two elements, partitioning produces a division into two consecutive non empty sub-ranges, in such a way that no element of the first sub-range is greater than any element of the second sub-range. After applying this partition, quicksort then recursively sorts the sub-ranges.
+
+Algorithm:
+
+1. Choose pivot element
+2. Perform swaps such that all elements to the left are smaller than the pivot and elements to the right are larger.
+3. Place the pivot in its correct place
+4. Recursively quicksort the two subarrays to the left and to the right of the pivot.
 
 _Choice of pivot:_ Originally, the leftmost element of the partition would often be chosen as the pivot element. Unfortunately, this causes worst-case behavior on already sorted arrays, which is a rather common use-case. The problem was easily solved by choosing either a random index for the pivot, choosing the middle index of the partition or (especially for longer partitions) choosing the median of the first, middle and last element of the partition for the pivot.
 
@@ -87,6 +103,11 @@ Then run
 ```
 
 to see how the algorithms perform if the array is already sorted.
+
+Try with larger random arrays.
+```
+./sort random 100000
+```
 
 **A note on compiler optimization:**      
 Compilers use [code optimization](https://en.wikipedia.org/wiki/Optimizing_compiler) ([GCC optimizations](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html)).

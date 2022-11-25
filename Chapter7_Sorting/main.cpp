@@ -47,12 +47,16 @@ bool checkSorted(const vector<T> &v)
  */
 int main(int argc, char *argv[])
 {
-     const size_t NUM_ITEMS = 1000;
+     size_t NUM_ITEMS = 10000;
+     //const size_t NUM_ITEMS = 100000;
      string mode = "small"; // default
      
      if(argc > 1)
           mode = argv[1];
      
+     if(argc > 2)
+          NUM_ITEMS = std::stoi(argv[2]);
+
      // Note: To compare the runtime between the different sorting algorithms you usually run
      // the algorithms multiple times and take the average runtime. This is not done here for simplicity.  
      
@@ -88,7 +92,10 @@ int main(int argc, char *argv[])
      }
 
      if (v.size() == 0) {
-          cout << "Invalid mode. Use \"random\", \"sorted\", \"reverse\", or \"small\"" << endl;
+          cout << "Invalid parameters!\n"
+          << "Usage: ./sort [mode] [size].\n"
+          << "modes: \"random\", \"sorted\", \"reverse\", or \"small\"\n" 
+          << "size: an integer >0" << endl;
           return 1;
      }
 

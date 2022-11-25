@@ -15,7 +15,7 @@ void insertionSort(std::vector<Comparable> &a)
     // go through all elements in the array starting with the second one
     for (std::size_t p = 1; p < a.size(); ++p)
     {
-        // remove the element from the array
+        // remove the element from the array (move makes the object as movable if it has a move assignment operator)
         Comparable tmp = std::move(a[p]);
 
         // shift the elements to the left of the element to the right until the right position is found

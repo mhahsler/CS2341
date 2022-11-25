@@ -17,7 +17,7 @@
 //#include "radix_sort.h"
 
 
-// Define a test macro
+// Define my own test macro
 #define TEST(func, name) {                                                               \
     v2 = v;                                                                              \
     (func)(v2);                                                                          \
