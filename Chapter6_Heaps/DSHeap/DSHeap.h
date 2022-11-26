@@ -30,16 +30,9 @@ public:
         // add hole (capacity is handled by vector)
         array.push_back(x);
 
-        size_t hole = array.size() - 1;
-        size_t holeParent = hole / 2; // this is an integer division so it includes floor
-
-        // percolate up till x fits
-        while (x < array[holeParent] && hole > 1)
-        {
-            swap(array[hole], array[holeParent]);
-            hole = holeParent;
-            holeParent = hole / 2;
-        }
+        // percolate up till x fits or we reach the root
+        for (size_t hole = array.size() - 1; x < array[parent(hole)] && hole > 1; hole = parent(hole))
+            swap(array[hole], array[parent(hole)]);
 
         // Note x is already in the hole
     }
@@ -51,38 +44,29 @@ public:
 
         // get minimum and create hole
         Comparable min = std::move(array[1]);
-        size_t hole = 1;
-   
-        // move last element to hole and reduce array size
-        size_t lastElement = array.size() - 1;
-        array[1] = std::move(array[lastElement]);
+        Comparable tmp = std::move(array[array.size() - 1]);
         array.pop_back();
-        
-        size_t child, childLeft = hole * 2, childRight = childLeft + 1;
+
+        size_t hole, child;
 
         // percolate hole down till it is a leaf (has no left child)
         // or last element fits or hole
-        while (childLeft < lastElement)
+        for (hole = 1; leftChild(hole) < array.size(); hole = child)
         {
-            // if right child exists, find smaller child
-            if (childRight < lastElement && array[childRight] < array[childLeft])
-                child = childRight;
-            else
-                child = childLeft;
+            child = leftChild(hole);
+            if (child != array.size() - 1 && array[child] > array[child + 1])
+                ++child;
 
             // break if last element in the hole fits
-            if (array[hole] < array[child])
+            if (tmp < array[child])
                 break;
 
-            // otherwise, move hole down
-            std::swap(array[hole], array[child]);
-            hole = child;
-            childLeft = hole * 2;
-            childRight = childLeft + 1;
+            array[hole] = std::move(array[child]);      
         }
 
-        // last element is already in the hole.
-        
+        // move last element in hole
+         array[hole] = std::move(tmp);
+
         return min;
     }
 
@@ -97,8 +81,17 @@ public:
     }
 
 private:
-    // Modified from: https://stackoverflow.com/questions/36802354/print-binary-tree-in-a-pretty-way-using-c
+    inline std::size_t leftChild(std::size_t i) const
+    {
+        return 2 * i;
+    }
 
+    inline std::size_t parent(std::size_t i) const
+    {
+        return i / 2;
+    }
+
+    // Modified from: https://stackoverflow.com/questions/36802354/print-binary-tree-in-a-pretty-way-using-c
     void prettyPrintTree(size_t nodeID, const string &prefix, bool isRight) const
     {
         // base case
@@ -113,8 +106,8 @@ private:
              << "\n";
 
         // enter the next tree level - left and right branch
-        prettyPrintTree(2 * nodeID + 1, prefix + (isRight ? "│   " : "    "), true);
-        prettyPrintTree(2 * nodeID, prefix + (isRight ? "│   " : "    "), false);
+        prettyPrintTree(leftChild(nodeID) + 1, prefix + (isRight ? "│   " : "    "), true);
+        prettyPrintTree(leftChild(nodeID), prefix + (isRight ? "│   " : "    "), false);
     }
 };
 
