@@ -4,6 +4,8 @@
 // Code from https://users.cs.fiu.edu/~weiss/dsaa_c++4/code/
 // Modified by MFH to fix compiler warnings
 
+/* Note: This uses a MAx-Heap! */
+
 #include <vector>
 
 /**
@@ -18,7 +20,7 @@ inline std::size_t leftChild(std::size_t i)
 
 /**
  * Internal method for heapsort that is used in
- * deleteMax and buildHeap.
+ * deleteMax and buildHeap (maxheap).
  * i is the position from which to percolate down.
  * n is the logical size of the binary heap.
  */
@@ -26,19 +28,25 @@ template <typename Comparable>
 void percDown(std::vector<Comparable> &a, std::size_t i, std::size_t n)
 {
     std::size_t child;
-    Comparable tmp;
+    Comparable tmp = std::move(a[i]);
 
-    for (tmp = std::move(a[i]); leftChild(i) < n; i = child)
+    while (leftChild(i) < n)
     {
+        // find smaller child (right child is right after left child)
         child = leftChild(i);
         if (child != n - 1 && a[child] < a[child + 1])
             ++child;
-        if (tmp < a[child])
-            a[i] = std::move(a[child]);
-        else
+        
+        // Found insertion spot
+        if (tmp > a[child])
             break;
+
+        a[i] = std::move(a[child]);
+        i = child;
     }
+
     a[i] = std::move(tmp);
+ 
 }
 
 /**
@@ -57,7 +65,8 @@ void percDown(std::vector<Comparable> &a, std::size_t i, std::size_t n)
 template <typename Comparable>
 void heapSort(std::vector<Comparable> &a)
 {
-    // convert the array into a heap. Percolate down n/2 times to make sure the max is on top.
+    // convert the array into a max-heap. Percolate down. All elements above  n/2 are leaf
+    // nodes and do not need percolate down.
     for (std::ptrdiff_t i = a.size() / 2 - 1; i >= 0; --i)
         percDown(a, i, a.size());
 
