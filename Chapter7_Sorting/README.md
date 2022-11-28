@@ -20,9 +20,9 @@ Here are some popular algorithms:
 | Insertion Sort |  $O(n^2)$                  | no      | yes     |
 | Shell Sort     |  $O(n^2)$                  | no      | no      |
 | Heap Sort      |  $O(n\ log\ n)$            | no      | no      |
-| Merge Sort     |  $O(n\ log\ n)$            | yes $O(n)$     | yes     |
-| Quicksort      |  $O(n^2)$                  | recursive $O(log\ n)$   |    no     |
-| IntroSort (STL Hybrid) |  ?                 |      ?        |    ?     |
+| Merge Sort     |  $O(n\ log\ n)$            | yes $O(n)$ merge list    | yes     |
+| Quicksort      |  $O(n^2)$ (avg. is $O(n\ log\ n)$)  | yes $O(log\ n)$ for recursion   |    no     |
+| IntroSort (STL Hybrid) | $O(n\ log\ n)$     |      yes        |    no     |
 
 
 
