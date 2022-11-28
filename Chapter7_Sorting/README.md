@@ -25,6 +25,9 @@ Here are some popular algorithms:
 | IntroSort (STL Hybrid) | $O(n\ log\ n)$     |      yes        |    no     |
 
 
+Sort: 4, 7, 9, 1, 2, 8, 0, 6, 3, 5
+
+## Popular Algorithms
 
 ### Bubble Sort
 A simple sorting algorithm that repeatedly steps through the input list element by element, comparing the current element with the one after it, swapping their values if needed. Note that the last element is the maximum after the first pass.
