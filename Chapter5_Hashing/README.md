@@ -1,21 +1,27 @@
 # Chapter 5: Hashing
 
-Hash tables are used to store and find items based on a __key__ very quickly.
-For __sets,__ we only have a $key$ representing the 
-values in the set and we can check if the key is in the set.
-For __maps,__ we use $(key, value)$ pair to quickly
-map a key to its value.
+## Introduction: Sets vs. Maps
 
-The time complexity to find or insert items by data structure is
+A [set](https://en.wikipedia.org/wiki/Set_(mathematics)) is a collection of elements defined in math. For example,
+the set $\{3, 6, 7\}$ contains three elements. Sets cannot contain duplicate entries and the order of elements is irrelevant. Typical operations for sets are to determine if a set contains a specific element (which requires finding it) and set operations between sets (union, intersection, etc.).
 
-* Vector: $O(N)$
-* List: $O(N)$ (insertion at the front can be done in $O(1)$)
-* Binary search tree: $O(log\ N)$
+A [map](https://en.wikipedia.org/wiki/Associative_array) in computer science is a collection of of `(key, value)` pairs. Maps are often also called associative arrays, dictionaries,
+or just look-up tables. In math, a map represents a a function with finite domain represented by a table. 
+For example: `grades = {"Michael": 80, "Hannah": 99, "Lin": 95\}` would mean that the key Michael maps to the value 80 
+(i.e., has a 80 in the class). We typically want to find values fast given that we know the key. 
+
+We can look at sets as maps that have only a key and no value. 
+
+The time complexity to find or insert items by data structure are:
+
+* Vector of key-value pairs: $O(N)$
+* List key-value pairs: $O(N)$ (insertion at the front can be done in $O(1)$)
+* Binary search tree using the key for sorting and storing the value in each node: $O(log\ N)$
 * **Hash table: $O(1)$**
 
 ## Hash Table
 
-A hash table is an auxiliary data structure with a table (array) of size $M$ to store keys that help us with finding the stored elements again.
+A hash table is a data structure with a table (array) of size $M$ to store keys that help us with finding the stored elements again.
 
 ### Insert
 Insert Operation for a $(key, value)$ pair.
