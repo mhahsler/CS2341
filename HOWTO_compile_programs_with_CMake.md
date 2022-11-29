@@ -1,7 +1,7 @@
 # HOWTO Compile Programs With CMake
 
-Compiling C++ code can be done with several toolchains.
-The two popular toolchains used in this class are:
+Compiling C++ code can be done with several tool chains.
+The two popular tool chains used in this class are:
 
 * [GCC](https://en.wikipedia.org/wiki/GNU_Compiler_Collection) (GNU Compiler Collection) contains compilers for 
    various compiled languages. The C++ compiler is often called `g++`.
@@ -12,7 +12,9 @@ Compilation consists of two steps (LLVM uses a few more to allow for a source an
 1. **Compilation** of each `.cpp` file to object code ending in `.o`. During this step code optimization is typically performed.
 2. **Linking** all `.o` files and external libraries together to create the executable.
 
-CMake organizes the compilation process. It will find/configure your compiler tool chain and produce a `Makefile` that does the actual compilation. CMake is 
+The GCC C++ compiler and linker can be called from the terminal as `g++ -O3 <list all .cpp files>`.
+
+CMake is a popular cross-platform build automation, testing and packaging tool. It organizes the compilation process. It will find/configure your compiler tool chain and produce a `Makefile` that does the actual compilation (i.e, running `g++` or `clang`). CMake is 
 either run by your development environment or from the terminal 
 using `cmake .` and the Makefile is run using `make`. 
 VS Code puts everything in the `build` subdirectory. 
