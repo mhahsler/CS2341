@@ -3,11 +3,17 @@
 ## Introduction: Sets vs. Maps
 
 A [set](https://en.wikipedia.org/wiki/Set_(mathematics)) is a collection of elements defined in math. For example,
-the set $\{3, 6, 7\}$ contains three elements. Sets cannot contain duplicate entries and the order of elements is irrelevant. Typical operations for sets are to determine if a set contains a specific element (which requires finding it) and set operations between sets (union, intersection, etc.).
+the set 
+$$\{3, 6, 7\}$$ 
+contains three elements. Sets cannot contain duplicate entries and the order of elements is irrelevant. Typical operations for sets are to determine if a set contains a specific element (which requires finding it) and set operations between sets (union, intersection, etc.).
 
-A [map](https://en.wikipedia.org/wiki/Associative_array) in computer science is a collection of of `(key, value)` pairs. Maps are often also called associative arrays, dictionaries,
+A [map](https://en.wikipedia.org/wiki/Associative_array) in computer science is a collection of of $(key, value)$ pairs. Maps are often also called associative arrays, dictionaries,
 or just look-up tables. In math, a map represents a a function with finite domain represented by a table. 
-For example: `grades = {"Michael": 80, "Hannah": 99, "Lin": 95\}` would mean that the key Michael maps to the value 80 
+The map 
+
+`grades = {"Michael": 80, "Hannah": 99, "Lin": 95}` 
+
+would mean that the key Michael maps to the value 80 
 (i.e., has a 80 in the class). We typically want to find values fast given that we know the key. 
 
 We can look at sets as maps that have only a key and no value. 
