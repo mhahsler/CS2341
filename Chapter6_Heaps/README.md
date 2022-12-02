@@ -60,3 +60,10 @@ We have described a min-heap so far. A max-heap is a heap with the largest eleme
 STL provides [`std::priority_queue`](https://cplusplus.com/reference/queue/priority_queue/) implements a max-heap. 
 
 See example: [STL priority_queue](STL)
+
+
+### Comparison of Search Performance
+
+Wikipedia contains a
+[comparison of asymptotic worst-case analysis (Big-O)](https://en.wikipedia.org/wiki/Search_data_structure)
+for all the data structures we have learned about in this class.
