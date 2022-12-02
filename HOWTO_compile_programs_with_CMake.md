@@ -45,12 +45,16 @@ files need to be specified in the `add_executable()` line or linking will fail.
 * You can also manually run `CMake` and `make`:
   Go to the project directory in your shell (a WSL shell for windows) and use 
    
-   `cmake . -B build` 
+   ```
+   cmake . -B build
+   ``` 
  
   to create a Makefile in the `build` directory and use
  
-   `cd build` 
-   `make` 
+   ```
+   cd build 
+   make
+   ``` 
  
    to compile the project. 
 * Some times the `build` or `.vscode` folder are out of date and compilation fails. You can safely delete these folders (right-click delete) and then building should work again.
