@@ -8,7 +8,7 @@ programming in C++. Below are some things to do and review before class starts.
 * Learn how to use [git and GitHub](https://docs.github.com/en/get-started/quickstart/hello-world).
 * Learn and parctice how to use ssh and the [shell](https://github.com/mhahsler/CS2341/blob/main/HOWTO_shell_and_ssh.md).
 * Learn how to log into a remote host. At SMU, [get an account for SMU's Genuse Linux servers](https://www.smu.edu/OIT/Services/genuse/).
-* Install [VS Code](https://github.com/mhahsler/CS2341) and the C++ compiler toolchain with CMake. Even if you have used a different IDE before, you should learn to use VS Code.
+* Install [VS Code and the C++ compiler toolchain with CMake](https://github.com/mhahsler/CS2341#required-tools). Even if you have used a different IDE before, you should learn to use VS Code.
 * Practice how to [compile with VS Code/Cmake](https://github.com/mhahsler/CS2341/blob/main/HOWTO_compile_programs_with_CMake.md).
  
 
