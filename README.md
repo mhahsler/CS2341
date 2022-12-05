@@ -15,7 +15,7 @@ Source Code by Mark Allen Weiss can be found [here.](https://users.cs.fiu.edu/~w
 ## Preparation for this course 
 
 This course assumes that you know the basics of C++ programming, object-oriented design, and memory management from
-an introductory C++ course. To make sure you are ready, work through [HOWTO prepare for the data structures course](HOWTO_prepare_for_data_structures.md).
+an introductory C++ course. To make sure you are ready, work through [HOWTO prepare for this data structures course](HOWTO_prepare_for_data_structures.md).
 
 ## Course Material
 
@@ -56,6 +56,7 @@ Details on how to use ssh and the shell can be found below.
 
 
 ## HOWTOs
+* [HOWTO prepare for this data structures course](HOWTO_prepare_for_data_structures.md)
 * [GitHub Quickstart](https://docs.github.com/en/get-started/quickstart)
 * [HOWTO Use a Shell and SSH](HOWTO_shell_and_ssh.md)
 * [HOWTO Compile Programs With VS Code and CMake](HOWTO_compile_programs_with_CMake.md)
