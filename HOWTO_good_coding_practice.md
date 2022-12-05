@@ -17,4 +17,4 @@
 * **Don't ignore compiler warnings.** All ways turn compiler warnings on. These are typically an indication that your code will not be reliable, portable, and may contains memory management issues that will show up later.
 * **Don't write complicated code.** The need for complicated code is is typically the result of bad design.
 * **Don't use multiple copies of the same or slightly modified code in your project.** This creates a maintenance nightmare. Rethink your design.
-* **Don't use code you find without completely understanding it.** The code might not exactly do what you need, introduce bugs into your code, or even be malicious. 
+* **Don't use code you find without completely understanding it.** The code might not exactly do what you need, introduce bugs into your code, or even be malicious. If you reuse code, then always put a comment with the source in the code so you remember where it came form.

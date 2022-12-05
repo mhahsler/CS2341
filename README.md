@@ -12,6 +12,13 @@ management (e.g., Java and Python).
 **Textbook:** Data Structures and Algorithm Analysis in C++ (Fourth Edition), by Mark Allen Weiss.
 Source Code by Mark Allen Weiss can be found [here.](https://users.cs.fiu.edu/~weiss/dsaa_c++4/code/)
 
+## Preparation for this course 
+
+This course assumes that you know the basics of C++ programming, object-oriented design, and memory management from
+an introductory C++ course. To make sure you are ready, work through [HOWTO prepare for the data structures course](HOWTO_prepare_for_data_structures.md).
+
+## Course Material
+
 | Book Chapter | Lecture Notes and Code                            |
 | :----------: | :------------------------------------------------ |
 |      1       | [Programming](Chapter1_Programming)               |
