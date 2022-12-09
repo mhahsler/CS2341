@@ -18,12 +18,12 @@ would mean that the key Michael maps to the value 80
 
 We can look at sets as maps that have only a key and no value. 
 
-The time complexity to find or insert items by data structure are:
+The worst-case time complexity to find or insert items by data structure are:
 
 * Vector of key-value pairs: $O(N)$
 * List key-value pairs: $O(N)$ (insertion at the front can be done in $O(1)$)
 * Binary search tree using the key for sorting and storing the value in each node: $O(log\ N)$
-* **Hash table: $O(1)$**
+* **Hash table: $O(1)$** (under some assumptions)
 
 ## Hash Table
 
@@ -36,12 +36,17 @@ Insert Operation for a $(key, value)$ pair.
 valid row in the table. 
 2. Place the $(key, value)$ pair in that row.
 
+The runtime of the hash function only depends on how the key is represented and not on the number elements $N$ in the table. 
+Finding the place in a table given the index is $O(1)$, therefore, we get constant runtime of $O(1)$.
+
+
 ### Lookup
 Lookup Operation for a key
 1. Calculate the index for the table row using a hash function $h(key)$.
 2. Retrieve the value the table row.
 
-The runtime of the hash function only depends on how the key is represented and not on the number elements $N$ in the table. Therefore, we get constant runtime of $O(1)$. 
+Same worst-case time complexity as insertion ($O(1)$).
+
 
 **Note:** Hash tables do not store entries in any particular order! 
 
@@ -50,11 +55,11 @@ The runtime of the hash function only depends on how the key is represented and 
 
 ### Issues
 
-1. We need to choose the hash table size $M$. 
-2. We want a hash function that distributes the items well over the whole table. We do not want to allocate a very large table that is mostly empty!
-3. What about collisions where $h(key_1) = h(key_2)$?
+1. We need to choose a has function. We want a hash function that distributes the items well over the whole table because we do not want to allocate a very large table that is mostly empty!
+2. What about collisions where $h(key_1) = h(key_2)$?
+3. We need to choose the hash table size $M$.
 
-## Hash Function
+## Hash Functions
 
 Has to return the **same hash value for the same key** and should be
 * fast to calculate, and
@@ -85,9 +90,8 @@ Design a hash using hashes of all member variables and combine them into a singl
 
 Collisions happen when $h(key_1) == h(key_2)$. Collisions cannot be prevented.
 
-The standard method is to use **separate chaining.** It uses a linked list for each cell in the hash table to store all
-the items that hash to the same value. 
-We can insert at the beginning of the list in $O(1)$. A good hash function should 
+The standard method is to use **separate chaining.** It uses a singly-linked list for each cell in the hash table to store all
+the items that hash to the same value. Inserting at the beginning of the list is $O(1)$. A good hash function should 
 have few collisions and lead to short lists.
 
 See Example [DSHashTable](DSHashTable) which implements a hashed set.
@@ -96,7 +100,7 @@ Alternatives to separate chaining are probing, double hashing, perfect hashing, 
 
 ## Hash Table Size
 
-How large should the hash table be? The loading factor of a hash table is defined as
+How large should the hash table be? The **loading factor** of a hash table is defined as
 
 $$\lambda = \frac{\text{number of items in table}}{\text{table size}}= \frac{N}{M}.$$
 
@@ -105,15 +109,16 @@ Search therefore requires on average $1 + (\lambda / 2)$ link traversals. A gene
 
 $$M \approx N \rightarrow \lambda \approx 1$$
 
-**Rehashing:** If the loading factor gets too large, then allocate a table with double the size and insert the data from the old table in $O(N)$ operations. 
+**Rehashing:** If the loading factor gets too large, then allocate a table with double the size and insert the data from the old table in $O(N)$ operations. Note that rehashing is very expensive!
 
+Keeping the load factor low is needed to provide $O(1)$ time complexity. 
 
 
 ## STL Hash Tables
 
 STL provides [`std::unordered_set`](https://cplusplus.com/reference/unordered_set/unordered_set/) and [`std::unordered_map`](https://cplusplus.com/reference/unordered_map/unordered_map/). The keys need to have `operator==` and a `hash` function (or a provided function object).
 
-The STL structures automatically [rehash](https://cplusplus.com/reference/unordered_set/unordered_set/rehash/) when the load factor gets to high.
+The STL structures automatically [rehash](https://cplusplus.com/reference/unordered_set/unordered_set/rehash/) when the load factor gets too high.
 
 STL also provides hash functions as templated function objects as [`std::hash`](https://en.cppreference.com/w/cpp/utility/hash)
 
