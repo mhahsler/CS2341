@@ -14,7 +14,6 @@
 #include "mergeSort.h"
 #include "quicksort_original.h"
 #include "quicksort.h"
-//#include "radix_sort.h"
 
 using namespace std;
 using namespace std::chrono;

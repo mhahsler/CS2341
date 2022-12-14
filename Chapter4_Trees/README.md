@@ -26,7 +26,7 @@ Observations:
 * A tree is a special type of graph with only a single path from the root to each leaf.
 * A collection of $N$ nodes (one is the root node) has $N - 1$ edges.
 
-### Implementation
+## Implementation of General Trees
 
 We implement a tree as a set of connected `Nodes`.
 
@@ -82,29 +82,64 @@ public:
 `nullptr` represents missing children.
 
 
-### Types of tree traversals
+## Tree Traversal
 
-Visiting nodes is called [tree traversal](https://en.wikipedia.org/wiki/Tree_traversal). Traversal works for m-ary trees, but we define it here for the special case of binary trees with 
-a node N and a left (L) and right (R) subtree as children.
+Visiting all nodes in a tree is called [tree traversal](https://en.wikipedia.org/wiki/Tree_traversal).
 
-#### Depth-first traversal
 
-Follow each path all the way to the leaf node.
+### Depth-first traversal
+Depth-first traversal works for any m-ary tree, but we define it here for the special case of binary trees.
+We will use the following notation:
 
-* **preorder** (NLR): process node before children.
-* **inorder** (LNR) follow each path to the leaf-node (left to right). 
-* **postorder** (LRN): process all subtrees before the node.
+* **N** stands for processing the **node.** For example, printing the value stored in the node.
+* **L** means going to the **left child.**
+* **R** means going to the **right child.**
 
-Coming back up from a leaf to a node to process a different subtree is called _backtracking_.
+Once a leaf node is reached and processed, then we go back to the node we came from to process a different subtree. 
+This is often called _backtracking_.
 
-#### Breadth-first traversal
+The three traversal orders are:
+
+* **preorder** (NLR): process node before children. **Pre** means the node is processed fist.
+* **inorder** (LNR) fist follow the left child and then process the node before following down the right child.
+  **In** means that the node is processed in the middle. For binary search trees this results in processing the 
+  nodes in sort order.
+* **postorder** (LRN): process the left and then the right subtree before the node is processed. **Post** means the node
+  is processed last.
+
+Recursive implementation
+
+```cpp
+void traverseNLR(Node& n) {
+  cout << n.value;          // N
+  taverseNLR(n.leftChild);  // L
+  taverseNLR(n.rightChild); // R
+}
+
+void traverseLNR(Node& n) {
+  taverseLNR(n.leftChild);  // L
+  cout << n.value;          // N
+  taverseLNR(n.rightChild); // R
+}
+
+void traverseLRN(Node& n) {
+  taverseLRN(n.leftChild);  // L
+  taverseLRN(n.rightChild); // R
+  cout << n.value;          // N
+}
+```
+
+For an iterative implementation, you need a stack.
+
+
+### Breadth-first traversal
 
 Also called level-order: process the tree by level (may need an extra data structure like a queue to store unprocessed nodes).
 You will learn more about breadth-first traversal when you learn about graphs in algorithms. 
 
 
 
-### Application Examples: Expression Trees
+## Application Examples: Expression Trees
 
 An expression tree represent an expression with binary operators like $6 * (5 + (2 + 3) * 8 + 3)$.
 
@@ -150,7 +185,7 @@ Applications of the parse tree: create
 
 [Parse trees](https://en.wikipedia.org/wiki/Parse_tree) are $M$-ary expression trees that are used in compiler design. In natural language processing such trees are called syntax trees. 
 
-### Exercises
+## Exercises
 1. Draw the stack operations to convert $6 * (5 + (2 + 3) * 8 + 3)$ into postfix notation.  
 2. Convert the postfix notation into an expression tree.
 3. Convert the expression tree back into infix notation.
