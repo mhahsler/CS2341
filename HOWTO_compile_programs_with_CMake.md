@@ -24,10 +24,10 @@ files need to be specified in the `add_executable()` line or linking will fail.
 
 ## How to Set Up a New Program
 
-1. Make a project directory using the file manager, start VS Code and open the directory 
+1. Make a project directory using the file manager or a terminal, start VS Code and open the directory 
    (for WSL click on the green area and use open folder in WSL; MacOS/Linux use `File>Open Folder`).
 2. Create at least a `main.cpp` file in the directory (right-click and choose new file).
-3. Configure CMake by going in the menu to `Help>Show All Commands` (or push `CTRL+Shift P`) and type `CMake:Configure`. Choose a compiler
+3. Configure CMake by going in the menu to `Help>Show All Commands` (or push ) and type `CMake:Configure`. Choose a compiler
    (latest version of GCC or clang), a project name and that you want to create an executable. This creates a file called `CMakeLists.txt`.
 4. Add all used `.cpp` files in the `add_executable()` instruction in `CMakeLists.txt`.
 5. Optional: Enable warnings, other compiler options, and verbose output like in this [example](Chapter1_Programming/IntCell/CMakeLists.txt).
@@ -41,7 +41,7 @@ files need to be specified in the `add_executable()` line or linking will fail.
 *Notes:* 
 
 * **Only use the buttons in the bottom task bar!** These will use CMake. There are other buttons (e.g., in VS Codes top right corner). Do not use these because they will use VS Code's internal build tools which are not compatible with CMake. You see a `.vscode` instead of a `build` folder if you used the wrong button.
-* Steps 2 and 3 can be done using `CMake:Quickstart` which will create a Hello World! program.
+* Steps 2 and 3 can be done using `CTRL+Shift P` `CMake:Quickstart` which will create a Hello World! program.
 * You can also manually run `CMake` and `make`:
   Go to the project directory in your shell (a WSL shell for windows) and use 
    
