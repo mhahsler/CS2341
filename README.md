@@ -43,7 +43,7 @@ Course material and assignments for CS 2341 at SMU can be found on [Canvas](http
     - On **MacOS** you need to install [clang on MacOS](https://code.visualstudio.com/docs/cpp/config-clang-mac) and 
       set up the path using [shell command](https://code.visualstudio.com/docs/setup/mac). You also need to install [cMake](https://cmake.org/install/) (follow the instructions carefully and set the PATH). 
       An installation option is [Homebrew](https://brew.sh/).
-* Install [git](https://git-scm.com/) and the [VS Code integration](https://code.visualstudio.com/docs/editor/versioncontrol).
+* Install [git](https://git-scm.com/) and then you can use the [VS Code integration](https://code.visualstudio.com/docs/editor/versioncontrol).
 * Install [VS Code extensions for C++ and CMake](https://code.visualstudio.com/docs/languages/cpp). 
   The extensions are: `C/C++`, `C/C++ Extension Pack`, `CMake Tools`. VS Code will prompt you to install these. Make sure that you install the extensions **after** you have the software above installed or it might not find set it up correctly. 
 
