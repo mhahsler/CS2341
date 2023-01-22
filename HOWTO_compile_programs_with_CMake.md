@@ -30,17 +30,18 @@ files need to be specified in the `add_executable()` line or linking will fail.
 3. Configure CMake by going in the menu to `Help>Show All Commands` (or push ) and type `CMake:Configure`. Choose a compiler
    (latest version of GCC or clang), a project name and that you want to create an executable. This creates a file called `CMakeLists.txt`.
 4. Add all used `.cpp` files in the `add_executable()` instruction in `CMakeLists.txt`.
-5. Optional: Enable warnings, other compiler options, and verbose output like in this [example](Chapter1_Programming/IntCell/CMakeLists.txt).
+5. Optional: Enable warnings, other compiler options, and verbose output in `CMakeLists.txt`.
 6. Choose the CMake build variant `CMake: [Debug]` (no code optimization for debugging) or `CMake: [Release]` (fast code with code optimization).
 7. Click `Build` in the status bar (at the bottom). You can choose to only build individual executables.
   `CMake` creates a `build` directory with a `Makefile` which is used to
    build the project.
-8. Click the `Run` button in the status bar to execute the compiled program.
+1. Click the `Run` button in the status bar to execute the compiled program.
 
+Here is a minimal example: [hello_word](Chapter1_Programming/hello_world/)
 
 *Notes:* 
 
-* **Only use the buttons in the bottom task bar!** These will use CMake. There are other buttons (e.g., in VS Codes top right corner). Do not use these because they will use VS Code's internal build tools which are not compatible with CMake. You see a `.vscode` instead of a `build` folder if you used the wrong button.
+* **Only use the buttons in the bottom task bar!** These will use CMake. There are other buttons (e.g., in VS Codes top right corner). Do not use these because they will use VS Code's internal build tools which are not compatible with CMake.
 * Steps 2 and 3 can be done using `CTRL+Shift P` `CMake:Quickstart` which will create a Hello World! program.
 * You can also manually run `CMake` and `make`:
   Go to the project directory in your shell (a WSL shell for windows) and use 
