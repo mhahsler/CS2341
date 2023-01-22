@@ -1,10 +1,8 @@
-# HOWTO Debug and Test
+# HOWTO Debug and Detect Memory Leaks
 
-
-## How to Debug
+## Debugging
 
 You need to have `gdb` ([GNU Project Debugger](https://www.sourceware.org/gdb/)) installed. 
-
 
 ### In VS Code
 
