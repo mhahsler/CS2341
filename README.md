@@ -62,6 +62,7 @@ Details on how to use ssh and the shell can be found below.
 * [HOWTO Compile Programs With VS Code and CMake](HOWTO_compile_programs_with_CMake.md)
 * [HOWTO Good Coding Practice](HOWTO_good_coding_practice.md)
 * [HOWTO Debug](HOWTO_debug.md)
+* [HOWTO Detect Memory Leaks](HOWTO_detect_memory_leaks.md)
 * [HOWTO Test](HOWTO_test.md)
 * [HOWTO Profile Code](HOWTO_profile_code.md)
 
