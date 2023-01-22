@@ -15,7 +15,7 @@ used in this course. Very good short explanations can be found in this
 * Example: [Memory allocation](memory)
 
 
-## Recursion, Compiling, Debugging and Testing
+## Recursion and Testing
 * Example: [Calculate factorials](factorial)
 
 ## Classes
