@@ -61,7 +61,8 @@ Details on how to use ssh and the shell can be found below.
 * [HOWTO Use a Shell and SSH](HOWTO_shell_and_ssh.md)
 * [HOWTO Compile Programs With VS Code and CMake](HOWTO_compile_programs_with_CMake.md)
 * [HOWTO Good Coding Practice](HOWTO_good_coding_practice.md)
-* [HOWTO Debug and Test](HOWTO_debug_and_test.md)
+* [HOWTO Debug](HOWTO_debug.md)
+* [HOWTO Test](HOWTO_test.md)
 * [HOWTO Profile Code](HOWTO_profile_code.md)
 
 
