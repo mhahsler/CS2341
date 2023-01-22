@@ -20,8 +20,9 @@ int main()
     // for the larges allocatable data structure. On 64-bit machines it is
     // a unsigned long long, which is 64 bits wand goes to 2^64 = 1.8e19.   
 
-
-    // try to access the last element using an int variable 
+    // THE FOLLOWING CODE IS WRONG!!!
+    
+    // try to access the last element using an int variable (the compiler hopefully produces a warning)
     int i2 = 2200000000 - 1;
     cout << "index: " << i2 << endl;
     
