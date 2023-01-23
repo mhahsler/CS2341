@@ -101,7 +101,7 @@ Lists are more memory efficient and vectors are faster.
 * **Function call stack:** Issue: Prior to a function call, all local variables and the return address need to be saved.
   This information is stored as a _stack frame_ on the _function call stack_ 
   and a function call pushes a new stack frame on the function call stack.
-  See example [factorial](../Chapter1_Overview/factorial).
+  See example [factorial](../Chapter1_Programming/factorial).
 
 
 ## Queues
