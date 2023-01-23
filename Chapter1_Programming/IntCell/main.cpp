@@ -6,20 +6,19 @@
 
 using namespace std;
 
-int main(int, char **)
+int main()
 {
-    int unused; // produces a warning if -Wall is used in CMakeLists
     
     IntCell test = IntCell{5};
     // C++11 can use {} for construction
-    // IntCell test = IntCell();
-    cout << test.read() << endl;
+    // IntCell test = IntCell(5);
+    cout << test.read() << "\n";
 
     // prevented by explicit constructor with single int argument.
     // test = 12;
 
     test.write(12);
-    cout << test.read() << endl;
+    cout << test.read() << "\n";
 
     return 0;
 }
