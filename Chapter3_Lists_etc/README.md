@@ -38,8 +38,6 @@ STL provides: [std::vector](https://cplusplus.com/reference/vector/vector/)
 
 Example: [DSVector](DSVector)
 
-Example: Using DSVector to create a [string class](DSString)
-
 ## Matrix
 
 STL: Interestingly there is no support available.
