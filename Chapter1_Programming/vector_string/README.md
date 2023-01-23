@@ -33,7 +33,8 @@ A good replacement for arrays is [std::vector](https://en.cppreference.com/w/cpp
 and for `char *` use [std::string](https://en.cppreference.com/w/cpp/string/basic_string).
 
 **A note on indices:** 64-bit systems can handle data structures with so many elements that `int` cannot represent the 
-index. Since it is an signed datatype, it will eventually overflow produce a negative index and break your program. The STL introduces two new datatypes that are guaranteed to be able to represent all possible index values. These are:
+index. Since it is an signed datatype, it will eventually overflow produce a negative index and break your program. The 
+C (via `<cstddef>` which is automatically included by many STL libraries) introduces two new datatypes that are guaranteed to be able to represent all possible index values. These are:
 
 * `std::size_t` for an index. It is unsigned and can only be positive.
 On many systems it is an `unsigned long`.
