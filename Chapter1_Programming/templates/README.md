@@ -7,17 +7,20 @@ data types.
 Example: The following overloaded functions
 
 ```C++
-int increment(int x) { x++; }
-double increment(double x) { x++; }
-float increment(float x) { x++; }
+int increment(int x) { return x + 1; }
+double increment(double x) { return x + 1; }
+float increment(float x) { return x + 1; }
 ```
 
 can be defined as a single template 
 
 ```C++
 template <typename T>
-T increment(const T& x) { x++; }
+T increment(const T& x) { return x + 1; }
 ```
+`T` is used as a placeholder for a datatype (could be user-defined class). The code assumes that `T` has an
+implementation of `operator+` to perform the addition. Since `T` can be an object which we do not want to copy, a constant reference (`const T&`) is typically used as the parameter. 
+
 Templates can be used for functions and classes.
 
 ## Syntax
