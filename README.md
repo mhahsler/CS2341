@@ -39,7 +39,7 @@ Course material and assignments for CS 2341 at SMU can be found on [Canvas](http
 * Install compilers and `cmake`:
     - On **Linux** you most likely have already everything you need installed (`gcc`, `cmake`, `valgrind`). If not, 
       then install the missing packages using your package manager (e.g., on Ubuntu using `sudo apt-get install cmake`). 
-    - On **Windows** you will need to [install WSL](https://code.visualstudio.com/docs/cpp/config-wsl) and use the VS Code Remote WSL ([here is a video](https://www.youtube.com/watch?v=NY5izJWXi0U)) this process will install `gcc`. You also need to install `cmake` and `valgrind` in the WSL shell using `sudo apt-get install gcc cmake valgrind`. You will always need to open folders by clicking on the green `><` at the bottom left corner of VS Code and select open folder in WSL.
+    - On **Windows** you will need to [install WSL](https://code.visualstudio.com/docs/cpp/config-wsl) and install and use the VS Code remote-WSL Extension ([here is a video](https://www.youtube.com/watch?v=NY5izJWXi0U)). You also need to install `cmake` and `valgrind` using the WSL shell (`sudo apt-get install build-essential cmake valgrind`). You will always need to open folders by clicking on the green `><` at the bottom left corner of VS Code and select open folder in WSL.
     - On **MacOS** you need to install [clang on MacOS](https://code.visualstudio.com/docs/cpp/config-clang-mac) and 
       set up the path using [shell command](https://code.visualstudio.com/docs/setup/mac). You also need to install [cMake](https://cmake.org/install/) (follow the instructions carefully and set the PATH). 
       An installation option is [Homebrew](https://brew.sh/).
