@@ -15,7 +15,25 @@ used in this course. Very good short explanations can be found in this
   - Where do programs store variables and objects?
   - Where does memory come from and how is memory returned?
   - Why do we need dynamic memory allocation?
+  - What is the difference between the stack and the heap.
+  - Example: Create a memory diagram for executing the following program:
+
+    ```cpp
+    int inc(int x) return x + 1;
+
+    int main() {
+      int a = 10;
+      int b = inc(a);
+      return 0;
+    }
+    ```
+
   - Differences between memory management in C, C++, Java and Python.
+    |                | C   | C++ | Java | Python |
+    | :------------- | :-: | :-: | :--: | :----: |
+    | Request memory |  ?  |  ?  |   ?  |   ?    |
+    | Return memory  |  ?  |  ?  |   ?  |   ?    |
+
 * Video: [Memory Diagrams](http://vimeo.com/58710057)
 * Example: [Memory allocation](memory)
 * Example: [Pointers and Dynamic Memory Allocation](pointers)
