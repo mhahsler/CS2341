@@ -4,21 +4,19 @@
 /* Remember: <...> is a standard library and "..." is a header in the 
  * project (current directory). */
 
-using namespace std;
-
 int main()
 {
     
     IntCell test = IntCell{5};
     // C++11 can use {} for construction
-    // IntCell test = IntCell(5);
-    cout << test.read() << "\n";
+    // It is the same as IntCell test = IntCell(5);
+    std::cout << test.read() << "\n"; // std::endl flushes the buffer and is slow so use it sparingly
 
     // prevented by explicit constructor with single int argument.
     // test = 12;
 
     test.write(12);
-    cout << test.read() << "\n";
+    std::cout << test.read() << "\n";
 
-    return 0;
+    return 0; // 0 signals to the Operating System that the program ran successfully
 }

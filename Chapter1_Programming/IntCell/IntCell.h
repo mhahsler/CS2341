@@ -14,10 +14,10 @@ private:
     int storedValue;
 
 public:
-    explicit IntCell(int initialValue = 0);
+    explicit IntCell(int initialValue = 0); // default value can only be specified here!
     int read() const;
     void write(int x);
-};
+}; // mind the ;
 
 /*
  * Notes: 
