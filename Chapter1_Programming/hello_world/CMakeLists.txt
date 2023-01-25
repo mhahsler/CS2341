@@ -21,10 +21,10 @@ set(CMAKE_CXX_STANDARD 17)
 # show compiler output and enable warnings
 set(CMAKE_VERBOSE_MAKEFILE ON)
 add_compile_options(-Wall -Wextra -pedantic)
-
 # for more GCC compiler options see https://gcc.gnu.org/onlinedocs/gcc/Invoking-GCC.html
 
-# add all the .cpp files here
+# add all components that need to be compiled and linked (the .cpp and .h files with code)
+# Syntax: add_executable(Executable_Name <list of files to compile>)
 add_executable(hello_world main.cpp)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
