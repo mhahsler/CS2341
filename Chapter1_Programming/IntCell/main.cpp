@@ -1,9 +1,9 @@
 #include <iostream>
 #include "IntCell.h"
-
 /* Remember: <...> is a standard library and "..." is a header in the 
  * project (current directory). */
 
+// Write the main function first and then write the class. The main function should test the class.
 int main()
 {
     
