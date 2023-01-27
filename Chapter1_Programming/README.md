@@ -37,7 +37,7 @@ used in this course. Very good short explanations can be found in this
 * Reading: [References vs. Pointers](https://isocpp.org/wiki/faq/references)
 * Exercise: [Memory allocation](memory)
 * [Call-by-value vs call-by-reference](parameters) and using `const`.
-* Destructor, copy constructor, assignment operator, and move semantics: [The Big five for classes](big-five)
+* Destructor, copy constructor, assignment operator, and move semantics: [The Rule of Three and The Big Five](big-five) for classes
 
 ## Standard Template Library
 * Reading: [The C++ Standard Template Library (STL)](https://www.geeksforgeeks.org/the-c-standard-template-library-stl/)
