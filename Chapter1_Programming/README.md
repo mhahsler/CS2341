@@ -5,12 +5,10 @@ used in this course. Very good short explanations can be found in this
 [C++ YouTube Playlist](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb).
 
 ## Classes and Templates
-* Example: A simple class called [IntCell](IntCell)
-* Example: [Function and class templates](templates)
-* Example: [Call-by-value vs call-by-reference](parameters) and using `const`.
+* A simple class called [IntCell](IntCell)
+* [Function and class templates](templates)
 
-## Dynamic Memory Allocation
-### Memory Management
+## Dynamic Memory Allocation and Pointers
 * Some Questions:
   - Where do programs store variables and objects?
   - Where does memory come from and how is memory returned?
@@ -28,28 +26,29 @@ used in this course. Very good short explanations can be found in this
     }
     ```
 
-  - Differences between memory management in C, C++, Java and Python.
+  - What are the differences between memory management in C, C++, Java and Python? (Most programming languages use similar mechanisms.)
     |                | C   | C++ | Java | Python |
     | :------------- | :-: | :-: | :--: | :----: |
     | Request memory |  ?  |  ?  |   ?  |   ?    |
     | Return memory  |  ?  |  ?  |   ?  |   ?    |
 
-* Video: [Memory Diagrams](http://vimeo.com/58710057)
-* Example: [Memory allocation](memory)
-* Example: [Pointers and Dynamic Memory Allocation](pointers)
+* Video: How do create [Memory Diagrams](http://vimeo.com/58710057)
+* [Pointers and Dynamic Memory Allocation](pointers)
 * Reading: [References vs. Pointers](https://isocpp.org/wiki/faq/references)
-* Example: Destructor, copy constructor and assignment operator: [The Big five for classes](big-five)
+* Exercise: [Memory allocation](memory)
+* [Call-by-value vs call-by-reference](parameters) and using `const`.
+* Destructor, copy constructor, assignment operator, and move semantics: [The Big five for classes](big-five)
 
 ## Standard Template Library
 * Reading: [The C++ Standard Template Library (STL)](https://www.geeksforgeeks.org/the-c-standard-template-library-stl/)
-* Example: [Arrays and cstrings vs STL vectors and strings](vector_string)
-* Example: [Comparator](comparator)
+* Examples: [Arrays and cstrings vs STL vectors and strings](vector_string)
+* [Comparator](comparator) inclusing `operator<` and function objects
 
 ## Recursion and Testing
-* Example: [Calculate factorials](factorial)
+* [Recursion to calcutlate factorials](factorial)
 
 ## Command Line Interface and File IO
-* Example: [CLI and file IO](io)
+* [CLI and file IO](io)
 
 ## License
 
