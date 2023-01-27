@@ -45,7 +45,7 @@ used in this course. Very good short explanations can be found in this
 * [Comparator](comparator) inclusing `operator<` and function objects
 
 ## Recursion and Testing
-* [Recursion to calcutlate factorials](factorial)
+* [Recursion to calculate factorials](factorial)
 
 ## Command Line Interface and File IO
 * [CLI and file IO](io)
