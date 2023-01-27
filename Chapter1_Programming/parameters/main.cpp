@@ -27,7 +27,7 @@ double average(double a, double b)
  * Notes: 
  *   * There is std::swap() already available (https://en.cppreference.com/w/cpp/algorithm/swap)!
  *   * in C++11 std::move() can be used to move rvalues instead of copying the objects.
- *     Note: lvalues are permanent storage (e.g., variables) and rvalues are temorary objects (e.g., the 
+ *     Note: lvalues are permanent storage (e.g., variables) and rvalues are temporary objects (e.g., the 
  *           result of an evaluation). Typical assignment: lval = rval;
  *  * STL containers (vector, string) use move automatically.
  * 
@@ -44,7 +44,7 @@ void swap(double &a, double &b)
 /**
  * @brief return a random element
  * 
- * Pass-by-constant reference (lvalue): reference is used to avoid copying and cont makes sure the funciton does 
+ * Pass-by-constant reference (lvalue): reference is used to avoid copying and cont makes sure the function does 
  *   not mess up the data in the calling function. An assignment to arr would lead to a compilation error.
  * 
  * @param arr 
