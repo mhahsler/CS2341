@@ -15,14 +15,13 @@
   ```
 
   `x` and `y` become aliases for the variables in the calling function. 
-  Changing them changes the values there. The purpose is use this
-  side effect.
+  Changing them changes the values there. 
+  
+  **Important:** The purpose is to use this side effect and other programmers will assume that you will. 
+  If you do not want to or need to change the variables in 
+  the calling function, then use constant references (see below).
  
-  **C++11 Note:** [std::swap()](https://en.cppreference.com/w/cpp/algorithm/swap) is already available in the STL. It can be used together with std::move() to avoid copying large objects. std::move() moves rvalues instead of copying the object. rvalues are temporary objects (e.g., the
- result of an evaluation or a return value) and  
- lvalues are permanent storage (e.g., variables). 
- Typical assignment `lval = rval;`. STL containers (vector, string) 
- use move automatically.
+  **C++11 Note:** [std::swap()](https://en.cppreference.com/w/cpp/algorithm/swap) is already available in the STL. It can be used together with [std::move()](https://en.cppreference.com/w/cpp/algorithm/move) to avoid copying large objects. STL containers (vector, string) use move semantics automatically.
 
 
 ## Call-by-constant reference
@@ -50,11 +49,12 @@
 
 ## Return-by-value
 
-This is the typical way of returning values. C++11 makes returning STL data structures efficient using automatically move semantics.
+This is the standard way of returning values. C++11 makes returning STL data structures efficient using automatically move semantics.
 
 ## Return-by (constant) reference
 
-We can return a reference to an object that exists after the function has finished.
+We can return a reference to an object/variable. This object has to exist after the function has finished so it cannot be 
+a local object/variable on the function call stack!
 
 ```cpp
 const LargeObject & chooseRandomItem(const vector<LargeObject> & arr) {
@@ -63,10 +63,11 @@ const LargeObject & chooseRandomItem(const vector<LargeObject> & arr) {
 ```
 
 Without the `const` keywords, the caller of `chooseRandomItem()` would
-have modifiable access to the returned object.Note that const references can only be assigned to const references or need to be copied.
+have modifiable access to the returned object.
 
 Be careful, you can only return references to objects that persist after the function finishes!
-In this case `arr` is still in memory after `chooseRandomItem()` finishes.
+In this case `arr` is still in memory after `chooseRandomItem()` finishes because it is owned by the 
+calling function and was passed to `chooseRandomItem()` by reference.
 
 # Use of the keyword `const`
 
@@ -74,7 +75,7 @@ In this case `arr` is still in memory after `chooseRandomItem()` finishes.
 ## Constant Values
 
 ```cpp
-const int i;
+const int n = 20;
 ```
 
 ## Const pointers
@@ -96,7 +97,8 @@ The referenced value cannot be modified.
 ## Const member functions
 
 Creates a read-only function that cannot modify the calling object. It is technically an 
-overloaded function and `const` becomes part of the signature.
+overloaded function and `const` becomes part of the signature 
+(see [name mangling](https://en.wikipedia.org/wiki/Name_mangling) for details on signatures).
 
 non-`const` objects can also be used to call `const` member functions, but not the other 
 way round.
@@ -120,5 +122,6 @@ public:
 ## Some Rules for `const`
 
 * `const` objects cannot be modified. The compiler enforces this at compile time.
-* `const` is a safeguard so the programmer does not make a mistake and changes an object inadvertently. 
-* With a `const` object, you can only call a `const` member function. Therefore, we often need to provide also a `const` version of some member functions. The STL uses `const` objects a lot, so your classes should be prepared to provide `const` versions. 
+* `const` is a safeguard. The implementer of the function does not make a mistake and changes an object by accident. 
+  The user of the function knows that passed variables are save from manipulation by the function.  
+* With a `const` object, you can only call `const` member functions. Therefore, we often need to provide also a `const` version of some member functions. The STL uses `const` objects a lot, so your classes should also provide `const` versions. 
