@@ -8,6 +8,7 @@
 IntCellPtrOK::IntCellPtrOK(int initialValue)
 {
     storedValue = new int{initialValue};
+    // same as: storedValue = new int; *storedValue = initialValue;
 }
 
 /**
