@@ -8,6 +8,7 @@
 IntCellPtrOK::IntCellPtrOK(int initialValue)
 {
     storedValue = new int{initialValue};
+    // Note [] and {} are different!
     // same as: storedValue = new int; *storedValue = initialValue;
 }
 
@@ -27,7 +28,8 @@ IntCellPtrOK::~IntCellPtrOK()
 IntCellPtrOK::IntCellPtrOK(const IntCellPtrOK &rhs)
 {
     storedValue = new int{ *(rhs.storedValue) };
-}
+    // same as: storedValue = new int; *storedValue = *(rhs.storedValue);
+    // or: storedValue = new int; write(rhs.read());
 
 /**
  * @brief Copy assignment
