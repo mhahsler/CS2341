@@ -6,20 +6,21 @@
   double average(double a, double b) {...}
   ```
 
-  arguments are copied.
+  The arguments are copied. This is typically used for primitive data types (`int`, `double`, etc.).
 
 ## Call-by-reference: 
 
   ```cpp
-  swap(int &x, int &y) {...}
+  void swap(int &x, int &y) {...}
   ```
 
   `x` and `y` become aliases for the variables in the calling function. 
   Changing them changes the values there. 
   
-  **Important:** The purpose is to use this side effect and other programmers will assume that you will. 
+  **Important:** The purpose is to use this _side effect_ and programmers who see the function prototype will assume that
+  the function will do that. 
   If you do not want to or need to change the variables in 
-  the calling function, then use constant references (see below).
+  the calling function and use references to avoid copying, then you want to use constant references (see below).
  
   **C++11 Note:** [std::swap()](https://en.cppreference.com/w/cpp/algorithm/swap) is already available in the STL. It can be used together with [std::move()](https://en.cppreference.com/w/cpp/algorithm/move) to avoid copying large objects. STL containers (vector, string) use move semantics automatically.
 
@@ -32,26 +33,25 @@
 
   `a` and `b` become aliases for the variables in the calling function.
   The compiler makes sure that they are not changed. The purpose is to avoid copying large objects when passing them to a 
-  function.
+  function. This is the typical way we pass Objects read-only.
 
 
 ## Call-by-pointer (used in C)
     
   ```cpp
-  strcpy ( char * destination, const char * source ) {...}
+  strcpy(char *destination, const char *source) {...}
   ```
 
-  copies the string in `source` to `destination`. This is typically not 
-  used in C++ unless we deal with C-style arrays which we want to avoid.
-  
+  copies the string in `source` to `destination` (see [strcpy in library string.h](https://en.cppreference.com/w/c/string/byte/strcpy)). This is typically not 
+  used in C++ unless we deal with C-style arrays which we want to avoid, or functions that come from a C library.
 
 # Return passing
 
 ## Return-by-value
 
-This is the standard way of returning values. C++11 makes returning STL data structures efficient using automatically move semantics.
+This is the standard way of returning values. C++11 makes returning STL data structures more efficient using automatically move semantics.
 
-## Return-by (constant) reference
+## Return-by-(constant)-reference
 
 We can return a reference to an object/variable. This object has to exist after the function has finished so it cannot be 
 a local object/variable on the function call stack!
