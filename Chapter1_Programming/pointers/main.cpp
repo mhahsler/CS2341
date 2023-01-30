@@ -5,6 +5,10 @@ using namespace std;
 
 int main()
 {
+    // We can statically allocate a IntCell object on the stack.
+    IntCell m_stack(3);
+    cout << "Cell m_stack: " << m_stack.read() << "\n";
+    
     // We dynamically allocate a IntCell object
     // Note that this is not necessary, since we know at compile time how much memory we have!
     // To allocate the memory on the stack, we would use:
@@ -15,28 +19,28 @@ int main()
     m = new IntCell{0};
     m->write(5);
 
-    cout << "Cell m: " << m->read() << endl;
+    cout << "Cell m: " << m->read() << "\n";
 
     IntCell *n = new IntCell{5};
-    cout << "Cell n: " << n->read() << endl;
+    cout << "Cell n: " << n->read() << "\n";
 
     /* comparison does not work as expected, it compares the pointers */
     if (m == n)
-        cout << "m == n" << endl;
+        cout << "m == n" << "\n";
     else
-        cout << "m != n" << endl;
+        cout << "m != n" << "\n";
 
 
     /* addresses and dereferencing */
-    cout << "m: " << m << endl;
-    cout << "Address of m (&m): " << &m << endl;
-    cout << "Dereferenced m ( *m.read() ): " << (*m).read() << endl;
+    cout << "m: " << m << "\n";
+    cout << "Address of m (&m): " << &m << "\n";
+    cout << "Dereferenced m ( *m.read() ): " << (*m).read() << "\n";
 
     /* this works */
     if (m->read() == n->read())
-        cout << "m->read() == n->read()" << endl;
+        cout << "m->read() == n->read()" << "\n";
     else
-        cout << "m->read() != n->read()" << endl;
+        cout << "m->read() != n->read()" << "\n";
 
     /* every new needs a delete! */
     delete m, n;
@@ -49,10 +53,10 @@ int main()
     auto &b = a;
 
     if (&a == &b)
-        cout << "a and b occupy the same memory!" << endl;
+        cout << "a and b occupy the same memory!" << "\n";
 
     b = 24;
-    cout << "a: " << a << endl;
+    cout << "a: " << a << "\n";
 
     return 0;
 }
