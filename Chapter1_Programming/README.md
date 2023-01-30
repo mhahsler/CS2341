@@ -34,9 +34,9 @@ used in this course. Very good short explanations can be found in this
 
 * Video: How do create [Memory Diagrams](http://vimeo.com/58710057)
 * [Pointers and Dynamic Memory Allocation](pointers)
+* [Call-by-value vs call-by-reference](parameters) and using `const`.
 * Reading: [References vs. Pointers](https://isocpp.org/wiki/faq/references)
 * Exercise: [Memory allocation](memory)
-* [Call-by-value vs call-by-reference](parameters) and using `const`.
 * Destructor, copy constructor, assignment operator, and move semantics: [The Rule of Three and The Big Five](big-five) for classes
 
 ## Standard Template Library
