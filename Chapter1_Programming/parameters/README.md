@@ -28,7 +28,7 @@
 ## Call-by-constant reference
 
   ```cpp
-  double average(const Object &a, const Object &b) {...}
+  Object average(const Object &a, const Object &b) {...}
   ```
 
   `a` and `b` become aliases for the variables in the calling function.
