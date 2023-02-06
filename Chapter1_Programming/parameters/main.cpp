@@ -59,13 +59,13 @@ int main()
 {
 
     double a = 1, b = 2;
-    cout << "a = " << a << "; b = " << b << endl;
+    cout << "a = " << a << "; b = " << b << "\n";
 
     double c = average(a, b);
     cout << "average(a, b) - pass-by-value: " << c << endl;
     cout << "swap(a, b) - pass-by-reference: " << endl;
     swap(a, b);
-    cout << "Back in main: a = " << a << "; b = " << b << endl;
+    cout << "Back in main: a = " << a << "; b = " << b << "\n";
 
     cout << "Pick a random string: ";
     srand(time(NULL)); // we need to initialize the random number generator
@@ -73,7 +73,11 @@ int main()
     
     const string & s = randomItem(words);
     //const string s = randomItem(words); // would make a copy
-    cout << s << endl;
+    cout << s << "\n";
+
+    // s = "foo"; // would lead to a compilation error because s is a const reference. 
+    //           // removing const in randomItem() would allow this assignment.
+
 
     return 0;
 }

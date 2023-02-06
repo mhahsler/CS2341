@@ -1,7 +1,7 @@
 # Command Line Interface
 
 The Command Line Interface (CLI) is the most important interface for most programs. The CLI consists of a 
-number of parameters passed on to a program then it is started from the shell (terminal). Here is a 
+number of parameters passed on to a program when it is started from the shell (terminal). Here is a 
 [HOWTO on using the shell](https://github.com/mhahsler/CS2341/blob/main/HOWTO_shell_and_ssh.md). 
 
 
@@ -17,6 +17,7 @@ You can
    ./CLInterface *.cmake
    ```
 
+
 2. Set the command line arguments in VS Code and CMake:
    * `CTRL-SHIFT+P` `settings.json` choose `Preferences: Open Work Space Settings`. This creates settings.json in the .vscode folder.
    * Add the following lines: 
@@ -31,7 +32,10 @@ You can
      }
      ```
 
-Note that arguments cannot have a space unless they are in (escaped) quotation marks and that `*` is expanded to matching file names.
+**Notes:** 
+
+* Arguments cannot have a space unless they are in (escaped) quotation marks.
+* `*` is expanded by the shell to matching file names in a directory.
 
 
 # File I/O
@@ -52,4 +56,6 @@ We will use reading text files in this class. Reading files involves asking the 
    `CMakeLists.txt` to use this standard C++ version.
 
    Example: [C++ file I/O example](fileIO_cpp_main.cpp)
+
+**Important:** Do not mix these two approaches! C++-style is probably the better choice.
 
