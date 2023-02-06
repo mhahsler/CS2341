@@ -15,7 +15,7 @@ using namespace std;
  */
 double average(double a, double b)
 {
-    a = a + b / 2;
+    a = (a + b) / 2;
     return a;
 }
 
@@ -61,8 +61,8 @@ int main()
     double a = 1, b = 2;
     cout << "a = " << a << "; b = " << b << endl;
 
-    cout << "average(a, b) - pass-by-value: " << average(a, b) << endl;
-
+    double c = average(a, b);
+    cout << "average(a, b) - pass-by-value: " << c << endl;
     cout << "swap(a, b) - pass-by-reference: " << endl;
     swap(a, b);
     cout << "Back in main: a = " << a << "; b = " << b << endl;

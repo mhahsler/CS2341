@@ -32,7 +32,7 @@ int main()
     cout << "\n";
 
     delete[] arr2;
-    arr2 = NULL; // make sure we do not use the pointer anymore!
+    arr2 = nullptr; // make sure we do not use the pointer anymore!
 
     /* STL vectors fix these issues and should be used instead
      * C++11 lets us initialize vectors like this
@@ -53,7 +53,7 @@ int main()
 
     /* Use C++11 ranges */
     sum = 0;
-    for (auto x : squares)
+    for (const auto& x : squares)
         sum += x;
     cout << "The sum is (ranges): " << sum << "\n";
 

@@ -44,7 +44,9 @@ int main()
 
     /* every new needs a delete! */
     delete m, n;
-
+    n = nullptr;
+    m = nullptr;
+    
     //  References (lvalue references)
     // & used in a declaration (not as an operator like above!!!)
     // used as an alias (avoid copying memory, e.g., for a function call)
