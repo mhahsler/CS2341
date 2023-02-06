@@ -30,7 +30,11 @@ an introductory C++ course. To make sure you are ready, work through [HOWTO prep
 |      7       | [Sorting](Chapter7_Sorting)                       |
 |      9       | [Graphs](Chapter9_Graphs)                         |
 
+Code developed in class can be found in the [CS2341_Scratch repository.](https://github.com/mhahsler/CS2341_Scratch)
+
 Course material and assignments for CS 2341 at SMU can be found on [Canvas](https://www.smu.edu/OIT/Services/Canvas/).
+
+
 
 ## Required Tools
 
