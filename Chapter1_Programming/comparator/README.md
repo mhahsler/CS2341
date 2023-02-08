@@ -17,7 +17,7 @@ Comparing if two objects are the same or one is "larger" or before the other in 
     `operator>` and `operator==` are often implemented in terms of `operator<`. 
 
 
-  **Important:** Once a class has `operator<` overloaded, it can be used in ADSs by any algorithm that requires sorting.
+  **Important:** Once a class has `operator<` overloaded, it can be used in ADTs by any algorithm that requires sorting.
 
 ## Function Objects
 
