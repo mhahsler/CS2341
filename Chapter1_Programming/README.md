@@ -32,23 +32,23 @@ used in this course. Very good short explanations can be found in this
     | Request memory |  ?  |  ?  |   ?  |   ?    |
     | Return memory  |  ?  |  ?  |   ?  |   ?    |
 
-* Video: How do create [Memory Diagrams](http://vimeo.com/58710057)
-* [Pointers and Dynamic Memory Allocation](pointers)
+* Video: How do create [memory diagrams](http://vimeo.com/58710057)
+* [Pointers and dynamic memory allocation](pointers)
 * [Call-by-value vs call-by-reference](parameters) and using `const`.
-* Reading: [References vs. Pointers](https://isocpp.org/wiki/faq/references)
+* Reading: [References vs. pointers](https://isocpp.org/wiki/faq/references)
 * Exercise: [Memory allocation](memory)
-* Destructor, copy constructor, assignment operator, and move semantics: [The Rule of Three and The Big Five](big-five) for classes
+* Destructor, copy constructor, assignment operator, and move semantics: [The rule of three and the big five](big-five) for classes.
 
 ## Standard Template Library
 * Reading: [The C++ Standard Template Library (STL)](https://www.geeksforgeeks.org/the-c-standard-template-library-stl/)
 * Examples: [Arrays vs STL vectors and C-strings vs STL strings.](vector_string)
-* [How to compare objects.](comparator) Including `operator<` and function objects.
+* [How to compare objects](comparator) (`operator<` and function objects)
 
 ## Recursion and Testing
-* [Recursion to calculate factorials](factorial)
+* [Recursion to calculate factorials.](factorial)
 
 ## Command Line Interface and File IO
-* [CLI and file IO](io)
+* [The command line interface (CLI) and file IO](io)
 
 ## License
 
