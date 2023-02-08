@@ -41,8 +41,8 @@ used in this course. Very good short explanations can be found in this
 
 ## Standard Template Library
 * Reading: [The C++ Standard Template Library (STL)](https://www.geeksforgeeks.org/the-c-standard-template-library-stl/)
-* Examples: [Arrays and cstrings vs STL vectors and strings](vector_string)
-* [Comparator](comparator) inclusing `operator<` and function objects
+* Examples: [Arrays vs STL vectors and C-strings vs STL strings.](vector_string)
+* [How to compare objects.](comparator) Including `operator<` and function objects.
 
 ## Recursion and Testing
 * [Recursion to calculate factorials](factorial)
