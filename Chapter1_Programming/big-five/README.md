@@ -2,15 +2,14 @@
 
 ## The Rule of Three
 
-The [Rule of three](https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_programming)) states that all classes need a default constructor and the following:
+The [Rule of three](https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_programming)) states that all classes need a **default constructor** and the following:
 
- 1. A destructor `~Class();`
- 2. A copy constructor `Class(const Class& rhs);`
- 3. A copy assignment operator `Class& operator= (const Class& rhs);` 
+ 1. A copy constructor `Class(const Class& rhs);`
+ 2. A copy assignment operator `Class& operator= (const Class& rhs);` 
+ 3. A destructor `~Class();`
 
-Typically, the default behavior provided by C++ works. **Exception:** If a member variable contains a pointer (i.e., we use dynamic memory allocation with `new`/`delete`) then we need 
-to provide custom destructors, constructors and operators 
-need to be overloaded. See [operator overloading](https://en.cppreference.com/w/cpp/language/operators).
+C++ provides these functions with default behavior (copy all class member variables) automatically. The default behavior works **unless a member variable contains a pointer** (i.e., the class used dynamic memory allocation with `new`/`delete`). In this case, we need 
+to provide overloads with custom constructors, an assignment operator and a destructor. See [operator overloading](https://en.cppreference.com/w/cpp/language/operators).
 
 ## The Big Five
 
