@@ -15,12 +15,12 @@ unsigned int Factorial(unsigned int number)
 
 int main() {
 
-    cout << "5! = " << Factorial(5) << endl;
+    cout << "5! = " << Factorial(5) << "\n";
     // run with debugger
 
-    cout << "0! = " << Factorial(0) << endl;
+    cout << "0! = " << Factorial(0) << "\n";
     
-    cout << "100! = " << Factorial(100) << endl;
+    cout << "100! = " << Factorial(100) << "\n";
     // run with debugger to see the issue
     // unsigned int (32 bit) can represent [0 to 4294967295]!
     // we could use unsigned long long or a double.

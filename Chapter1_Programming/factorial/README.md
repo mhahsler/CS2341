@@ -8,7 +8,6 @@ $$n! = n (n-1) (n-2) \dots 1 = \prod_{i=1}^n i \ \text{for} \ n > 0$$
 
 By convention: $0! = 1$.
 
-
 Recursion (see [factorial.cpp](factorial.cpp)) needs
 
 * A base case: $0! = 1$.
@@ -17,16 +16,19 @@ Recursion (see [factorial.cpp](factorial.cpp)) needs
 **Notes:** 
 
 * A recursion can be translated into an iteration and vice versa. 
-* Recursion is slower than iteration. Stack frames need additional memory 
+* Recursion is slower than iteration and stack frames need additional memory 
   to store return addresses. You may run out of stack memory if the recursion is too deep. 
 * The use of recursion is supposed to create 
-  shorter and simpler code that can also be more efficient.
+  shorter and simpler code that can also be more efficient. Typical applications are algorithms for tree data structures and for dynamic programming.
 * Using recursion instead of simple iteration like calculating the factorial
   is not a good idea since the function call stack is slow and needs memory! A better implementation is [iterative.cpp](iterative.cpp).
 
 # Testing
 
 I have placed the function into its own file and added a header, so I can use it in multiple 
-executables (`main` and `test`).
+executables (`factorial_main` and `factorial_test`).
 
-Algorithms need tests. We use `ctest` and `Catch2` library. Details on writing tests and how to setup `CMakeLists.txt` can be found in the [HOWTO Test.](../../HOWTO_test.md)
+Algorithms need tests. We use `ctest` and `Catch2` library. Details on writing tests and how to setup `CMakeLists.txt` can be found in the [HOWTO Test.](../../HOWTO_test.md).
+
+Note: compiling Catch2 is very slow. You can build instead of `[all]` 
+just the executable that you are working on to speed up your development cycle.
