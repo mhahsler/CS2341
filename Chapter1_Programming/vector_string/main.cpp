@@ -113,5 +113,7 @@ int main()
     strcpy(cstr, a.c_str());
     cout << "As cstring: " << cstr << endl;
 
+    delete[] cstr;
+
     return 0;
 }
