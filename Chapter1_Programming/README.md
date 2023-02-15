@@ -44,11 +44,15 @@ used in this course. Very good short explanations can be found in this
 * Examples: [Arrays vs STL vectors and C-strings vs STL strings.](vector_string)
 * [How to compare objects](comparator) (`operator<` and function objects)
 
-## Recursion and Testing
-* [Recursion to calculate factorials.](factorial)
-
 ## Command Line Interface and File IO
 * [The command line interface (CLI) and file IO](io)
+
+## Recursion
+* [Recursion to calculate factorials.](factorial)
+
+## Testing
+* [Testing a function to calculate factorials.](factorial)
+
 
 ## License
 
