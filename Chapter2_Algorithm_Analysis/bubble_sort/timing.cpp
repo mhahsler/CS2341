@@ -8,61 +8,61 @@ using namespace std;
 using namespace std::chrono;
 
 // A function to implement bubble sort
-void bubbleSort(int arr[], int n)
+void bubbleSort(int array[], int n)
 {
     int i, j;
     for (i = 0; i < n - 1; i++)
 
         for (j = 0; j < n - i - 1; j++)
-            if (arr[j] > arr[j + 1])
-                swap(arr[j], arr[j + 1]);
+            if (array[j] > array[j + 1])
+                swap(array[j], array[j + 1]);
 }
 
 // Function to print an array
-void printArray(int arr[], int size)
+void printArray(int array[], int size)
 {
     int i;
     for (i = 0; i < size; i++)
-        cout << arr[i] << " ";
+        cout << array[i] << " ";
     cout << endl;
 }
 
 int *randomArray(int size)
 {
-    int *arr = new int[size];
+    int *array = new int[size];
     for (int i = 0; i < size; ++i)
-        arr[i] = rand() % 1000;
+        array[i] = rand() % 1000;
 
-    return arr;
+    return array;
 }
 
-// Driver code
+// Driver code that reports time
 int main()
 {
     // set the seed for the random number generator
     srand(time(NULL));
 
-    cout << "N, time [micro sec.]" << endl;
+    cout << "N, time [micro sec.]" << "\n";
 
-    for (int N = 1; N <= 20000; N += 1000)
+    for (int N = 0; N <= 20000; N += 1000)
     //for (int N = 1; N <= 100000; N *= 10)
     {
-    int *arr = randomArray(N);
+    int *array = randomArray(N);
 
     auto start = high_resolution_clock::now();
 
-    bubbleSort(arr, N);
+    bubbleSort(array, N);
 
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
 
     cout << N << ", "
-         << duration.count() << endl;
+         << duration.count() << "\n";
 
     // cout << "Sorted array: \n";
     // printArray(arr, N);
 
-    delete[] arr;
+    delete[] array;
 }
 
 

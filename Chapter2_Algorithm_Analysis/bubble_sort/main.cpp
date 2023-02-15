@@ -6,51 +6,58 @@
 using namespace std;
 
 // A function to implement bubble sort
-void bubbleSort(int arr[], int n)
+// Note on passing C arrays: The options are
+// * void bubbleSort(int array[], int n) { ... }
+// * void bubbleSort(int* array, int n) { ... }
+// they do the same.
+void bubbleSort(int array[], int n)
 {
     int i, j;
     for (i = 0; i < n - 1; i++)
   
         for (j = 0; j < n - i - 1; j++)
-            if (arr[j] > arr[j + 1])
-                swap(arr[j], arr[j + 1]);
+            if (array[j] > array[j + 1])
+                swap(array[j], array[j + 1]);
 }
   
 // Function to print an array 
-void printArray(int arr[], int size)
+void printArray(int array[], int size)
 {
     int i;
     for (i = 0; i < size; i++)
-        cout << arr[i] << " ";
+        cout << array[i] << " ";
     cout << endl;
 }
 
+// Warning: This function allocates memory and we need to delete
+//          it somewhere! 
 int* randomArray(int size)
 {
-    int* arr = new int[size];
+    int* array = new int[size];
     for (int i = 0; i < size; ++i) 
-        arr[i] = rand() % 1000;
+        array[i] = rand() % 1000;
     
-    return arr;
+    return array;
 }
 
 
-// Driver code
+// Driver code you probably should have unit tests!
 int main()
 {
 
     // set the seed for the random number generator
-    // srand(time(NULL));
+    srand(time(NULL));
 
     int N = 10;
-    int* arr = randomArray(N);
+    int* array = randomArray(N);
 
-    bubbleSort(arr, N);
+    bubbleSort(array, N);
     
     cout << "Sorted array: \n";
-    printArray(arr, N);
+    printArray(array, N);
 
-    delete [] arr;
+    // we need this since random array has a new!!!
+    delete [] array;
 
     return 0;
 }
