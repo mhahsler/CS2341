@@ -21,7 +21,7 @@ Recursion (see [factorial.cpp](factorial.cpp)) needs
 * The use of recursion is supposed to create 
   shorter and simpler code that can also be more efficient. Typical applications are algorithms for tree data structures and for dynamic programming.
 * Using recursion instead of simple iteration like calculating the factorial
-  is not a good idea since the function call stack is slow and needs memory! A better implementation is [iterative.cpp](iterative.cpp).
+  is **not a good idea** since the function call stack is much slower than a loop and needs extra memory! A better implementation is in [factorial_iterative_main.cpp](factorial_iterative_main.cpp).
 
 # Testing
 
