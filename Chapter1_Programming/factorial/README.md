@@ -25,10 +25,10 @@ Recursion (see [factorial.cpp](factorial.cpp)) needs
 
 # Testing
 
-I have placed the function into its own file and added a header, so I can use it in multiple 
+I have placed the function `factorial` into its own file and added a header, so I can use it in multiple 
 executables (`factorial_main` and `factorial_test`).
 
-Algorithms need tests. We use `ctest` and `Catch2` library. Details on writing tests and how to setup `CMakeLists.txt` can be found in the [HOWTO Test.](../../HOWTO_test.md).
+Algorithms need tests. We use `ctest` and `Catch2` library. Details on writing tests and how to setup `CMakeLists.txt` can be found in the [HOWTO Test.](../../HOWTO_test.md)
 
 Note: compiling Catch2 is very slow. You can build instead of `[all]` 
 just the executable that you are working on to speed up your development cycle.

@@ -1,6 +1,6 @@
 #include <iostream>
 
-double Factorial(unsigned int number)
+double factorial_iterative(unsigned int number)
 {
     double fac = 1;
     for (auto i = number; i > 1; --i)
@@ -11,9 +11,9 @@ double Factorial(unsigned int number)
 
 int main() {
 
-    std::cout << "5! = " << Factorial(5) << "\n";
-    std::cout << "0! = " << Factorial(0) << "\n";  
-    std::cout << "100! = " << Factorial(100) << "\n";
+    std::cout << "5! = " << factorial_iterative(5) << "\n";
+    std::cout << "0! = " << factorial_iterative(0) << "\n";  
+    std::cout << "100! = " << factorial_iterative(100) << "\n";
 
     return 0;
 }

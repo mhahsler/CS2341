@@ -1,6 +1,6 @@
 #ifndef FACTORIAL_H
 #define FACTORIAL_H
 
-unsigned int Factorial(unsigned int number);
+unsigned int factorial(unsigned int number);
 
 #endif
