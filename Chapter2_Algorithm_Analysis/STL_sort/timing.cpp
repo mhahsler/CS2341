@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <iostream>
 #include <chrono>
-#include <time.h>
+#include <ctime>
 
 using namespace std;
 using namespace std::chrono;
@@ -19,7 +19,7 @@ void printVector(const vector<T> &v)
 
 // This return is efficient in C++ because it uses move (see std::move) 
 //instead of copy.
-vector<int> randomIntVector(int size)
+vector<int> randomIntVector(size_t size)
 {
     vector<int> v(size);
     generate(v.begin(), v.end(), std::rand);
@@ -35,7 +35,7 @@ int main()
 
     
     // Note that this goes up to 10 million!
-    for (int N = 1; N <= 10000000; N *= 10)
+    for (size_t N = 1; N <= 10000000; N *= 10)
     // for (int N = 1; N <= 20000; N += 1000)
     {
         vector<int> v = randomIntVector(N);
