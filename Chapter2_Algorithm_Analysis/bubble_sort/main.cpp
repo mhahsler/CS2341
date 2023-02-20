@@ -1,7 +1,7 @@
 // C++ program for implementation of Bubble sort
 #include <algorithm>
 #include <iostream>
-#include <time.h>
+#include <ctime>
 
 using namespace std;
 
@@ -10,31 +10,30 @@ using namespace std;
 // * void bubbleSort(int array[], int n) { ... }
 // * void bubbleSort(int* array, int n) { ... }
 // they do the same.
-void bubbleSort(int array[], int n)
+void bubbleSort(int array[], size_t n)
 {
-    int i, j;
-    for (i = 0; i < n - 1; i++)
-  
-        for (j = 0; j < n - i - 1; j++)
+    if (n < 1) return;
+    
+    for (size_t i = 0; i < n - 1; ++i)
+        for (size_t j = 0; j < n - i - 1; ++j)
             if (array[j] > array[j + 1])
                 swap(array[j], array[j + 1]);
 }
   
 // Function to print an array 
-void printArray(int array[], int size)
+void printArray(int array[], size_t size)
 {
-    int i;
-    for (i = 0; i < size; i++)
+    for (size_t i = 0; i < size; ++i)
         cout << array[i] << " ";
     cout << endl;
 }
 
 // Warning: This function allocates memory and we need to delete
 //          it somewhere! 
-int* randomArray(int size)
+int* randomArray(size_t size)
 {
     int* array = new int[size];
-    for (int i = 0; i < size; ++i) 
+    for (size_t i = 0; i < size; ++i) 
         array[i] = rand() % 1000;
     
     return array;
@@ -48,7 +47,7 @@ int main()
     // set the seed for the random number generator
     srand(time(NULL));
 
-    int N = 10;
+    size_t N = 10;
     int* array = randomArray(N);
 
     bubbleSort(array, N);
