@@ -26,9 +26,9 @@ For matrices and efficient matrix operations, you should think
 The standard representation is
  ```cpp
 typedef struct {
-   int rows;
-   int cols;
-   double * data;
+   size_t rows;
+   size_t cols;
+   double* data;
    } matrix;
 ```   
 
