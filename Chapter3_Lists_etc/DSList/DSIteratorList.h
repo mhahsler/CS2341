@@ -1,7 +1,7 @@
 #ifndef DSITERATORLIST_H
 #define DSiTERATORLIST_H
 
-#include <stdexcept>
+#include <stdexcept> // for std::out_of_range
 
 /**
  * @brief Singly-linked list using iterators.
@@ -15,7 +15,7 @@ class DSIteratorList
 {
 private:
     /**
-     * @brief The Node data structure
+     * @brief Define a nested node data structure
      *
      * struct is a class with all public members
      */
@@ -24,13 +24,127 @@ private:
         Object data;
         Node *next;
 
+        // constructor
         Node(const Object &d = Object{}, Node *n = nullptr)
             : data{d}, next{n} {};
     };
 
+    // list has a pointer to the head node (nullptr if empty)
     Node *head;
 
 public:
+    /**
+     * @brief Default constructor
+     */
+    DSIteratorList<Object>()
+        : head{nullptr} {}
+
+    /**
+     * @brief Rule-of-Three 1: Copy constructor
+     *
+     * This is easier in a doubly linked list where we can efficiently add to
+     * the end of the list.
+     */
+    DSIteratorList<Object>(const DSIteratorList<Object> &rhs)
+        : head{nullptr}
+    {
+        Node **prev_next = &head; // keep a pointer to the next pointer of the
+                                  // previous node
+        Node *rhs_current = rhs.head; // start at the head of the rhs list
+
+        while (rhs_current != nullptr)
+        {
+            *prev_next = new Node{rhs_current->data, nullptr};
+            prev_next = &((*prev_next)->next);
+            rhs_current = rhs_current->next;
+        }
+    }
+
+    /**
+     * @brief Rule-of-Three 2: Destructor
+     */
+    ~DSIteratorList()
+    {
+        clear(); // this will delete all nodes
+    }
+
+    /**
+     * @brief Rule-of-Three 3: Copy assignment operator
+     *
+     * Copy constructor and swap is the standard implementation.
+     */
+    DSIteratorList<Object> &operator=(const DSIteratorList<Object> &rhs)
+    {
+        DSIteratorList<Object> copy{rhs}; // call copy constructor
+        std::swap(*this, copy);           // exchange this and the copy
+        return *this;                     // copy gets destroyed
+    }
+
+    /**
+     * @brief Number of elements
+     */
+    size_t size() const
+    {
+        size_t size = 0;
+        Node *current = head;
+
+        while (current != nullptr) {
+            ++size;
+            current = current->next;
+        }
+
+        return size;
+    }
+
+    /**
+     * @brief Is the list empty?
+     */
+    bool empty() const
+    {
+        return (head == nullptr);
+    }
+
+    // missing: find an element with a specific value (and return an iterator)
+
+    /**
+     * @brief insert in front
+     */
+    void insert_front(const Object &x)
+    {
+        Node *n = new Node(x, head);
+        head = n;
+    }
+
+    /**
+     * @brief remove the element in front
+     */
+    Object remove_front()
+    {
+        if (empty())
+            throw std::runtime_error("List is empty!");
+
+        // save the data (we move it if it is movable)
+        Object tmpObject = std::move(head->data);
+
+        // delete the node
+        Node *tmpNode = head;
+        head = head->next;
+        delete tmpNode;
+
+        return tmpObject;
+    }
+
+        /**
+     * @brief Empty the list
+     */
+    void clear()
+    {
+        while (!empty())
+            remove_front();
+    }
+
+    // Iterators and functions using iterators
+
     /**
      * @brief Public nested iterator class for const objects
      *
@@ -161,52 +275,10 @@ public:
 
         // So remove can access the current pointer
         friend void DSIteratorList<Object>::remove(iterator &it);
+        friend void DSIteratorList<Object>::insert(const Object& x, iterator &it);
 
         // equal and non-equal is inherited.
     };
-
-    /**
-     * @brief Default constructor
-     */
-    DSIteratorList<Object>()
-        : head{nullptr} {}
-
-    /**
-     * @brief Rule-of-Three 1: Copy constructor
-     * 
-     * This is easier in a doubly linked list.
-     */
-    DSIteratorList<Object>(const DSIteratorList<Object> &rhs)
-        : head{nullptr}
-    {
-        Node **prev_next = &head;
-
-        for (const Object &v : rhs)
-        {
-            *prev_next = new Node{v, nullptr};
-            prev_next = &((*prev_next)->next);
-        }
-    }
-
-    /**
-     * @brief Rule-of-Three 2: Destructor
-     */
-    ~DSIteratorList()
-    {
-        clear();
-    }
-
-    /**
-     * @brief Rule-of-Three 3: Copy assignment operator
-     * 
-     * Copy constructor and swap is the standard implementation.
-     */
-    DSIteratorList<Object> &operator=(const DSIteratorList<Object> &rhs)
-    {
-        DSIteratorList<Object> copy{rhs}; // call copy constructor
-        std::swap(*this, copy);           // make this the copy
-        return *this;                     // copy gets destroyed
-    }
 
     /**
      * @brief Returns an iterator to the first element
@@ -225,66 +297,7 @@ public:
     }
 
     /**
-     * @brief Number of elements
-     */
-    size_t size() const
-    {
-        size_t size = 0;
-        for (const_iterator it = begin(); it != end(); ++it)
-            ++size;
-
-        return size;
-    }
-
-    /**
-     * @brief Is the list empty?
-     */
-    bool empty() const
-    {
-        return (begin() == end());
-    }
-
-    /**
-     * @brief Empty the list
-     */
-    void clear()
-    {
-        while (!empty())
-            remove_front();
-    }
-
-    // missing: find an element with a specific value (and return an iterator)
-
-    /**
-     * @brief insert in front
-     */
-    void insert_front(const Object &x)
-    {
-        Node *n = new Node{x, head};
-        head = n;
-    }
-
-    /**
-     * @brief remove the element in front
-     */
-    Object remove_front()
-    {
-        if (empty())
-            throw std::runtime_error("List is empty!");
-
-        // save the data
-        Object tmpObject = head->data;
-
-        // delete the node
-        Node *tmpNode = head;
-        head = head->next;
-        delete tmpNode;
-
-        return tmpObject;
-    }
-
-    /**
-     * @brief find an element. Returns an iterator
+     * @brief find an element using linear search. Returns an iterator
      * to the element or end() if not found.
      */
     iterator find(const Object &x)
@@ -297,23 +310,21 @@ public:
 
     /**
      * @brief insert after iterator
-     * 
-     * Does not work on empty list!
      */
     void insert(const Object &x, iterator &it)
     {
         if (it == end())
             throw std::runtime_error("Cannot insert after end()");
 
-        Node *n = new Node{x, it.current->next};
-        it.current = n;
+        Node *n = new Node(x, it.current->next);
+        it.current->next = n;
     }
 
     /**
      * @brief remove after iterator
      *
-     * Note: removing the element the iterator points to
-     * is not possible since we do not have a previous pointer.
+     * Notes: removing the element the iterator points to
+     *    is not possible since we do not have a previous pointer.
      */
     void remove(iterator &it)
     {

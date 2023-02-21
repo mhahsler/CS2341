@@ -1,53 +1,57 @@
 #include <iostream>
 #include "DSIteratorList.h"
 
-using namespace std;
 
 int main()
 {
-    cout << boolalpha;
+    std::cout << std::boolalpha;
     
     DSIteratorList<int> l;
 
-    for (int i = 10; i > 0; --i)
+    for (size_t i = 10; i > 0; --i)
         l.insert_front(i);
 
-    cout << "size: " << l.size() << "\n\n";
+    std::cout << "size: " << l.size() << "\n\n";
 
     // standard loop with iterators
     for (DSIteratorList<int>::const_iterator it = l.begin(); it != l.end(); ++it)
-        cout << *it << " ";
-    cout << endl;
+        std::cout << *it << " ";
+    std::cout << "\n";
 
     // C++11 ranges work because we have iterators and begin() and end()
     for (const auto &v : l)
-        cout << v << " ";
-    cout << endl;
+        std::cout << v << " ";
+    std::cout << "\n";
 
-    cout << "Contains 99? " << (l.find(99) != nullptr) << "\n" << endl;
+    std::cout << "Contains 99? " << (l.find(99) != nullptr) << "\n" << "\n";
     
     // make a deep copy
-    DSIteratorList l2 = l;
+    DSIteratorList l2(l);
     
     // modify the list with a non-const iterator. go to 3rd element 
-    // and set it to 99. Remove the element after.
-    cout << "Change 3rd element to 99 and remove the element after." << endl;
+    // and set it to 99. Remove the element after. Go one more element down
+    // and insert 100.
+    std::cout << "Change 3rd element to 99 and remove the element after." << "\n";
     DSIteratorList<int>::iterator it = l.begin();
     ++it; ++it;
     *it = 99;
-    
     l.remove(it);
 
-    for (const auto &v : l)
-        cout << v << " ";
-    cout << endl;
-    
-    cout << "Contains 99? " << (l.find(99) != nullptr) << "\n" << endl;
+    ++it;
+    l.insert(100, it);
 
-    cout << "Old list" << endl;
+    for (const auto &v : l)
+        std::cout << v << " ";
+    std::cout << "\n";
+    
+    std::cout << "size: " << l.size() << "\n\n";
+    std::cout << "Contains 99? " << (l.find(99) != nullptr) << "\n" << "\n";
+
+    // Old list should be unchanged since we made a deep copy
+    std::cout << "Old list" << "\n";
     for (const auto &v : l2)
-        cout << v << " ";
-    cout << endl;
+        std::cout << v << " ";
+    std::cout << "\n";
 
     return 0;
 }

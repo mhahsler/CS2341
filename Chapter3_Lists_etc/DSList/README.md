@@ -44,6 +44,13 @@ Nodes are defined as:
 
 Note: In C++, `structs` are just classes with all public members.
 
+Exercise: Implement a singly liked list with the following functions:
+- `insert_front()`
+- `delete_front()`
+- `size()`
+- `empty()` ... is the list empty
+- `clear()` ... make the list empty
+
 Example: A [singly-linked list using iterators](DSList_iter.h) and [main.cpp](main.cpp).
 
 Some implementations use sentinel nodes.
@@ -72,12 +79,14 @@ Each element is allocated in a linked list individually, so we do not need conti
 What is the time complexity for the following operations using lists or arrays (Big-Oh notation)?
 
 
-| Operation      | Array | Linked List |
-| ----------- | ----------- | ---------|
-| insert a new element      | | |
-| access an element (with index) | | |
-| access an element (with iterator) | | |
-| find an element by value  | | |
-| delete an element (with index) | | |
-| delete an element (with iterator) | | |
-| delete the whole data structure | | |
+| Operation                         | Array | STL vector | Singly Linked List | Doubly Linked List |
+| --------------------------------- | ----- | -----------| ------------------ | ------------------ |
+| insert a new element at a random location |            |                    |                    |
+| insert a new element (front)      |       |            |                    |                    |
+| insert a new element (back)       |       |            |                    |                    |
+| access an element (with index)    |       |            |                    |                    |
+| access an element (with iterator) |       |            |                    |                    |
+| find an element by value          |       |            |                    |                    |
+| delete an element (with index)    |       |            |                    |                    |
+| delete an element (with iterator) |       |            |                    |                    |
+| delete the whole data structure   |       |            |                    |                    |
