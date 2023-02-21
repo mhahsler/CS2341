@@ -1,11 +1,9 @@
 #ifndef DSVECTOR_H
 #define DSVECTOR_H
 
-#include <algorithm>
-#include <iostream>
-#include <stdexcept>
+#include <algorithm> // for std::swap
+#include <stdexcept> // for operator[]
 
-using namespace std;
 
 template <typename Object>
 class DSVector
@@ -16,7 +14,7 @@ protected:
   Object *objects;
 
 public:
-  // Create an empty DSVector. Call this as DSVector<int> v(4);
+  // Default Constructor: Create an empty DSVector. Call this as DSVector<int> v(4);
   explicit DSVector(size_t initSize = 0)
       : theSize{initSize}, theCapacity{initSize}
   {
@@ -24,7 +22,7 @@ public:
   }
 
   // C++11 initializer list with {}: Call this as DSVector<int> v{5};
-  DSVector(const initializer_list<Object> &v)
+  DSVector(const std::initializer_list<Object> &v)
   {
     theSize = 0;
     theCapacity = v.size();
@@ -40,16 +38,6 @@ public:
     objects = new Object[theCapacity];
     for (size_t k = 0; k < theSize; ++k)
       objects[k] = rhs.objects[k];
-  }
-
-  // Rule-of-Five: C++11 Move constructor ... "steals" the pointer from the rhs 
-  // (you don't need to implement the move version in your code)
-  DSVector(DSVector &&rhs)
-      : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{rhs.objects}
-  {
-    rhs.theSize = 0;
-    rhs.theCapacity = 0;
-    rhs.objects = nullptr; // so the destructor does not destroy the objects
   }
 
   // Rule-of-Three 2: Destructor needed because we use new!
@@ -75,19 +63,29 @@ public:
     return *this;
   }
 
+  // Rule-of-Five: C++11 Move constructor ... "steals" the pointer from the rhs 
+  // (you don't need to implement the move version in your code)
+  DSVector(DSVector &&rhs)
+      : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{rhs.objects}
+  {
+    rhs.theSize = 0;
+    rhs.theCapacity = 0;
+    rhs.objects = nullptr; // so the destructor does not destroy the objects
+  }
+
   // Rule-of-Five: C++11 move assignment operator: swaps all elements with rhs using std::swap()
   // (you don't need to implement the move version in your code)
   DSVector &operator=(DSVector &&rhs)
   {
-    swap(theSize, rhs.theSize);
-    swap(theCapacity, rhs.theCapacity);
-    swap(objects, rhs.objects);
+    std::swap(theSize, rhs.theSize);
+    std::swap(theCapacity, rhs.theCapacity);
+    std::swap(objects, rhs.objects);
 
     return *this;
   }
 
   // is the vector empty?
-  bool empty() const
+  bool empty() const 
   {
     return size() == 0;
   }

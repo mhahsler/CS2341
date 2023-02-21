@@ -1,8 +1,6 @@
 #include <iostream>
 #include "DSVector.h"
 
-using namespace std;
-
 
 /**
  * @brief Main to test different DSVector functions.
@@ -11,26 +9,26 @@ using namespace std;
  */
 int main()
 {
-    cout << boolalpha;
+    std::cout << std::boolalpha;
     
     // create an empty vector
     DSVector<int> e(0);
-    cout << "size: " << e.size() << "\n"
+    std::cout << "size: " << e.size() << "\n"
          << "capacity: " << e.capacity() << "\n"
          << "empty? " << e.empty() << "\n\n";
 
     e.push_back(10);
-    cout << "size: " << e.size() << "\n"
+    std::cout << "size: " << e.size() << "\n"
          << "capacity: " << e.capacity() << "\n"
          << "empty? " << e.empty() << "\n\n";
 
     e.pop_back();
-    cout << "size: " << e.size() << "\n"
+    std::cout << "size: " << e.size() << "\n"
          << "capacity: " << e.capacity() << "\n"
          << "empty? " << e.empty() << "\n\n";
 
     DSVector<int> v{5, 6, 7};
-    cout << "size: " << v.size() << "\n"
+    std::cout << "size: " << v.size() << "\n"
          << "capacity: " << v.capacity() << "\n"
          << "empty? " << v.empty() << "\n\n";
 
@@ -39,35 +37,35 @@ int main()
         v[i] = i * 10;
 
     // print the vector using an iterator
-    cout << "With iterator: ";
+    std::cout << "With iterator: ";
     for (DSVector<int>::iterator it = v.begin(); it != v.end(); ++it)
-        cout << *it << " ";
-    cout << endl;
+        std::cout << *it << " ";
+    std::cout << "\n";
 
     // print the vector using ranges from C++11. This requires v to have
     // a begin() and end() method returning pointers to the 1st and last element
     // and ++ that works for the pointer. This is just syntactic sugar for the loop above.
-    cout << "With ranges: ";
+    std::cout << "With ranges: ";
     for (auto &x : v)
-        cout << x << " ";
-    cout << endl;
+        std::cout << x << " ";
+    std::cout << "\n";
 
-    cout << "resize the vector to 20\n";
+    std::cout << "resize the vector to 20\n";
     v.resize(20);
 
-    cout << "size: " << v.size() << "\n"
+    std::cout << "size: " << v.size() << "\n"
          << "capacity: " << v.capacity() << "\n"
          << "empty? " << v.empty() << "\n\n";
 
     // print the vector
     for (auto &x : v)
-        cout << x << " ";
-    cout << "\n\n";
+        std::cout << x << " ";
+    std::cout << "\n\n";
 
     // try an illegal operation
     try
     {
-        cout << v[100];
+        std::cout << v[100];
     }
     catch (const std::exception &e) // caught by reference to base
     {
@@ -81,12 +79,12 @@ int main()
     v[0] = 99;
 
     for (auto &x : v2)
-        cout << x << " ";
-    cout << endl;
+        std::cout << x << " ";
+    std::cout << "\n";
 
     for (auto &x : v)
-        cout << x << " ";
-    cout << endl;
+        std::cout << x << " ";
+    std::cout << "\n";
 
     return 0;
 }
