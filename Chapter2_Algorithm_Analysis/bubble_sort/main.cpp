@@ -3,8 +3,6 @@
 #include <iostream>
 #include <ctime>
 
-using namespace std;
-
 // A function to implement bubble sort
 // Note on passing C arrays: The options are
 // * void bubbleSort(int array[], int n) { ... }
@@ -17,15 +15,15 @@ void bubbleSort(int array[], size_t n)
     for (size_t i = 0; i < n - 1; ++i)
         for (size_t j = 0; j < n - i - 1; ++j)
             if (array[j] > array[j + 1])
-                swap(array[j], array[j + 1]);
+                std::swap(array[j], array[j + 1]);
 }
   
 // Function to print an array 
 void printArray(int array[], size_t size)
 {
     for (size_t i = 0; i < size; ++i)
-        cout << array[i] << " ";
-    cout << endl;
+        std::cout << array[i] << " ";
+    std::cout << std::endl;
 }
 
 // Warning: This function allocates memory and we need to delete
@@ -52,7 +50,7 @@ int main()
 
     bubbleSort(array, N);
     
-    cout << "Sorted array: \n";
+    std::cout << "Sorted array: \n";
     printArray(array, N);
 
     // we need this since random array has a new!!!
