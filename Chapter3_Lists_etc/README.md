@@ -8,17 +8,20 @@ implementation, but a mathematical abstraction which defines
 * a set of objects, and
 * operations (e.g., insert, delete).
 
+Data structures are different implementations of abstract data types.
+
 ## Iterators
 
-Iterators are an abstraction to represent a position in a ADT. This is similar to the index in 
-an array. STL provides [std::iterator](https://cplusplus.com/reference/iterator/iterator/?kw=iterator) and we use the STL notation below.
+Iterators are an abstraction to represent a position in a ADT. This is similar to the index in an array. STL provides [std::iterator](https://cplusplus.com/reference/iterator/iterator/?kw=iterator) and we use the STL notation below.
 
-Iterators are:
+Iterators are
 * a generalization of pointers to elements in the ADT.
 * implemented as a nested class in the ADT implementation that has a `*` dereferencing operator (like pointers).
 * know how to get to the next element with an overloaded `operator++()` and `operator++(int)` 
   (bidirectional iterators also have `operator--()` and `operator--(int)`)
-* An ADT can be asked for an iterator pointing to the first element (`begin()`) and 
+* can be compared with `operator==` and `operator!=` but **do not support** `operator<`! 
+
+An ADT can be asked for an iterator pointing to the first element (`begin()`) and 
 an iterator pointing to the _past-the-end_ element (`end()`).
 
 
