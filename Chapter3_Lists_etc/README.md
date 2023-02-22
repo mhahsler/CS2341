@@ -39,13 +39,13 @@ Examples:
 
 STL provides: [std::vector](https://cplusplus.com/reference/vector/vector/)
 
-Example: [DSVector](DSVector)
+Example implementation: [DSVector](DSVector)
 
 ## Matrix
 
 STL: Interestingly there is no support available.
 
-Example: [DSMatrix](DSMatrix)
+Example implementation: [DSMatrix](DSMatrix)
 
 ## Linked Lists
 
@@ -53,13 +53,12 @@ Example: [DSMatrix](DSMatrix)
 * `size()` number of elements.
 * `clear()` remove all elements.
 * `empty()` is the stack empty?
-* `insert(iterator)` add an element.
-* `erase(iterator)` delete an element.
+* `insert()` add an element.
+* `erase()` delete an element.
 
 STL provides: [std::list](https://cplusplus.com/reference/list/list/)
 
-Example: [DSList](DSList) 
-
+Implementation details: [DSList](DSList) 
 
 Stacks and queues are implemented using vectors/array or lists. 
 
