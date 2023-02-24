@@ -9,10 +9,11 @@ implementation, but a mathematical abstraction which defines
 * operations (e.g., insert, delete).
 
 Data structures are different implementations of abstract data types.
+Often the name [**containter**](https://en.wikipedia.org/wiki/Container_(abstract_data_type)) is used for ATDs.
 
 ## Iterators
 
-Iterators are an abstraction to represent a position in a ADT. This is similar to the index in an array. STL provides [std::iterator](https://cplusplus.com/reference/iterator/iterator/?kw=iterator) and we use the STL notation below.
+[Iterators](https://en.wikipedia.org/wiki/Iterator) are an abstraction to represent a position in a ADT. This is similar to the index in an array. STL provides [std::iterator](https://cplusplus.com/reference/iterator/iterator/?kw=iterator) and we use the STL notation below.
 
 Iterators are
 * a generalization of pointers to elements in the ADT.
