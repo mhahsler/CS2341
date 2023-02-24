@@ -86,19 +86,19 @@ public:
     return *this;
   }
 
-  // is the vector empty?
-  bool empty() const 
-  {
-    return size() == 0;
-  }
-
   // how many elements?
   size_t size() const
   {
     return theSize;
   }
 
-  // what is the capacity?
+  // is the vector empty?
+  bool empty() const 
+  {
+    return theSize == 0;
+  }
+
+  // capacity of the vector (always >= size)
   size_t capacity() const
   {
     return theCapacity;
@@ -108,7 +108,7 @@ public:
   Object &operator[](size_t index)
   {
     // size_t is always >=0!
-    if (index >= size())
+    if (index >= theSize)
       throw std::runtime_error("out of bounds!");
     return objects[index];
   }
@@ -116,7 +116,7 @@ public:
   const Object &operator[](size_t index) const
   {
     // size_t is always >=0!
-    if (index >= size())
+    if (index >= theSize)
       throw std::runtime_error("out of bounds!");
     return objects[index];
   }
