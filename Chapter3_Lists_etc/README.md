@@ -31,17 +31,24 @@ Examples:
 
 ## Vectors
 
-### Interface
+**Objects:** Values are stored typically consecutively in memory (like an array).
+
+**Operations**
 * `size()` number of elements.
 * `clear()` remove all elements.
-* `empty()` is the stack empty?
+* `empty()` is the vector empty?
 * access via `operator[index]` or `at(index)`.
 
-STL provides: [std::vector](https://cplusplus.com/reference/vector/vector/)
+STL provides [std::vector](https://cplusplus.com/reference/vector/vector/)
 
 Example implementation: [DSVector](DSVector)
 
 ## Matrix
+
+**Objects:** rows, columns, and cells.
+
+**Operations:** get the dimension and access an element given by row and column.
+
 
 STL: Interestingly there is no support available.
 
@@ -49,7 +56,9 @@ Example implementation: [DSMatrix](DSMatrix)
 
 ## Linked Lists
 
-### Interface
+**Objects:** List nodes
+
+**Operations**
 * `size()` number of elements.
 * `clear()` remove all elements.
 * `empty()` is the stack empty?
@@ -58,15 +67,15 @@ Example implementation: [DSMatrix](DSMatrix)
 
 STL provides: [std::list](https://cplusplus.com/reference/list/list/)
 
-Implementation details: [DSList](DSList) 
-
-Stacks and queues are implemented using vectors/array or lists. 
+Implementation details: [DSList](DSList)  
 
 ## Stacks
 
 For stacks information is added to the top and taken from the top. Stacks are said to operate in a LIFO (Last-In-First-Out) fashion.
 
-### Interface
+**Objects:** Values
+
+### Operations
 * `push(value)` add an element on top.
 * `pop()`  remove the top element.
 * `top()` look at the top element.
@@ -76,7 +85,7 @@ STL provides: [`std::stack`](https://cplusplus.com/reference/stack/stack/)
 
 ### Implementation
 
-Stacks are just an interface to a data structure. Typical implementations are:
+Stacks are just an interface to a different data structure. Typical implementations are:
 * Vector or large array with `topOfStack` to store the index of the element on top. Empty stack often has `topOfStack == -1`.
 * List: `push()`/`pop()` add/remove an element from the front of the list.
 
@@ -112,7 +121,9 @@ Insertion is done on one end and deletion on the other. This is called FIFO (Fir
 
 _Note_: Simple queues are different from **priority queues** which are introduced under the name **heap** later.
 
-### Interface
+**Objects:** Values
+
+### Operations
 * `enqueue(value)` insertion
 * `dequeue()` deletion
 
