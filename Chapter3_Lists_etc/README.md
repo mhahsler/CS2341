@@ -1,6 +1,6 @@
 # Chapter 3: Lists, Stacks, and Queues 
 
-## Abstract Data Types (ADT)
+# Abstract Data Types (ADT)
 
 ADT extend the idea of basic data types. They are not about the 
 implementation, but a mathematical abstraction which defines
@@ -28,6 +28,8 @@ an iterator pointing to the _past-the-end_ element (`end()`).
 Examples: 
 * [STL iterator use](Iterator)
 * Implement your own iterator: See Vector and Lists below.
+
+# Some ADTs
 
 ## Vectors
 
