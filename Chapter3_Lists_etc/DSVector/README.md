@@ -19,7 +19,7 @@ __Note on templates:__ templates need to have all the code in the header
   file so the compiler can create the templated classes/functions at compile time.
 
 
-Here is some pseudocode:
+Here is some pseudocode (the full implementation is in [DSVector.h](DSVector.h)):
 
 ```cpp
 template <typename Object>
