@@ -22,15 +22,19 @@ int main()
          << "capacity: " << e.capacity() << "\n"
          << "empty? " << e.empty() << "\n\n";
 
-    e.pop_back();
+    e.pop_back(); // remove the last element
     std::cout << "size: " << e.size() << "\n"
          << "capacity: " << e.capacity() << "\n"
          << "empty? " << e.empty() << "\n\n";
 
+    // Use the initializer list constructor
     DSVector<int> v{5, 6, 7};
     std::cout << "size: " << v.size() << "\n"
          << "capacity: " << v.capacity() << "\n"
-         << "empty? " << v.empty() << "\n\n";
+         << "empty? " << v.empty() << "\n";
+    for (const auto &x : v)
+        std::cout << x << " ";  
+    std::cout << "\n\n";
 
     // populate the vector
     for (size_t i = 0; i < v.size(); ++i)

@@ -24,11 +24,13 @@ public:
   // C++11 initializer list with {}: Call this as DSVector<int> v{5};
   DSVector(const std::initializer_list<Object> &v)
   {
-    theSize = 0;
+    theSize = v.size();
     theCapacity = v.size();
     objects = new Object[theCapacity];
-    for (auto itm : v)
-      this->push_back(itm);
+    
+    size_t k = 0;
+    for (const auto &x : v)
+      objects[k++] = x;
   }
 
   // Rule-of-Three 1: Copy constructor needed because we use new!
