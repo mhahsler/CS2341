@@ -73,10 +73,10 @@ int main()
     // Written as a templated class definition in DSMatrix.h
 
     // I use a typedef so I don't need to write DSMatrix<int> all the time
-    typedef DSMatrix<int> intMatrix;
+    typedef DSMatrix<int> IntMatrix;
 
     std::cout << "\nDSMatrix (a single array): m3\n";
-    intMatrix m3 = intMatrix(3, 4);
+    IntMatrix m3 = IntMatrix(3, 4);
 
     m3(0, 0) = 1;
     m3(1, 1) = 1;

@@ -19,22 +19,40 @@ public:
         data = new Object[_cols * _rows];
     }
 
+    // The Rule three
     ~DSMatrix()
     {
         delete[] data;
     }
 
-    // TODO: We need the rest of the big 5 (copy constructor, copy assignment operator and maybe move versions)
+    DSMatrix(const DSMatrix &rhs) : rows{rhs.rows}, cols{rhs.cols}
+    {
+        data = new Object[rows * cols];
+        for (size_t i = 0; i < rows * cols; ++i)
+            data[i] = rhs.data[i];
+    }
 
-    // we would overload [], but C++ currently does not
+    DSMatrix &operator=(const DSMatrix &rhs)
+    {
+        DSMatrix copy(rhs);
+        std::swap(*this, copy); // make the copy the object
+        return *this;
+    }
+
+    // TODO: C++11 move versions would be nice (Big five)
+
+    // We would overload [], but C++ currently does not
     // allow more then one parameters for []
-    // checking bounds for col and row would be a good idea
+    //
+    // We use **column major** order, which is the standard.
+    //
+    // TODO: checking bounds for col and row would be a good idea
     Object &operator()(size_t col, size_t row)
     {
         return data[col * rows + row];
     }
     
-    // const version for const objects
+    // We return a const reference for const objects
     const Object &operator()(size_t col, size_t row) const
     {
         return data[col * rows + row];
