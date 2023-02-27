@@ -18,16 +18,19 @@ public:
   explicit DSVector(size_t initSize = 0)
       : theSize{initSize}, theCapacity{initSize}
   {
+    // allocate memory
     objects = new Object[theCapacity];
   }
 
   // C++11 initializer list with {}: Call this as DSVector<int> v{5};
   DSVector(const std::initializer_list<Object> &v)
   {
+    // allocate memory
     theSize = v.size();
     theCapacity = v.size();
     objects = new Object[theCapacity];
     
+    // copy
     size_t k = 0;
     for (const auto &x : v)
       objects[k++] = x;
@@ -37,7 +40,10 @@ public:
   DSVector(const DSVector &rhs)
       : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{nullptr}
   {
+    // allocate memory
     objects = new Object[theCapacity];
+    
+    // copy
     for (size_t k = 0; k < theSize; ++k)
       objects[k] = rhs.objects[k];
   }
@@ -54,29 +60,38 @@ public:
   // Rule-of-Three 3: Copy assignment operator needed because we use new!
   DSVector &operator=(const DSVector &rhs)
   {
+    // assignments are of the form `lhs = rhs;` where the lhs is the calling object
+    // release memory for the lhs (the calling object)
     delete[] objects;
     
+    // allocate new memory
     theSize = rhs.theSize;
     theCapacity = rhs.theCapacity;
     objects = new Object[theCapacity];
+    
+    // copy rhs to lhs
     for (size_t k = 0; k < theSize; ++k)
       objects[k] = rhs.objects[k];
 
+    // this line is standard for copy assignment operators
     return *this;
   }
 
-  // Rule-of-Five: C++11 Move constructor ... "steals" the pointer from the rhs 
-  // (you don't need to implement the move version in your code)
+  // The remaining Big-Five are optional but recommended for C++11 since they prevent
+  // copying objects unnecessarily. The compiler knows when dynamically allocated memory
+  // can be moved from one object to another.
+  // Big-Five: C++11 Move constructor ... "steals" the pointer from the rhs 
   DSVector(DSVector &&rhs)
       : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{rhs.objects}
   {
+    // so the destructor does not destroy the objects when it destroys rhs
     rhs.theSize = 0;
     rhs.theCapacity = 0;
-    rhs.objects = nullptr; // so the destructor does not destroy the objects
+    rhs.objects = nullptr; 
   }
 
-  // Rule-of-Five: C++11 move assignment operator: swaps all elements with rhs using std::swap()
-  // (you don't need to implement the move version in your code)
+  // Big-Five: C++11 move assignment operator: swaps all elements with rhs using std::swap()
+  // std::move() is also useful. It marks an object as moveable (casts them  to &&).
   DSVector &operator=(DSVector &&rhs)
   {
     std::swap(theSize, rhs.theSize);
@@ -98,7 +113,7 @@ public:
     return theSize == 0;
   }
 
-  // capacity of the vector (always >= size)
+  // capacity of the vector (capacity >= size)
   size_t capacity() const
   {
     return theCapacity;
@@ -110,14 +125,18 @@ public:
     // size_t is always >=0!
     if (index >= theSize)
       throw std::runtime_error("out of bounds!");
+    
     return objects[index];
   }
 
+  // The subscript operator for const objects needs to prevent the returned reference to
+  // be changed. This is done by returning a const reference.
   const Object &operator[](size_t index) const
   {
     // size_t is always >=0!
     if (index >= theSize)
       throw std::runtime_error("out of bounds!");
+    
     return objects[index];
   }
 
@@ -127,23 +146,30 @@ public:
     if (newCapacity < theSize)
       return;
 
+    // allocate new memory
     Object *newArray = new Object[newCapacity];
+    
+    // copy
     for (size_t k = 0; k < theSize; ++k)
       newArray[k] = objects[k];
 
+    // release old memory
     delete[] objects;
     objects = newArray;
     theCapacity = newCapacity;
   }
 
-  // resize the vector
+  // resize the vector (only make it larger)
   void resize(size_t newSize)
   {
     if (newSize > theCapacity)
       reserve(newSize);
+    
     theSize = newSize;
   }
 
+  
+  // look at the last element
   const Object &back() const
   {
     if (empty())
@@ -156,10 +182,11 @@ public:
   {
     if (theSize == theCapacity)
       reserve((theCapacity > 0) ? 2 * theCapacity : 2);
+    
     objects[theSize++] = x;
   }
 
-  // delete the last element
+  // delete the last element (we just manipulate theSize)
   void pop_back()
   {
     if (empty())
@@ -185,6 +212,7 @@ public:
     return &objects[0];
   }
 
+  // end() is one past the last element!
   iterator end()
   {
     return &objects[size()];
