@@ -87,6 +87,5 @@ What is the time complexity for the following operations using lists or arrays (
 | access an element (with index)    |       |            |                    |                    |
 | access an element (with iterator) |       |            |                    |                    |
 | find an element by value          |       |            |                    |                    |
-| delete an element (with index)    |       |            |                    |                    |
-| delete an element (with iterator) |       |            |                    |                    |
+| delete an element                 |       |            |                    |                    |
 | delete the whole data structure   |       |            |                    |                    |
