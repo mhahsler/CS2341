@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.0.0)
 project(DSstd::vector VERSION 0.1.0)
 
 add_executable(main main.cpp DSMatrix)
+add_executable(main_blas main_blas.cpp)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
