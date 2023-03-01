@@ -1,6 +1,6 @@
 # DSList
 
-Lists are an ADT implementation. The typical interface includes:
+Lists are an ADT implementation. The typical operations include:
 
 - insert a new element at the beginning (also at the end for a doubly linked list). 
 - delete the first (also last for doubly linked list).
@@ -9,13 +9,13 @@ Lists are an ADT implementation. The typical interface includes:
 - delete an element by value (or using an index or iterator).
 
 
-## Vector recap:
+## Vector Recap
 
 - Some problems with array implementation of a vector
     - inserting elements requires $O(N)$ to copy the whole array. Even if we have space 
       at the end, we still need to move all elements.
-    - resizing operation is expensive.
-    - requires contiguous memory allocation.
+    - resizing operation is expensive (reallocate the whole array).
+    - requires contiguous memory allocation which could be a problem for very large arrays.
 - Some benefits of array implementation of vector
     - $O(1)$ random access to an item in the vector given an index
       (remember pointer arithmetic).
@@ -29,7 +29,7 @@ Linked lists allocate each element separately and link them with pointers. Linke
 ### Singly Linked List
 
 * We can only move from one node to the next in the forward direction.
-* Managing the single pointer in each node is easy.
+* Managing the single `next` pointer in each node is easy.
 * STL provides [`std::forward_list<T>`](https://cplusplus.com/reference/forward_list/forward_list/)
 
 Nodes are defined as:
@@ -42,24 +42,24 @@ Nodes are defined as:
     };
 ```
 
-Note: In C++, `structs` are just classes with all public members.
+Note: In C++, `structs` are just classes with all public members. We often use them when we need to store only data and no member functions.
 
-Exercise: Implement a singly liked list with the following functions:
+**Exercise:** Implement a singly liked list with the following functions:
 - `insert_front()`
 - `delete_front()`
-- `size()`
+- `size()` 
 - `empty()` ... is the list empty
 - `clear()` ... make the list empty
 
-Example: A [singly-linked list using iterators](DSList_iter.h) and [main.cpp](main.cpp).
+**Example:** A [singly-linked list using iterators](DSList_iter.h) and [main.cpp](main.cpp).
 
 Some implementations use sentinel nodes.
 A sentinel node is an "empty" node that is used to avoid special code for empty lists.
 
 ### Doubly Linked List
 
-* We can only move forward and backward.
-* Managing the pointers is more difficult for insertion/deletion.
+* We can move forward and backward in a doubly linked list.
+* Managing two pointers is more difficult for insertion/deletion.
 * STL provides [`std::list<T>`](https://cplusplus.com/reference/list/list/)
 
 Nodes are defined as:
@@ -76,7 +76,7 @@ Nodes are defined as:
 ### Time Complexity
 
 Each element is allocated in a linked list individually, so we do not need contiguous memory and we do not need to copy/move data for insertion and deletion.
-What is the time complexity for the following operations using lists or arrays (Big-Oh notation)?
+What is the time complexity for the following operations using lists or arrays (Big-O notation)?
 
 
 | Operation                         | Array | STL vector | Singly Linked List | Doubly Linked List |
