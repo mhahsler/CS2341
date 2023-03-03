@@ -9,6 +9,7 @@ file(COPY test.txt DESTINATION .)
 
 # show compiler output and enable warnings
 set(CMAKE_VERBOSE_MAKEFILE ON)
+add_compile_options(-Wall -Wextra -pedantic)
 
 add_executable(CLInterface CLInterface_main.cpp)
 add_executable(fileIO_cstring fileIO_cstring_main.cpp)
