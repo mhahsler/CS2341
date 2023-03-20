@@ -89,8 +89,9 @@ STL provides: [`std::stack`](https://cplusplus.com/reference/stack/stack/)
 ### Implementation
 
 Stacks are just an interface to a different data structure. Typical implementations are:
-* Vector or large array with `topOfStack` to store the index of the element on top. Empty stack often has `topOfStack == -1`.
-* List: `push()`/`pop()` add/remove an element from the front of the list.
+* Vector or large array with a variable `top` to store the index of the element on top. Since indices start with 0, the size of the stack is 
+  `top` + 1. An empty stack has `top == -1`.
+* List: use `push_front()`/`pop_front()` add/remove an element from the front of a singly-linked list.
 
 Lists are more memory efficient and vectors are faster.
 
@@ -134,15 +135,17 @@ STL provides: [`std::deque`](https://cplusplus.com/reference/deque/deque/) as a 
 
 ### Implementation
 
-Implemented as a list (linked list, vector, or array). List implementation is trivial.
+Implemented as a list (linked list, vector, or array). 
 
-The array implementation keeps indices for `front` and `back` and `currentSize = back - front + 1`. A problem is that we run out of space at one end. This can be addressed using a _circular array_implementation.
+Doubly-linked list implementation is trivial and uses `push_end()` and `pop_front()`. A doubly-linked list is used to make `push_end()` efficient (`O(1)`).
+
+The array implementation keeps indices for `front` and `back` and `currentSize = back - front + 1`. A problem is that we run out of space at one end. This can be addressed using a _circular array_ implementation.
 
 ### Application Examples
 
 * Printer queue: printing on a first-come first-served basis
 * IO: buffers, iostream 
-* Many algorithms use queues to keep subproblems to be solved later.
+* Many algorithms use queues to store subproblems to be solved later.
 
 ## License
 
