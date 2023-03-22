@@ -7,6 +7,6 @@ unsigned int factorial(unsigned int number)
     if (number <= 1) 
       return 1;
     
-    // recursive call
+    // recursive call that converges to the base case
     return factorial(number - 1) * number;
 }

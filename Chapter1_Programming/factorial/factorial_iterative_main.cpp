@@ -1,9 +1,15 @@
 #include <iostream>
 
+// factorials get large very quickly, so we need to use a data type that can hold large numbers.
+// since negative numbers would be a problem and -1 would just be converted to a very large unsigned int for number,
+// we use int and check it for negativity instead.
+
+// compared to the iterative implementation, this code faster, needs less memory and is only slightly more complex.
+
 double factorial_iterative(int number)
 {
     if (number < 0) {
-        std::cerr << "factorial is not defined for negative numbers!" << "\n";
+        std::cerr << "Warning: factorial is not defined for negative numbers! Returning -1" << "\n";
         return -1;
     }
     
