@@ -74,14 +74,14 @@ Implementation details: [DSList](DSList)
 
 ## Stacks
 
-For stacks information is added to the top and taken from the top. Stacks are said to operate in a LIFO (Last-In-First-Out) fashion.
+For stacks information is added to the top and taken from the top. Stacks are said to operate in a LIFO (Last-In, First-Out) fashion.
 
 **Objects:** Values
 
 ### Operations
 * `push(value)` add an element on top.
 * `pop()`  remove the top element.
-* `top()` look at the top element.
+* `top()` or `peek()` look at the top element.
 * `empty()` is the stack empty?
 
 STL provides: [`std::stack`](https://cplusplus.com/reference/stack/stack/)
@@ -121,15 +121,16 @@ Lists are more memory efficient and vectors are faster.
 
 ## Queues
 
-Insertion is done on one end and deletion on the other. This is called FIFO (First-In-First-Out).
+Insertion is done on one end and deletion on the other. This is called FIFO (First-In, First-Out).
 
 _Note_: Simple queues are different from **priority queues** which are introduced under the name **heap** later.
 
 **Objects:** Values
 
 ### Operations
-* `enqueue(value)` insertion
-* `dequeue()` deletion
+* `enqueue(value)` insert an element.
+* `dequeue()` remove an element.
+* `empty()` is the queue empty?
 
 STL provides: [`std::deque`](https://cplusplus.com/reference/deque/deque/) as a double-ended queue.
 
@@ -137,14 +138,14 @@ STL provides: [`std::deque`](https://cplusplus.com/reference/deque/deque/) as a 
 
 Implemented as a list (linked list, vector, or array). 
 
-Doubly-linked list implementation is trivial and uses `push_end()` and `pop_front()`. A doubly-linked list is used to make `push_end()` efficient (`O(1)`).
+Doubly-linked list implementation is trivial and uses `push_back()` and `pop_front()`. A doubly-linked list is used to make `push_back()` efficient (`O(1)`).
 
 The array implementation keeps indices for `front` and `back` and `size = back - front + 1`. A problem is that we run out of space at one end. This can be addressed using a _circular array_ implementation.
 
 ### Application Examples
 
 * Printer queue: printing on a first-come first-served basis
-* IO: buffers, iostream 
+* I/O: buffers, iostream 
 * Many algorithms use queues to store subproblems to be solved later.
 
 ## License
