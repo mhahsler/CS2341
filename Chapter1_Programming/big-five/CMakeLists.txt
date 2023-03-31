@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(big-five VERSION 0.1.0)
 
+set(CMAKE_CXX_STANDARD 17)
+
 # show compiler output
 #set(CMAKE_VERBOSE_MAKEFILE ON)
 add_compile_options(-Wall -Wextra -pedantic)
