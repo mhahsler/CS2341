@@ -1,5 +1,10 @@
 # Binary Search Tree (Unbalanced)
 
+
+A binary search tree is a binary tree with each node being greater than all nodes in its left subtree and less than all nodes in its right subtree.
+
+$$L < N < R$$
+
 Binary search trees are one of the most important tree structures used to find elements quickly.
 
 _Assumption:_ Items can be ordered and there are no duplicates (i.e., a total order).
@@ -8,9 +13,9 @@ _Definition:_ In a binary search tree, all items in each left subtree are smalle
 
 See [BinarySearchTree.h](BinarySearchTree.h) for code.
 
-Since items are stored in sorted order, a simple **inorder traversal** results in sorted output.
+Since items are stored in sorted order, a simple **inorder traversal** (LNR) results in sorted output.
 If a balanced tree is used (see Balance Problem below), then inserting $N$ items takes $O(N log\ N)$ time and traversing 
-the tree takes $O(N)$ which gives a sorting algorithm  called [**tree sort**](https://en.wikipedia.org/wiki/Tree_sort) that is $O(N\ log\ N)$. Note that quicksort is better (in-place with lower overhead).
+the tree takes $O(N)$ which gives a sorting algorithm called [**tree sort**](https://en.wikipedia.org/wiki/Tree_sort) that is $O(N\ log\ N)$. Note that quicksort is a better sorting algorithm (in-place with lower overhead).
 
 ## Operations
 * Insertion: Descend the tree (smaller values go to the left and larger values go to the right) till a new leaf can be created.
