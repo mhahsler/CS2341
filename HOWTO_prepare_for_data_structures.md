@@ -13,9 +13,8 @@ programming in C++. Below are some things to do and review before class starts.
  
 
 ## Review C++ Language Concepts
-You can use [this very good series of short C++ videos](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb) to refresh your knowledge or learn new topics that you are missing. Just find the 
-video that goes with the topic below. Note that the videos use a slightly different IDE (Visual Studio instead of Visual Studio Code).
 
+Here are the consepts that you need to know and be able to apply:
 
 * Make use of control structures like ifs and loops.
 * How to declare classes and their main methods (constructors, rule-of-3, etc).
@@ -28,11 +27,20 @@ video that goes with the topic below. Note that the videos use a slightly differ
 * What is the difference between a pointer (int* p) and a reference (int& r)?
 * The relationship between pointers and arrays (i.e., pointer arithmetic).
 * How to dynamically allocate memory on the heap.
-* How to work with cstrings (i.e., `\0`-terminated char arrays). How to pass them on to functions,
-  and string functions in the libraries `<cstring>` (or `<string.h>`).
+* How to work with cstrings (i.e., `\0`-terminated char arrays). How to pass them on to functions you implement,
+  and to an existing string function in the libraries `<cstring>` (`<string.h>`).
 * Reading and writing files.
 * How to use STL vectors and iterators.
  
+You can brush up your knowledge using the following resources.
+* Here is the Linked-in-learning course [C++ Essential Training](https://www.linkedin.com/learning-login/share?account=2139050&forceAccount=false&redirect=https%3A%2F%2Fwww.linkedin.com%2Flearning%2Fc-plus-plus-essential-training-15106801%3Ftrk%3Dshare_ent_url%26shareId%3DY6vgr5xvTmym7SM7gNWfkA%253D%253D). SMU students have a free subscription ([log in here](https://www.smu.edu/OIT/Services/linkedin)).
+* You can also use [this very good series of short C++ videos](https://wVww.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb) to refresh your knowledge or learn new topics that you are missing. Just find the 
+video that goes with the topic below. Note that the videos use a slightly different IDE (Visual Studio instead of Visual Studio Code).
+
+To practice applying these concepts you can:
+* Solve easy and medium problems on [LeetCode](https://leetcode.com/problemset/all/) (you can log in with your GitHub account).
+* Pracktice with [HackerRank](https://www.hackerrank.com/) (you can log in with your GitHub account).
+
 
 ## Review Software Design Concepts
 * UML Class diagrams.
@@ -40,7 +48,9 @@ video that goes with the topic below. Note that the videos use a slightly differ
   then nouns can become classes and verbs indicate functions.
 * The idea is that a function should do one thing and it should only do that one thing.
 
+To brush up your knowledge you can review the Linkedin Learning course [Programming Foundations: Object-Oriented Design](https://www.linkedin.com/learning-login/share?account=2139050&forceAccount=false&redirect=https%3A%2F%2Fwww.linkedin.com%2Flearning%2Fprogramming-foundations-object-oriented-design-3%3Ftrk%3Dshare_ent_url%26shareId%3DMy0cEP4nR%252Bmk%252Fdm%252F4xNQMA%253D%253D).
 
-## Exercises
+
+## Check Your Knowledge
 * Write a program that finds the 2nd smallest value in an array with only 1 loop.
-* Write a program that can generate a valid random tip for playing Powerball (5 numbers in the range of 1-69). Make sure you have no duplicates and that the output is sorted so it is easier to fill out the lotto ticket. 
+* Design a programm that can help you play Powerball (5 numbers in the range of 1-69). The program should help you generate a valid random tips for playing. Make sure you have no duplicates and that the output is sorted so it is easier to fill out the lotto ticket. It should also store your tips and check them agains the actual drawn numbers to twell you if you won something. Make sure you start with identifying use cases and a UML class diagram first.
