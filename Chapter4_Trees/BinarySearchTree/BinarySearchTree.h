@@ -19,12 +19,12 @@ private:
     class BinaryNode
     {
     public:
-        Comparable element;
+        Comparable key;
         BinaryNode *left;
         BinaryNode *right;
 
-        BinaryNode(const Comparable &theElement, BinaryNode *lt, BinaryNode *rt)
-            : element{theElement}, left{lt}, right{rt} {}
+        BinaryNode(const Comparable &theKey, BinaryNode *lt, BinaryNode *rt)
+            : key{theKey}, left{lt}, right{rt} {}
     };
 
     BinaryNode *root;
@@ -134,7 +134,7 @@ public:
     {
         if (isEmpty())
             throw std::runtime_error("tree is empty!");
-        return findMin(root)->element;
+        return findMin(root)->key;
     }
 
     /**
@@ -144,7 +144,7 @@ public:
     {
         if (isEmpty())
             throw std::runtime_error("tree is empty!");
-        return findMax(root)->element;
+        return findMax(root)->key;
     }
 
     int maxDepth()
@@ -166,18 +166,18 @@ private:
      */
     void insert(const Comparable &x, BinaryNode *&t)
     {
-        // found an empty spot? insert a new node
+        // Base case: found an empty spot? insert a new node
         if (t == nullptr)
             t = new BinaryNode{x, nullptr, nullptr};
 
         // recursively find the insert position
-        else if (x < t->element)
+        else if (x < t->key)
             insert(x, t->left);
-        else if (t->element < x)
+        else if (t->key < x)
             insert(x, t->right);
         else
         {
-        }; // Duplicate: element == x; do nothing... we could do other things.
+        }; // Duplicate: key == x; do nothing... we could do other things.
     }
 
     /**
@@ -194,14 +194,15 @@ private:
             return; // Item not found; do nothing
 
         // must be in left subtree
-        if (x < t->element)
+        if (x < t->key)
             return remove(x, t->left);
 
         // must be in right subtree
-        if (t->element < x)
+        if (t->key < x)
             return remove(x, t->right);
 
-        // we get here only for t->element == x
+        // we get here only for t->key == x!!!
+        // Do the deletion
 
         // Cases:
         // A. No children: Just remove the node.
@@ -212,7 +213,7 @@ private:
             return;
         }
 
-        // C. Two children case: replace element with the smallest element in the right subtree.
+        // C. Two children case: replace key with the smallest key in the right subtree.
         if (t->left != nullptr && t->right != nullptr)
         {
             BinaryNode *replacement = removeMin(t->right);
@@ -285,6 +286,7 @@ private:
      */
     BinaryNode *findMax(BinaryNode *t) const
     {
+        // this can be done recursively, but I show here an 
         // iterative implementation of going down right to the leaf.
         // special case: no root node
         if (t == nullptr)
@@ -307,22 +309,22 @@ private:
             return nullptr;
 
         // recursion
-        if (x < t->element)
+        if (x < t->key)
             return find(x, t->left);
 
-        if (t->element < x)
+        if (t->key < x)
             return find(x, t->right);
 
-        // we have t->element == x
+        // we have t->key == x
         return t; // Match
     }
     /****** NONRECURSIVE VERSION*************************
     BinaryNode* find( const Comparable & x, BinaryNode *t ) const
         {
             while( t != nullptr )
-                if( x < t->element )
+                if( x < t->key )
                     t = t->left;
-                else if( t->element < x )
+                else if( t->key < x )
                     t = t->right;
                 else
                     return t;    // Match
@@ -341,7 +343,7 @@ private:
             return nullptr;
 
         // recursion
-        return new BinaryNode{t->element, clone(t->left), clone(t->right)};
+        return new BinaryNode{t->key, clone(t->left), clone(t->right)};
     }
 
     /**
@@ -354,9 +356,10 @@ private:
             return;
 
         // recursion
-        makeEmpty(t->left);
-        makeEmpty(t->right);
-        delete t;
+        makeEmpty(t->left);  // L
+        makeEmpty(t->right); // R
+        
+        delete t;            // N
         t = nullptr;
     }
 
@@ -370,9 +373,9 @@ private:
             return;
 
         // recursion
-        printTreeSort(t->left, out);
-        out << t->element << endl;
-        printTreeSort(t->right, out);
+        printTreeSort(t->left, out);  // L
+        out << t->key << endl;        // N
+        printTreeSort(t->right, out); // R
     }
 
     /**
@@ -389,7 +392,7 @@ private:
         // N: print the value of the node
         cout << prefix;
         cout << (isRight ? "├──" : "└──");
-        cout << node->element << "\n";
+        cout << node->key << "\n";
 
         // R, L: enter the next tree level - right and left branch
         prettyPrintTree(prefix + (isRight ? "│   " : "    "), node->right, true);
@@ -403,10 +406,11 @@ private:
      */
     int maxDepth(BinaryNode *t, int depth)
     {
+        // Leaf node? Report the depth. 
         if (t == nullptr)
             return depth;
 
-        // traverse down
+        // max depth of left (L) and right (R) subtree. N does not do anything.
         return (std::max(maxDepth(t->left, depth + 1),
                          maxDepth(t->right, depth + 1)));
     }

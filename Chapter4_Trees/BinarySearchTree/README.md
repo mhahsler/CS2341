@@ -1,24 +1,23 @@
 # Binary Search Tree (Unbalanced)
 
+_Assumption:_ The data stored in the tree (the keys) can be ordered and there are no duplicates (i.e., a total order).
 
-A binary search tree is a binary tree with each node being greater than all nodes in its left subtree and less than all nodes in its right subtree.
-
-$$L < N < R$$
+_Definition:_ A binary search tree is a binary tree where the key for each node being is greater than the keys of all the nodes in its left subtree and less than all the keys in the nodes in its right subtree.
+    This order property can be written as 
+    
+    $$L < N < R$$
 
 Binary search trees are one of the most important tree structures used to find elements quickly.
 
-_Assumption:_ Items can be ordered and there are no duplicates (i.e., a total order).
-
-_Definition:_ In a binary search tree, all items in each left subtree are smaller than the items in the right subtree.
 
 See [BinarySearchTree.h](BinarySearchTree.h) for code.
 
-Since items are stored in sorted order, a simple **inorder traversal** (LNR) results in sorted output.
+Since keys are stored in sorted order, a simple **inorder traversal** (LNR) results in sorted output.
 If a balanced tree is used (see Balance Problem below), then inserting $N$ items takes $O(N log\ N)$ time and traversing 
 the tree takes $O(N)$ which gives a sorting algorithm called [**tree sort**](https://en.wikipedia.org/wiki/Tree_sort) that is $O(N\ log\ N)$. Note that quicksort is a better sorting algorithm (in-place with lower overhead).
 
 ## Operations
-* Insertion: Descend the tree (smaller values go to the left and larger values go to the right) till a new leaf can be created.
+* Insertion: Descend the tree (smaller keys go to the left and larger keys go to the right) till a new leaf can be created.
 
 * Find $x$: Follow the tree down (maybe using recursion).
     1. Return failure if the current node does not exist (we followed a `nullptr`).
@@ -37,6 +36,10 @@ the tree takes $O(N)$ which gives a sorting algorithm called [**tree sort**](htt
 The depth $d$ of a _binary search tree_ leads to $O(d)$ operations (for all but deleting and copying the whole tree). The **average tree depth** $d$ is $O(log\ N)$ under the
 assumption that all insertion sequences are equally likely (i.e., random insertion). Remember, $O(log\ N)$ means 
 that the problem size is halved with each step.
+
+Examples: 
+* A tree with 1,000,000 elements has a $d = log_2(1,000,000) \approx 20$
+* A tree with 1,000,000,000 elements has a $d = log_2(1,000,000,000) \approx 30$
 
 Since $O(log\ N)$ is relatively small, operations can be defined/implemented recursively without running out of stack memory (called a stack overflow).
 
