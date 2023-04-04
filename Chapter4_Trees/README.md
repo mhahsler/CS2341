@@ -6,7 +6,7 @@ Trees can have an average time complexity of $O(log\ N)$.
 
 Recursive definition: A tree $T$
 
-* is a collection of __nodes__.
+* is a collection of __nodes__ which contain the information stored in the tree.
 * is empty or has a single __root node__ $r$.
 * has zero or more nonempty subtrees $T_1, T_2, ..., T_k$ whose roots are connected by a 
   __directed edge__ from $r$.
@@ -28,20 +28,20 @@ Observations:
 
 ## Implementation of General Trees
 
-We implement a tree as a set of connected `Nodes`.
+We implement a tree as a set of connected `Nodes`. The data that is stored in each node is often called the _key_.
 
 Each node in a general tree ($M$-ary tree) can have a variable list of children. We can store it
 in a singly-linked list like the [`std::forward_list`](https://en.cppreference.com/w/cpp/container/forward_list).
 
 ```cpp
-template <typename Comparable>
+template <typename Object>
 class MaryTree {
 
 private:
   class Node
   {
   public:
-    Comparable element;
+    Object key;  // the data that the node stores
     std::forward_list<Node> children;
   };
 
@@ -69,11 +69,11 @@ Complexity: The average depth of a binary tree is (under some assumptions: rando
 The node structure is similar to a linked list node
 
 ```cpp
-template <typename Comparable>
+template <typename Object>
 class BinaryNode
 {
 public:
-    Comparable element;
+    Object key;
     BinaryNode *left;
     BinaryNode *right;
 }
@@ -84,7 +84,7 @@ public:
 
 ## Tree Traversal
 
-Visiting all nodes in a tree is called [tree traversal](https://en.wikipedia.org/wiki/Tree_traversal).
+Visiting all nodes in a tree is called [tree traversal](https://en.wikipedia.org/wiki/Tree_traversal). There are several ways we can traverse a tree.
 
 
 ### Depth-first traversal
@@ -134,7 +134,7 @@ For an iterative implementation, you need a stack.
 
 ### Breadth-first traversal
 
-Also called level-order: process the tree by level (may need an extra data structure like a queue to store unprocessed nodes).
+Also called **level-order**: process the tree by level (may need an extra data structure like a queue to store unprocessed nodes).
 You will learn more about breadth-first traversal when you learn about graphs in algorithms. 
 
 
