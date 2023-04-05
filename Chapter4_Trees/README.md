@@ -216,7 +216,7 @@ The focus is on accessing values fast given that we know the key. Note that valu
 
 Requirements:
 * keys need to be unique.
-* keys need to be orderable (be comparable).
+* keys need to be orderable (be comparable with `operator<()`).
 
 Implementations:
 * A binary search tree. The node has in addition to the key also a member variable to store the value.
