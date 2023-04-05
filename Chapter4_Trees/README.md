@@ -70,6 +70,8 @@ The node structure is similar to a linked list node
 
 ```cpp
 template <typename Object>
+...
+
 class BinaryNode
 {
 public:
@@ -222,7 +224,9 @@ Implementations:
 * A binary search tree. The node has in addition to the key also a member variable to store the value.
   ```cpp
   template <typename KeyType, Typename ValueType>
-  class BinarySearchTreeMapNode
+  ...
+
+  class MapTreeNode
   {
   public:
     KeyType key;
