@@ -11,6 +11,8 @@
 using namespace std;
 
 // AvlTree class
+// This implementation is based on the unbalanced binary search tree and adds hight information 
+// to the nodes and a balance function to perform the needed rotations.
 
 template <typename Comparable>
 class AvlTree
@@ -18,13 +20,13 @@ class AvlTree
 private:
     struct AvlNode
     {
-        Comparable element;
+        Comparable key;
         AvlNode *left;
         AvlNode *right;
-        int height;
+        int height;      // keeping track of the height is the differnce to a unbalanced binary search tree
 
-        AvlNode(const Comparable &ele, AvlNode *lt, AvlNode *rt, int h = 0)
-            : element{ele}, left{lt}, right{rt}, height{h} {}
+        AvlNode(const Comparable &theKey, AvlNode *lt, AvlNode *rt, int h = 0)
+            : key{theKey}, left{lt}, right{rt}, height{h} {}
     };
 
     AvlNode *root;
@@ -142,9 +144,9 @@ private:
             return; // a single node is always balanced
         }
 
-        if (x < t->element)
+        if (x < t->key)
             insert(x, t->left);
-        else if (t->element < x)
+        else if (t->key < x)
             insert(x, t->right);
         else
         {
@@ -196,9 +198,9 @@ private:
         if (t == nullptr)
             return false;
 
-        else if (x < t->element)
+        else if (x < t->key)
             return contains(x, t->left);
-        else if (t->element < x)
+        else if (t->key < x)
             return contains(x, t->right);
         else
             return true; // Match
@@ -207,9 +209,9 @@ private:
         bool contains( const Comparable & x, AvlNode *t ) const
         {
             while( t != nullptr )
-                if( x < t->element )
+                if( x < t->key )
                     t = t->left;
-                else if( t->element < x )
+                else if( t->key < x )
                     t = t->right;
                 else
                     return true;    // Match
@@ -240,7 +242,7 @@ private:
         if (t == nullptr)
             return nullptr;
 
-        return new AvlNode{t->element, clone(t->left), clone(t->right), t->height};
+        return new AvlNode{t->key, clone(t->left), clone(t->right), t->height};
     }
 
     /**
@@ -254,7 +256,7 @@ private:
 
         // recursion
         printTreeSort(t->left, out);
-        out << t->element << " ";
+        out << t->key << " ";
         printTreeSort(t->right, out);
     }
 
@@ -279,7 +281,7 @@ private:
             // take the next node from the front of the queue
             current = q.front();
             q.pop();
-            out << current->element << " ";
+            out << current->key << " ";
 
             // add children to the end of the queue
             if (current->left != nullptr)
@@ -306,7 +308,7 @@ private:
         // all systems (Windows!?!) and all types of output devices.
         std::cout << (isRight ? "├──" : "└──");
         // print the value of the node
-        std::cout << node->element << std::endl;
+        std::cout << node->key << std::endl;
 
         // enter the next tree level - left and right branch
         prettyPrintTree(prefix + (isRight ? "│   " : "    "), node->right, true);
@@ -365,7 +367,7 @@ private:
     void rotateWithLeftChild(AvlNode *&k2)
     {
 #ifdef DEBUG
-        cout << "need to rotateWithLeftChild for node " << k2->element << endl;
+        cout << "need to rotateWithLeftChild for node " << k2->key << endl;
         cout << "Before:" << endl;
         prettyPrintTree();
 #endif
@@ -390,7 +392,7 @@ private:
     void rotateWithRightChild(AvlNode *&k1)
     {
 #ifdef DEBUG
-        cout << "need to rotateWithRightChild for node " << k1->element << endl;
+        cout << "need to rotateWithRightChild for node " << k1->key << endl;
         cout << "Before:" << endl;
         prettyPrintTree();
 

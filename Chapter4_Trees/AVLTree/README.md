@@ -12,7 +12,7 @@ template <typename Comparable>
 class AVLNode
 {
 public:
-    Comparable element;
+    Comparable key;
     AVLNode *left;
     AVLNode *right;
     int height;
