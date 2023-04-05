@@ -194,15 +194,48 @@ Applications of the parse tree: create
 
 * [Unbalanced Binary Search Trees](BinarySearchTree).
 * [Balanced Binary Search Trees (AVL Trees)](AVLTree).
-* STL Implementations of Binary Search trees: STL provides the associative containers 
+
+
+STL implementations of Binary Search trees: STL provides the [associative containers](https://en.wikipedia.org/wiki/Associative_containers) 
   [std::set](https://cplusplus.com/reference/set/set/) and [std::map](https://cplusplus.com/reference/map/map/) based on binary search trees.
-  The stored objects need to be `Comparable` with a definition of `bool operator<(const &) const` 
+  The stored key objects need to be `Comparable` with a definition of `bool operator<(const &) const` 
   (since $a < b$ can be used for $b < a$, we can also get $a == b$) or a function object 
   (see [comparator example in Chapter 1](/mhahsler/CS2341/tree/main/Chapter1_Programming/comparator)).
 
-  Examples: [How to use STL sets and maps](STLSetMap)
+Examples: [How to use STL sets and maps](STLSetMap)
 
-Example: Binary Tree Search vs. Binary Search 
+Example: **Binary Tree Search is equivalent to Binary Search.** A balanced search tree can be stored compactly in a vector using inorder traversal.
+
+## Maps
+
+Maps are [associative containers](https://en.wikipedia.org/wiki/Associative_containers) that relate a key to a value.
+
+$$f: keys \rightarrow values$$
+
+The focus is on accessing values fast given that we know the key. Note that value can also be a collection of individual values (e.g., a list or a vector).
+
+Requirements:
+* keys need to be unique.
+* keys need to be orderable (be comparable).
+
+Implementations:
+* A binary search tree. The node has in addition to the key also a member variable to store the value.
+  ```cpp
+  template <typename KeyType, Typename ValueType>
+  class BinarySearchTreeMapNode
+  {
+  public:
+    KeyType key;
+    ValueType value;
+    BinaryNode *left;
+    BinaryNode *right;
+  }
+  ```
+
+
+* A hash table (we will talk about hashing later).
+
+STL provides [std::map](https://cplusplus.com/reference/map/map/).
 
 
 ## B-Trees
@@ -234,6 +267,7 @@ Operations are $O(log\ N)$
 ### Applications 
 * File systems: Quick random access to an arbitrary block in a particular file. 
 * Databases: Store auxiliary index structures for faster retrieval in very large databases.
+
 
 ## License
 
