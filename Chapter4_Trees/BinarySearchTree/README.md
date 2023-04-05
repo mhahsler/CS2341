@@ -14,7 +14,8 @@ See [BinarySearchTree.h](BinarySearchTree.h) for code.
 
 Since keys are stored in sorted order, a simple **inorder traversal** (LNR) results in sorted output.
 If a balanced tree is used (see Balance Problem below), then inserting $N$ items takes $O(N log\ N)$ time and traversing 
-the tree takes $O(N)$ which gives a sorting algorithm called [**tree sort**](https://en.wikipedia.org/wiki/Tree_sort) that is $O(N\ log\ N)$. Note that quicksort is a better sorting algorithm (in-place with lower overhead).
+the tree takes $O(N)$ which gives a sorting algorithm called [**tree sort**](https://en.wikipedia.org/wiki/Tree_sort) that is $O(N\ log\ N)$. Note that [quicksort](https://en.wikipedia.org/wiki/Quicksort) 
+has the same time complexity but is a better sorting algorithm (in-place with lower overhead). You will learn more about sorting later in this course and in the algorithms course.
 
 ## Operations
 * Insertion: Descend the tree (smaller keys go to the left and larger keys go to the right) till a new leaf can be created.
