@@ -24,7 +24,7 @@ private:
         AvlNode *right;
         int height;      // AVL tree: keeping track of the height is the differnce to a unbalanced binary search tree
 
-        AvlNode(const Comparable &theKey, AvlNode *lt, AvlNode *rt, int h = 0)
+        AvlNode(const Comparable &theKey, AvlNode *lt, AvlNode *rt, int h)
             : key{theKey}, left{lt}, right{rt}, height{h} {}
     };
 
