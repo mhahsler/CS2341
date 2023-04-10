@@ -14,8 +14,12 @@ int main( )
     }
 
     t.prettyPrintTree();
-    
-    cout << "Tree Sort:" << endl;
+
+    cout << "Print the tree by level with level-order traversal\n";
+    t.printTreeByLevel();
+    cout << endl;
+
+    cout << "Tree Sort (inorder traversal):" << endl;
     t.printTreeSort();
 
     cout << "Max: " << t.findMax() << endl;

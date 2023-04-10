@@ -3,6 +3,8 @@
 
 #include <algorithm>
 #include <stdexcept>
+#include <iostream>
+#include <queue> // for level-order traversal
 
 using namespace std;
 
@@ -118,6 +120,16 @@ public:
     {
         prettyPrintTree("", root, false);
     }
+
+    /**
+     * @brief Print the tree contents in sorted order.
+     */
+
+    void printTreeByLevel(ostream &out = cout) const
+    {
+        printTreeByLevel(root, out);
+    }
+
 
     /**
      * @brief Make the tree empty.
@@ -403,6 +415,39 @@ private:
         prettyPrintTree(prefix + (isRight ? "│   " : "    "), node->right, true);
         prettyPrintTree(prefix + (isRight ? "│   " : "    "), node->left, false);
     }
+
+    /**
+     * Internal method to print a subtree rooted.
+     * This is level-order traversal.
+     * We use a loop and a queue an auxiliary data structure to remember what node to process next.
+     */
+    void printTreeByLevel(BinaryNode *t, ostream &out) const
+    {
+        if (t == nullptr)
+            return;
+
+        BinaryNode *current;
+        queue<BinaryNode *> q;
+
+        // start with the root node in the queue
+        q.push(t);
+
+        while (!q.empty())
+        {
+            // take the next node from the front of the queue
+            current = q.front();
+            q.pop();
+            out << current->key << " ";
+
+            // add children to the end of the queue
+            if (current->left != nullptr)
+                q.push(current->left);
+
+            if (current->right != nullptr)
+                q.push(current->right);
+        }
+    }
+
 
     /**
      * maxDepth = height of the node
