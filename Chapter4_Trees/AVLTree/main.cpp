@@ -34,13 +34,5 @@ int main()
     t.prettyPrintTree();
     cout << endl;
 
-    cout << "Print the sorted values using preorder traversal (LNR)\n";
-    t.printTreeSort();
-    cout << endl;
-    
-    cout << "Print the tree by level with level-order traversal\n";
-    t.printTreeByLevel();
-    cout << endl;
-
     return 0;
 }

@@ -6,7 +6,6 @@
 #include <stdexcept>
 #include <algorithm>
 #include <iostream>
-#include <queue> // for level-order traversal
 
 using namespace std;
 
@@ -23,7 +22,7 @@ private:
         Comparable key;
         AvlNode *left;
         AvlNode *right;
-        int height;      // keeping track of the height is the differnce to a unbalanced binary search tree
+        int height;      // AVL tree: keeping track of the height is the differnce to a unbalanced binary search tree
 
         AvlNode(const Comparable &theKey, AvlNode *lt, AvlNode *rt, int h = 0)
             : key{theKey}, left{lt}, right{rt}, height{h} {}
@@ -84,18 +83,6 @@ public:
         return root == nullptr;
     }
 
-    /**
-     * Print the tree contents in sorted order.
-     */
-    void printTreeSort(ostream &out = cout) const
-    {
-        printTreeSort(root, out);
-    }
-
-    void printTreeByLevel(ostream &out = cout) const
-    {
-        printTreeByLevel(root, out);
-    }
 
     /**
      * Print the tree structure.
@@ -169,56 +156,9 @@ private:
         throw std::runtime_error("Not implemented yet!");
         // same as in a binary search tree
 
-        // don't forget to balance
+        // don't forget to balance the AVL tree!
         balance(t);
     }
-
-    /**
-     * Internal method to find the smallest item in a subtree t.
-     * Return node containing the smallest item.
-     */
-    AvlNode *findMin(AvlNode *t) const
-    {
-        if (t == nullptr)
-            return nullptr;
-
-        if (t->left == nullptr)
-            return t;
-
-        return findMin(t->left);
-    }
-
-    /**
-     * Internal method to test if an item is in a subtree.
-     * x is item to search for.
-     * t is the node that roots the tree.
-     */
-    bool contains(const Comparable &x, AvlNode *t) const
-    {
-        if (t == nullptr)
-            return false;
-
-        else if (x < t->key)
-            return contains(x, t->left);
-        else if (t->key < x)
-            return contains(x, t->right);
-        else
-            return true; // Match
-    }
-    /****** NONRECURSIVE VERSION*************************
-        bool contains( const Comparable & x, AvlNode *t ) const
-        {
-            while( t != nullptr )
-                if( x < t->key )
-                    t = t->left;
-                else if( t->key < x )
-                    t = t->right;
-                else
-                    return true;    // Match
-
-            return false;   // No match
-        }
-    *****************************************************/
 
     /**
      * Internal method to make subtree empty.
@@ -245,52 +185,6 @@ private:
         return new AvlNode{t->key, clone(t->left), clone(t->right), t->height};
     }
 
-    /**
-     * Internal recursive method to print a subtree rooted at t in sorted order.
-     * This is inorder traversal (LNR)
-     */
-    void printTreeSort(AvlNode *t, ostream &out) const
-    {
-        if (t == nullptr)
-            return;
-
-        // recursion
-        printTreeSort(t->left, out);
-        out << t->key << " ";
-        printTreeSort(t->right, out);
-    }
-
-    /**
-     * Internal method to print a subtree rooted.
-     * This is level-order traversal.
-     * We use a loop and a queue an auxiliary data structure to remember what node to process next.
-     */
-    void printTreeByLevel(AvlNode *t, ostream &out) const
-    {
-        if (t == nullptr)
-            return;
-
-        AvlNode *current;
-        queue<AvlNode *> q;
-
-        // start with the root node in the queue
-        q.push(t);
-
-        while (!q.empty())
-        {
-            // take the next node from the front of the queue
-            current = q.front();
-            q.pop();
-            out << current->key << " ";
-
-            // add children to the end of the queue
-            if (current->left != nullptr)
-                q.push(current->left);
-
-            if (current->right != nullptr)
-                q.push(current->right);
-        }
-    }
 
     /**
      * Pretty print the tree structure
@@ -315,7 +209,7 @@ private:
         prettyPrintTree(prefix + (isRight ? "│   " : "    "), node->left, false);
     }
 
-    // Avl manipulations
+    // Balancing: AVL Rotations
 
     /**
      * Return the height of node t or -1 if nullptr.

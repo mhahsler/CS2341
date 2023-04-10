@@ -44,4 +44,5 @@ Insert the following sequences into an AVL tree:
 
 ## Code
 
+The implementation is a Binary Search tree with added `balance()` function that performed the needed rotations after each `insert()`/`delete()`.
 See [AvlTree.h](AvlTree.h) for code.
