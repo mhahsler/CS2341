@@ -162,11 +162,12 @@ private:
     /**
      * Internal method to insert into a subtree.
      * x is the item to insert.
-     * t a non-const reference to the node that roots the subtree.
+     * t a non-const reference to the pointer to the node that roots the subtree.
      */
-    void insert(const Comparable &x, BinaryNode *&t)
+    void insert(const Comparable &x, BinaryNode* &t)
     {
         // Base case: found an empty spot? insert a new node
+        //   This can be done because t is a reference to a pointer! We could also use a pointer-pointer
         if (t == nullptr)
             t = new BinaryNode{x, nullptr, nullptr};
 
@@ -179,6 +180,9 @@ private:
         {
         }; // Duplicate: key == x; do nothing... we could do other things.
     }
+    // We could easily implement a iterative version with a while loop....
+
+
 
     /**
      * Internal method to remove from a subtree.
@@ -232,7 +236,7 @@ private:
     }
 
    /**
-     * Internal method to find, remove and return the smallest item in a subtree t.
+     * Internal method to find, remove and return the smallest item in a subtree t (used in remove)
      */
     BinaryNode *removeMin(BinaryNode *&t)
     {
@@ -253,7 +257,8 @@ private:
         if (t->left->left == nullptr)
         {
             BinaryNode *min = t->left;
-            t->left = min->right;
+            // there could be a right node!
+            t->left = min->right; 
             return min;
         }
 
