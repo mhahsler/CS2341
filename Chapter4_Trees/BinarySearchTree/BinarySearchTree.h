@@ -201,11 +201,15 @@ private:
      * x is the item to remove.
      * t is the node that roots the subtree.
      * Set the new root of the subtree.
+     * 
+     * 
+     * Note: This implementation of case C relinks the smallest node in the right subtree rather than copy the 
+     *    key value like it is done in the text book. The reason is that nodes may store additional information 
+     *    (like values in a map) which may be expensive to copy.
      */
     void remove(const Comparable &x, BinaryNode *&t)
     {
-        // Recursively find the node to delete using binary search.
-
+       // Recursively find the node to delete using binary search.
         if (t == nullptr)
             return; // Item not found; do nothing
 
@@ -221,36 +225,41 @@ private:
         // Do the deletion
 
         // Cases:
-        // A. No children: Just remove the node.
+
         if (t->left == nullptr && t->right == nullptr)
         {
+            // A. No children: Just remove the node.
             delete t;
             t = nullptr;
-            return;
-        }
 
-        // C. Two children case: replace key with the smallest key in the right subtree.
-        if (t->left != nullptr && t->right != nullptr)
+        } else if (t->left != nullptr && t->right != nullptr)
         {
-            BinaryNode *replacement = removeMin(t->right);
+            // C. Two children case: replace node with the smallest node in the right subtree.
+            BinaryNode *replacement = unlinkMin(t->right); // find and unlink the smallest node in the right subtree
+
+            // relink the replacement node in place of t (use t's children, delete the node t and link replacement instead)
             replacement->right = t->right;
             replacement->left = t->left;
-
             delete t;
             t = replacement;
-            return;
-        }
 
-        // B. One child case: replace the node with the only child.
-        BinaryNode *oldNode = t;
-        t = (t->left != nullptr) ? t->left : t->right;
-        delete oldNode;
+        } else {
+            // B. One child case: replace the node with the only child.
+            BinaryNode *oldNode = t;
+            t = (t->left != nullptr) ? t->left : t->right;
+            delete oldNode;
+        }
     }
 
    /**
-     * Internal method to find, remove and return the smallest item in a subtree t (used in remove)
+     * Internal method to 
+     * 1. find the smallest item in a subtree t, 
+     * 2. unlink the minimum node form the tree by breaking the link in its parent, and 
+     * 3. return it.
+     * This recursive funtion is used in case C of remove() to unlink the samllest node for the right subtree and
+     * relink it to replace the removed node.
      */
-    BinaryNode *removeMin(BinaryNode *&t)
+    BinaryNode *unlinkMin(BinaryNode *&t)
     {
         // recursive implementation
         // special case: no root node
@@ -261,20 +270,21 @@ private:
         if (t->left == nullptr)
         {
             BinaryNode *min = t;
+            // break the link in the parent node to unlink the node from the tree. The minimum can be a right child node!
             t = t->right;
             return min;
         }
 
-        // traverse down left to the leaf
+        // traverse down left to the parent of the leaf with the minimum
         if (t->left->left == nullptr)
         {
             BinaryNode *min = t->left;
-            // there could be a right node!
+            // break the link in the parent node to unlink the node from the tree. The minimum can be a right child node!
             t->left = min->right; 
             return min;
         }
 
-        return removeMin(t->left);
+        return unlinkMin(t->left);
     }
 
     /**
