@@ -161,7 +161,7 @@ public:
 
     int maxDepth()
     {
-        return maxDepth(root, 0);
+        return maxDepth(root, -1); // we start with a depth of -1 in case there is no root node
     }
 
     double avgDepth()
@@ -193,8 +193,6 @@ private:
         }; // Duplicate: key == x; do nothing... we could do other things.
     }
     // We could easily implement a iterative version with a while loop....
-
-
 
     /**
      * Internal method to remove from a subtree.
@@ -235,7 +233,7 @@ private:
         } else if (t->left != nullptr && t->right != nullptr)
         {
             // C. Two children case: replace node with the smallest node in the right subtree.
-            BinaryNode *replacement = unlinkMin(t->right); // find and unlink the smallest node in the right subtree
+            BinaryNode *replacement = unlinkMinNode(t->right); // find and unlink the smallest node in the right subtree
 
             // relink the replacement node in place of t (use t's children, delete the node t and link replacement instead)
             replacement->right = t->right;
@@ -259,32 +257,26 @@ private:
      * This recursive funtion is used in case C of remove() to unlink the samllest node for the right subtree and
      * relink it to replace the removed node.
      */
-    BinaryNode *unlinkMin(BinaryNode *&t)
+    BinaryNode *unlinkMinNode(BinaryNode *&t)
     {
-        // recursive implementation
         // special case: no root node
         if (t == nullptr)
             return nullptr;
 
-        // special case: root is the minimum
+        // base case: we have reached the minimum node
         if (t->left == nullptr)
         {
             BinaryNode *min = t;
-            // break the link in the parent node to unlink the node from the tree. The minimum can be a right child node!
-            t = t->right;
+            // break the link in the parent node (this works because t is a reference) to unlink the node from the tree. 
+            // Note: The minimum can have a right child node which needs to go back in the tree!
+            t = min->right;
+            
+            // return the found minimum node
             return min;
         }
 
-        // traverse down left to the parent of the leaf with the minimum
-        if (t->left->left == nullptr)
-        {
-            BinaryNode *min = t->left;
-            // break the link in the parent node to unlink the node from the tree. The minimum can be a right child node!
-            t->left = min->right; 
-            return min;
-        }
-
-        return unlinkMin(t->left);
+        // recursively traverse down left (smaller values)
+        return unlinkMinNode(t->left);
     }
 
     /**
@@ -304,8 +296,6 @@ private:
 
         return findMin(t->left);
     }
-
-
 
     /**
      * Internal method to find the largest item in a subtree t.
@@ -458,9 +448,10 @@ private:
         }
     }
 
-
     /**
-     * maxDepth = height of the node
+     * maxDepth = height of the node as the path length to the farthest down leaf node
+     * 
+     * Calls this method with the root node and depth = -1 (a tree without a root node)
      *
      * -> postorder traversal (LRN)
      */
