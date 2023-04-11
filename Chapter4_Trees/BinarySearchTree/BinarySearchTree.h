@@ -76,6 +76,14 @@ public:
     {
         return root == nullptr;
     }
+ 
+    /**
+     * @brief Make the tree empty.
+     */
+    void makeEmpty()
+    {
+        makeEmpty(root);
+    }
 
     /**
      * @brief Insert x into the tree; duplicates are ignored.
@@ -99,6 +107,31 @@ public:
     bool contains(const Comparable &x) const
     {
         return find(x, root) != nullptr;
+    }
+
+    /**
+     * @brief Find the smallest item in the tree.
+     */
+    const Comparable &findMin() const
+    {
+        if (isEmpty())
+            throw std::runtime_error("tree is empty!");
+        return findMin(root)->key;
+    }
+
+    /**
+     * @brief find the largest item in the tree.
+     */
+    const Comparable &findMax() const
+    {
+        if (isEmpty())
+            throw std::runtime_error("tree is empty!");
+        return findMax(root)->key;
+    }
+
+    int maxDepth()
+    {
+        return maxDepth(root, -1); // we start with a depth of -1 in case there is no root node
     }
 
     /**
@@ -131,46 +164,48 @@ public:
     }
 
 
-    /**
-     * @brief Make the tree empty.
-     */
-    void makeEmpty()
-    {
-        makeEmpty(root);
-    }
-
-    /**
-     * @brief Find the smallest item in the tree.
-     */
-    const Comparable &findMin() const
-    {
-        if (isEmpty())
-            throw std::runtime_error("tree is empty!");
-        return findMin(root)->key;
-    }
-
-    /**
-     * @brief find the largest item in the tree.
-     */
-    const Comparable &findMax() const
-    {
-        if (isEmpty())
-            throw std::runtime_error("tree is empty!");
-        return findMax(root)->key;
-    }
-
-    int maxDepth()
-    {
-        return maxDepth(root, -1); // we start with a depth of -1 in case there is no root node
-    }
-
-    double avgDepth()
-    {
-        throw std::runtime_error("Not implemented yet!");
-        return 0.0;
-    }
-
 private:
+    /**
+     * Note on the use of the parameter BinaryNode* &t used in makeEmpty, insert and delete.
+     * This is a (non-constant) reference to a BinaryNode-Pointer. It is used in the 
+     * recursive functions to modify the pointer t in the calling function (e.g., make it 
+     * point to a newly created node).
+     * 
+     * Other functions like clone() use the parameter BinaryNode* t which is not a 
+     * reference, put just a pointer. This is mostly used when we just want to look at 
+     * the tree.
+     */
+    
+    /**
+     * Internal method to make subtree empty uses postorder traversal (LRN)
+     * Note the pointer reference for t.
+     */
+    void makeEmpty(BinaryNode *&t)
+    {
+        if (t == nullptr)
+            return;
+
+        // recursion
+        makeEmpty(t->left);  // L
+        makeEmpty(t->right); // R
+        
+        delete t;            // N
+        t = nullptr;
+    }
+
+   /**
+     * Internal method to clone subtree.
+     * -> preorder traversal (NLR)
+     */
+    BinaryNode *clone(BinaryNode *t) const
+    {
+        if (t == nullptr)
+            return nullptr;
+
+        // recursion
+        return new BinaryNode{t->key, clone(t->left), clone(t->right)};
+    }
+
     /**
      * Internal method to insert into a subtree.
      * x is the item to insert.
@@ -233,7 +268,7 @@ private:
         } else if (t->left != nullptr && t->right != nullptr)
         {
             // C. Two children case: replace node with the smallest node in the right subtree.
-            BinaryNode *replacement = unlinkMinNode(t->right); // find and unlink the smallest node in the right subtree
+            BinaryNode *replacement = unlinkMinNode(t->right); // recursively find and unlink the smallest node in the right subtree
 
             // relink the replacement node in place of t (use t's children, delete the node t and link replacement instead)
             replacement->right = t->right;
@@ -250,7 +285,7 @@ private:
     }
 
    /**
-     * Internal method to 
+     * Internal method
      * 1. find the smallest item in a subtree t, 
      * 2. unlink the minimum node form the tree by breaking the link in its parent, and 
      * 3. return it.
@@ -322,6 +357,7 @@ private:
      */
     BinaryNode *find(const Comparable &x, BinaryNode *t) const
     {
+        // base case 1: not found
         if (t == nullptr)
             return nullptr;
 
@@ -332,7 +368,7 @@ private:
         if (t->key < x)
             return find(x, t->right);
 
-        // we have t->key == x
+        // base case 2: found: we have t->key == x
         return t; // Match
     }
     /****** NONRECURSIVE VERSION*************************
@@ -350,34 +386,22 @@ private:
         }
     *****************************************************/
 
-    /**
-     * Internal method to clone subtree.
-     * -> preorder traversal (NLR)
+   /**
+     * maxDepth = height of the node as the path length to the farthest down leaf node
+     * 
+     * Calls this method with the root node and depth = -1 (a tree without a root node)
+     *
+     * -> postorder traversal (LRN)
      */
-    BinaryNode *clone(BinaryNode *t) const
+    int maxDepth(BinaryNode *t, int depth)
     {
+        // Leaf node? Report the depth. 
         if (t == nullptr)
-            return nullptr;
+            return depth;
 
-        // recursion
-        return new BinaryNode{t->key, clone(t->left), clone(t->right)};
-    }
-
-    /**
-     * Internal method to make subtree empty uses postorder traversal (LRN)
-     * Note the pointer reference for t.
-     */
-    void makeEmpty(BinaryNode *&t)
-    {
-        if (t == nullptr)
-            return;
-
-        // recursion
-        makeEmpty(t->left);  // L
-        makeEmpty(t->right); // R
-        
-        delete t;            // N
-        t = nullptr;
+        // max depth of left (L) and right (R) subtree. N does not do anything.
+        return (std::max(maxDepth(t->left, depth + 1),
+                         maxDepth(t->right, depth + 1)));
     }
 
     /**
@@ -448,23 +472,6 @@ private:
         }
     }
 
-    /**
-     * maxDepth = height of the node as the path length to the farthest down leaf node
-     * 
-     * Calls this method with the root node and depth = -1 (a tree without a root node)
-     *
-     * -> postorder traversal (LRN)
-     */
-    int maxDepth(BinaryNode *t, int depth)
-    {
-        // Leaf node? Report the depth. 
-        if (t == nullptr)
-            return depth;
-
-        // max depth of left (L) and right (R) subtree. N does not do anything.
-        return (std::max(maxDepth(t->left, depth + 1),
-                         maxDepth(t->right, depth + 1)));
-    }
 };
 
 #endif
