@@ -39,8 +39,8 @@ See [slides](https://github.com/mhahsler/CS2341/blob/main/Chapter4_Trees/slides/
 
 Insert the following sequences into an AVL tree:
 
-* `1, 2, 3, 4`
 * `5, 1, 6, 3, 2`
+* `1, 2, 3, 4`
 
 ## Code
 
