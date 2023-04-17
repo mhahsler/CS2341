@@ -128,22 +128,29 @@ public:
 
 
     /**
-     * @brief Rehash the hash table (needs to be implemented)
+     * @brief Rehash the hash table
      * 
-     * Increases the hash table size by a factor of 2.
-     * This would be called by insert() if the loading factor gets too high.
+     * Usually automatically increases the hash table size by a factor of 2 once 
+     * the load_factor gets >1 during insert().
+     * 
+     * Here I manually call rehash and specify the new hash table size.
+     * 
+     * Notes: 
+     *  * The strings get copied two times. This could be done better using move semantics.
      */
-    void rehash(size_t size)
+    void rehash(size_t theSize)
     {
         // 1. take all keys out of the table
         std::vector<std::string> keys;
+        keys.reserve(size()); // we know many keys we will have.
+
         for (const auto& x : table)
             for (const auto& y : x)
                 keys.push_back(y); // this will make a copy of y
 
         // 2. clear and resize the table
         make_empty();
-        table.resize(size);
+        table.resize(theSize);
 
         // 3. insert the keys into the new table (the different table size will create different hash values!) 
         for (const auto& x : keys)
