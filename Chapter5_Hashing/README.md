@@ -21,7 +21,7 @@ We can look at sets as maps that have only a key and no value.
 The worst-case time complexity to find or insert items by data structure are:
 
 * Vector of key-value pairs: $O(N)$
-* List key-value pairs: $O(N)$ (insertion at the front can be done in $O(1)$)
+* List of key-value pairs: $O(N)$. Insertion at the front can be done in $O(1)$
 * Binary search tree using the key for sorting and storing the value in each node: $O(log\ N)$
 * **Hash table: $O(1)$** (under some assumptions)
 
@@ -49,10 +49,10 @@ Lookup Operation for a key
 1. Calculate the index for the table row using a hash function $h(key)$.
 2. Retrieve the value the table row.
 
-Same worst-case time complexity as insertion ($O(1)$).
+Also a worst-case time complexity of $O(1)$.
 
 
-**Note:** Hash tables do not store entries in any particular order! 
+**Note:** Hash tables do not store keys in any particular order! 
 
 ### Example
 Hash (SMUID, name) pairs to allow for fast SMUID to name lookup. We can use the first digit of the ID as a simple hash function (this may not be a great hash function!).
