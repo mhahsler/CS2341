@@ -198,7 +198,7 @@ Applications of the parse tree: create
 * [Balanced Binary Search Trees (AVL Trees)](AVLTree).
 
 
-STL implementations of Binary Search trees: STL provides the [associative containers](https://en.wikipedia.org/wiki/Associative_containers) 
+STL implementations of Binary Search trees: STL provides 
   [std::set](https://cplusplus.com/reference/set/set/) and [std::map](https://cplusplus.com/reference/map/map/) based on binary search trees.
   The stored key objects need to be `Comparable` with a definition of `bool operator<(const &) const` 
   (since $a < b$ can be used for $b < a$, we can also get $a == b$) or a function object 
@@ -210,11 +210,12 @@ Example: **Binary Tree Search is equivalent to Binary Search.** A balanced searc
 
 ## Maps
 
-Maps are [associative containers](https://en.wikipedia.org/wiki/Associative_containers) that relate a key to a value.
+Maps are [associative containers](https://en.wikipedia.org/wiki/Associative_containers) that relate a key to a value. That is, it maps
+the set of keys onto the set of values in a 1-1 fashon.
 
 $$f: keys \rightarrow values$$
 
-The focus is on accessing values fast given that we know the key. Note that value can also be a collection of individual values (e.g., a list or a vector).
+The purpose is to access the value fast given that we know the key. Note that a value can also be a collection of individual values (e.g., a list or a vector).
 
 Requirements:
 * keys need to be unique.
