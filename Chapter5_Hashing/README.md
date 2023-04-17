@@ -1,6 +1,6 @@
 # Chapter 5: Hashing
 
-## Introduction: Sets vs. Maps
+## Recap: Sets and Maps
 
 A [set](https://en.wikipedia.org/wiki/Set_(mathematics)) is a collection of elements defined in math. For example,
 the set 
@@ -27,13 +27,17 @@ The worst-case time complexity to find or insert items by data structure are:
 
 ## Hash Table
 
-A hash table is a data structure with a table (array) of size $M$ to store keys that help us with finding the stored elements again.
+A hash table is a data structure with a table of size $M$ to store keys that help us with finding the stored elements again. We uses a hash function
+
+$$h(key)$$
+
+that maps each possible key to a valid row in the table. 
+
 
 ### Insert
 Insert Operation for a $(key, value)$ pair.
 
-1. Calculate the index for the table row using a hash function $h(key)$ that maps each possible key to a 
-valid row in the table. 
+1. Calculate the index for the table row using the hash function $h(key)$.
 2. Place the $(key, value)$ pair in that row.
 
 The runtime of the hash function only depends on how the key is represented and not on the number elements $N$ in the table. 
@@ -50,12 +54,13 @@ Same worst-case time complexity as insertion ($O(1)$).
 
 **Note:** Hash tables do not store entries in any particular order! 
 
-**Example:** Hash (SMUID, name) pairs to allow for fast SMUID to name lookup. We can use the first digit of the ID as a simple hash function (this may not be a great hash function!).
+### Example
+Hash (SMUID, name) pairs to allow for fast SMUID to name lookup. We can use the first digit of the ID as a simple hash function (this may not be a great hash function!).
 
 
 ### Issues
 
-1. We need to choose a has function. We want a hash function that distributes the items well over the whole table because we do not want to allocate a very large table that is mostly empty!
+1. We need to choose a hash function. We want a hash function that distributes the keys well over the whole table because we do not want to allocate a very large table that is mostly empty!
 2. What about collisions where $h(key_1) = h(key_2)$?
 3. We need to choose the hash table size $M$.
 
@@ -63,13 +68,13 @@ Same worst-case time complexity as insertion ($O(1)$).
 
 Has to return the **same hash value for the same key** and should be
 * fast to calculate, and
-* distribute the keys well (does not cluster the items in a part of the table).
+* distribute the keys well (does not cluster the keys in a part of the table).
 
 
 ### For Integers
 $$h(key) = key\ mod\ M$$ 
 
-We typically choose $M$ to be prime since this greatly reduces the occurrence of collisions (see below).
+We typically choose $M$ to be prime since this is known to greatly reduces the occurrence of collisions.
 
 ### For Strings
 
