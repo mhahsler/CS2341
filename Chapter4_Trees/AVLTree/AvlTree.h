@@ -156,8 +156,7 @@ private:
         throw std::runtime_error("Not implemented yet!");
         // same as in a binary search tree
 
-        // don't forget to balance the AVL tree!
-        balance(t);
+        // don't forget to balance the AVL tree after the deletion!
     }
 
     /**
@@ -222,10 +221,19 @@ private:
     static const int ALLOWED_IMBALANCE = 1; // 1 is the default; more will make balancing cheaper
                                             // but the search less efficient.
 
-    // Assume t is balanced or within one of being balanced since we check this after each manipulation
-    // t represents alpha in the textbook
+    /** 
+     * 1. Performs rotations if the the the difference of the height stored in t's two child nodes 
+     *    more than ALLOWED_IMBALANCE.
+     * 2. Updates the height information of the note t.
+     * 
+     * Assumes that the high information in the child nodes is correct. This is guaranteed by calling
+     * balance() recursivly from the inserted node up to the tree node (see insert()). Rotations will 
+     * only be performed for node alpha (parent of the parent of the inserted node). For all other nodes, 
+     * only the height will be updated. 
+     */
     void balance(AvlNode *&t)
     {
+        // special case: empty tree
         if (t == nullptr)
             return;
 
@@ -243,6 +251,7 @@ private:
             else
                 doubleWithRightChild(t); // case 3 (inside)
         }
+        // else ... no imbalance was created
 
         // update height
         t->height = max(height(t->left), height(t->right)) + 1;

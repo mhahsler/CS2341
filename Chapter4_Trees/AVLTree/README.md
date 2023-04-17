@@ -34,6 +34,8 @@ We need
 
 See [slides](https://github.com/mhahsler/CS2341/blob/main/Chapter4_Trees/slides/AVL_trees.pdf) for details.
 
+Balancing using rotation is implemented in the `balance()` function in [AvlTree.h](AvlTree.h) which is performed after each `insert()`/`delete()`.
+
 
 ## Exercises
 
@@ -41,8 +43,3 @@ Insert the following sequences into an AVL tree:
 
 * `5, 1, 6, 3, 2`
 * `1, 2, 3, 4`
-
-## Code
-
-The implementation is a Binary Search tree with added `balance()` function that performed the needed rotations after each `insert()`/`delete()`.
-See [AvlTree.h](AvlTree.h) for code.
