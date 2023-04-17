@@ -32,9 +32,11 @@ We need
 * a single rotation for "outside" insertions (left-left and right-right) and 
 * a double rotation for "inside" insertions (left-right and right-left).
 
-See [slides](https://github.com/mhahsler/CS2341/blob/main/Chapter4_Trees/slides/AVL_trees.pdf) for details.
+**Slides:** [Balancing AVL trees](https://github.com/mhahsler/CS2341/blob/main/Chapter4_Trees/slides/AVL_trees.pdf).
 
-Balancing using rotation is implemented in the `balance()` function in [AvlTree.h](AvlTree.h) which is performed after each `insert()`/`delete()`.
+**Visualization:** Here is an [AVL tree visualization](https://www.cs.usfca.edu/~galles/visualization/AVLtree.html) for inserting and deleting integers.
+
+**Code:** Balancing using rotation is implemented in the `balance()` function in [AvlTree.h](AvlTree.h) which is performed after each `insert()`/`delete()`.
 
 
 ## Exercises
