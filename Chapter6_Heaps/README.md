@@ -1,6 +1,6 @@
 # Chapter 6: Priority Queues (Heaps)
 
-**Goal:** Always find and remove the smallest element in a collection quickly.
+**Goal:** Always find and remove the element with the smallest key in a collection quickly.
 
 Basic Operations:
 * insert (= enqueue)
