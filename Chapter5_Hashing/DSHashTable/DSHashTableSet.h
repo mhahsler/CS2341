@@ -95,8 +95,8 @@ public:
      */
     void make_empty()
     {
-        for (auto& x : table)
-            x.clear();
+        for (auto& entry : table)
+            entry.clear();
     }
 
     /**
@@ -108,9 +108,9 @@ public:
     {
         size_t n = 0;
 
-        // Notes: forward_list currently has no size() function and y is unused -> warning
-        for (const auto& x : table)
-            for (const auto& y : x)
+        // Notes: forward_list currently has no size() function and k is unused -> compiler warning
+        for (const auto& entry : table)
+            for (const auto& k : entry)
                 ++n;
 
         return n;
@@ -133,28 +133,31 @@ public:
      * Usually automatically increases the hash table size by a factor of 2 once 
      * the load_factor gets >1 during insert().
      * 
-     * Here I manually call rehash and specify the new hash table size.
+     * Here. I manually call rehash and specify the new hash table size.
      * 
-     * Notes: 
-     *  * The strings get copied two times. This could be done better using move semantics.
+     * Note on move semantics: I want to avoid compying the stored string several times.
+     * std::move() marks an object as a rhs references 
+     * (an object that can be moved during the next assignment if it has a move assignment 
+     * operator). It is the programmers job to make sure that the original object is 
+     * not used after the move.
      */
     void rehash(size_t theSize)
     {
         // 1. take all keys out of the table
         std::vector<std::string> keys;
-        keys.reserve(size()); // we know many keys we will have.
+        keys.reserve(size()); // avoid dynamic resizing of the vector
 
-        for (const auto& x : table)
-            for (const auto& y : x)
-                keys.push_back(y); // this will make a copy of y
+        for (const auto& entry : table)
+            for (const auto& k : entry)
+                keys.push_back(std::move(k));
 
-        // 2. clear and resize the table
+        // 2. clear and resize the hash table
         make_empty();
         table.resize(theSize);
 
         // 3. insert the keys into the new table (the different table size will create different hash values!) 
-        for (const auto& x : keys)
-            insert(x);
+        for (const auto& k : keys)
+            insert(std::move(k));
     }
 
     // more useful functions would be nice: get keys, iterators, etc.
