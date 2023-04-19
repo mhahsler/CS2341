@@ -81,7 +81,7 @@ We typically choose $M$ to be prime since this is known to greatly reduces the o
 Convert the string into an integer and then hash the integer using $mod$. This is technically a composition of two hash functions $h_{mod}(h_{int}(string))$.
 
 A simple choice that works well is to use ASCII encoding for the letters to get the numbers $k_0, k_1, ..., k_{n-1}$ and then the following polynomial (remember [numeral systems](https://en.wikipedia.org/wiki/Numeral_system)):
-$$h(k) = (k_0 + 37 k_1 + 37^2 k_2, ...)\ mod\ M = \sum_{i=0}^{n-1} 37^i k_i\ mod\ M$$  
+$$h(k) = (k_0 + 37 k_1 + 37^2 k_2, ...)\ mod\ M = \left( \sum_{i=0}^{n-1} 37^i k_i \right) \ mod\ M$$  
 
 Alternatives are cryptographic hash functions like MD5 and SHA-1. See [List of hash functions](https://en.wikipedia.org/wiki/List_of_hash_functions). These hash functions convert a sequence of byte into an integer key and we use then the modulo to 
 calculate the index for the hash table. 
