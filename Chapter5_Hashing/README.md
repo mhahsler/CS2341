@@ -109,14 +109,13 @@ How large should the hash table be? The **loading factor** of a hash table is de
 
 $$\lambda = \frac{\text{number of items in table}}{\text{table size}}= \frac{N}{M}.$$
 
-$\lambda$ gives the average number of collisions which is also the average length of the linked list. 
-Search therefore requires on average $1 + (\lambda / 2)$ link traversals. A general rule is to choose 
+$\lambda$ gives the average length of the linked lists in the hash table. A general rule to get short lists is to choose 
 
 $$M \approx N \rightarrow \lambda \approx 1$$
 
-**Rehashing:** If the loading factor gets too large, then allocate a table with double the size and insert the data from the old table in $O(N)$ operations. Note that rehashing is very expensive!
-
-Keeping the load factor low is needed to provide $O(1)$ time complexity. 
+If we can make sure that $\lambda$ stays constant (e.g., close to 1), then all operations are independent of $N$ and we get $O(1)$. This can be done using 
+**rehashing.** If the loading factor gets too large, then reorganize the data strucure by allocating a new table with double the size and then insert the data 
+from the old table in $O(N)$ operations. Note that rehashing is very expensive!
 
 
 ## STL Hash Tables
