@@ -38,7 +38,7 @@ int main()
     cout << "Size? " << myTable.size() << endl;
     cout << "Loading Factor? " << myTable.loading_factor() << endl;
 
-    myTable.rehash(20);
+    myTable.rehash(21); // 9 * 2 = 18; next prime is 21
     cout << "Size? " << myTable.size() << endl;
     cout << "Loading Factor? " << myTable.loading_factor() << endl;
 

@@ -19,7 +19,7 @@ private:
 public:
     /**
      * @brief  default constructor
-     * @param size 
+     * @param size size of the hash table. Should be a prime number.
      */
     explicit DSHashTableSet(size_t size = 101)
     {
@@ -130,34 +130,39 @@ public:
     /**
      * @brief Rehash the hash table
      * 
-     * Usually automatically increases the hash table size by a factor of 2 once 
+     * @param theSize new size of the hash table. Should be a prime number. 
+     * 
+     * Usually automatically increases the hash table size by a factor of 2 and finds the next prime number once 
      * the load_factor gets >1 during insert().
      * 
      * Here. I manually call rehash and specify the new hash table size.
      * 
-     * Note on move semantics: I want to avoid compying the stored string several times.
-     * std::move() marks an object as a rhs references 
-     * (an object that can be moved during the next assignment if it has a move assignment 
-     * operator). It is the programmers job to make sure that the original object is 
-     * not used after the move.
+     * Notes:
+     * - I avoid manual dynamic memory allocation by creating a new table on the stack and then
+     *   swapping it with the old table.
+     * 
+     * - I avoid copying the stored string using move semantics. std::move() marks an object as a rhs references 
+     *   (an object that can be moved during the next assignment if it has a move assignment 
+     *   operator). It is the programmers job to make sure that the original object is 
+     *   not used after the move.
      */
+
     void rehash(size_t theSize)
     {
-        // 1. take all keys out of the table
-        std::vector<std::string> keys;
-        keys.reserve(size()); // avoid dynamic resizing of the vector
+     
+        // 1. create a new empty table.
+        std::vector<std::forward_list<std::string>> tmp_table;
+        tmp_table.resize(theSize);
 
-        for (const auto& entry : table)
+        // 2. swap the old with the new empty table
+        std::swap(table, tmp_table);
+        
+        // 3. insert (move) the entries from the old table into the hash table (the new table)
+        for (const auto& entry : tmp_table)
             for (const auto& k : entry)
-                keys.push_back(std::move(k));
+                insert(std::move(k));
 
-        // 2. clear and resize the hash table
-        make_empty();
-        table.resize(theSize);
-
-        // 3. insert the keys into the new table (the different table size will create different hash values!) 
-        for (const auto& k : keys)
-            insert(std::move(k));
+        // 4. The old table gets deleted since tmp_table is on the function call stack
     }
 
     // more useful functions would be nice: get keys, iterators, etc.
