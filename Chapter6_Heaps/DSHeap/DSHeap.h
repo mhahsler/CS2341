@@ -20,50 +20,52 @@ public:
 
     bool empty() const
     {
-        return array.size() == 1;
+        return array.size() <= 1;
     }
 
     void insert(const Comparable &x)
     {
-        // add hole by placing the new value there (capacity is handled by vector)
+        // 1. place the new value in the hole (capacity is handled by vector)
         array.push_back(x);
 
-        // percolate up till x fits or we reach the root
+        // 2. percolate up till x fits or we have reached the root
         for (size_t hole = array.size() - 1; x < array[parent(hole)] && hole > 1; hole = parent(hole))
             std::swap(array[hole], array[parent(hole)]);
     }
 
     Comparable deleteMin()
     {
+        // special case: empty heap
         if (empty())
             throw std::runtime_error("heap is empty!");
 
-        // get minimum
+        // save minimum. Root is now the new hole
         Comparable min = std::move(array[1]);
         
-        // save last element and remove space
-        Comparable tmp = std::move(array[array.size() - 1]);
-        array.pop_back();
-
-        size_t hole, child;
-
-        // percolate hole down till it is a leaf (has no left child)
+        // find last element
+        Comparable& last = array[array.size() - 1];
+        
+        // percolate hole down (= move child up) till it is a leaf (has no left child)
         // or last element fits or hole
-        for (hole = 1; leftChild(hole) < array.size(); hole = child)
+        size_t hole = 1;
+        while (leftChild(hole) < array.size())
         {
-            child = leftChild(hole);
+            size_t child = leftChild(hole);
             if (child != array.size() - 1 && array[child] > array[child + 1])
                 ++child;
 
             // break if last element in the hole fits
-            if (tmp < array[child])
+            if (last < array[child])
                 break;
 
-            array[hole] = std::move(array[child]);      
+            // move child up
+            array[hole] = std::move(array[child]);  
+            hole = child;    
         }
 
-        // move last element in hole
-         array[hole] = std::move(tmp);
+        // move last element in hole and make heap smaller 
+        array[hole] = std::move(last);
+        array.pop_back();
 
         return min;
     }
