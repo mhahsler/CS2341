@@ -5,19 +5,17 @@
 #include <stdexcept>
 #include <iostream>
 
-using namespace std;
-
 template <typename Comparable>
 class DSHeap
 {
 private:
-    vector<Comparable> array;
+    std::vector<Comparable> array;
 
 public:
     explicit DSHeap()
     {
         // an empty heap is represented by vector of size 1 (the first element is not used)
-        array = vector<Comparable>(1);
+        array = std::vector<Comparable>(1);
     }
 
     bool empty() const
@@ -27,23 +25,23 @@ public:
 
     void insert(const Comparable &x)
     {
-        // add hole (capacity is handled by vector)
+        // add hole by placing the new value there (capacity is handled by vector)
         array.push_back(x);
 
         // percolate up till x fits or we reach the root
         for (size_t hole = array.size() - 1; x < array[parent(hole)] && hole > 1; hole = parent(hole))
-            swap(array[hole], array[parent(hole)]);
-
-        // Note x is already in the hole
+            std::swap(array[hole], array[parent(hole)]);
     }
 
     Comparable deleteMin()
     {
         if (empty())
-            throw runtime_error("heap is empty!");
+            throw std::runtime_error("heap is empty!");
 
-        // get minimum and create hole
+        // get minimum
         Comparable min = std::move(array[1]);
+        
+        // save last element and remove space
         Comparable tmp = std::move(array[array.size() - 1]);
         array.pop_back();
 
@@ -72,12 +70,12 @@ public:
 
     void makeEmpty()
     {
-        array.resize(1);
+        array.resize(1); // remember: The 1 element is not used!
     }
 
     void prettyPrintTree() const
     {
-        prettyPrintTree(1, "", false);
+        prettyPrintTree(1, std::string(""), false);
     }
 
 private:
@@ -92,17 +90,17 @@ private:
     }
 
     // Modified from: https://stackoverflow.com/questions/36802354/print-binary-tree-in-a-pretty-way-using-c
-    void prettyPrintTree(size_t nodeID, const string &prefix, bool isRight) const
+    void prettyPrintTree(size_t nodeID, const std::string &prefix, bool isRight) const
     {
         // base case
         if (nodeID >= array.size())
             return;
 
         // recursion
-        cout << prefix;
-        cout << (isRight ? "├──" : "└──");
+        std::cout << prefix;
+        std::cout << (isRight ? "├──" : "└──");
         // print the value of the node
-        cout << array[nodeID] << " [" << nodeID << "]"
+        std::cout << array[nodeID] << " [" << nodeID << "]"
              << "\n";
 
         // enter the next tree level - left and right branch
