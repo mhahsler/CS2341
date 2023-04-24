@@ -5,6 +5,7 @@ using namespace std;
 
 int main()
 {
+    // Note: This is a Max-Heap!
     priority_queue<int> mypq;
 
     mypq.push(30);
