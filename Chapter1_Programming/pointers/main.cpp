@@ -46,7 +46,8 @@ int main()
         cout << "m->read() != n->read()" << "\n";
 
     /* every new needs a delete! */
-    delete m, n;
+    delete m;
+    delete n;
     n = nullptr;
     m = nullptr;
     
