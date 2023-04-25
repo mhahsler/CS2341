@@ -45,7 +45,7 @@ int main()
     else
         cout << "m->read() != n->read()" << "\n";
 
-    /* every new needs a delete! */
+    /* every new needs a delete! It is good practice to set the pointers to nullptr after the delete. */
     delete m;
     delete n;
     n = nullptr;
