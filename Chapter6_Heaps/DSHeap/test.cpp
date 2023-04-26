@@ -25,7 +25,7 @@ TEST_CASE("Case 1&2", "[DSHeap]")
 
     while (!heap.empty())
     {
-        REQUIRE(heap.deleteMin() == out.back());
+        REQUIRE(heap.delete_min() == out.back());
         out.pop_back();
     }
 }
@@ -42,7 +42,7 @@ TEST_CASE("Case 1&3", "[DSHeap]")
 
     while (!heap.empty())
     {
-        REQUIRE(heap.deleteMin() == out.back());
+        REQUIRE(heap.delete_min() == out.back());
         out.pop_back();
     }
 }
@@ -59,7 +59,7 @@ TEST_CASE("string", "[DSHeap]")
 
     while (!heap.empty())
     {
-        REQUIRE(heap.deleteMin() == out.back());
+        REQUIRE(heap.delete_min() == out.back());
         out.pop_back();
     }
 }
@@ -76,7 +76,7 @@ TEST_CASE("doubles", "[DSHeap]")
 
     while (!heap.empty())
     {
-        REQUIRE(heap.deleteMin() == out.back());
+        REQUIRE(heap.delete_min() == out.back());
         out.pop_back();
     }
 }
@@ -100,7 +100,7 @@ TEST_CASE("100 random int inputs up to length 100,000", "[DSHeap]")
 
         while (!heap.empty())
         {
-            REQUIRE(heap.deleteMin() == out.back());
+            REQUIRE(heap.delete_min() == out.back());
             out.pop_back();
         }
     }

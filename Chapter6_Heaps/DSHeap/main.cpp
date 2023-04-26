@@ -14,16 +14,16 @@ int main()
     myheap.insert(25);
     myheap.insert(40);
     
-    myheap.prettyPrintTree();
+    myheap.print_tree();
 
     cout << "Removing elements...\n";
     while (!myheap.empty())
     {
-        cout << myheap.deleteMin() << "\n";
+        cout << myheap.delete_min() << "\n";
     }
     cout << endl;
 
-    // myheap.deleteMin(); // this throws an error
+    // myheap.delete_min(); // this throws an error
 
     return 0;
 }

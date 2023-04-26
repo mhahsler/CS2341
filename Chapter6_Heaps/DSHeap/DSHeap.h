@@ -33,66 +33,73 @@ public:
             std::swap(array[hole], array[parent(hole)]);
     }
 
-    Comparable deleteMin()
+  
+    Comparable delete_min()
     {
         // special case: empty heap
         if (empty())
             throw std::runtime_error("heap is empty!");
 
-        // save minimum. Root is now the new hole
+        // save minimum for return. Root is now the new hole.
         Comparable min = std::move(array[1]);
         
         // find last element
         Comparable& last = array[array.size() - 1];
         
         // percolate hole down (= move child up) till it is a leaf (has no left child)
-        // or last element fits or hole
+        // or the last element fits or hole
         size_t hole = 1;
-        while (leftChild(hole) < array.size())
-        {
-            size_t child = leftChild(hole);
-            if (child != array.size() - 1 && array[child] > array[child + 1])
-                ++child;
+        size_t left, right, child;
 
-            // break if last element in the hole fits
+        while ((left = left_child(hole)) < array.size())
+        {
+            // find to smaller child index: left or right (if it exists)
+            right = left + 1;
+            if (right < array.size() && array[left] > array[right])
+                child = right;
+            else
+                child = left;
+
+            // found position where the last element fits
             if (last < array[child])
                 break;
 
-            // move child up
+            // move child up (std::move just marks the child as moveable if it has a move assignment operator)
             array[hole] = std::move(array[child]);  
             hole = child;    
         }
 
-        // move last element in hole and make heap smaller 
+        // move last element in hole and make heap smaller (pop_back or resize can be used) 
         array[hole] = std::move(last);
         array.pop_back();
 
         return min;
     }
 
-    void makeEmpty()
+    void make_empty()
     {
         array.resize(1); // remember: The 1 element is not used!
     }
 
-    void prettyPrintTree() const
+    void print_tree() const
     {
-        prettyPrintTree(1, std::string(""), false);
+        print_tree(1, std::string(""), false);
     }
 
 private:
-    inline std::size_t leftChild(std::size_t i) const
+    // Calculates the index of the left child or the parent of the node with index i. Note: right_child is left_child + 1
+    inline std::size_t left_child(std::size_t i) const
     {
         return 2 * i;
     }
 
     inline std::size_t parent(std::size_t i) const
     {
-        return i / 2;
+        return i / 2;  // this is an int division
     }
 
     // Modified from: https://stackoverflow.com/questions/36802354/print-binary-tree-in-a-pretty-way-using-c
-    void prettyPrintTree(size_t nodeID, const std::string &prefix, bool isRight) const
+    void print_tree(size_t nodeID, const std::string &prefix, bool isRight) const
     {
         // base case
         if (nodeID >= array.size())
@@ -106,8 +113,8 @@ private:
              << "\n";
 
         // enter the next tree level - left and right branch
-        prettyPrintTree(leftChild(nodeID) + 1, prefix + (isRight ? "│   " : "    "), true);
-        prettyPrintTree(leftChild(nodeID), prefix + (isRight ? "│   " : "    "), false);
+        print_tree(left_child(nodeID) + 1, prefix + (isRight ? "│   " : "    "), true);
+        print_tree(left_child(nodeID), prefix + (isRight ? "│   " : "    "), false);
     }
 };
 

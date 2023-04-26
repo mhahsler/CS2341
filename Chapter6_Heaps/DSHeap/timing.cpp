@@ -42,7 +42,7 @@ int main()
         start = high_resolution_clock::now();
 
         while (!heap.empty())
-            heap.deleteMin();
+            heap.delete_min();
 
         stop = high_resolution_clock::now();
         auto duration_query = duration_cast<microseconds>(stop - start);
