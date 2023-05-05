@@ -154,7 +154,7 @@ If we have infix notation then we can convert it first to postfix notation using
 ```
 Read the expression left-to-right. Do the following for:
   - Operand: Add any operand (here a number) directly to the output.
-  - `(`: push on the stack.
+  - `(`: push ( on the stack.
   - `)`: pop all operators from the stack and add them to the output till an opening
     parenthesis is reached on the stack (also pop the `(` and ignore it).
   - Operator: pop all operators with higher or equal precedence (order of operations) 
@@ -169,8 +169,8 @@ We can create a expression tree from postfix notation with a stack.
 *Algorithm:*
 ```
   Read postfix expression one symbol at a time.
-  - If the next symbol is an operand then create two nodes and push pointers to the nodes to the stack.
-  - If it is an operator then 
+  - Operand: create a new node for the operand and push a pointer to the node on the stack.
+  - Operator: 
      a. pop two operand nodes from the stack and 
      b. create a tree with the operator as its root and the two operands as its children. 
      c. push a pointer to the tree on the stack
