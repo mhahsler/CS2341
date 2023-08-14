@@ -39,18 +39,18 @@ video that goes with the topic below. Note that the videos use a slightly differ
 
 To practice applying these concepts you can:
 * Solve easy and medium problems on [LeetCode](https://leetcode.com/problemset/all/) (you can log in with your GitHub account).
-* Pracktice with [HackerRank](https://www.hackerrank.com/) (you can log in with your GitHub account).
+* Practice with [HackerRank](https://www.hackerrank.com/) (you can log in with your GitHub account).
 
 
 ## Review Software Design Concepts
-* UML Class diagrams.
+* UML [Class diagrams](https://www.smartdraw.com/class-diagram/). A good tool is [smartdraw](https://www.smartdraw.com/uml-diagram/)
 * How to break a problem down into bite-sized chunks (classes, functions, etc.). Remember, you need a problem description and 
   then nouns can become classes and verbs indicate functions.
-* The idea is that a function should do one thing and it should only do that one thing.
+* Good program organization means that a function should do one thing and it should only do that one thing.
 
 To brush up your knowledge you can review the Linkedin Learning course [Programming Foundations: Object-Oriented Design](https://www.linkedin.com/learning-login/share?account=2139050&forceAccount=false&redirect=https%3A%2F%2Fwww.linkedin.com%2Flearning%2Fprogramming-foundations-object-oriented-design-3%3Ftrk%3Dshare_ent_url%26shareId%3DMy0cEP4nR%252Bmk%252Fdm%252F4xNQMA%253D%253D).
 
 
 ## Check Your Knowledge
 * Write a program that finds the 2nd smallest value in an array with only 1 loop.
-* Design a programm that can help you play Powerball (5 numbers in the range of 1-69). The program should help you generate a valid random tips for playing. Make sure you have no duplicates and that the output is sorted so it is easier to fill out the lotto ticket. It should also store your tips and check them agains the actual drawn numbers to twell you if you won something. Make sure you start with identifying use cases and a UML class diagram first.
+* Design a programm that can help you play Powerball (5 numbers in the range of 1-69). The program should help you generate a valid random tips for playing. Make sure you have no duplicates and that the output is sorted so it is easier to fill out the lotto ticket. It should also store your tips and check them agains the actual drawn numbers to tell you if you won something. Make sure you start with identifying use cases (i.e., how would the user create tips and how would the user check if she won) and a UML class diagram first.
