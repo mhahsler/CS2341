@@ -1,13 +1,14 @@
 # <img src="images/DS_Weiss_Book.jpg" align="right"> Code Examples for Data Structures
 
-C++ is widely used to implement performance-critical components of
-applications. It provides access to low-level memory management facilities
-and is therefore
-well-suited for learning about data structures and their
-efficient implementations. It will also give you a deeper understanding of how
-data structures work in programming languages that use automatic memory
-management (e.g., Java and Python).
-
+This course is designed to teach basic data structures, their implementation
+for current hardware, and their performance tradeoffs.  We will use C++, a
+language widely used to implement performance-critical components of
+applications.  C++ provides access to low-level memory management facilities
+and is therefore well-suited for learning about data structures and their
+efficient implementations. It will provide the basis for understanding the
+impact of the used data structures on memory consumption and runtime.  This
+knowledge is especially important when using managed programming languages like
+Java or Python which hide important aspects from the programmer.
 
 **Textbook:** Data Structures and Algorithm Analysis in C++ (Fourth Edition), by Mark Allen Weiss.
 Source Code by Mark Allen Weiss can be found [here.](https://users.cs.fiu.edu/~weiss/dsaa_c++4/code/)
