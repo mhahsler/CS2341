@@ -35,14 +35,12 @@ extensions installed.
 3. Configure CMake by going in the menu to `Help>Show All Commands` (or push `Shift+CTRL+P`) and type `CMake:Configure`. Choose a compiler
    (latest version of GCC or clang), a project name and that you want to create an executable.
 4. Add all used `.cpp` files in the `add_executable()` instruction in `CMakeLists.txt`.
-5. Optional: Enable warnings, other compiler options, and verbose output in `CMakeLists.txt`.
+5. Make sure that the compiler options for warnings and verbose output are enabled in `CMakeLists.txt`.
 6. Choose the CMake build variant `CMake: [Debug]` (no code optimization for debugging) or `CMake: [Release]` (fast code with code optimization).
 7. Click `Build` in the status bar (at the bottom). You can choose to only build individual executables.
   `CMake` creates a `build` directory with a `Makefile` which is used to
    build the project.
 1. Click the `Run` button in the status bar to execute the compiled program.
-
-Here is a minimal example: [hello_word](Chapter1_Programming/hello_world/)
 
 *Notes:* 
 
@@ -71,7 +69,7 @@ Here is a minimal example: [hello_word](Chapter1_Programming/hello_world/)
 1. Clone the repository using `git clone https://github.com/mhahsler/CS2341.git`
 2. Go in your shell to an example and run `code .` You can also start VS Code and
   use `Open Folder` (on Windows you need to use `Open Folder in WSL`; click on the green square in the bottom-left corner). 
-3. Follow steps above.
+3. Follow the steps above to configure CMake and build and run the example.
 
 ## License
 
