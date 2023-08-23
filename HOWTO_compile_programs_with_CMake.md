@@ -24,11 +24,16 @@ files need to be specified in the `add_executable()` line or linking will fail.
 
 ## How to Set Up a New Program
 
-1. Make a project directory using the file manager or a terminal, start VS Code and open the directory 
+Make sure you have VS Code, build tools and the `C/C++` and `Cmake Tools` 
+extensions installed.
+
+
+1. Projects are directories. Make a project directory using the file manager or a terminal, start VS Code and open the directory 
    (for WSL click on the green area and use open folder in WSL; MacOS/Linux use `File>Open Folder`).
-2. Create at least a `main.cpp` file in the directory (right-click and choose new file).
-3. Configure CMake by going in the menu to `Help>Show All Commands` (or push ) and type `CMake:Configure`. Choose a compiler
-   (latest version of GCC or clang), a project name and that you want to create an executable. This creates a file called `CMakeLists.txt`.
+2. Create at least a `main.cpp` and a `CMakeLists.txt` file in the directory 
+(you can use the ones from the [hello_world example](https://github.com/mhahsler/CS2341/tree/main/Chapter1_Programming/hello_world)).
+3. Configure CMake by going in the menu to `Help>Show All Commands` (or push `Shift+CTRL+P`) and type `CMake:Configure`. Choose a compiler
+   (latest version of GCC or clang), a project name and that you want to create an executable.
 4. Add all used `.cpp` files in the `add_executable()` instruction in `CMakeLists.txt`.
 5. Optional: Enable warnings, other compiler options, and verbose output in `CMakeLists.txt`.
 6. Choose the CMake build variant `CMake: [Debug]` (no code optimization for debugging) or `CMake: [Release]` (fast code with code optimization).
