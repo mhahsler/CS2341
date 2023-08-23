@@ -12,9 +12,12 @@ Most shells understand similar commands and being able to use a shell is needed 
 scientist with cloud-based servers. Here are a [brief introduction](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview) and
 a short [Linux command cheat sheet.](https://files.fosswire.com/2007/08/fwunixref.pdf)
 
-To use a server remotely, you can securely log into a Unix/Linux server using the [secure shell protocol (SSH)](https://en.wikipedia.org/wiki/Secure_Shell). It opens a shell on the server that you can use from your computer. You need an ssh client. Linux, Mac and WSL2 contain a client called `ssh`. A popular client for windows is [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/).
+To use a server remotely, you can securely log into a Unix/Linux server using the [secure shell protocol (SSH)](https://en.wikipedia.org/wiki/Secure_Shell). It opens a shell on the server that you can use from your computer. You need an ssh client. Linux, Windows Powershell, Mac and WSL2 contain a client called `ssh`.
+It is often convenient to login automatically without using the password. This can be done by setting up a ssh key ([OpenSSH key management](https://en.wikipedia.org/wiki/Secure_Shell)).  
+
 
 For SMU students: [Information on how to use SMU's Genuse servers](https://www.smu.edu/OIT/Services/genuse).
+
 
 
 ## License
