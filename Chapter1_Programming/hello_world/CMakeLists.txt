@@ -2,10 +2,10 @@
 #
 # You can open the folder in VS Code with
 # > code .
-# and push build in the bottom status bar. Choose gcc 11 as the compiler.
+# and push build in the bottom status bar. Choose GCC with the latest version as the compiler.
 #
 # you can also go to the directory in your shell and use
-# > cmake . -B build
+# > cmake . -B build -G "Unix Makefile"
 # to create a Makefile and
 #
 # > cd build
