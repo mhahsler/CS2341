@@ -39,11 +39,13 @@ For example the STL data structure `std::vector` can is a templated class and ca
 The templated datatype becomes part of the function signature/class name.
 
  Notes: 
- * Always assume that the template data type may not be a primitive data type so be careful with 
-   copying and comparing.
- * Always assume that someone will use your class in an ADT like `std::vector`, so it needs to provide the Rule-of-three!
+ * Class templates need to be currently implemented as a header only class which means that it has only a `.h``, all the code is in the 
+    header file, and this file needs to be added to the `CMakeLists.txt`` file for compilation.
  * Template matching and code generation happens at compile time.
  * Template matching can be ambiguous which will lead to a compilation error.
+ * Always assume that someone will use your templated code with a non-primitive template data type so be careful with 
+   copying and comparing.
+ * Always assume that someone will use your class in a templated ADT like `std::vector`, so it needs to provide at least the Rule-of-three!
  * Some template type names suggest properties of the object:
    - **Object**: Has a default constructor, a copy constructor, an assigned operator (`operator=`), and comparison 
      (`operator==`) implemented.
