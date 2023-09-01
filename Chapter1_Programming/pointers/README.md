@@ -70,7 +70,7 @@ int main() {
 
   delete [] b;
 
-return 0;
+  return 0;
 }
 ```
 
