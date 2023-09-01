@@ -18,7 +18,7 @@ The programmer uses the following keywords for dynamic memory allocation:
 **Caution:** Dynamic memory allocation is prone to leading to memory leaks!!! \
 A simple rule is that every `new` needs a `delete`.
 
-**Advice:** Use `new` only when you have to. Data structures in the STL often do dynamic memory allocation for us.
+**Advice:** Use `new` only when you have to. Data structures in the STL often do dynamic memory management for us.
  
 Managed languages (like Java and Python) provide automatic memory management. A popular strategy is  
   [garbage collection](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) with reference counts.  
@@ -51,15 +51,27 @@ pointer to the first element of the array. We can add or subtract numbers from a
 forward or backward. This is called pointer arithmetic.
 
 ```cpp
-int a[] = {0,1,2,3};
-int* a_ptr = a;
+int main() {
 
-// this is the same as a[2] or *(a+2)
-a_ptr += 2;
-cout << *a_ptr << "\n";
+  // create an array on the stack (you can also use int a[4];)
+  int a[] = {0,1,2,3};
+  int* a_ptr = a;
 
---a_ptr;
-cout << *a_ptr << "\n";
+  // this is the same as a[2] or *(a+2)
+  a_ptr += 2;
+  std::cout << *a_ptr << "\n";
+
+  --a_ptr;
+  std::cout << *a_ptr << "\n";
+
+  // allocate an array on the heap
+  int* b = new int[4];
+  *b = 1;
+
+  delete [] b;
+
+return 0;
+}
 ```
 
 **Advice:** C arrays are horrible! The size is fixed, they don't know how big they are, and the boundaries are not checked!
