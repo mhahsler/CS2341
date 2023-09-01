@@ -33,7 +33,6 @@ Pointers store the memory address of an object.
  * `==` pointer addresses are compared not the objects!
  * `&` (address-of-operator) returns the address of a variable (can be stored in a pointer to the variable).
  * `*` (dereference operator) returns the object at the address the pointer points to.
- 
 
 **Important Notes:** 
 * References (`int& i_ref = i;`) and 
@@ -44,7 +43,25 @@ Pointers store the memory address of an object.
 * While some programmers prefer to write `int* p;` to stress that the `*` modifies the declaration to declare an int pointer,
   it is often also written as `int *p;`. The same is true for defining references.
 
-# Pointer Arithmetic: Arrays and Pointers
+ 
+```cpp
+int main() {
+
+  int a = 10;
+  int* p = &a; // create a pointer to a using the address-of-operator
+  int& b = a;   // create a reference for a
+
+  std::cout << "a = " << a << "; *ptr = " << *ptr << "; b = " << b << "\n";
+
+  b++;
+  std::cout << "a = " << a << "; *ptr = " << *ptr << "; b = " << b << "\n";
+
+  return 0;
+}
+```
+
+
+# Arrays and Pointers
 
 Arrays are a relict from C. They can be allocated on the stack or on the heap. The name of the array can be assigned to a
 pointer to the first element of the array. We can add or subtract numbers from a pointer to move in the array 
