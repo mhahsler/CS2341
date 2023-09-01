@@ -42,7 +42,7 @@
   strcpy(char *destination, const char *source) {...}
   ```
 
-  copies the string in `source` to `destination` (see [strcpy in library string.h](https://en.cppreference.com/w/c/string/byte/strcpy)). This is typically not 
+  copies the string in `source` to `destination` (see [strcpy in library cstring/string.h](https://en.cppreference.com/w/c/string/byte/strcpy)). This is not 
   used in C++ unless we deal with C-style arrays which we want to avoid, or functions that come from a C library.
 
 # Return passing
