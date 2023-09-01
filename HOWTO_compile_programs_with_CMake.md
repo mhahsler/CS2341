@@ -9,8 +9,8 @@ The two popular tool chains used in this class are:
 
 Compilation consists of two steps (LLVM uses a few more to allow for a source and target-independent intermediate representation):
 
-1. **Compilation** of each `.cpp` file to object code ending in `.o`. During this step code optimization is typically performed.
-2. **Linking** all `.o` files and external libraries together to create the executable.
+1. **Compilation** of each `.cpp` file to object code ending in `.o`. During this step code optimization is typically performed. See [Compiler](https://en.wikipedia.org/wiki/Compiler).
+2. **Linking** all `.o` files and external libraries together to create the executable. See [Linker](https://en.wikipedia.org/wiki/Linker_(computing)).
 
 The GCC C++ compiler and linker can be called from the terminal as `g++ -O3 <list all .cpp files>`.
 
