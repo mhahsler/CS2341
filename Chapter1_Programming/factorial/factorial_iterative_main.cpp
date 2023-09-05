@@ -8,10 +8,8 @@
 
 double factorial_iterative(int number)
 {
-    if (number < 0) {
-        std::cerr << "Warning: factorial is not defined for negative numbers! Returning -1" << "\n";
-        return -1;
-    }
+    if (number < 0)
+        throw std::runtime_error("factorial is not defined for negative numbers!");
     
     double fac = 1;
     for (auto i = number; i > 1; --i)

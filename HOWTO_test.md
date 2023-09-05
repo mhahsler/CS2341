@@ -1,12 +1,15 @@
 # How to Run Tests
 
-You should write tests for every component (e.g., class or algorithm) before
-you even write the code. These types of tests are called [unit tests](https://en.wikipedia.org/wiki/Unit_testing) and the 
-approach is called [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development). Your tests should make sure that your component
-produces the correct results. Especially, you need to test edge cases like
-calling a function with a negative number, although it should only work with positive numbers.  
+You should always write tests for every component (e.g., class or algorithm) **before
+you even write the code.** 
+These types of tests are called [unit tests](https://en.wikipedia.org/wiki/Unit_testing) and the 
+approach is called [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development). Your tests should make sure that your component produces the correct results.
+This way you already think about how to get the right answer, special cases (e.g., 
+calling a function with a negative number, although it should only work with positive numbers), and
+how each component's interface should look like. 
 
-You can write a main function that contains test code that throws `std::runtime_error` if a test fails. 
+A simple approach is to write a **main function that executes test cases** by creating instances, calling functions and testing if they return the expected values. 
+Your test main function can throw `std::runtime_error` if a test fails. 
 
 However, most development environments provide automated testing that can be
 used with a unit testing framework.
