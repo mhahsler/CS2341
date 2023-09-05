@@ -9,7 +9,7 @@ calling a function with a negative number, although it should only work with pos
 how each component's interface should look like. 
 
 A simple approach is to write a **main function that executes test cases** by creating instances, calling functions and testing if they return the expected values. 
-Your test main function can throw `std::runtime_error` if a test fails. 
+Your test main function can report failed tests using `std::cerr` or throw a runtime error using `std::runtime_error`. 
 
 However, most development environments provide automated testing that can be
 used with a unit testing framework.
