@@ -48,7 +48,7 @@ Pointers store the memory address of an object.
 int main() {
 
   int a = 10;
-  int* p = &a; // create a pointer to a using the address-of-operator
+  int* ptr = &a; // create a pointer to a using the address-of-operator
   int& b = a;   // create a reference for a
 
   std::cout << "a = " << a << "; *ptr = " << *ptr << "; b = " << b << "\n";
@@ -76,10 +76,10 @@ int main() {
 
   // this is the same as a[2] or *(a+2)
   a_ptr += 2;
-  std::cout << *a_ptr << "\n";
+  std::cout << "a_ptr point to value:" << *a_ptr << "\n";
 
   --a_ptr;
-  std::cout << *a_ptr << "\n";
+  std::cout << "a_ptr point to value:" << *a_ptr << "\n";
 
   // allocate an array on the heap
   int* b = new int[4];
@@ -93,6 +93,10 @@ int main() {
 
 **Advice:** C arrays are horrible! The size is fixed, they don't know how big they are, and the boundaries are not checked!
 Only use them if you have to. A better solution is `std::vector`.
+
+# Exercise
+
+Draw a memory diagram for the main function in the example in IntCell_ptr.
 
 # Question
 * Pointers store memory addresses. Why do we need to specify the datatype it points to? Example:
