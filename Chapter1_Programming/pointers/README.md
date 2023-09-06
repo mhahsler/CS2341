@@ -94,9 +94,10 @@ int main() {
 **Advice:** C arrays are horrible! The size is fixed, they don't know how big they are, and the boundaries are not checked!
 Only use them if you have to. A better solution is `std::vector`.
 
-# Exercise
+# Exercises
 
-Draw a memory diagram for the main function in the example in IntCell_ptr.
+* Draw a memory diagram for the main function in the example in [IntCell_ptr](IntCell_ptr).
+* Use the debugger to run the program and verify that your memory diagram is correct.
 
 # Question
 * Pointers store memory addresses. Why do we need to specify the datatype it points to? Example:
