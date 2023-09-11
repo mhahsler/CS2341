@@ -9,7 +9,9 @@ implementation, but a mathematical abstraction which defines
 * operations (e.g., insert, delete).
 
 Data structures are different implementations of abstract data types.
-Often the name [**container**](https://en.wikipedia.org/wiki/Container_(abstract_data_type)) is used for ATDs.
+Often the name [**container**](https://en.wikipedia.org/wiki/Container_(abstract_data_type))) is used for ATDs.
+The STL's main purpose it to provide [containers](https://cplusplus.com/reference/stl/) implementing all commonly used
+data structures.
 
 ## Iterators
 
