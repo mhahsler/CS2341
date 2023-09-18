@@ -25,6 +25,11 @@ Here is some pseudocode (the full implementation is in [DSVector.h](DSVector.h))
 template <typename Object>
 class DSVector
 
+protected:                      // so subclasses have access
+  size_t theSize;               // logical size
+  size_t theCapacity;           // size + space to grow
+  Object *objects;              // array of length capacity
+
 public:
   // Default Constructor: Create an new DSVector
   explicit DSVector(size_t initSize = 0)
@@ -114,9 +119,5 @@ public:
   const_iterator begin() const {...}
   iterator end() {...}
   const_iterator end() const {...}
-
-
-private:
-  // add members including an array of the template type
 };
 ```
