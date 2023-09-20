@@ -21,7 +21,7 @@ m[1][1] = 1;
 **Don't do this!**
 
 For matrices and efficient matrix operations, you should think 
-[_BLAS (Basic Linear Algebra Subprograms)_](https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms). BLAS is the standard used in most programming languages (NumPy, R, MATLAB). For C++ you should look at [uBLAS in the C++ Boost Libraries](https://www.boost.org/doc/libs/1_63_0/libs/numeric/ublas/doc/index.html).
+[_BLAS (Basic Linear Algebra Subprograms)_](https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms). BLAS is the standard used in most programming languages (NumPy, R, MATLAB). For C++ you should look at [uBLAS in the C++ Boost Libraries](https://www.boost.org/doc/libs/1_71_0/libs/numeric/ublas/doc/index.html).
 
 The standard representation is
  ```cpp
