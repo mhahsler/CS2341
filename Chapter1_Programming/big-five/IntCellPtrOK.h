@@ -19,7 +19,7 @@ public:
     /*
      * Correct use the Rule-of-3: Destructor, copy constructor and copy assignment.
      *
-     * Note: C++11 added move constructor and assignment for lvalues to avoud copying in some cases. We will
+     * Note: C++11 adds move constructor and assignment for rvalue references to avoid copying in some cases. We will
      *       not use them in class.
      */
     ~IntCellPtrOK();
