@@ -12,7 +12,7 @@ private:
 public:
     /*
      * Whenever you have dynamic memory allocation, then you also need to define a default constructor that 
-     * allocates the memory for a valid object.
+     * allocates the memory for a valid object. The default constructor is here defined using a default value.
      */
     explicit IntCellPtrOK(int initialValue = 0);
 
