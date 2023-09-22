@@ -14,9 +14,9 @@ typedef boost::numeric::ublas::matrix<double> matrix_double;
 int main()
 {
     matrix_double m(3, 3);
-    for (unsigned i = 0; i < m.size1(); ++i)
-        for (unsigned j = 0; j < m.size2(); ++j)
-            m(i, j) = 3 * i + j;
+    m(0, 0) = 1;
+    m(1, 1) = 2;
+    m(2, 2) = 3;
 
     // use the builtin print function        
     std::cout << m << "\n\n";
