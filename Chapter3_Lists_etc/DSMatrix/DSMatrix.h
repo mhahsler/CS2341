@@ -18,6 +18,7 @@ public:
     {
         data = new Object[_cols * _rows];
     }
+    // Note: this class does not have a default constructor!
 
     // The Rule three
     ~DSMatrix()
@@ -41,19 +42,19 @@ public:
 
     // TODO: C++11 move versions would be nice (Big five)
 
-    // We would overload [], but C++ currently does not
+    // We would overload operator[] for row and column index but C++ currently does not
     // allow more then one parameters for []
     //
     // We use **column major** order, which is the standard.
     //
     // TODO: checking bounds for col and row would be a good idea
-    Object &operator()(size_t col, size_t row)
+    Object &operator()(size_t row, size_t col)
     {
         return data[col * rows + row];
     }
     
     // We return a const reference for const objects
-    const Object &operator()(size_t col, size_t row) const
+    const Object &operator()(size_t row, size_t col) const
     {
         return data[col * rows + row];
     }
@@ -74,7 +75,7 @@ public:
         for (size_t r = 0; r < m.nrows(); ++r)
         {
             for (size_t c = 0; c < m.ncols(); ++c)
-                os << m(c, r) << " ";
+                os << m(r, c) << " ";
             os << "\n";
         }
 
