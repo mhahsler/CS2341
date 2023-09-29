@@ -4,6 +4,7 @@
 // This is an incomplete implementation of a matrix class using a single array.
 
 #include <iostream>
+#include <stdexcept>
 
 template <typename Object>
 class DSMatrix
@@ -47,9 +48,12 @@ public:
     //
     // We use **column major** order, which is the standard.
     //
-    // TODO: checking bounds for col and row would be a good idea
+    // Since size_t is unsigned, we don't have to do checks for less than 0
     Object &operator()(size_t row, size_t col)
     {
+        if (row >= rows || col >= cols) {
+            throw std::invalid_argument("Out of bounds!");
+        }
         return data[col * rows + row];
     }
     
