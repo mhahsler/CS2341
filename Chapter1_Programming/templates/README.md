@@ -2,7 +2,8 @@
 
 Templates let us define generic algorithms that are data type independent (i.e., work with ADTs). This
 is beneficial because we do not have to write multiple versions of the same code, just to work with different 
-data types.
+data types. Many programming languages provide this concept. In Java it is called [Generics](https://www.tutorialspoint.com/java/java_generics.htm) with a similar syntax to C++. Python provides generic types using [type hints](https://docs.python.org/3/library/typing.html) for the same purpose.  
+
 
 Example: The following overloaded functions
 

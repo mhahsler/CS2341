@@ -34,7 +34,7 @@ Here are the concepts that you need to know and be able to apply:
  
 You can brush up your knowledge using the following resources.
 * Here is the Linked-in-learning course [C++ Essential Training](https://www.linkedin.com/learning-login/share?account=2139050&forceAccount=false&redirect=https%3A%2F%2Fwww.linkedin.com%2Flearning%2Fc-plus-plus-essential-training-15106801%3Ftrk%3Dshare_ent_url%26shareId%3DY6vgr5xvTmym7SM7gNWfkA%253D%253D). SMU students have a free subscription ([log in here](https://www.smu.edu/OIT/Services/linkedin)).
-* You can also use [this very good series of short C++ videos](https://wVww.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb) to refresh your knowledge or learn new topics that you are missing. A good idea is to watch a 15 minute video every day or you can just find the 
+* You can also use [this very good series of short C++ videos](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb) to refresh your knowledge or learn new topics that you are missing. A good idea is to watch a 15 minute video every day or you can just find the 
 video that goes with the topic below. Note that the videos use a slightly different IDE (Visual Studio instead of Visual Studio Code).
 
 To practice applying these concepts you can:

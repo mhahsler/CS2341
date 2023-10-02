@@ -16,10 +16,10 @@ TEST_CASE("Simple Factorials", "[factorial]")
     
     // issue cases
     // we can't test negative numbers because the argument is unsigned! This 
-    // is design issue.
+    // is a design issue!
     //CHECK_THROWS(factorial(-1));
     
-    // This test fails!
+    // This test fails because we return an unsigned int. Another design issue!
     //CHECK(factorial(100) == 9.332622e+157);
 }
 

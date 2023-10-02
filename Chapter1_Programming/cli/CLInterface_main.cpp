@@ -12,16 +12,25 @@ using namespace std;
  * @return int status of the program. 0 means success.
  */
 int main(int argc, char** argv) {
+    
+    if (argc < 2) {
+        cout << "Usage: " << argv[0] << " <filename> [<more arguments>]\n";
+        return 1;
+    }
+    
     cout << "You have entered " << argc
-         << " arguments:" << "\n";
+         << " command line arguments:" << "\n";
   
     for (int i = 0; i < argc; ++i)
-        cout << argv[i] << "\n";
+        cout << "argv[" << i << "]: " << argv[i] << "\n";
 
     return 0;
 }
 
-// open the terminal, go to the build directory and try:
-// ./CLInterface a b c=d e = f "g = h"
-// ./CLInterface *
-// ./CLInterface *.cmake
+/* open the terminal, go to the build directory and try:
+ cd build
+ ./CLInterface
+ ./CLInterface test.txt b c=d e = f "g = h"
+ ./CLInterface *
+ ./CLInterface *.cmake
+ */

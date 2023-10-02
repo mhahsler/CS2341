@@ -10,6 +10,7 @@
 int main()
        {
            char filename[] = "./test.txt";
+           // Note: the program runs in the build build folder and cmake copies the test.txt file there 
            FILE *stream;
            
            // set up the buffer

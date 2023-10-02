@@ -15,6 +15,7 @@ protected:
 
 public:
   // Default Constructor: Create an empty DSVector. Call this as DSVector<int> v(4);
+  // Note: explicit prevents the compiler from using this constructor for implicit conversions from int to DSVector<int>
   explicit DSVector(size_t initSize = 0)
       : theSize{initSize}, theCapacity{initSize}
   {
@@ -77,10 +78,10 @@ public:
     return *this;
   }
 
-  // The remaining Big-Five are optional but recommended for C++11 since they prevent
+  // The remaining two functions of the Big-Five are optional but recommended for C++11 since they prevent
   // copying objects unnecessarily. The compiler knows when dynamically allocated memory
   // can be moved from one object to another.
-  // Big-Five: C++11 Move constructor ... "steals" the pointer from the rhs 
+  // Big-Five: C++11 Move constructor ... "steals" the pointer from the rhs before the rhs gets destroyed 
   DSVector(DSVector &&rhs)
       : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{rhs.objects}
   {
@@ -91,7 +92,7 @@ public:
   }
 
   // Big-Five: C++11 move assignment operator: swaps all elements with rhs using std::swap()
-  // std::move() is also useful. It marks an object as moveable (casts them  to &&).
+  // std::move() is also useful. It marks an object as moveable (casts the object to &&).
   DSVector &operator=(DSVector &&rhs)
   {
     std::swap(theSize, rhs.theSize);
@@ -119,7 +120,7 @@ public:
     return theCapacity;
   }
 
-  // subscript operator
+  // subscript operator (non-const object)
   Object &operator[](size_t index)
   {
     // size_t is always >=0!

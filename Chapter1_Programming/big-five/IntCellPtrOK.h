@@ -10,12 +10,16 @@ private:
     int *storedValue;
 
 public:
+    /*
+     * Whenever you have dynamic memory allocation, then you also need to define a default constructor that 
+     * allocates the memory for a valid object. The default constructor is here defined using a default value.
+     */
     explicit IntCellPtrOK(int initialValue = 0);
 
     /*
      * Correct use the Rule-of-3: Destructor, copy constructor and copy assignment.
      *
-     * Note: C++11 added move constructor and assignment for lvalues to avoud copying in some cases. We will
+     * Note: C++11 adds move constructor and assignment for rvalue references to avoid copying in some cases. We will
      *       not use them in class.
      */
     ~IntCellPtrOK();

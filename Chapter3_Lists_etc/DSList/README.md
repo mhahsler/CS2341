@@ -51,7 +51,7 @@ Note: In C++, `structs` are just classes with all public members. We often use t
 - `empty()` ... is the list empty
 - `clear()` ... make the list empty
 
-**Example:** A [singly-linked list using iterators](DSList_iter.h) and [main.cpp](main.cpp).
+**Example:** A [singly-linked list using iterators](DSIteratorList.h) and [main.cpp](main.cpp).
 
 Some implementations use sentinel nodes.
 A sentinel node is an "empty" node that is used to avoid special code for empty lists.

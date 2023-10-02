@@ -10,6 +10,7 @@ int main()
 {
 
     // Example 1: read a single file using fstream
+    // Note: the program runs in the build build folder and cmake copies the test.txt file there 
     ifstream file_input("./test.txt");
 
     // line buffer

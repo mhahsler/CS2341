@@ -1,54 +1,10 @@
-# Command Line Interface
-
-The Command Line Interface (CLI) is the most important interface for most programs. The CLI consists of a 
-number of parameters passed on to a program when it is started from the shell (terminal). Here is a 
-[HOWTO on using the shell](https://github.com/mhahsler/CS2341/blob/main/HOWTO_shell_and_ssh.md). 
-
-
-Code Example: [Using the CLI.](CLInterface_main.cpp)
-
-You can
-
-1. Manually run the built executable with command line arguments. Open the terminal, go to the build directory and try:
-
-   ```
-   ./CLInterface a b c=d e = f "g = h"
-   ./CLInterface *
-   ./CLInterface *.cmake
-   ```
-
-
-2. Set the command line arguments in VS Code and CMake:
-   * `CTRL-SHIFT+P` `settings.json` choose `Preferences: Open Work Space Settings`. This creates settings.json in the .vscode folder.
-   * Add the following lines: 
-     ```
-     {
-     "cmake.debugConfig": {
-        "args": [
-            "argument_1",
-            "argument_2"
-        ]
-       }
-     }
-     ```
-
-**Notes:** 
-
-* Arguments cannot have a space unless they are in (escaped) quotation marks.
-* `*` is expanded by the shell to matching file names in a directory.
-
-
 # File I/O
 
 We will use reading text files in this class. Reading files involves asking the operating system for the file content. There are two options in C++.
 
-1. C-Style File I/O
-   
-   C file I/O uses cstring buffers and interacts more directly with the operating system.
+**Important:** Do not mix these two approaches! If you have a choice, then use C++-style since it is easier and safer!
 
-   Example: [C file I/O example](fileIO_cstring_main.cpp)
-
-2. C++-Style File I/O
+## C++-Style File I/O
    
    C++ file I/O uses streams and `std::string` and is much more convenient.
    C++ also provides convenient access to filesystem operations (copy files, deal with paths, iterate over files, etc.),
@@ -56,6 +12,21 @@ We will use reading text files in this class. Reading files involves asking the 
    `CMakeLists.txt` to use this standard C++ version.
 
    Example: [C++ file I/O example](fileIO_cpp_main.cpp)
+ 
+## C-Style File I/O
+   
+   C file I/O uses cstrings and buffers. It interacts more directly with the operating system. You need to be careful about buffer overflows (a type of memory leak)!
 
-**Important:** Do not mix these two approaches! C++-style is probably the better choice.
+   Example: [C file I/O example](fileIO_cstring_main.cpp)
+
+## Organizing files in your project
+
+Here are some considerations about where files in your project should be and where your program should write files:
+
+1. **Never use absolute paths** starting with `/` or on Windows with `C:`. Use relative paths starting with `./`
+2. VS Code creates a build directory and your program will be executed in that directory. All data files should 
+   be in that directory and the files your program creates should go the there as well. **Never read from or write to the directory with your source code** using `../`! Data is copied to the build directory by the `CMakeLists.txt` 
+   with lines like `file(COPY test.txt DESTINATION .)`.
+
+
 
