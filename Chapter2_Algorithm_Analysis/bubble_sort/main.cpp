@@ -47,6 +47,8 @@ int main()
 
     size_t N = 10;
     int* array = randomArray(N);
+    std::cout << "Original array: \n";
+    printArray(array, N);
 
     bubbleSort(array, N);
     
