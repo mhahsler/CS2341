@@ -11,7 +11,7 @@ how each component's interface should look like.
 A simple approach is to write a **main function that executes test cases** by creating instances, calling functions and testing if they return the expected values. 
 Your test main function can report failed tests using `std::cerr` or throw a runtime error using `std::runtime_error`. 
 
-However, most development environments provide automated testing that can be
+However, testing is so important that most development environments provide automated testing that can be
 used with a unit testing framework.
 We will use a simple header-based unit testing framework called
 [Catch2](https://github.com/catchorg/Catch2). It can be [integrated with CMake/CTest](https://github.com/catchorg/Catch2/blob/devel/docs/cmake-integration.md), but we will use the stand alone version. Another popular framework is
@@ -24,7 +24,7 @@ Here is an [example with tests.](Chapter1_Programming/factorial)
 Steps for using Catch2:
 
 1. Add the directory with the single include version of Catch2 to your project (copy directory `catch2` from [this example.](Chapter1_Programming/factorial)). 
-2. You need a test file like `factorial_test.cpp` in the [testing example](Chapter1_Programming/factorial/) to define test cases and required outputs. There are [several assertion macros](https://github.com/catchorg/Catch2/blob/v2.x/docs/assertions.md) available.
+2. You need a test file like `factorial_test_catch.cpp` in the [testing example](Chapter1_Programming/factorial/) to define test cases and required outputs. There are [several assertion macros](https://github.com/catchorg/Catch2/blob/v2.x/docs/assertions.md) available.
 3. Add the test to `CMakeLists.txt`. The lines should look like (see [testing example](Chapter1_Programming/factorial/) for complete file):
    ```
    # testing with the single_include versions of Catch2 V2 (in directory catch2)
