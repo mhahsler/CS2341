@@ -202,7 +202,7 @@ STL implementations of Binary Search trees: STL provides
   [std::set](https://cplusplus.com/reference/set/set/) and [std::map](https://cplusplus.com/reference/map/map/) based on binary search trees.
   The stored key objects need to be `Comparable` with a definition of `bool operator<(const &) const` 
   (since $a < b$ can be used for $b < a$, we can also get $a == b$) or a function object 
-  (see [comparator example in Chapter 1](../Chapter1_Programming/comparator)).
+  (see [comparator example in Chapter 1](https://github.com/mhahsler/CS2341/tree/main/Chapter1_Programming/comparator)).
 
 Examples: [How to use STL sets and maps](STLSetMap)
 
@@ -211,7 +211,7 @@ Example: **Binary Tree Search is equivalent to Binary Search.** A balanced searc
 ## Maps
 
 Maps are [associative containers](https://en.wikipedia.org/wiki/Associative_containers) that relate a key to a value. That is, it maps
-the set of keys onto the set of values in a 1-1 fashon.
+the set of keys onto the set of values in a 1-1 fashion.
 
 $$f: keys \rightarrow values$$
 
