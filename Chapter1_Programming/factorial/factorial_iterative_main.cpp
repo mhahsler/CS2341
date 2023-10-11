@@ -43,8 +43,6 @@ int main()
         
         
         std::cout << "(-1)! = " << factorial_iterative(-1) << "\n";
-
-
     }
     catch (std::runtime_error &e)
     {
