@@ -68,7 +68,11 @@ C++ has the C++ Standard Template Library (STL).
 * [Recursion to calculate factorials.](factorial)
 
 ## Testing
-* [Testing a function to calculate factorials.](factorial)
+
+All code needs tests! 
+Ways of testing are described in [HOWTO Test.](../HOWTO_test.md)
+
+Example: [Testing a function to calculate factorials.](factorial)
 
 
 ## License
