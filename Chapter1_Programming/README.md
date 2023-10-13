@@ -4,9 +4,13 @@ This chapter is a review of important concepts and their C++ implementation
 used in this course. Very good short explanations can be found in this
 [C++ YouTube Playlist](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb).
 
-## Classes and Templates
-* A simple class called [IntCell](IntCell)
-* [Function and class templates](templates)
+## Classes and Compiling
+* A simple class called [IntCell](IntCell).
+* What does the [compiler](https://en.wikipedia.org/wiki/Compiler), the [linker](https://en.wikipedia.org/wiki/Linker_(computing)),
+  and the [loader](https://en.wikipedia.org/wiki/Loader_(computing)) do?
+
+## Templates (a.k.a. Generics)
+* [Function and class templates](templates).
 
 ## Dynamic Memory Allocation and Pointers
 * Some Questions:
@@ -14,8 +18,9 @@ used in this course. Very good short explanations can be found in this
   - Where does memory come from and how is memory returned?
   - Why do we need dynamic memory allocation?
   - What is the difference between the stack and the heap.
+  - What happens when you access memory that is not yours?
 
-  See [program memory](https://en.wikipedia.org/wiki/Data_segment).
+  See [program memory](https://en.wikipedia.org/wiki/Data_segment), [segmentation fault](https://en.wikipedia.org/wiki/Segmentation_fault).
 
 * Example: Create a memory diagram for executing the following program:
 
