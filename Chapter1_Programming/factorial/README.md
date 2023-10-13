@@ -49,7 +49,14 @@ For the factorial problem we have (see [factorial.cpp](factorial.cpp)):
 # Testing
 
 Algorithms need tests. I have placed the function `factorial` into its own file and added a header, so I can use it in multiple 
-executables. There are two versions of tests here `factorial_test_main` using a simple main function and the tests are checked fwith `if` statements and `factorial_test_catch` contains tests using the `Catch2` library. Details on writing tests and how to setup `CMakeLists.txt` can be found in the [HOWTO Test.](../../HOWTO_test.md)
+executables. There are two versions of tests here:
+
+* `factorial_test_main` using a simple main function and the tests are checked with `if` statements.
+* `factorial_test_catch` contains tests using the `Catch2` library. 
+
+You only need one version of tests!
+
+Details on writing tests and how to setup `CMakeLists.txt` can be found in the [HOWTO Test.](../../HOWTO_test.md)
 
 Note: compiling Catch2 is very slow. You can build instead of `[all]` 
 just the executable that you are working on to speed up your development cycle.
