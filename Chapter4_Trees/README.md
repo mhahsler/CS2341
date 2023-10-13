@@ -19,7 +19,7 @@ More naming conventions:
 * A __path__ is a sequence along edges. The __path length__ is the number of edges.
 * The __depth__ of a node is the length of the path from the root node $r$ to the node 
   (there is only on path). 
-* The path from a node to the farthest leaf node is called the node's __height.__ Note that the hight is the number of levels minus 1.
+* The path from a node to the farthest leaf node is called the node's __height.__ Note that the height is the number of levels minus 1.
 * A tree where a node can have at most $M$ children is called an __$M$-ary tree.__
 
 Observations:
