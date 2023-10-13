@@ -15,7 +15,7 @@ data structures.
 
 ## Iterators
 
-[Iterators](https://en.wikipedia.org/wiki/Iterator) are an abstraction to represent a position in a ADT. This is similar to the index in an array. STL provides [std::iterator](https://cplusplus.com/reference/iterator/iterator/?kw=iterator) and we use the STL notation below.
+[Iterators](https://en.wikipedia.org/wiki/Iterator) are an abstraction to represent a position in an ADT. This is similar to the index in an array. STL provides [std::iterator](https://cplusplus.com/reference/iterator/iterator/?kw=iterator) and we use the STL notation below.
 
 Iterators are
 * a generalization of pointers to elements in the ADT.

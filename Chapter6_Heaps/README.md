@@ -8,7 +8,7 @@ Basic Operations:
 
 Options:
 * Unsorted array: $O(N)$
-* A balanced binary search tree: $O(log\ N)$. With out balancing, the tree would get right-heavy because we always delete the minimum from the left side.
+* A balanced binary search tree: $O(log\ N)$. Without balancing, the tree would get right-heavy because we always delete the minimum from the left side.
 * Use a **new specialized binary heap data structure** that has faster access to the minimum and does not need rotations for balancing.
 
 Note: This data structure is very different from regular queues and not related
@@ -32,7 +32,7 @@ Note: This tree is always balanced (structure property) but the heap-order prope
 
 **insert:** move the "hole" up the tree till the new element can be inserted in the hole without violating the heap-order property. This operation is called _percolate up_. The worst case is to insert a new minimum with $O(log\ N)$ because the hole has to be moved up all the way to the root.
 
-**deleteMin:** remove the root node (with the minimum key) and then move the resulting hole down the smaller of the children till the "last element" in the tree can be placed in the hole without violating the heap-order property. This operation is called _percolate down_. 
+**deleteMin:** remove the root node (with the minimum key) and then move the resulting hole down the smallest of the children till the "last element" in the tree can be placed in the hole without violating the heap-order property. This operation is called _percolate down_. 
 Worst case is $O(log\ N)$.
 
 **Note:** This data structure is not good for finding an arbitrary element. We would have to scan the complete tree with $O(N)$ operations!
