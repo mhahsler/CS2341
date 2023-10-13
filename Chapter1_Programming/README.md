@@ -9,9 +9,6 @@ used in this course. Very good short explanations can be found in this
 * What does the [compiler](https://en.wikipedia.org/wiki/Compiler), the [linker](https://en.wikipedia.org/wiki/Linker_(computing)),
   and the [loader](https://en.wikipedia.org/wiki/Loader_(computing)) do?
 
-## Templates (a.k.a. Generics)
-* [Function and class templates](templates).
-
 ## Dynamic Memory Allocation and Pointers
 * Some Questions:
   - Where do programs store variables and objects?
@@ -47,6 +44,9 @@ used in this course. Very good short explanations can be found in this
 * Exercise: [Memory allocation](memory)
 * Destructor, copy constructor, assignment operator, and move semantics: [The rule of three and the big five](big-five) for classes.
 
+## Templates (a.k.a. Generics)
+* [Function and class templates](templates).
+
 ## Standard Template Library
 
 Most programming languages come with a library of ready-to-use data structures (abstract data types often called collections) and algorithms to supplement
@@ -58,11 +58,11 @@ C++ has the C++ Standard Template Library (STL).
 * Examples: [Arrays vs STL vectors and C-strings vs STL strings.](vector_string)
 * [How to compare objects](comparator) (`operator<` and function objects)
 
-## Command Line Interface
-* [The command line interface (CLI)](cli)
-
 ## File IO
 * [File IO](io)
+
+## Command Line Interface
+* [The command line interface (CLI)](cli)
 
 ## Recursion
 * [Recursion to calculate factorials.](factorial)
