@@ -7,14 +7,14 @@ the set
 $$\{3, 6, 7\}$$ 
 contains three elements. Sets cannot contain duplicate entries and the order of elements is irrelevant. Typical operations for sets are to determine if a set contains a specific element (which requires finding it) and set operations between sets (union, intersection, etc.).
 
-A [map](https://en.wikipedia.org/wiki/Associative_array) in computer science is a collection of of $(key, value)$ pairs. Maps are often also called associative arrays, dictionaries,
-or just look-up tables. In math, a map represents a a function with finite domain represented by a table. 
+A [map](https://en.wikipedia.org/wiki/Associative_array) in computer science is a collection of $(key, value)$ pairs. Maps are often also called associative arrays, dictionaries,
+or just look-up tables. In math, a map represents a function with finite domain represented by a table. 
 The map 
 
 `grades = {"Michael": 80, "Hannah": 99, "Lin": 95}` 
 
 would mean that the key Michael maps to the value 80 
-(i.e., has a 80 in the class). We typically want to find values fast given that we know the key. 
+(i.e., has an 80 in the class). We typically want to find values fast given that we know the key. 
 
 We can look at sets as maps that have only a key and no value. 
 
@@ -27,7 +27,7 @@ The worst-case time complexity to find or insert items by data structure are:
 
 ## Hash Table
 
-A hash table is a data structure with a table of size $M$ to store keys that help us with finding the stored elements again. We uses a hash function
+A hash table is a data structure with a table of size $M$ to store keys that help us with finding the stored elements again. We use a hash function
 
 $$h(key)$$
 
@@ -83,7 +83,7 @@ Convert the string into an integer and then hash the integer using $mod$. This i
 A simple choice that works well is to use ASCII encoding for the letters to get the numbers $k_0, k_1, ..., k_{n-1}$ and then the following polynomial (remember [numeral systems](https://en.wikipedia.org/wiki/Numeral_system)):
 $$h(k) = (k_0 + 37 k_1 + 37^2 k_2, ...)\ mod\ M = \left( \sum_{i=0}^{n-1} 37^i k_i \right) \ mod\ M$$  
 
-Alternatives are cryptographic hash functions like MD5 and SHA-1. See [List of hash functions](https://en.wikipedia.org/wiki/List_of_hash_functions). These hash functions convert a sequence of byte into an integer key and we use then the modulo to 
+Alternatives are cryptographic hash functions like MD5 and SHA-1. See [List of hash functions](https://en.wikipedia.org/wiki/List_of_hash_functions). These hash functions convert a sequence of byte into an integer key, and we use then the modulo to 
 calculate the index for the hash table. 
 
 ### For Objects
@@ -114,7 +114,7 @@ $\lambda$ gives the average length of the linked lists in the hash table. A gene
 $$M \approx N \rightarrow \lambda \approx 1$$
 
 If we can make sure that $\lambda$ stays constant (e.g., close to 1), then all operations are independent of $N$ and we get $O(1)$. This can be done using 
-**rehashing.** If the loading factor gets too large, then reorganize the data strucure by allocating a new table with double the size and then insert the data 
+**rehashing.** If the loading factor gets too large, then reorganize the data structure by allocating a new table with double the size and then insert the data 
 from the old table in $O(N)$ operations. Note that rehashing is very expensive!
 
 

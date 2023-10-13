@@ -51,7 +51,7 @@ Space: $O(|E|)$
 * Compressed sparse row (or column) representation.
 
 Both sparse matrix representations are available in libraries for all major programming languages 
-and support sparse linear algebra typically based on the the C BLAS and LAPACK libraries.
+and support sparse linear algebra typically based on the C BLAS and LAPACK libraries.
 See [Sparse matrix](https://en.wikipedia.org/wiki/Sparse_matrix). 
 
 ## Simple Example Code
