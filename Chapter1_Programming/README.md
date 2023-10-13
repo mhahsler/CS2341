@@ -49,7 +49,7 @@ used in this course. Very good short explanations can be found in this
 
 ## Standard Template Library
 
-Most programming languages come with a a library of ready-to-use data structures (abstract data types often called collections) and algorithms to supplement
+Most programming languages come with a library of ready-to-use data structures (abstract data types often called collections) and algorithms to supplement
 its primitive data types. Java has the [Java collections framework](https://en.wikipedia.org/wiki/Java_collections_framework) including [`java.util`]. Python has a [standard library](https://docs.python.org/3/library/index.html) built into the language.
 
 C++ has the C++ Standard Template Library (STL).

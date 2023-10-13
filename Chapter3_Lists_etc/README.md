@@ -15,7 +15,7 @@ data structures.
 
 ## Iterators
 
-[Iterators](https://en.wikipedia.org/wiki/Iterator) are an abstraction to represent a position in a ADT. This is similar to the index in an array. STL provides [std::iterator](https://cplusplus.com/reference/iterator/iterator/?kw=iterator) and we use the STL notation below.
+[Iterators](https://en.wikipedia.org/wiki/Iterator) are an abstraction to represent a position in an ADT. This is similar to the index in an array. STL provides [std::iterator](https://cplusplus.com/reference/iterator/iterator/?kw=iterator) and we use the STL notation below.
 
 Iterators are
 * a generalization of pointers to elements in the ADT.
@@ -99,7 +99,7 @@ Lists are more memory efficient and vectors are faster.
 
 ### Application Examples: 
 * Check code for **balanced brackets**.
-  Algorithm: Read the program character-by-character. Push `({[` on the stack and take them off when the corresponding `)`, `}`, or `)` is seen. Any error or a non-empty stack at the end of the code indicates a problem.
+  Algorithm: Read the program character-by-character. Push `({[` on the stack and take them off when the corresponding `)`, `}`, or `]` is seen. Any error or a non-empty stack at the end of the code indicates a problem.
 
 * Calculate the results of **postfix expressions** like `6 5 2 3 + 8 * + 3 + * = 288`. 
   Algorithm: Read the expression left-to-right. Push numbers on the stack. For operations, pop the top two elements, perform the operation and push the result on the stack. The value remaining on the stack at the end is the result.
