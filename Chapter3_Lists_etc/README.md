@@ -99,13 +99,30 @@ Lists are more memory efficient and vectors are faster.
 
 ### Application Examples: 
 * Check code for **balanced brackets**.
-  Algorithm: Read the program character-by-character. Push `({[` on the stack and take them off when the corresponding `)`, `}`, or `]` is seen. Any error or a non-empty stack at the end of the code indicates a problem.
+  
+  _Algorithm_ 
+  ```
+  Read the program character-by-character
+  - Push (, {, or [ on the stack
+  - Pop last bracket off when the corresponding ), }, or ] is seen in the program. 
+  Any error or a non-empty stack at the end of the code indicates a problem.
+  ```
 
-* Calculate the results of **postfix expressions** like `6 5 2 3 + 8 * + 3 + * = 288`. 
-  Algorithm: Read the expression left-to-right. Push numbers on the stack. For operations, pop the top two elements, perform the operation and push the result on the stack. The value remaining on the stack at the end is the result.
+* Evaluate a **postfix expressions**: `6 5 2 3 + 8 * + 3 + * = 288`. 
+  
+  _Algorithm_ 
+  ```
+  Read the expression left-to-right. 
+  - Push numbers on the stack. 
+  - For operations, pop the top two elements, perform the operation and push the result on the stack. 
+  The value remaining on the stack at the end is the result.
+  ```
 
 * Convert **infix to postfix expressions**: `6 * (5 + (2 + 3) * 8 + 3)  => 6 5 2 3 + 8 * + 3 + *`
-  Algorithm: Read the expression left-to-right. 
+  
+  _Algorithm_ 
+  ```
+  Read the expression left-to-right. 
   - Add any numbers directly to the output.
   - Push `(` on the stack.
   - For `)` do: pop from the stack and add the value to the output till an opening 
@@ -114,6 +131,7 @@ Lists are more memory efficient and vectors are faster.
     pop them and add them to the output. 
     Then push the new operator on the stack.
   - Once the expression is done, pop any remaining operator and add it to the output.
+  ```
 
 * **Function call stack:** Issue: Prior to a function call, all local variables and the return address need to be saved.
   This information is stored as a _stack frame_ on the _function call stack_ 
