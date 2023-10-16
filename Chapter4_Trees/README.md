@@ -114,19 +114,19 @@ Recursive implementation
 ```cpp
 void traverseNLR(Node& n) {
   cout << n.key;            // N
-  taverseNLR(n.leftChild);  // L
-  taverseNLR(n.rightChild); // R
+  traverseNLR(n.leftChild);  // L
+  traverseNLR(n.rightChild); // R
 }
 
 void traverseLNR(Node& n) {
-  taverseLNR(n.leftChild);  // L
+  traverseLNR(n.leftChild);  // L
   cout << n.key;            // N
-  taverseLNR(n.rightChild); // R
+  traverseLNR(n.rightChild); // R
 }
 
 void traverseLRN(Node& n) {
-  taverseLRN(n.leftChild);  // L
-  taverseLRN(n.rightChild); // R
+  traverseLRN(n.leftChild);  // L
+  traverseLRN(n.rightChild); // R
   cout << n.key;            // N
 }
 ```
