@@ -2,7 +2,7 @@
 
 _Assumption:_ The data stored in the tree (the keys) can be ordered and there are no duplicates (i.e., a total order).
 
-_Definition:_ A binary search tree is a binary tree where the key for each node being is greater than the keys of all the nodes in its left subtree and less than all the keys in the nodes in its right subtree.
+_Definition:_ A binary search tree is a binary tree where the key for each node is greater than the keys of all the nodes in its left subtree and less than all the keys in the nodes in its right subtree.
     This order property can be written as 
     
 $$L < N < R$$
