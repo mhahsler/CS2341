@@ -172,14 +172,14 @@ private:
      * point to a newly created node).
      * 
      * Other functions like clone() use the parameter BinaryNode* t which is not a 
-     * reference, put just a pointer. This is mostly used when we just want to look at 
-     * the tree.
+     * reference, put just a pointer. This is used when we just want to look at 
+     * the tree but not modify its structure.
      */
     
     /**
      * Internal method to make subtree empty uses postorder traversal (LRN)
      * Note the pointer reference for t.
-     */
+     */
     void makeEmpty(BinaryNode *&t)
     {
         if (t == nullptr)
