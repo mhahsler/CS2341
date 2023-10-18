@@ -9,13 +9,7 @@ $$L < N < R$$
 
 Binary search trees are one of the most important tree structures used to find elements quickly.
 
-
 See [BinarySearchTree.h](BinarySearchTree.h) for code.
-
-Since keys are stored in sorted order, a simple **inorder traversal** (LNR) results in sorted output.
-If a balanced tree is used (see Balance Problem below), then inserting $N$ items takes $O(N log\ N)$ time and traversing 
-the tree takes $O(N)$ which gives a sorting algorithm called [**tree sort**](https://en.wikipedia.org/wiki/Tree_sort) that is $O(N\ log\ N)$. Note that [quicksort](https://en.wikipedia.org/wiki/Quicksort) 
-has the same time complexity but is a better sorting algorithm (in-place with lower overhead). You will learn more about sorting later in this course and in the algorithms course.
 
 ## Operations
 * Insertion: Descend the tree (smaller keys go to the left and larger keys go to the right) till a new leaf can be created.
@@ -30,21 +24,8 @@ has the same time complexity but is a better sorting algorithm (in-place with lo
     2. Cases:
         - A. No children: Just remove the node.
         - B. One child case: replace the node with the only child.
-        - C. Two children case: replace element with the smallest element in
-            the right subtree.
-
-## Complexity 
-The depth $d$ of a _binary search tree_ leads to $O(d)$ operations (for all but deleting and copying the whole tree). The **average tree depth** $d$ is $O(log\ N)$ under the
-assumption that all insertion sequences are equally likely (i.e., random insertion). Remember, $O(log\ N)$ means 
-that the problem size is halved with each step.
-
-The exact depth of a complete tree (every level, except possibly the deepest, is entirely filled) with $N$ nodes can be calculated using $d = log_2(N + 1) - 1$. 
-
-Examples: 
-* A complete tree with 1,000,000 elements has $d + 1 = log_2(1,000,000 + 1) - 1 \approx 20$ levels.
-* A complete tree with 1,000,000,000 elements has $d + 1 = log_2(1,000,000,000 + 1) \approx 30$ levels.
-
-Since $O(log\ N)$ is relatively small, operations can be defined/implemented recursively without running out of stack memory (called a stack overflow).
+        - C. Two children case: replace element with the **smallest element in
+            the right subtree**.
 
 
 ## Exercises 
@@ -52,12 +33,31 @@ Since $O(log\ N)$ is relatively small, operations can be defined/implemented rec
 2. Delete the following nodes from the tree: 3, 90
 3. Read the values in the tree using inorder traversal (LNR).
 
+Since keys are stored in sorted order, a simple **inorder traversal** (LNR) results in sorted output.
+If a balanced tree is used (see Balance Problem below), then inserting $N$ items takes $O(N log\ N)$ time and traversing 
+the tree takes $O(N)$ which gives a sorting algorithm called [**tree sort**](https://en.wikipedia.org/wiki/Tree_sort) that is $O(N\ log\ N)$. Note that [quicksort](https://en.wikipedia.org/wiki/Quicksort) 
+has the same time complexity but is a better sorting algorithm (in-place with lower overhead). You will learn more about sorting later in this course and in the algorithms course.
+
+
+## Complexity 
+The depth $d$ of a _binary search tree_ leads to $O(d)$ operations (for all but deleting and copying the whole tree). The **average tree depth** $d$ is $O(log\ N)$ under the
+assumption that all insertion sequences are equally likely (i.e., **random insertion**). Remember, $O(log\ N)$ means 
+that the problem size is halved with each step.
+
+The exact depth of a complete tree (every level, except possibly the deepest, is entirely filled) with $N$ nodes can be calculated using $d = log_2(N + 1) - 1$. (-1 since the root node has depth 0)
+
+Examples: 
+* A complete tree with 2,000,000 elements has $d = log_2(2,000,000 + 1) - 1 \approx 20$ levels.
+* A complete tree with 2,000,000,000 elements has $d = log_2(2,000,000,000 + 1) \approx 30$ levels.
+
+Since $O(log\ N)$ is relatively small, operations can be defined/implemented recursively without running out of stack memory (called a stack overflow).
+
 
 ## Balance Problem
 $O(log\ N)$ average running time (= tree depth) is only true for under the **assumption of random insertion order** and if 
 **no deletions** are used! 
 
 * Worst case insertion order is to insert sorted values.
-* Deletions for case C replace a node with a node for the right subtree, resulting in an **unbalanced tree** that 
+* Deletions for Case C replace a node with a node for the right subtree, resulting in an **unbalanced tree** that 
   is left heavy!
 
