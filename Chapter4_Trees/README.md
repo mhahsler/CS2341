@@ -2,7 +2,7 @@
 
 Lists have for many operations $O(N)$ (e.g., search, insertion at an arbitrary location) 
 which is slow for large amounts of data.
-Trees can have an average time complexity of $O(log\ N)$.
+Trees (balanced binary search trees) can have an average time complexity of $O(log\ N)$.
 
 Recursive definition: A tree $T$
 
@@ -64,7 +64,7 @@ Example: Unix file system. Try the `tree` command on a linux machine. It perform
 ## Binary Trees
 A binary tree is a tree in which no node can have more than two children.
 
-Complexity: The average depth of a binary tree is (under some assumptions: random insertion and no deletions) $O(\sqrt{N})$. The worst case depth is $N - 1$ (a single branch going all the way down).
+Complexity: Operations are $O(d)$ with $d$ being the tree depth. The average depth of a binary tree is $O(\sqrt{N})$ (all possible trees are equally likely). The worst case depth is $N - 1$ (a single branch going all the way down).
 
 The node structure is similar to a linked list node
 
