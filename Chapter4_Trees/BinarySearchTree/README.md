@@ -38,7 +38,7 @@ The depth $d$ of a _binary search tree_ leads to $O(d)$ operations (for all but 
 assumption that all insertion sequences are equally likely (i.e., random insertion). Remember, $O(log\ N)$ means 
 that the problem size is halved with each step.
 
-The exact depth of a complete tree (every level, except possibly the deepest, is entirely filled) with $N$ nodes can be calulated using $d = log_2(N + 1) - 1$. 
+The exact depth of a complete tree (every level, except possibly the deepest, is entirely filled) with $N$ nodes can be calculated using $d = log_2(N + 1) - 1$. 
 
 Examples: 
 * A complete tree with 1,000,000 elements has $d + 1 = log_2(1,000,000 + 1) - 1 \approx 20$ levels.
