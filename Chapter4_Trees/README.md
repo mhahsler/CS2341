@@ -172,7 +172,8 @@ We can create an expression tree from postfix notation with a stack.
   - Operand: create a new node for the operand and push a pointer to the node on the stack.
   - Operator: 
      a. pop two operand nodes from the stack and 
-     b. create a tree with the operator as its root and the two operands as its children. 
+     b. create a tree with the operator as its root, the first operand from the stack as the 
+        right child and the second as the left child.  
      c. push a pointer to the tree on the stack
   Once the expression is completely processes, you should have a pointer to the expression tree on the stack.
 ```
