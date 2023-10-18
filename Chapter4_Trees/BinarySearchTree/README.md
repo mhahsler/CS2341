@@ -23,7 +23,7 @@ has the same time complexity but is a better sorting algorithm (in-place with lo
 * Find $x$: Follow the tree down (maybe using recursion).
     1. Return failure if the current node does not exist (we followed a `nullptr`).
     2. Return node if the current node $c == x$.
-    3. if $x < c$ go to left child, otherwise go right child. 
+    3. if $x < c$ go to left child, otherwise go right child. Go back to 1st step. 
 
 * Deletion: 
     1. Find the node to delete using binary search.
