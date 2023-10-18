@@ -188,7 +188,7 @@ Applications of the parse tree: create
 
 [Parse trees](https://en.wikipedia.org/wiki/Parse_tree) are $M$-ary expression trees that are used in compiler design. In natural language processing such trees are called syntax trees. 
 
-## Exercises
+### Exercises
 1. Draw the stack operations to convert $6 * (5 + (2 + 3) * 8 + 3)$ into postfix notation.  
 2. Convert the postfix notation into an expression tree.
 3. Convert the expression tree back into infix notation.
@@ -201,8 +201,7 @@ Applications of the parse tree: create
 
 STL implementations of Binary Search trees: STL provides 
   [std::set](https://cplusplus.com/reference/set/set/) and [std::map](https://cplusplus.com/reference/map/map/) based on binary search trees.
-  The stored key objects need to be `Comparable` with a definition of `bool operator<(const &) const` 
-  (since $a < b$ can be used for $b < a$, we can also get $a == b$) or a function object 
+  The stored key objects need to be `Comparable` with a definition of `bool operator<(const &) const` or a function object 
   (see [comparator example in Chapter 1](https://github.com/mhahsler/CS2341/tree/main/Chapter1_Programming/comparator)).
 
 Examples: [How to use STL sets and maps](STLSetMap)
