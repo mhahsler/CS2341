@@ -1,12 +1,10 @@
 #include <iostream>
 #include <set>
 #include <map>
-using namespace std;
 
 int main()
 {
-    cout << "\n\nSet example:\n"
-         << endl;
+    std::cout << "Set example:\n";
 
     // Sets are containers that store unique elements following a specific order.
     // https://cplusplus.com/reference/set/set/
@@ -15,7 +13,7 @@ int main()
     // sets are implemented as a balanced binary search tree (typically a red-black tree)
     std::set<int> myset;
 
-    // an iterater is a pointer to a node which can be advanced in order.
+    // an iterator is a pointer to a node which can be advanced in order.
     std::set<int>::iterator it;
 
     // insert returns a pair to indicate if it was successful
@@ -29,8 +27,8 @@ int main()
     ret = myset.insert(20); // no new element inserted
 
     if (ret.second == false)
-        cout << "Can't insert " << *ret.first
-             << " it already is in myset!" << endl;
+        std::cout << "Can't insert " << *ret.first
+             << " it already is in myset!\n";
 
     // use the pointers to the first and last element in the array as
     // iterators for
@@ -45,37 +43,37 @@ int main()
         std::cout << ' ' << *it;
     std::cout << '\n';
 
-    cout << "\n\nMap example:\n"
-         << endl;
+    std::cout << "\n\nMap example:\n";
 
     // Maps are associative containers that store elements formed by a
     // combination of a key value and a mapped value, following a specific order.
     // https://cplusplus.com/reference/map/map/
 
-    map<string, double> salaries = {
+    std::map<std::string, double> salaries = {
         {"Michael", 10000.00},
         {"Mary", 2000000.0}};
 
     // insert using [] and by constructing a pair.
     salaries["Pat"] = 75000.00;
-    salaries.insert(pair<string, double>("Peter", 50000.00));
+    salaries.insert(std::pair<std::string, double>("Peter", 50000.00));
 
-    cout << salaries["Pat"] << endl;
-    cout << salaries["Jan"] << endl;
+    std::cout << "Pat: " <<  salaries["Pat"] << "\n";
+    std::cout << "Jan: " << salaries["Jan"] << "\n";
     // Note: If k does not match the key of any element in the container, 
     // the function inserts a new element with that key and returns a reference 
     // to its mapped value.
 
     // search for Chris
-    map<string, double>::iterator itr;
+    std::map<std::string, double>::iterator itr;
     itr = salaries.find("Chris");
     if (itr == salaries.end())
-        cout << "Chris not found!" << endl;
+        std::cout << "Chris not found!" << "\n";
 
     // print all keys and values note that Jan now exists!
+    std::cout << "All entries:\n";
     for (auto const &pair : salaries)
     {
-        std::cout << pair.first << ": " << pair.second << endl;
+        std::cout << pair.first << ": " << pair.second << "\n";
     }
 
     return 0;
