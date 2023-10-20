@@ -48,7 +48,7 @@ The exact depth of a complete tree (every level, except possibly the deepest, is
 
 Examples: 
 * A complete tree with 2,000,000 elements has $d = log_2(2,000,000 + 1) - 1 \approx 20$ levels.
-* A complete tree with 2,000,000,000 elements has $d = log_2(2,000,000,000 + 1) \approx 30$ levels.
+* A complete tree with 2,000,000,000 elements has $d = log_2(2,000,000,000 + 1) - 1 \approx 30$ levels.
 
 Since $O(log\ N)$ is relatively small, operations can be defined/implemented recursively without running out of stack memory (called a stack overflow).
 
