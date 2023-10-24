@@ -44,22 +44,9 @@ public:
     // TODO: C++11 move versions would be nice (Big five)
 
     // We would overload operator[] for row and column index but C++ does not
-    // support multiple parameters for it until C++23
-    #if __cplusplus >= 202302L
-    Object &operator[](size_t row, size_t col)
-    {
-        return operator()(row, col);
-    }
-    
-    // We return a const reference for const objects
-    const Object &operator[](size_t row, size_t col) const
-    {
-        return operator()(row, col);
-    }
-    #endif
+    // support multiple parameters. Support for this is added in C++23 and example code is below:
     
     // We use **column major** order, which is the standard.
-    //
     // Since size_t is unsigned, we don't have to do checks for less than 0
     Object &operator()(size_t row, size_t col)
     {
@@ -74,6 +61,22 @@ public:
     {
         return data[col * rows + row];
     }
+    
+    // Example of how to use brackets with C++23. We should wait with using this feature till C++23 is 
+    // supported by all major compilers for a while or we will run into trouble with machines running older
+    // systems.
+    #if __cplusplus >= 202302L
+    Object &operator[](size_t row, size_t col)
+    {
+        return operator()(row, col);
+    }
+    
+    // We return a const reference for const objects
+    const Object &operator[](size_t row, size_t col) const
+    {
+        return operator()(row, col);
+    }
+    #endif
 
     size_t nrows() const
     {
