@@ -43,9 +43,21 @@ public:
 
     // TODO: C++11 move versions would be nice (Big five)
 
-    // We would overload operator[] for row and column index but C++ currently does not
-    // allow more then one parameters for []
-    //
+    // We would overload operator[] for row and column index but C++ does not
+    // support multiple parameters for it until C++23
+    #if __cplusplus >= 202302L
+    Object &operator[](size_t row, size_t col)
+    {
+        return operator()(row, col);
+    }
+    
+    // We return a const reference for const objects
+    const Object &operator[](size_t row, size_t col) const
+    {
+        return operator()(row, col);
+    }
+    #endif
+    
     // We use **column major** order, which is the standard.
     //
     // Since size_t is unsigned, we don't have to do checks for less than 0
