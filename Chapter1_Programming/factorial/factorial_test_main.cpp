@@ -32,6 +32,7 @@ int main() {
 
     // 2. negative numbers are a problem
     std::cout << "(-1)! = " << factorial(-1) << "\n";
+    // Note: that the answer of 0 is also a bug!
 
     // what should it return?
     //if (factorial(-1) > ???)
