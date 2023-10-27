@@ -195,8 +195,8 @@ Applications of the parse tree: create
 
 ## Binary Search Tree
 
-* [Unbalanced Binary Search Trees](BinarySearchTree).
-* [Balanced Binary Search Trees (AVL Trees)](AVLTree).
+1. [Unbalanced Binary Search Trees](BinarySearchTree).
+2. [Balanced Binary Search Trees (AVL Trees)](AVLTree).
 
 
 STL implementations of Binary Search trees: STL provides 
@@ -210,8 +210,8 @@ Example: **Binary Tree Search is equivalent to Binary Search.** A balanced searc
 
 ## Maps
 
-Maps are [associative containers](https://en.wikipedia.org/wiki/Associative_containers) that relate a key to a value. That is, it maps
-the set of keys onto the set of values in a 1-1 fashion.
+[Maps](https://en.wikipedia.org/wiki/Bijection,_injection_and_surjection) are [associative containers](https://en.wikipedia.org/wiki/Associative_containers) that relate a key to a value. In programming we typically have maps that map
+the set of keys onto the set of values in a 1-1 fashion (a bijection).
 
 $$f: keys \rightarrow values$$
 
@@ -219,12 +219,12 @@ The purpose is to access the value fast given that we know the key. Note that a 
 
 Requirements:
 * keys need to be unique.
-* keys need to be orderable (be comparable with `operator<()`).
+* keys need to have an order defined (be comparable with `operator<()`).
 
 Implementations:
 * A binary search tree. The node has in addition to the key also a member variable to store the value.
   ```cpp
-  template <typename KeyType, Typename ValueType>
+  template <typename KeyType, typename ValueType>
   ...
 
   class MapTreeNode
@@ -237,10 +237,9 @@ Implementations:
   }
   ```
 
-
 * A hash table (we will talk about hashing later).
 
-STL provides [std::map](https://cplusplus.com/reference/map/map/).
+STL provides [std::map](https://cplusplus.com/reference/map/map/). Here is a [code example](STLSetMap).
 
 
 ## B-Trees
