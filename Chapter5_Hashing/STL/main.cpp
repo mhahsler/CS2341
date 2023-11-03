@@ -10,8 +10,9 @@ int main()
 {
     std::cout << std::boolalpha;
     std::vector<std::string> strings = {"Michael", "Sam", "Peter", "Lara", "Mike", "Ian", "Lin",
-                              "Sue", "Erica"};
+                              "Sue", "Erica", "Joe", "Andrea", "Zarah", "Ajay", "Yao"};
 
+    // Example: using std::hash for hashing
     std::cout << "Hash strings using STL's hash class and then calculate mod 7 as an example." << "\n";
     auto str_hasher = std::hash<std::string>{};
 
@@ -20,24 +21,26 @@ int main()
              << " mod 7 = " << str_hasher(d) % 7 << "\n";
     
 
+    // Example for std::unordered_set (a set using a hash table)
     std::cout << "\nCreate an empty unordered set. This automatically uses the STL hash function for primitive and STL data types." << "\n";
     std::unordered_set<std::string> employees;
 
-    std::cout << "Bucket count (M): " << employees.bucket_count() << "\n";
     std::cout << "Size (N): " << employees.size() << "\n";
+    std::cout << "Bucket count (M): " << employees.bucket_count() << "\n";
     std::cout << "Load factor (lambda): " << employees.load_factor() << "\n";
 
     std::cout << "\nAdd the strings to the set. The set rehashes if the load factor gets too high." << "\n";
-    for (const auto &d : strings)
+    for (const auto &d : strings) {
         employees.insert(d);
-
-    std::cout << "Bucket count: " << employees.bucket_count() << "\n";
-    std::cout << "Size: " << employees.size() << "\n";
-    std::cout << "Load factor: " << employees.load_factor() << "\n";
-    
+        std::cout << "Size N = " << employees.size() 
+            << "; Bucket count M = " << employees.bucket_count() 
+            << "; Load factor lambda = " << employees.load_factor()
+            << "\n";
+    }
+  
     std::cout << "\nDo we have \"Peter\"? " << (employees.find("Peter") != employees.end()) << "\n";
 
-
+    // Example for std::unordered_map (a map using a hash table)
     std::cout << "\n\nUse STL's unordered map which stores <key, value> tuples (std::pair)." << "\n";
     std::unordered_map<std::string, std::string> colors = {
         {"RED", "#FF0000"},
