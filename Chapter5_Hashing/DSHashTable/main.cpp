@@ -29,7 +29,7 @@ int main()
     cout << "Loading Factor? " << myTable.loading_factor() << endl;
 
     cout << "Contains \"Peter\"? " << myTable.contains("Peter") << endl;
-    cout << "Contains \"Sarah\"? " << myTable.contains("Sam") << endl;
+    cout << "Contains \"Sam\"? " << myTable.contains("Sam") << endl;
     cout << "Contains \"Sarah\"? " << myTable.contains("Sarah") << endl;
 
     cout << "Remove \"Peter\"" << myTable.remove("Peter") << endl;
@@ -38,11 +38,11 @@ int main()
     cout << "Size? " << myTable.size() << endl;
     cout << "Loading Factor? " << myTable.loading_factor() << endl;
 
-    myTable.rehash(21); // 9 * 2 = 18; next prime is 21
+    myTable.rehash(17); // 7 * 2 = 14; next prime is 17
     cout << "Size? " << myTable.size() << endl;
     cout << "Loading Factor? " << myTable.loading_factor() << endl;
 
-    cout << "Contains \"Sarah\"? " << myTable.contains("Sam") << endl;
+    cout << "Contains \"Sam\"? " << myTable.contains("Sam") << endl;
 
     return 0;
 }
