@@ -2,16 +2,19 @@
 
 **Goal:** Always find and remove the element with the smallest key in a collection quickly.
 
+
+
 Basic Operations:
 * insert (= enqueue)
 * deleteMin (= dequeue)
 
 Options:
 * Unsorted array: $O(N)$
-* A balanced binary search tree: $O(log\ N)$. Without balancing, the tree would get right-heavy because we always delete the minimum from the left side.
+* Sorted array: inserting and deleting is an issue.
+* A balanced binary search tree: $O(log\ N)$. With out balancing, the tree would get right-heavy because we always delete the minimum from the left side.
 * Use a **new specialized binary heap data structure** that has faster access to the minimum and does not need rotations for balancing.
 
-Note: This data structure is very different from regular queues and not related
+Note: This data structure is very different from regular FIFO queues and not related
 to heap memory! 
 
 ## Binary Heap
@@ -32,7 +35,7 @@ Note: This tree is always balanced (structure property) but the heap-order prope
 
 **insert:** move the "hole" up the tree till the new element can be inserted in the hole without violating the heap-order property. This operation is called _percolate up_. The worst case is to insert a new minimum with $O(log\ N)$ because the hole has to be moved up all the way to the root.
 
-**deleteMin:** remove the root node (with the minimum key) and then move the resulting hole down the smallest of the children till the "last element" in the tree can be placed in the hole without violating the heap-order property. This operation is called _percolate down_. 
+**deleteMin:** remove the root node (with the minimum key) and then move the resulting hole down the smaller of the children till the "last element" in the tree can be placed in the hole without violating the heap-order property. This operation is called _percolate down_. 
 Worst case is $O(log\ N)$.
 
 **Note:** This data structure is not good for finding an arbitrary element. We would have to scan the complete tree with $O(N)$ operations!
@@ -52,16 +55,23 @@ _Note:_ this is also an effective storage format for any balanced tree.
 
 See example: [DSHeap](DSHeap)
 
-There exist other variants of heaps: Leftist, Binomial Fibonacci, ...
-
+You will find often a recursive function called `heapify()` which takes an array and arrangesall elements so it has the heap-order property. The insert operation above performs a local heapify only where the insertion happened. 
 
 ### Min vs. Max-Heap
 
 We have described a min-heap so far. A max-heap is a heap with the largest element at the root node by reversing the heap-order property.
 
+### Other Heap Variants
+
+There exist other variants of heaps: Leftist, Binomial Fibonacci, ...
+
+
 ## STL Implementation
 
-STL provides [`std::priority_queue`](https://cplusplus.com/reference/queue/priority_queue/) implements a max-heap. 
+STL provides two implementations:
+* [`std::priority_queue`](https://cplusplus.com/reference/queue/priority_queue/) implements a max-heap as a container. 
+* Library `algorithm` implements `heapify()` as [`std::make_heap()`](https://cplusplus.com/reference/algorithm/make_heap/), `stl::push_heap()` and `stl::pop_heap()` for a max-heap. They work
+  with containers that provide a `std::random_access_iterator` (e.g., a vector). 
 
 See example: [STL priority_queue](STL)
 
