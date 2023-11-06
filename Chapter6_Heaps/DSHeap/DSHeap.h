@@ -18,6 +18,17 @@ public:
         array = std::vector<Comparable>(1);
     }
 
+    // constructor that heapifies a vector (i.e., performs heap sort)
+    explicit DSHeap(const std::vector<Comparable> &items) : DSHeap()
+    {
+        // 1. reserve enough space for all items
+        array.reserve(items.size() + 1);
+
+        // 2. insert all items
+        for (const Comparable &item : items)
+            insert(item);
+    }
+
     bool empty() const
     {
         return array.size() <= 1;
