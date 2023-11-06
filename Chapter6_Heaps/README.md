@@ -55,7 +55,7 @@ _Note:_ this is also an effective storage format for any balanced tree.
 
 See example: [DSHeap](DSHeap)
 
-You will find often a recursive function called `heapify()` which takes an array and arrangesall elements so it has the heap-order property. The insert operation above performs a local heapify only where the insertion happened. 
+You will find often a recursive function called `heapify()` which takes an array and arranges all elements so it has the heap-order property. The insert operation above performs a local heapify only where the insertion happened. 
 
 ### Min vs. Max-Heap
 
