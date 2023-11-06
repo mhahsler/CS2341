@@ -2,3 +2,6 @@
 *.vscode
 Assignments
 ExtraCode/
+Chapter4_Trees/slides/Thumbs.db
+Chapter4_Trees/slides/Thumbs.db:encryptable
+.gitignore
