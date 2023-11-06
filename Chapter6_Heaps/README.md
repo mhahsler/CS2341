@@ -25,9 +25,9 @@ A binary tree with
   The bottom level is filled left-to-right ending in "last element." The missing node next to the last element is called 
   the "hole."
   The structure property ensures that the tree has a height of $O(log\ N)$.
-2. **Heap-order property:** The key of node has to be smaller than the keys 
+2. **Heap-order property:** The key of each node has to be smaller than the keys 
   of its descendants. 
-  The root node always has the smallest key so finding it is free.
+  The root node always has the smallest key so finding it is "free."
 
 Note: This tree is always balanced (structure property) but the heap-order property makes it much simpler to maintain than a balanced binary search tree (e.g., an AVL tree). 
 
