@@ -12,7 +12,8 @@ int main()
     std::vector<std::string> strings = {"Michael", "Sam", "Peter", "Lara", "Mike", "Ian", "Lin",
                               "Sue", "Erica", "Joe", "Andrea", "Zarah", "Ajay", "Yao"};
 
-    // Example: using std::hash for hashing
+    // Example: using std::hash for hashing. This is the default hash function for primitive types and STL data types.
+    // It creates a function object with an overloaded operator().
     std::cout << "Hash strings using STL's hash class and then calculate mod 7 as an example." << "\n";
     auto str_hasher = std::hash<std::string>{};
 
