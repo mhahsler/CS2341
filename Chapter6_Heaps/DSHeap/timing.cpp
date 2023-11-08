@@ -6,13 +6,12 @@
 
 #include "DSHeap.h"
 
-using namespace std;
 using namespace std::chrono;
 
-vector<int> randomVector(int size)
+std::vector<int> randomVector(int size)
 {
-    vector<int> in(size);
-    generate(in.begin(), in.end(), rand);
+    std::vector<int> in(size);
+    std::generate(in.begin(), in.end(), rand);
     return in;
 }
 
@@ -22,14 +21,14 @@ int main()
 {
     srand(time(NULL));
 
-    cout << "N, \"build time [micro sec.]\", \"build time per entry\", \"query time [micro sec.]\",  \"query time per entry\"" << endl;
+    std::cout << "N, \"build time [micro sec.]\", \"build time per entry\", \"query time [micro sec.]\",  \"query time per entry\"\n";
 
     for (int N = 1; N <= 10000000; N *= 10)
     //for (int N = 10000; N <= 10000; N *= 10)
     // for (int N = 1; N <= 1000000; N += 10000)
     {
         DSHeap<int> heap;
-        vector<int> in = randomVector(N);
+        std::vector<int> in = randomVector(N);
 
         auto start = high_resolution_clock::now();
 
@@ -47,11 +46,11 @@ int main()
         stop = high_resolution_clock::now();
         auto duration_query = duration_cast<microseconds>(stop - start);
 
-        cout << N << ", "
+        std::cout << N << ", "
              << duration_build.count() << ", " 
              << double(duration_build.count()) / N << ", " 
              << duration_query.count() << ", "
-             << double(duration_query.count()) / N << endl;
+             << double(duration_query.count()) / N << "\n";
     }
 
     return 0;
