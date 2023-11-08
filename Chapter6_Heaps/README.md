@@ -49,9 +49,9 @@ Since the binary tree is complete, it can be efficiently stored in an array/vect
 For the element at index $i$:
 * the left child is at index $2i$
 * the right child is at index $2i + 1$
-* the parent is at index $\lfloor i/2 \rfloor$ (floor function).
+* the parent is at index $\lfloor i/2 \rfloor$ ([floor function](https://en.wikipedia.org/wiki/Floor_and_ceiling_functions) = greatest integer less than or equal to x).
 
-_Note:_ this is also an effective storage format for any balanced tree.
+_Note:_ This is also an effective storage format for any balanced tree.
 
 See example: [DSHeap](DSHeap)
 
@@ -76,8 +76,8 @@ STL provides two implementations:
 See example: [STL priority_queue](STL)
 
 
-### Comparison of Search Performance
+### Comparison of Time Complexity 
 
 Wikipedia contains a
 [comparison of asymptotic worst-case analysis (Big-O)](https://en.wikipedia.org/wiki/Search_data_structure)
-for all the data structures we have learned about in this class.
+for the operations for all the data structures we have learned about in this class.
