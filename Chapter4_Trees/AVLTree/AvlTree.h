@@ -160,6 +160,22 @@ private:
     }
 
     /**
+     * Internal method to check if x is found in a subtree rooted at t.
+     */
+    bool contains(const Comparable &x, AvlNode *t) const
+    {
+        if (t == nullptr)
+            return false;
+
+        if (x == t->key)
+            return true; // Element found.
+        else if (x < t->key)
+            return contains(x, t->left);
+        else
+            return contains(x, t->right);
+    }
+
+    /**
      * Internal method to make subtree empty.
      */
     void makeEmpty(AvlNode *&t)
