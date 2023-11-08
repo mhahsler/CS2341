@@ -61,6 +61,9 @@ public:
      */
     AvlTree &operator=(const AvlTree &rhs)
     {
+        if (this == &rhs) {
+            return *this;
+        }
         makeEmpty();
         root = clone(rhs.root);
         return *this;
