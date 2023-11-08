@@ -1,7 +1,8 @@
 #ifndef AVL_TREE_H
 #define AVL_TREE_H
 
-#define DEBUG
+// we define DEBUG in the main function.
+// #define DEBUG
 
 #include <stdexcept>
 #include <algorithm>
@@ -9,10 +10,10 @@
 
 using namespace std;
 
-// AvlTree class
-// This implementation is based on the unbalanced binary search tree and adds hight information 
-// to the nodes and a balance function to perform the needed rotations.
-
+/* AvlTree class
+ * This implementation is based on the unbalanced binary search tree and adds hight information 
+ * to the nodes and a balance function to perform the needed rotations.
+ */
 template <typename Comparable>
 class AvlTree
 {
@@ -22,13 +23,16 @@ private:
         Comparable key;
         AvlNode *left;
         AvlNode *right;
-        int height;      // AVL tree: keeping track of the height is the differnce to a unbalanced binary search tree
+        int height;      // AVL tree: keeping track of the height is the difference to a unbalanced binary search tree
 
         AvlNode(const Comparable &theKey, AvlNode *lt, AvlNode *rt, int h)
             : key{theKey}, left{lt}, right{rt}, height{h} {}
     };
 
     AvlNode *root;
+    
+    static const int ALLOWED_IMBALANCE = 1; // 1 is the default; more will make balancing cheaper
+                                            // but the search less efficient.
 
 public:
     /**
@@ -115,6 +119,20 @@ public:
     {
         remove(x, root);
     }
+
+    
+#ifdef DEBUG   
+    /**
+     * Check if the tree is balanced and that the height of the nodes is correct. 
+     * Throws an exception if the tree is not balanced or the height is wrong.
+     * This function is not necessary in production code since the tree is always balanced.
+     * It is only compiled when DEBUG is defined.
+     */
+
+    int check_balance() {
+        return check_balance(root);
+    }
+#endif
 
 private:
     /**
@@ -218,8 +236,6 @@ private:
         return t == nullptr ? -1 : t->height;
     }
 
-    static const int ALLOWED_IMBALANCE = 1; // 1 is the default; more will make balancing cheaper
-                                            // but the search less efficient.
 
     /** 
      * 1. Performs rotations if the the the difference of the height stored in t's two child nodes 
@@ -227,7 +243,7 @@ private:
      * 2. Updates the height information of the note t.
      * 
      * Assumes that the high information in the child nodes is correct. This is guaranteed by calling
-     * balance() recursivly from the inserted node up to the tree node (see insert()). Rotations will 
+     * balance() recursively from the inserted node up to the tree node (see insert()). Rotations will 
      * only be performed for node alpha (parent of the parent of the inserted node). For all other nodes, 
      * only the height will be updated. 
      */
@@ -342,6 +358,42 @@ private:
         rotateWithLeftChild(k1->right);
         rotateWithRightChild(k1);
     }
+
+
+#ifdef DEBUG   
+    /**
+     * Check if the tree is balanced and that the height of the nodes is correct. 
+     * Throws an exception if the tree is not balanced or the height is wrong.
+     * This function is not necessary in production code since the tree is always balanced.
+     * It is only compiled when DEBUG is defined.
+     */
+
+    int check_balance(AvlNode *node)
+    {
+        if (node == nullptr)
+        {
+            return -1;
+        }
+
+        // use LRN traversal to check the balance of the tree
+        int lHeight = check_balance(node->left) + 1;
+        int rHeight = check_balance(node->right) + 1;
+
+        if (std::abs(lHeight - rHeight) > ALLOWED_IMBALANCE)
+        {
+            throw std::runtime_error("tree is not balanced in node with key " + std::to_string(node->key) + ".");
+        }
+
+        int trueNodeHeight = std::max(lHeight, rHeight);
+
+        if (trueNodeHeight != node->height)
+        {
+            throw std::runtime_error("node does not have correct height value in node with key " + std::to_string(node->key) + ".");
+        }
+
+        return trueNodeHeight;
+    }
+#endif
 };
 
 #endif
