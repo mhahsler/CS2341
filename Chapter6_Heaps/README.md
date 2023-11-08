@@ -70,7 +70,7 @@ There exist other variants of heaps: Leftist, Binomial Fibonacci, ...
 
 STL provides two implementations:
 * [`std::priority_queue`](https://cplusplus.com/reference/queue/priority_queue/) implements a max-heap as a container. 
-* Library `algorithm` implements `heapify()` as [`std::make_heap()`](https://cplusplus.com/reference/algorithm/make_heap/), `stl::push_heap()` and `stl::pop_heap()` for a max-heap. They work
+* Library `algorithm` implements `heapify()` as [`std::make_heap()`](https://cplusplus.com/reference/algorithm/make_heap/), `std::push_heap()` and `std::pop_heap()` for a max-heap. They work
   with containers that provide a `std::random_access_iterator` (e.g., a vector). 
 
 See example: [STL priority_queue](STL)
