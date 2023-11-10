@@ -22,6 +22,7 @@ int main()
     // myheap.delete_min(); // this throws an error
 
     //heapify a vector
+    std::cout << "Heapifying a vector...\n";
     std::vector<int> v = { 30, 100, 80, 25, 40 };
 
     auto myheap2 = DSHeap<int>(v);
