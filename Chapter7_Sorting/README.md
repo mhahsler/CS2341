@@ -25,8 +25,6 @@ Here are some popular algorithms:
 | IntroSort (STL Hybrid) | $O(n\ log\ n)$     |      yes        |    no     |
 
 
-Sort: 4, 7, 9, 1, 2, 8, 0, 6, 3, 5
-
 ## Popular Algorithms
 
 Here is a website with a useful visualization: https://math.hws.edu/eck/js/sorting/xSortLab.html
@@ -83,6 +81,16 @@ provide good performance.
 
 
 ##  Comparing Different Algorithms
+
+### Exercise
+
+Manually sort `4, 7, 9, 1, 2, 8, 0, 6, 3, 5` step-by-step using:
+
+* Bubble sort
+* Selection sort
+* Insertion sort
+* Mergesort
+
 
 ### Understanding How Different Algorithms Work
 
