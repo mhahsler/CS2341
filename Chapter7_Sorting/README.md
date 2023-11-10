@@ -29,21 +29,24 @@ Sort: 4, 7, 9, 1, 2, 8, 0, 6, 3, 5
 
 ## Popular Algorithms
 
+Here is a website with a useful visualization: https://math.hws.edu/eck/js/sorting/xSortLab.html
+
 ### Bubble Sort
-A simple sorting algorithm that repeatedly steps through the input list element by element, comparing the current element with the one after it, swapping their values if needed. Note that the last element is the maximum after the first pass.
+A simple sorting algorithm that repeatedly steps through the input list element by element, comparing the current element with the one after it, swapping their values if needed. Note that the last element is the maximum after the first pass and does not need to be 
+checked again.
 These passes through the list are repeated until no swaps had to be performed during a pass, meaning that the list has become fully sorted. The maximum number of passes is $n$. 
 
 ### Selection Sort
-Find (i.e., select) the minimum in one pass over the array and place it at the beginning of the array. Repeat the procedure with all but the first element till all elements are sorted. Instead of the minimum, the maximum can be selected and placed at
-the end of the array. 
+Find (i.e., select) the minimum in one pass over the array and swaps it with the first element of the unsorted part of the array, and marks it as sorted. Repeat the procedure with the unsorted part of the array till all elements are sorted. 
+Variation: Instead of the minimum, the maximum can be selected and placed at the end of the array. 
 
-This is similar to bubble sort, but performs fewer swaps.
+This is similar to bubble sort, but it performs fewer swaps.
 
 ### Insertion Sort
 Insertion sort goes through the array once from left to right.
-At each iteration, insertion sort removes the current element from the input data, finds the location it belongs within the sorted list (to the left), and inserts it there.
+At each iteration, insertion sort removes the current element from the input data, finds the location it belongs within the already sorted list (to the left), and inserts it there by moving all elements after to the right.
 
-Goes only once through the array and performs moves.
+Goes only once through the array but may perform many moves to make space for the current element.
 
 ### Shell Sort
 Shell Sort can be seen as either a generalization of sorting by exchange (bubble sort) or sorting by insertion (insertion sort). Instead of sorting pairs of elements next to each other, it compares elements far apart from each other, then progressively reducing the gap between elements to be compared. 
@@ -51,18 +54,19 @@ Shell Sort can be seen as either a generalization of sorting by exchange (bubble
 By starting with far apart elements, it can move some out-of-place elements into position faster than a simple neighbor exchange.
 
 ### Heapsort
-The algorithm first builds a max-heap stored in the original array and then repeatedly removes the top item to produce a sorted array.
+The algorithm first builds a max-heap stored in the original array (heapify) and then repeatedly removes the top element to produce a sorted array.
 
 ### Mergesort
-Merge sort always merges two sorted lists into a new sorted list. It consists of the steps:
+Merge sort repeatedly merges two sorted lists into a new sorted list. It consists of the steps:
 
 1. Divide the unsorted list into $n$ sublists, each containing one element (a list of one element is considered sorted).
-2. Repeatedly merge pairs of adjacent sublists to produce new sorted sublists until there is only one list remaining. This will be the sorted list.
+2. Repeatedly merge pairs of adjacent sublists to produce new sorted sublists until there is only one list remaining. 
+   This will be the sorted list.
 
 Mergesort needs an external data structure for the sublists.
 
 ### Quicksort
-Quicksort is a type of divide and conquer algorithm for sorting an array, based on a partitioning routine; the details of this partitioning can vary somewhat, so that quicksort is a family of closely related algorithms. Applied to a range of at least two elements, partitioning produces a division into two consecutive non-empty sub-ranges, in such a way that no element of the first sub-range is greater than any element of the second sub-range. After applying this partition, quicksort then recursively sorts the sub-ranges.
+Quicksort is a type of divide-and-conquer algorithm for sorting an array, based on a partitioning routine; the details of this partitioning can vary somewhat, so that quicksort is a family of closely related algorithms. Applied to a range of at least two elements, partitioning produces a division into two consecutive non-empty sub-ranges, in such a way that no element of the first sub-range is greater than any element of the second sub-range. After applying this partition, quicksort then recursively sorts the sub-ranges.
 
 Algorithm:
 
@@ -73,22 +77,18 @@ Algorithm:
 
 _Choice of pivot:_ Originally, the leftmost element of the partition would often be chosen as the pivot element. Unfortunately, this causes worst-case behavior on already sorted arrays, which is a rather common use-case. The problem was easily solved by choosing either a random index for the pivot, choosing the middle index of the partition or (especially for longer partitions) choosing the median of the first, middle and last element of the partition for the pivot.
 
-### IntroSort
+### IntroSort (Introspective Sort)
 The STL currently implements a hybrid sorting algorithm using Quicksort, Heapsort and Insertion Sort to consistently 
 provide good performance.
 
 
-##  Comparing different algorithms
+##  Comparing Different Algorithms
 
-### Understanding how Different Algorithms Work
+### Understanding How Different Algorithms Work
 
 You can use the debugger to analyze what the different sorting algorithms do. By default,
 `sort` uses a small, manually defined array which can be used for debugging. Set the breakpoint 
 in `main.cpp` right before the algorithm you are interested in.
-
-
-Here is a website with a useful visualization: https://math.hws.edu/eck/js/sorting/xSortLab.html
-
 
 ### Compare Runtime
 
