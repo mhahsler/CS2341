@@ -4,7 +4,7 @@
 int main()
 {
     // Note: The STL defaults to a max-heap!
-    std::cout << "Making it a min-heap...\n";
+    std::cout << "Creating a max-heap...\n";
     std::priority_queue<int> max_heap;
 
     // push is insert()
@@ -21,8 +21,8 @@ int main()
         max_heap.pop();
     }
 
-    // Make it a min-heap (using std::vector as the storage structure and std::greater as the comparator)
-    std::cout << "Making it a min-heap...\n";
+    // Create a min-heap (using std::vector as the storage structure and std::greater as the comparator)
+    std::cout << "Creating a min-heap...\n";
     std::priority_queue<int, std::vector<int>, std::greater<int>> min_heap;
 
     // push is insert()
