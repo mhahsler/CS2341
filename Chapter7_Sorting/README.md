@@ -136,7 +136,7 @@ You can write the output of the program to a file using output redirection in th
 ./sort random 10000  | tail -n +2 >> times.csv
 ```
 
-You can now open `times.csv` in Excel.
+You can now open `times.csv` in Excel and analyze the data using Pivot tables (create tables with N vs. algorithms), scatter plots, and trendlines.
 
 
 ## Profiling Code
