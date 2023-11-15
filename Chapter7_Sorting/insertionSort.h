@@ -6,24 +6,22 @@
 
 #include <vector>
 
-/**
- * Simple insertion sort. Move each element into its proper position.
- */
+// This is a function to implement insertion sort. It's a simple sorting algorithm that builds the final sorted array one item at a time.
 template <typename Comparable>
 void insertionSort(std::vector<Comparable> &a)
 {
-    // go through all elements in the array starting with the second one
+    // This loop goes through all elements in the array starting with the second one.
     for (std::size_t p = 1; p < a.size(); ++p)
     {
-        // remove the element from the array (move makes the object as movable if it has a move assignment operator)
+        // Remove the element from the array. The std::move function is used to indicate that a[j] may be "moved" without copying.
         Comparable tmp = std::move(a[p]);
 
-        // shift the elements to the left of the element to the right until the right position is found
+        // This loop shifts the elements to the left of the current element to the right until the right position for the current element is found.
         std::size_t j;
         for (j = p; j > 0 && tmp < a[j - 1]; --j)
             a[j] = std::move(a[j - 1]);
         
-        // insert the element into the right position
+        // Insert the current element into the right position.
         a[j] = std::move(tmp);
     }
 }

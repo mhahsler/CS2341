@@ -40,68 +40,70 @@ bool checkSorted(const vector<T> &v)
 
 /**
  * @brief     Sorts a vector using a given sorting algorithm
- * 
- * @param argc 
+ *
+ * @param argc
  * @param argv Select the data. The code understands "random", "sorted", "reverse", and "small"
  */
 int main(int argc, char *argv[])
 {
      size_t NUM_ITEMS = 10000;
-     //const size_t NUM_ITEMS = 100000;
+     // const size_t NUM_ITEMS = 100000;
      string mode = "small"; // default
-     
-     if(argc > 1)
+
+     if (argc > 1)
           mode = argv[1];
-     
-     if(argc > 2)
+
+     if (argc > 2)
           NUM_ITEMS = std::stoi(argv[2]);
 
      // Note: To compare the runtime between the different sorting algorithms you usually run
-     // the algorithms multiple times and take the average runtime. This is not done here for simplicity.  
-     
-      vector<int> v;
+     // the algorithms multiple times and take the average runtime. This is not done here for simplicity.
+
+     vector<int> v;
 
      // Run the code in the debugger with this to see how the different sorting algorithms work
-     if (mode == "small") {   
+     if (mode == "small")
+     {
           cout << "Small vector for testing with debugger." << endl;
           v = {4, 7, 9, 1, 2, 8, 0, 6, 3, 5};
      }
 
      // a random vector
-     if (mode == "random") {
+     if (mode == "random")
+     {
           v.resize(NUM_ITEMS);
-          cout << "Random vector of size " << NUM_ITEMS << endl;
           srand(time(NULL));
           generate(v.begin(), v.end(), std::rand);
      }
 
-     // check how the algoritms perform on already sorted vectors
-     if (mode == "sorted") {
+     // check how the algorithms perform on already sorted vectors
+     if (mode == "sorted")
+     {
           v.resize(NUM_ITEMS);
-          cout << "Sorted vector of size " << NUM_ITEMS << endl;
           iota(v.begin(), v.end(), 0);
      }
 
      // reverse the vector
-     if (mode == "reverse") {
+     if (mode == "reverse")
+     {
           v.resize(NUM_ITEMS);
-          cout << "Reverse sorted vector of size " << NUM_ITEMS << endl;
           iota(v.begin(), v.end(), 0);
           reverse(v.begin(), v.end());
      }
 
-     if (v.size() == 0) {
+     if (v.size() == 0)
+     {
           cout << "Invalid parameters!\n"
-          << "Usage: ./sort [mode] [size].\n"
-          << "modes: \"random\", \"sorted\", \"reverse\", or \"small\"\n" 
-          << "size: an integer >0" << endl;
+               << "Usage: ./sort [mode] [size].\n"
+               << "modes: \"random\", \"sorted\", \"reverse\", or \"small\"\n"
+               << "size: an integer >0" << endl;
           return 1;
      }
 
      // checkSorted(v);
 
      cout << boolalpha;
-     cout << "\nAlgorithm, time in microseconds, sorted" << endl;
+     cout << "Algorithm, input order, N, time in microseconds, sorted" << endl;
 
      // Bubble sort
      vector<int> v2 = v;
@@ -112,13 +114,17 @@ int main(int argc, char *argv[])
 
      cout << "Bubble Sort"
           << ", "
-          << duration.count() 
+          << mode
+          << ", "
+          << NUM_ITEMS
+          << ", "
+          << duration.count()
           << ", "
           << checkSorted(v2)
           << endl;
-     
+
      // printVector(v2);
-     
+
      // Selection sort
      v2 = v;
      start = high_resolution_clock::now();
@@ -129,13 +135,16 @@ int main(int argc, char *argv[])
 
      cout << "Selection Sort"
           << ", "
-          << duration.count() 
+          << mode
+          << ", "
+          << NUM_ITEMS
+          << ", "
+          << duration.count()
           << ", "
           << checkSorted(v2)
           << endl;
-     
-     // printVector(v);
 
+     // printVector(v);
 
      // Insertion sort
      v2 = v;
@@ -147,11 +156,15 @@ int main(int argc, char *argv[])
 
      cout << "Insertion Sort"
           << ", "
-          << duration.count() 
+          << mode
+          << ", "
+          << NUM_ITEMS
+          << ", "
+          << duration.count()
           << ", "
           << checkSorted(v2)
           << endl;
-     
+
      // printVector(v);
 
      // Shell sort
@@ -163,11 +176,15 @@ int main(int argc, char *argv[])
 
      cout << "Shell Sort"
           << ", "
-          << duration.count() 
+          << mode
+          << ", "
+          << NUM_ITEMS
+          << ", "
+          << duration.count()
           << ", "
           << checkSorted(v2)
           << endl;
-     
+
      // printVector(v2);
 
      // Heap sort
@@ -179,12 +196,16 @@ int main(int argc, char *argv[])
 
      cout << "Heap Sort"
           << ", "
-          << duration.count() 
+          << mode
+          << ", "
+          << NUM_ITEMS
+          << ", "
+          << duration.count()
           << ", "
           << checkSorted(v2)
           << endl;
-     
-     //printVector(v2);
+
+     // printVector(v2);
 
      // Merge sort
      v2 = v;
@@ -193,32 +214,38 @@ int main(int argc, char *argv[])
      stop = high_resolution_clock::now();
      duration = duration_cast<microseconds>(stop - start);
 
-     //printVector(v2);
+     // printVector(v2);
 
      cout << "Merge Sort"
           << ", "
-          << duration.count() 
+          << mode
+          << ", "
+          << NUM_ITEMS
+          << ", "
+          << duration.count()
           << ", "
           << checkSorted(v2)
           << endl;
 
      // Quick sort original
-     // FIXME:!!!
-     
+
      v2 = v;
      start = high_resolution_clock::now();
      quicksort_orig(v2);
      stop = high_resolution_clock::now();
      duration = duration_cast<microseconds>(stop - start);
 
-
      cout << "Quicksort (Original)"
           << ", "
-          << duration.count() 
+          << mode
+          << ", "
+          << NUM_ITEMS
+          << ", "
+          << duration.count()
           << ", "
           << checkSorted(v2)
           << endl;
-     
+
      // printVector(v2);
 
      // Quick sort with median of three and insertion sort
@@ -227,12 +254,16 @@ int main(int argc, char *argv[])
      quicksort(v2);
      stop = high_resolution_clock::now();
      duration = duration_cast<microseconds>(stop - start);
-     
+
      // printVector(v2);
 
      cout << "Quicksort (with median of 3 and insertion sort)"
           << ", "
-          << duration.count() 
+          << mode
+          << ", "
+          << NUM_ITEMS
+          << ", "
+          << duration.count()
           << ", "
           << checkSorted(v2)
           << endl;
@@ -244,12 +275,16 @@ int main(int argc, char *argv[])
 
      stop = high_resolution_clock::now();
      duration = duration_cast<microseconds>(stop - start);
-     
+
      // printVector(v2);
 
      cout << "Introsort (STL hybrid)"
           << ", "
-          << duration.count() 
+          << mode
+          << ", "
+          << NUM_ITEMS
+          << ", "
+          << duration.count()
           << ", "
           << checkSorted(v2)
           << endl;

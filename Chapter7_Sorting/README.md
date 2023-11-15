@@ -125,6 +125,20 @@ Compilers use [code optimization](https://en.wikipedia.org/wiki/Optimizing_compi
 In VS Code, compile the code using in the bottom bar `CMake:[Release]` (i.e., with speed optimization) instead of `CMake: [Debug]` (optimizer disabled). 
 
 
+You can write the output of the program to a file using output redirection in the shell with `>` and append with `>>` .
+
+```
+./sort random 100 > times.csv
+./sort random 1000   | tail -n +2 >> times.csv
+./sort random 2500   | tail -n +2 >> times.csv
+./sort random 5000   | tail -n +2 >> times.csv
+./sort random 7500   | tail -n +2 >> times.csv
+./sort random 10000  | tail -n +2 >> times.csv
+```
+
+You can now open `times.csv` in Excel.
+
+
 ## Profiling Code
 To write efficient code, it is often useful to see what parts of the code take the most time 
 to run or use the most amount of memory. This process is called profiling. 

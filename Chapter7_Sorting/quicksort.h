@@ -58,13 +58,15 @@ void insertionSort(std::vector<Comparable> &a, std::size_t left, std::size_t rig
 
 /**
  * Internal quicksort method that makes recursive calls on a subarray (left to right).
- * Uses median-of-three partitioning for pivot and a use insertion sort for small subarrays. 
- * The cutoff can be hand tunes.
+ * Uses median-of-three partitioning for pivot selection. It is **modified** by using faster insertion sort for small subarrays. 
+ * The cutoff when to switch to insertion sort can be hand tuned.
  */
+const int CUTOFF = 50;
+
 template <typename Comparable>
 void quicksort(std::vector<Comparable> &a, std::size_t left, std::size_t right)
 {
-    if (right - left < 50)
+    if (right - left < CUTOFF)
         // do insertion sort for small subarrays
         insertionSort(a, left, right);
     else

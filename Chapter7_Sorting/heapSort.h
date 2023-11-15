@@ -4,18 +4,25 @@
 // Code from https://users.cs.fiu.edu/~weiss/dsaa_c++4/code/
 // Modified by MFH to fix compiler warnings
 
-/* Note: This uses a MAx-Heap! */
+/* Note: This uses a Max-Heap! */
 
 #include <vector>
 
 /**
  * The tree for the heap is represented as a vector in the order root, left child, right child,
  * left child of left child, right child of left child, left child of right child, right child of right child, etc.
- * We can calculate the index of the left Child of node with index i as 2*i+1 and the right child as 2*i+2.
+ * 
+ * Note: Standard heap implementation leave the first element of the array empty (i.e. a[0] is not used).
+ * We have to modify the code to use a[0] as the first element of the heap.
+ * We can calculate the index of the left child of node with index i as 2 * (i + 1) - 1 = 2 * i + 1 
+ * and the right child as lft child index + 1.
+ * 
+ * inline: tells the compiler to insert the code of the function into the calling code instead of 
+ * making an expensive function call.
  */
 inline std::size_t leftChild(std::size_t i)
 {
-    return 2 * i + 1;
+    return 2 * i + 1; // this heap uses element 0!
 }
 
 /**

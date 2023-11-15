@@ -6,8 +6,7 @@
 
 /**
  * Internal quicksort method that makes recursive calls on a subarray (left to right).
- * Uses median-of-three partitioning for pivot and a use insertion sort for small subarrays.
- * The cutoff can be hand tunes.
+ * Uses median-of-three partitioning for pivot selection.
  */
 template <typename Comparable>
 void quicksort_orig(std::vector<Comparable> &a, std::size_t left, std::size_t right)
