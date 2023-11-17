@@ -87,8 +87,7 @@ int main(int argc, char *argv[])
      if (mode == "reverse")
      {
           v.resize(NUM_ITEMS);
-          iota(v.begin(), v.end(), 0);
-          reverse(v.begin(), v.end());
+          generate(v.begin(), v.end(), [n = NUM_ITEMS] () mutable { return --n; });
      }
 
      if (v.size() == 0)
