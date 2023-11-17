@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
      if (mode == "reverse")
      {
           v.resize(NUM_ITEMS);
-          for (int i = 0, n = NUM_ITEMS; i < v.size(); i++)
+          for (size_t i = 0, n = NUM_ITEMS; i < v.size(); i++)
                v[i] = --n;
      }
 
