@@ -66,6 +66,7 @@ int main(int argc, char *argv[])
      {
           cout << "Small vector for testing with debugger." << endl;
           v = {4, 7, 9, 1, 2, 8, 0, 6, 3, 5};
+          NUM_ITEMS = 10;
      }
 
      // a random vector
@@ -80,15 +81,15 @@ int main(int argc, char *argv[])
      if (mode == "sorted")
      {
           v.resize(NUM_ITEMS);
-          iota(v.begin(), v.end(), 0);
+          iota(v.begin(), v.end(), 0); // Sequential: 0 ... NUM_ITEMS - 1
      }
 
      // reverse the vector
      if (mode == "reverse")
      {
           v.resize(NUM_ITEMS);
-          iota(v.begin(), v.end(), 0);
-          reverse(v.begin(), v.end());
+          for (std::size_t i = 0, n = NUM_ITEMS; i < v.size(); ++i)
+               v[i] = --n;
      }
 
      if (v.size() == 0)
