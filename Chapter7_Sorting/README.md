@@ -153,16 +153,16 @@ Open `run_time.csv` in Excel and analyze the run time data:
 
 **Determine Worst case**
 ```
-./sort random 1      | head -n 1 > worse_case.csv
+./sort random 1      | head -n 1 > worst_case.csv
 for i in {1..10}
 do
-  ./sort random 1000   | tail -n +2 >> worse_case.csv
-  ./sort sorted 1000   | tail -n +2 >> worse_case.csv
-  ./sort reverse 1000  | tail -n +2 >> worse_case.csv
+  ./sort random 1000   | tail -n +2 >> worst_case.csv
+  ./sort sorted 1000   | tail -n +2 >> worst_case.csv
+  ./sort reverse 1000  | tail -n +2 >> worst_case.csv
 done
 ```
 
-
+Results for the runtime complexity and worst case analysis can be found [here](analysis).
 
 ## Profiling Code
 To write efficient code, it is often useful to see what parts of the code take the most time 
