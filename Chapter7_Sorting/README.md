@@ -149,7 +149,7 @@ done
 Open `run_time.csv` in Excel and analyze the run time data:
 1. Create a pivot table with N as rows vs. algorithms as columns and average the run times.
 2. Create a scatter plot with lines (you have to copy-and-paste the values of the pivot table first).  
-3. polynomial trendlines and increase the degree to see what powers have large factors.
+3. Add polynomial trendlines and increase the degree to see what powers have large factors.
 
 **Determine Worst case**
 ```
