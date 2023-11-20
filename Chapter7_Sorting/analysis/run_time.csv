@@ -1,0 +1,541 @@
+Algorithm, input order, N, time in microseconds, sorted
+Bubble Sort, random, 100, 48, true
+Selection Sort, random, 100, 24, true
+Insertion Sort, random, 100, 12, true
+Shell Sort, random, 100, 12, true
+Heap Sort, random, 100, 16, true
+Merge Sort, random, 100, 24, true
+Quicksort (Original), random, 100, 11, true
+Quicksort (with median of 3 and insertion sort), random, 100, 8, true
+Introsort (STL hybrid), random, 100, 20, true
+Bubble Sort, random, 1000, 2544, true
+Selection Sort, random, 1000, 961, true
+Insertion Sort, random, 1000, 568, true
+Shell Sort, random, 1000, 110, true
+Heap Sort, random, 1000, 123, true
+Merge Sort, random, 1000, 160, true
+Quicksort (Original), random, 1000, 82, true
+Quicksort (with median of 3 and insertion sort), random, 1000, 71, true
+Introsort (STL hybrid), random, 1000, 133, true
+Bubble Sort, random, 2500, 9513, true
+Selection Sort, random, 2500, 1781, true
+Insertion Sort, random, 2500, 1393, true
+Shell Sort, random, 2500, 287, true
+Heap Sort, random, 2500, 232, true
+Merge Sort, random, 2500, 251, true
+Quicksort (Original), random, 2500, 160, true
+Quicksort (with median of 3 and insertion sort), random, 2500, 133, true
+Introsort (STL hybrid), random, 2500, 251, true
+Bubble Sort, random, 5000, 35114, true
+Selection Sort, random, 5000, 6062, true
+Insertion Sort, random, 5000, 5316, true
+Shell Sort, random, 5000, 523, true
+Heap Sort, random, 5000, 416, true
+Merge Sort, random, 5000, 465, true
+Quicksort (Original), random, 5000, 297, true
+Quicksort (with median of 3 and insertion sort), random, 5000, 245, true
+Introsort (STL hybrid), random, 5000, 515, true
+Bubble Sort, random, 7500, 89541, true
+Selection Sort, random, 7500, 14176, true
+Insertion Sort, random, 7500, 11164, true
+Shell Sort, random, 7500, 819, true
+Heap Sort, random, 7500, 767, true
+Merge Sort, random, 7500, 835, true
+Quicksort (Original), random, 7500, 544, true
+Quicksort (with median of 3 and insertion sort), random, 7500, 411, true
+Introsort (STL hybrid), random, 7500, 729, true
+Bubble Sort, random, 10000, 167738, true
+Selection Sort, random, 10000, 24020, true
+Insertion Sort, random, 10000, 20622, true
+Shell Sort, random, 10000, 1281, true
+Heap Sort, random, 10000, 1058, true
+Merge Sort, random, 10000, 1055, true
+Quicksort (Original), random, 10000, 707, true
+Quicksort (with median of 3 and insertion sort), random, 10000, 626, true
+Introsort (STL hybrid), random, 10000, 1131, true
+Bubble Sort, random, 100, 19, true
+Selection Sort, random, 100, 8, true
+Insertion Sort, random, 100, 4, true
+Shell Sort, random, 100, 5, true
+Heap Sort, random, 100, 7, true
+Merge Sort, random, 100, 7, true
+Quicksort (Original), random, 100, 4, true
+Quicksort (with median of 3 and insertion sort), random, 100, 3, true
+Introsort (STL hybrid), random, 100, 7, true
+Bubble Sort, random, 1000, 1453, true
+Selection Sort, random, 1000, 328, true
+Insertion Sort, random, 1000, 238, true
+Shell Sort, random, 1000, 86, true
+Heap Sort, random, 1000, 93, true
+Merge Sort, random, 1000, 98, true
+Quicksort (Original), random, 1000, 59, true
+Quicksort (with median of 3 and insertion sort), random, 1000, 48, true
+Introsort (STL hybrid), random, 1000, 90, true
+Bubble Sort, random, 2500, 7843, true
+Selection Sort, random, 2500, 1561, true
+Insertion Sort, random, 2500, 1216, true
+Shell Sort, random, 2500, 255, true
+Heap Sort, random, 2500, 252, true
+Merge Sort, random, 2500, 246, true
+Quicksort (Original), random, 2500, 170, true
+Quicksort (with median of 3 and insertion sort), random, 2500, 120, true
+Introsort (STL hybrid), random, 2500, 221, true
+Bubble Sort, random, 5000, 36910, true
+Selection Sort, random, 5000, 5908, true
+Insertion Sort, random, 5000, 4810, true
+Shell Sort, random, 5000, 540, true
+Heap Sort, random, 5000, 476, true
+Merge Sort, random, 5000, 477, true
+Quicksort (Original), random, 5000, 345, true
+Quicksort (with median of 3 and insertion sort), random, 5000, 293, true
+Introsort (STL hybrid), random, 5000, 535, true
+Bubble Sort, random, 7500, 92447, true
+Selection Sort, random, 7500, 13710, true
+Insertion Sort, random, 7500, 11376, true
+Shell Sort, random, 7500, 874, true
+Heap Sort, random, 7500, 765, true
+Merge Sort, random, 7500, 771, true
+Quicksort (Original), random, 7500, 510, true
+Quicksort (with median of 3 and insertion sort), random, 7500, 419, true
+Introsort (STL hybrid), random, 7500, 824, true
+Bubble Sort, random, 10000, 168291, true
+Selection Sort, random, 10000, 24416, true
+Insertion Sort, random, 10000, 20593, true
+Shell Sort, random, 10000, 1263, true
+Heap Sort, random, 10000, 1057, true
+Merge Sort, random, 10000, 1057, true
+Quicksort (Original), random, 10000, 721, true
+Quicksort (with median of 3 and insertion sort), random, 10000, 585, true
+Introsort (STL hybrid), random, 10000, 1070, true
+Bubble Sort, random, 100, 16, true
+Selection Sort, random, 100, 8, true
+Insertion Sort, random, 100, 4, true
+Shell Sort, random, 100, 5, true
+Heap Sort, random, 100, 7, true
+Merge Sort, random, 100, 8, true
+Quicksort (Original), random, 100, 4, true
+Quicksort (with median of 3 and insertion sort), random, 100, 3, true
+Introsort (STL hybrid), random, 100, 7, true
+Bubble Sort, random, 1000, 1261, true
+Selection Sort, random, 1000, 325, true
+Insertion Sort, random, 1000, 243, true
+Shell Sort, random, 1000, 79, true
+Heap Sort, random, 1000, 84, true
+Merge Sort, random, 1000, 90, true
+Quicksort (Original), random, 1000, 58, true
+Quicksort (with median of 3 and insertion sort), random, 1000, 48, true
+Introsort (STL hybrid), random, 1000, 93, true
+Bubble Sort, random, 2500, 8577, true
+Selection Sort, random, 2500, 1654, true
+Insertion Sort, random, 2500, 1377, true
+Shell Sort, random, 2500, 249, true
+Heap Sort, random, 2500, 236, true
+Merge Sort, random, 2500, 225, true
+Quicksort (Original), random, 2500, 151, true
+Quicksort (with median of 3 and insertion sort), random, 2500, 126, true
+Introsort (STL hybrid), random, 2500, 250, true
+Bubble Sort, random, 5000, 37303, true
+Selection Sort, random, 5000, 6721, true
+Insertion Sort, random, 5000, 5545, true
+Shell Sort, random, 5000, 620, true
+Heap Sort, random, 5000, 540, true
+Merge Sort, random, 5000, 533, true
+Quicksort (Original), random, 5000, 347, true
+Quicksort (with median of 3 and insertion sort), random, 5000, 288, true
+Introsort (STL hybrid), random, 5000, 518, true
+Bubble Sort, random, 7500, 80189, true
+Selection Sort, random, 7500, 14681, true
+Insertion Sort, random, 7500, 12960, true
+Shell Sort, random, 7500, 788, true
+Heap Sort, random, 7500, 831, true
+Merge Sort, random, 7500, 825, true
+Quicksort (Original), random, 7500, 540, true
+Quicksort (with median of 3 and insertion sort), random, 7500, 425, true
+Introsort (STL hybrid), random, 7500, 717, true
+Bubble Sort, random, 10000, 161747, true
+Selection Sort, random, 10000, 26274, true
+Insertion Sort, random, 10000, 20997, true
+Shell Sort, random, 10000, 1245, true
+Heap Sort, random, 10000, 1024, true
+Merge Sort, random, 10000, 1097, true
+Quicksort (Original), random, 10000, 740, true
+Quicksort (with median of 3 and insertion sort), random, 10000, 592, true
+Introsort (STL hybrid), random, 10000, 1052, true
+Bubble Sort, random, 100, 20, true
+Selection Sort, random, 100, 8, true
+Insertion Sort, random, 100, 4, true
+Shell Sort, random, 100, 5, true
+Heap Sort, random, 100, 7, true
+Merge Sort, random, 100, 7, true
+Quicksort (Original), random, 100, 4, true
+Quicksort (with median of 3 and insertion sort), random, 100, 3, true
+Introsort (STL hybrid), random, 100, 7, true
+Bubble Sort, random, 1000, 1468, true
+Selection Sort, random, 1000, 327, true
+Insertion Sort, random, 1000, 221, true
+Shell Sort, random, 1000, 83, true
+Heap Sort, random, 1000, 82, true
+Merge Sort, random, 1000, 90, true
+Quicksort (Original), random, 1000, 58, true
+Quicksort (with median of 3 and insertion sort), random, 1000, 47, true
+Introsort (STL hybrid), random, 1000, 90, true
+Bubble Sort, random, 2500, 8687, true
+Selection Sort, random, 2500, 1537, true
+Insertion Sort, random, 2500, 1324, true
+Shell Sort, random, 2500, 246, true
+Heap Sort, random, 2500, 219, true
+Merge Sort, random, 2500, 220, true
+Quicksort (Original), random, 2500, 148, true
+Quicksort (with median of 3 and insertion sort), random, 2500, 124, true
+Introsort (STL hybrid), random, 2500, 223, true
+Bubble Sort, random, 5000, 34761, true
+Selection Sort, random, 5000, 6008, true
+Insertion Sort, random, 5000, 4822, true
+Shell Sort, random, 5000, 512, true
+Heap Sort, random, 5000, 456, true
+Merge Sort, random, 5000, 491, true
+Quicksort (Original), random, 5000, 349, true
+Quicksort (with median of 3 and insertion sort), random, 5000, 290, true
+Introsort (STL hybrid), random, 5000, 462, true
+Bubble Sort, random, 7500, 78961, true
+Selection Sort, random, 7500, 12917, true
+Insertion Sort, random, 7500, 10811, true
+Shell Sort, random, 7500, 797, true
+Heap Sort, random, 7500, 695, true
+Merge Sort, random, 7500, 721, true
+Quicksort (Original), random, 7500, 484, true
+Quicksort (with median of 3 and insertion sort), random, 7500, 411, true
+Introsort (STL hybrid), random, 7500, 727, true
+Bubble Sort, random, 10000, 170456, true
+Selection Sort, random, 10000, 26138, true
+Insertion Sort, random, 10000, 22284, true
+Shell Sort, random, 10000, 1316, true
+Heap Sort, random, 10000, 1137, true
+Merge Sort, random, 10000, 1128, true
+Quicksort (Original), random, 10000, 751, true
+Quicksort (with median of 3 and insertion sort), random, 10000, 628, true
+Introsort (STL hybrid), random, 10000, 1128, true
+Bubble Sort, random, 100, 20, true
+Selection Sort, random, 100, 9, true
+Insertion Sort, random, 100, 4, true
+Shell Sort, random, 100, 5, true
+Heap Sort, random, 100, 7, true
+Merge Sort, random, 100, 7, true
+Quicksort (Original), random, 100, 4, true
+Quicksort (with median of 3 and insertion sort), random, 100, 3, true
+Introsort (STL hybrid), random, 100, 7, true
+Bubble Sort, random, 1000, 1468, true
+Selection Sort, random, 1000, 326, true
+Insertion Sort, random, 1000, 241, true
+Shell Sort, random, 1000, 85, true
+Heap Sort, random, 1000, 102, true
+Merge Sort, random, 1000, 91, true
+Quicksort (Original), random, 1000, 58, true
+Quicksort (with median of 3 and insertion sort), random, 1000, 49, true
+Introsort (STL hybrid), random, 1000, 90, true
+Bubble Sort, random, 2500, 8848, true
+Selection Sort, random, 2500, 1783, true
+Insertion Sort, random, 2500, 1376, true
+Shell Sort, random, 2500, 241, true
+Heap Sort, random, 2500, 209, true
+Merge Sort, random, 2500, 231, true
+Quicksort (Original), random, 2500, 168, true
+Quicksort (with median of 3 and insertion sort), random, 2500, 139, true
+Introsort (STL hybrid), random, 2500, 259, true
+Bubble Sort, random, 5000, 41658, true
+Selection Sort, random, 5000, 5798, true
+Insertion Sort, random, 5000, 4846, true
+Shell Sort, random, 5000, 557, true
+Heap Sort, random, 5000, 500, true
+Merge Sort, random, 5000, 492, true
+Quicksort (Original), random, 5000, 356, true
+Quicksort (with median of 3 and insertion sort), random, 5000, 281, true
+Introsort (STL hybrid), random, 5000, 497, true
+Bubble Sort, random, 7500, 80306, true
+Selection Sort, random, 7500, 14869, true
+Insertion Sort, random, 7500, 12316, true
+Shell Sort, random, 7500, 925, true
+Heap Sort, random, 7500, 814, true
+Merge Sort, random, 7500, 825, true
+Quicksort (Original), random, 7500, 545, true
+Quicksort (with median of 3 and insertion sort), random, 7500, 457, true
+Introsort (STL hybrid), random, 7500, 821, true
+Bubble Sort, random, 10000, 169136, true
+Selection Sort, random, 10000, 26450, true
+Insertion Sort, random, 10000, 22439, true
+Shell Sort, random, 10000, 1292, true
+Heap Sort, random, 10000, 1051, true
+Merge Sort, random, 10000, 1120, true
+Quicksort (Original), random, 10000, 755, true
+Quicksort (with median of 3 and insertion sort), random, 10000, 626, true
+Introsort (STL hybrid), random, 10000, 1123, true
+Bubble Sort, random, 100, 19, true
+Selection Sort, random, 100, 8, true
+Insertion Sort, random, 100, 4, true
+Shell Sort, random, 100, 5, true
+Heap Sort, random, 100, 7, true
+Merge Sort, random, 100, 7, true
+Quicksort (Original), random, 100, 4, true
+Quicksort (with median of 3 and insertion sort), random, 100, 3, true
+Introsort (STL hybrid), random, 100, 7, true
+Bubble Sort, random, 1000, 1427, true
+Selection Sort, random, 1000, 330, true
+Insertion Sort, random, 1000, 232, true
+Shell Sort, random, 1000, 88, true
+Heap Sort, random, 1000, 93, true
+Merge Sort, random, 1000, 89, true
+Quicksort (Original), random, 1000, 59, true
+Quicksort (with median of 3 and insertion sort), random, 1000, 48, true
+Introsort (STL hybrid), random, 1000, 86, true
+Bubble Sort, random, 2500, 8733, true
+Selection Sort, random, 2500, 1628, true
+Insertion Sort, random, 2500, 1230, true
+Shell Sort, random, 2500, 259, true
+Heap Sort, random, 2500, 231, true
+Merge Sort, random, 2500, 246, true
+Quicksort (Original), random, 2500, 169, true
+Quicksort (with median of 3 and insertion sort), random, 2500, 123, true
+Introsort (STL hybrid), random, 2500, 240, true
+Bubble Sort, random, 5000, 37068, true
+Selection Sort, random, 5000, 6757, true
+Insertion Sort, random, 5000, 5681, true
+Shell Sort, random, 5000, 603, true
+Heap Sort, random, 5000, 493, true
+Merge Sort, random, 5000, 551, true
+Quicksort (Original), random, 5000, 352, true
+Quicksort (with median of 3 and insertion sort), random, 5000, 303, true
+Introsort (STL hybrid), random, 5000, 522, true
+Bubble Sort, random, 7500, 91380, true
+Selection Sort, random, 7500, 14969, true
+Insertion Sort, random, 7500, 12576, true
+Shell Sort, random, 7500, 911, true
+Heap Sort, random, 7500, 825, true
+Merge Sort, random, 7500, 824, true
+Quicksort (Original), random, 7500, 549, true
+Quicksort (with median of 3 and insertion sort), random, 7500, 455, true
+Introsort (STL hybrid), random, 7500, 816, true
+Bubble Sort, random, 10000, 148212, true
+Selection Sort, random, 10000, 22284, true
+Insertion Sort, random, 10000, 19371, true
+Shell Sort, random, 10000, 1275, true
+Heap Sort, random, 10000, 924, true
+Merge Sort, random, 10000, 980, true
+Quicksort (Original), random, 10000, 657, true
+Quicksort (with median of 3 and insertion sort), random, 10000, 596, true
+Introsort (STL hybrid), random, 10000, 1002, true
+Bubble Sort, random, 100, 16, true
+Selection Sort, random, 100, 8, true
+Insertion Sort, random, 100, 4, true
+Shell Sort, random, 100, 6, true
+Heap Sort, random, 100, 7, true
+Merge Sort, random, 100, 7, true
+Quicksort (Original), random, 100, 4, true
+Quicksort (with median of 3 and insertion sort), random, 100, 3, true
+Introsort (STL hybrid), random, 100, 7, true
+Bubble Sort, random, 1000, 1377, true
+Selection Sort, random, 1000, 294, true
+Insertion Sort, random, 1000, 208, true
+Shell Sort, random, 1000, 85, true
+Heap Sort, random, 1000, 88, true
+Merge Sort, random, 1000, 89, true
+Quicksort (Original), random, 1000, 59, true
+Quicksort (with median of 3 and insertion sort), random, 1000, 48, true
+Introsort (STL hybrid), random, 1000, 89, true
+Bubble Sort, random, 2500, 8423, true
+Selection Sort, random, 2500, 1616, true
+Insertion Sort, random, 2500, 1232, true
+Shell Sort, random, 2500, 258, true
+Heap Sort, random, 2500, 238, true
+Merge Sort, random, 2500, 220, true
+Quicksort (Original), random, 2500, 149, true
+Quicksort (with median of 3 and insertion sort), random, 2500, 133, true
+Introsort (STL hybrid), random, 2500, 246, true
+Bubble Sort, random, 5000, 33284, true
+Selection Sort, random, 5000, 5782, true
+Insertion Sort, random, 5000, 4879, true
+Shell Sort, random, 5000, 554, true
+Heap Sort, random, 5000, 444, true
+Merge Sort, random, 5000, 475, true
+Quicksort (Original), random, 5000, 323, true
+Quicksort (with median of 3 and insertion sort), random, 5000, 268, true
+Introsort (STL hybrid), random, 5000, 457, true
+Bubble Sort, random, 7500, 81601, true
+Selection Sort, random, 7500, 13095, true
+Insertion Sort, random, 7500, 10827, true
+Shell Sort, random, 7500, 839, true
+Heap Sort, random, 7500, 748, true
+Merge Sort, random, 7500, 742, true
+Quicksort (Original), random, 7500, 487, true
+Quicksort (with median of 3 and insertion sort), random, 7500, 407, true
+Introsort (STL hybrid), random, 7500, 716, true
+Bubble Sort, random, 10000, 154799, true
+Selection Sort, random, 10000, 22765, true
+Insertion Sort, random, 10000, 19380, true
+Shell Sort, random, 10000, 1174, true
+Heap Sort, random, 10000, 981, true
+Merge Sort, random, 10000, 1007, true
+Quicksort (Original), random, 10000, 658, true
+Quicksort (with median of 3 and insertion sort), random, 10000, 552, true
+Introsort (STL hybrid), random, 10000, 991, true
+Bubble Sort, random, 100, 16, true
+Selection Sort, random, 100, 8, true
+Insertion Sort, random, 100, 4, true
+Shell Sort, random, 100, 6, true
+Heap Sort, random, 100, 7, true
+Merge Sort, random, 100, 7, true
+Quicksort (Original), random, 100, 4, true
+Quicksort (with median of 3 and insertion sort), random, 100, 3, true
+Introsort (STL hybrid), random, 100, 7, true
+Bubble Sort, random, 1000, 1280, true
+Selection Sort, random, 1000, 294, true
+Insertion Sort, random, 1000, 209, true
+Shell Sort, random, 1000, 86, true
+Heap Sort, random, 1000, 84, true
+Merge Sort, random, 1000, 90, true
+Quicksort (Original), random, 1000, 59, true
+Quicksort (with median of 3 and insertion sort), random, 1000, 48, true
+Introsort (STL hybrid), random, 1000, 91, true
+Bubble Sort, random, 2500, 8576, true
+Selection Sort, random, 2500, 1593, true
+Insertion Sort, random, 2500, 1223, true
+Shell Sort, random, 2500, 261, true
+Heap Sort, random, 2500, 234, true
+Merge Sort, random, 2500, 219, true
+Quicksort (Original), random, 2500, 158, true
+Quicksort (with median of 3 and insertion sort), random, 2500, 132, true
+Introsort (STL hybrid), random, 2500, 246, true
+Bubble Sort, random, 5000, 33842, true
+Selection Sort, random, 5000, 5819, true
+Insertion Sort, random, 5000, 4853, true
+Shell Sort, random, 5000, 557, true
+Heap Sort, random, 5000, 466, true
+Merge Sort, random, 5000, 480, true
+Quicksort (Original), random, 5000, 322, true
+Quicksort (with median of 3 and insertion sort), random, 5000, 323, true
+Introsort (STL hybrid), random, 5000, 474, true
+Bubble Sort, random, 7500, 87797, true
+Selection Sort, random, 7500, 15077, true
+Insertion Sort, random, 7500, 12565, true
+Shell Sort, random, 7500, 914, true
+Heap Sort, random, 7500, 778, true
+Merge Sort, random, 7500, 823, true
+Quicksort (Original), random, 7500, 550, true
+Quicksort (with median of 3 and insertion sort), random, 7500, 457, true
+Introsort (STL hybrid), random, 7500, 812, true
+Bubble Sort, random, 10000, 166830, true
+Selection Sort, random, 10000, 22498, true
+Insertion Sort, random, 10000, 19232, true
+Shell Sort, random, 10000, 1153, true
+Heap Sort, random, 10000, 946, true
+Merge Sort, random, 10000, 1115, true
+Quicksort (Original), random, 10000, 646, true
+Quicksort (with median of 3 and insertion sort), random, 10000, 541, true
+Introsort (STL hybrid), random, 10000, 966, true
+Bubble Sort, random, 100, 19, true
+Selection Sort, random, 100, 8, true
+Insertion Sort, random, 100, 3, true
+Shell Sort, random, 100, 6, true
+Heap Sort, random, 100, 7, true
+Merge Sort, random, 100, 7, true
+Quicksort (Original), random, 100, 4, true
+Quicksort (with median of 3 and insertion sort), random, 100, 3, true
+Introsort (STL hybrid), random, 100, 7, true
+Bubble Sort, random, 1000, 1256, true
+Selection Sort, random, 1000, 324, true
+Insertion Sort, random, 1000, 209, true
+Shell Sort, random, 1000, 93, true
+Heap Sort, random, 1000, 93, true
+Merge Sort, random, 1000, 89, true
+Quicksort (Original), random, 1000, 59, true
+Quicksort (with median of 3 and insertion sort), random, 1000, 47, true
+Introsort (STL hybrid), random, 1000, 93, true
+Bubble Sort, random, 2500, 8286, true
+Selection Sort, random, 2500, 1546, true
+Insertion Sort, random, 2500, 1310, true
+Shell Sort, random, 2500, 237, true
+Heap Sort, random, 2500, 223, true
+Merge Sort, random, 2500, 221, true
+Quicksort (Original), random, 2500, 152, true
+Quicksort (with median of 3 and insertion sort), random, 2500, 127, true
+Introsort (STL hybrid), random, 2500, 222, true
+Bubble Sort, random, 5000, 34305, true
+Selection Sort, random, 5000, 5897, true
+Insertion Sort, random, 5000, 4925, true
+Shell Sort, random, 5000, 507, true
+Heap Sort, random, 5000, 442, true
+Merge Sort, random, 5000, 491, true
+Quicksort (Original), random, 5000, 326, true
+Quicksort (with median of 3 and insertion sort), random, 5000, 266, true
+Introsort (STL hybrid), random, 5000, 541, true
+Bubble Sort, random, 7500, 83253, true
+Selection Sort, random, 7500, 13142, true
+Insertion Sort, random, 7500, 10970, true
+Shell Sort, random, 7500, 829, true
+Heap Sort, random, 7500, 691, true
+Merge Sort, random, 7500, 722, true
+Quicksort (Original), random, 7500, 488, true
+Quicksort (with median of 3 and insertion sort), random, 7500, 411, true
+Introsort (STL hybrid), random, 7500, 744, true
+Bubble Sort, random, 10000, 162549, true
+Selection Sort, random, 10000, 26288, true
+Insertion Sort, random, 10000, 20511, true
+Shell Sort, random, 10000, 1154, true
+Heap Sort, random, 10000, 918, true
+Merge Sort, random, 10000, 997, true
+Quicksort (Original), random, 10000, 663, true
+Quicksort (with median of 3 and insertion sort), random, 10000, 551, true
+Introsort (STL hybrid), random, 10000, 1037, true
+Bubble Sort, random, 100, 19, true
+Selection Sort, random, 100, 8, true
+Insertion Sort, random, 100, 4, true
+Shell Sort, random, 100, 5, true
+Heap Sort, random, 100, 7, true
+Merge Sort, random, 100, 7, true
+Quicksort (Original), random, 100, 4, true
+Quicksort (with median of 3 and insertion sort), random, 100, 3, true
+Introsort (STL hybrid), random, 100, 7, true
+Bubble Sort, random, 1000, 1454, true
+Selection Sort, random, 1000, 328, true
+Insertion Sort, random, 1000, 240, true
+Shell Sort, random, 1000, 88, true
+Heap Sort, random, 1000, 87, true
+Merge Sort, random, 1000, 90, true
+Quicksort (Original), random, 1000, 59, true
+Quicksort (with median of 3 and insertion sort), random, 1000, 47, true
+Introsort (STL hybrid), random, 1000, 93, true
+Bubble Sort, random, 2500, 9246, true
+Selection Sort, random, 2500, 1838, true
+Insertion Sort, random, 2500, 1628, true
+Shell Sort, random, 2500, 267, true
+Heap Sort, random, 2500, 238, true
+Merge Sort, random, 2500, 258, true
+Quicksort (Original), random, 2500, 165, true
+Quicksort (with median of 3 and insertion sort), random, 2500, 137, true
+Introsort (STL hybrid), random, 2500, 253, true
+Bubble Sort, random, 5000, 35005, true
+Selection Sort, random, 5000, 5919, true
+Insertion Sort, random, 5000, 4877, true
+Shell Sort, random, 5000, 499, true
+Heap Sort, random, 5000, 455, true
+Merge Sort, random, 5000, 470, true
+Quicksort (Original), random, 5000, 344, true
+Quicksort (with median of 3 and insertion sort), random, 5000, 292, true
+Introsort (STL hybrid), random, 5000, 457, true
+Bubble Sort, random, 7500, 89977, true
+Selection Sort, random, 7500, 14830, true
+Insertion Sort, random, 7500, 11308, true
+Shell Sort, random, 7500, 816, true
+Heap Sort, random, 7500, 746, true
+Merge Sort, random, 7500, 719, true
+Quicksort (Original), random, 7500, 490, true
+Quicksort (with median of 3 and insertion sort), random, 7500, 411, true
+Introsort (STL hybrid), random, 7500, 725, true
+Bubble Sort, random, 10000, 162270, true
+Selection Sort, random, 10000, 22895, true
+Insertion Sort, random, 10000, 19449, true
+Shell Sort, random, 10000, 1219, true
+Heap Sort, random, 10000, 998, true
+Merge Sort, random, 10000, 1063, true
+Quicksort (Original), random, 10000, 674, true
+Quicksort (with median of 3 and insertion sort), random, 10000, 658, true
+Introsort (STL hybrid), random, 10000, 1062, true

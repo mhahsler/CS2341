@@ -124,19 +124,44 @@ Try with larger random arrays.
 Compilers use [code optimization](https://en.wikipedia.org/wiki/Optimizing_compiler) ([GCC optimizations](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html)).
 In VS Code, compile the code using in the bottom bar `CMake:[Release]` (i.e., with speed optimization) instead of `CMake: [Debug]` (optimizer disabled). 
 
+**Runtime Complexity (Empirical)**
 
-You can write the output of the program to a file using output redirection in the shell with `>` and append with `>>` .
+I use here the Linux shell (bash). 
+You can write the output of the program to a file using output redirection in the shell with `>` and append with `>>`.
+The pipe `|` redirects the output to another program. `head` and `tail` take first/last few lines of the output. The shell
+also supports for loops so I can run the experiment ten times (since the arrays are randomly generated). 
+Paste the following into the terminal in VS Code (you need to be on a Linux server or WSL. On a Mac you may need to open a bash shell by typing `bash`). 
+
 
 ```
-./sort random 100 > times.csv
-./sort random 1000   | tail -n +2 >> times.csv
-./sort random 2500   | tail -n +2 >> times.csv
-./sort random 5000   | tail -n +2 >> times.csv
-./sort random 7500   | tail -n +2 >> times.csv
-./sort random 10000  | tail -n +2 >> times.csv
+./sort random 1      | head -n 1 > run_time.csv
+for i in {1..10}
+do
+  ./sort random 100    | tail -n +2 >> run_time.csv
+  ./sort random 1000   | tail -n +2 >> run_time.csv
+  ./sort random 2500   | tail -n +2 >> run_time.csv
+  ./sort random 5000   | tail -n +2 >> run_time.csv
+  ./sort random 7500   | tail -n +2 >> run_time.csv
+  ./sort random 10000  | tail -n +2 >> run_time.csv
+done
 ```
 
-You can now open `times.csv` in Excel and analyze the data using Pivot tables (create tables with N vs. algorithms), scatter plots, and trendlines.
+Open `run_time.csv` in Excel and analyze the run time data:
+1. Create a pivot table with N as rows vs. algorithms as columns and average the run times.
+2. Create a scatter plot with lines (you have to copy-and-paste the values of the pivot table first).  
+3. polynomial trendlines and increase the degree to see what powers have large factors.
+
+**Determine Worst case**
+```
+./sort random 1      | head -n 1 > worse_case.csv
+for i in {1..10}
+do
+  ./sort random 1000   | tail -n +2 >> worse_case.csv
+  ./sort sorted 1000   | tail -n +2 >> worse_case.csv
+  ./sort reverse 1000  | tail -n +2 >> worse_case.csv
+done
+```
+
 
 
 ## Profiling Code
