@@ -18,6 +18,22 @@ We will use a simple header-based unit testing framework called
 [GoogleTest](https://google.github.io/googletest/).
 
 
+## Code Coverage: What Tests do you need?
+
+The tests should cover all possible use cases.
+
+1. Test the common case for every functionality. This will tell you when changes break your code. 
+2. Test common edge cases which includes
+    * An input of size 0.
+    * Input that should result in an empty result or trigger an exception (e.g., pop on an empty stack).
+3. Add more test cases for the most complex and therefore most error-prone parts of your code. Design your tests so 
+  they run all possible scenarios of this complex code (e.g., test all cases for rotations in AVL trees).
+4. Whenever you find a bug, write a test case to cover it before fixing it.
+
+
+Ideally, each line will be executed during the tests. This is called 100% code coverage. 
+Code coverage tools like `gcov` and `lcov` can determine coverage (see CMakeLists.txt [here](Chapter1_Programming/factorial)).
+
 ## Unit Tests with Catch2
 Here is an [example with tests.](Chapter1_Programming/factorial)
 
