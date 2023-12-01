@@ -9,12 +9,14 @@
 // MacOS: brew install boost
 #include <boost/functional/hash/hash.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
+#include <boost/numeric/ublas/matrix_sparse.hpp>
 #include <boost/numeric/ublas/io.hpp>
 
 using namespace std;
 
 
 // Simple example where vertices are represented as integers (i.e., vertex ID).
+// Run with the debugger: Set the breakpoint to the last line and inspect the data structures.
 
 int main()
 {
@@ -87,6 +89,13 @@ int main()
     // Note: dense adjacency representation are easy to work with using row/col indices, but they
     // only works for small graphs with few vertices since it is O(|V|^2) in space. 
     // Use one of the other representations or a sparse matrix representation.
+
+    // Representation 5: Sparse adjacency matrix
+    boost::numeric::ublas::mapped_matrix<int> sparseAdjacencyMatrix (vertices.size(), vertices.size());
+    for (auto &e : edges)
+        sparseAdjacencyMatrix(e.first, e.second) = 1;
+    cout << "Sparse adjacency matrix:\n";
+    cout << sparseAdjacencyMatrix << endl;
 
     return 0;
 }
