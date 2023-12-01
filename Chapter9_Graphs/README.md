@@ -21,6 +21,18 @@ every other vertex.
 
 ## Data Structures
 
+### Tuple Representation
+
+Store the edge set $E$ as a vector or a hash set has a space complexity of $O(|E|)$
+
+### Adjacency List
+
+Each vertex has a list with the adjacent vertices. The vertex lists are typically stored in a vector for fast access using the 
+vertex ID or in a hash table.
+
+Storage requirement is $O(|E| + |V|)$. This is the standard representation for **sparse** graphs since these have
+$|E| + |V| \ll |V|^2$.
+
 ### Adjacency Matrix
 
 A matrix where for each edge $(u, v)$ in the graph, the corresponding matrix entry $A[u, v] = true$ 
@@ -35,19 +47,11 @@ $$
 
 For directed graphs, the density needs to be divided by two since edges in both directions are distinct.
 
-### Adjacency List
-
-Each vertex has a list with the adjacent vertices. The vertex lists are typically stored in a vector for fast access using the 
-vertex ID or in a hash table.
-
-Storage requirement is $O(|E| + |V|)$. This is the standard representation for **sparse** graphs since these have
-$|E| + |V| \ll |V|^2$.
-
 ### Sparse Representation of the Adjacency Matrix
 
 Space: $O(|E|)$ 
 
-* Tuple representation directly stores the edge pair $(v, w). Time: $O(|E|)$ ($O(1)$ with hashing)
+* Tuple representation directly stores the edge pair $(v, w)$. Time: $O(|E|)$ ($O(1)$ with hashing)
 * Compressed sparse row (or column) representation.
 
 Both sparse matrix representations are available in libraries for all major programming languages 
