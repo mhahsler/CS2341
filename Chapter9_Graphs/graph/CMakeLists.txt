@@ -7,6 +7,7 @@ add_compile_options(-Wall -Wextra -pedantic)
 
 # add all the .cpp files here
 add_executable(main main.cpp)
+add_executable(algorithm algorithm.cpp)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
