@@ -23,8 +23,9 @@ int main()
     typedef pair<vertex, vertex> edge;
 
     // Representation 1: Tuple representation (a vector of edge tuples)
-    vector<vertex> vertices = {0, 1, 2, 3};
-    vector<edge> edges = {edge(0, 1), edge(0, 2), edge(1, 2), edge(2, 3)};
+    // Note that the first node is 0 so we can use it as the index in the adjacency matrix below.
+    vector<vertex> vertices = {0, 1, 2};
+    vector<edge> edges = {edge(0, 1), edge(1, 0), edge(1, 2), edge(2, 2)};
     
     cout << "Tuple representation (vector):\n";
     for (const auto &e : edges)

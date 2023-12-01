@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(IntCell VERSION 0.1.0)
+project(Graphs VERSION 0.1.0)
 
 # show compiler output and enable warnings
 set(CMAKE_VERBOSE_MAKEFILE ON)
