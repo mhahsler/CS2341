@@ -74,10 +74,6 @@ int main()
     cout << endl;
 
 
-
-    // Note: fast lookup by vertex ID (O(1))!
-
-
     // Representation 4: Adjacency matrix
     boost::numeric::ublas::matrix<int> adjacencyMatrix(vertices.size(), vertices.size());
     for (auto &e : edges)
