@@ -14,7 +14,6 @@ using namespace boost::numeric::ublas;
 
 int main()
 {
-    std::cout << std::boolalpha;
     
     // define types for more readable code
     typedef int vertex;
@@ -30,29 +29,30 @@ int main()
     for (auto &e : edges)
         adjacencyMatrix(e.first, e.second) = 1;    
     
-    std::cout << "Adjacency matrix: ";
+    std::cout << "Adjacency matrix  (rows): ";
     std::cout << adjacencyMatrix << "\n";
 
     // Paths of a given length can be found using matrix multiplication of the adjacency matrix.
     matrix<int> m = adjacencyMatrix;
 
-    std::cout << "Adjacency matrix squared: ";
+    std::cout << "Adjacency matrix squared (rows): ";
     m = prod(m, adjacencyMatrix);  // prod is the matrix multiplication function defined in boost::numeric::ublas
     std::cout << m << "\n";
 
-    std::cout << "Is there a path length 1 between 0 and 3? ";
-    std::cout << (m(0, 3) == 1) << "\n";
+    std::cout << "How many paths of length 1 exist between 0 and 3? ";
+    std::cout << m(0, 3) << "\n";
    
-    std::cout << "Adjacency matrix cubed:";
+    std::cout << "Adjacency matrix cubed (rows):";
     m = prod(m, adjacencyMatrix);
     std::cout << m << "\n";
 
-    std::cout << "Is there a path length 2 between 0 and 3? ";
+    std::cout << "How many paths of length 2 exist between 0 and 3? ";
     std::cout << (m(0, 3) == 1) << std::endl;
 
-    /* Notes:
+    /* Matrix multiplications are expensive O(n^3)! Alternative algorithms (all are available in boost):
      * * Use a sparse matrix for large sparse graphs.
-     * * An alternative algorithm is tree search using the adjacency list.
+     * * Use tree search (depth-first, breath-first) with breaking loops directly on the adjacency list.
+     * * Dijkstra's algorithm for shortest paths (i.e., uniform cost search).
      */
 
     return 0;
