@@ -139,6 +139,9 @@ Lists are more memory efficient and vectors are faster.
   See example [factorial](../Chapter1_Programming/factorial).
 
 
+Helper to [convert between prefix, infix and postfix notation](https://www.web4college.com/converters/infix-to-postfix-prefix.php)
+to check if you are doing it right. 
+
 ## Queues
 
 Insertion is done on one end and deletion on the other. This is called FIFO (First-In, First-Out).

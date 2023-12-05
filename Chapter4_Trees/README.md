@@ -178,8 +178,6 @@ We can create an expression tree from postfix notation with a stack.
   Once the expression is completely processes, you should have a pointer to the expression tree on the stack.
 ```
 
-Example: [Converter](https://www.web4college.com/converters/infix-to-postfix-prefix.php) 
-
 Applications of the parse tree: create 
   - infix notation: inorder tree transversal (LNR) = left expression in parentheses then operator and then the right subtree in parentheses. 
   - postfix notations: postorder tree traversal (LRN) = process operator after the children (no need for parentheses). 
