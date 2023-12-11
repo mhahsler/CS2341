@@ -41,7 +41,38 @@ public:
         return *this;
     }
 
-    // TODO: C++11 move versions would be nice (Big five)
+    // Move Constructor
+    // Much more effcient than copy constructor
+    // Steals the interals and reassigns them
+    // Marking these move operations as noexcept to ensure exception safety and better performance.
+    DSMatrix(DSMatrix &&rhs) noexcept : rows{0}, cols{0}, data{nullptr}
+    {
+        rows = rhs.rows;
+        cols = rhs.cols;
+        data = rhs.data;
+    
+        rhs.rows = 0;
+        rhs.cols = 0;
+        rhs.data = nullptr;
+    }
+    
+    // Move Assignment Operator
+    DSMatrix &operator=(DSMatrix &&rhs) noexcept
+    {
+        if (this != &rhs)
+        {
+            delete[] data;
+    
+            rows = rhs.rows;
+            cols = rhs.cols;
+            data = rhs.data;
+    
+            rhs.rows = 0;
+            rhs.cols = 0;
+            rhs.data = nullptr;
+        }
+        return *this;
+    }
 
     // We would overload operator[] for row and column index but C++ does not
     // support multiple parameters. Support for this is added in C++23 and example code is below:
