@@ -35,41 +35,47 @@ private:
                                             // but the search less efficient.
 
 public:
-    /**
-     * @brief Default constructor
-     */
-    AvlTree() : root{nullptr}
-    {
-    }
+    // Default constructor
+    AvlTree() : root{nullptr} {}
 
-    /**
-     * @brief Rule-of-3 Part 1: Copy constructor uses internal function clone().
-     *
-     */
-    AvlTree(const AvlTree &rhs) : root{nullptr}
-    {
-        root = clone(rhs.root);
-    }
-
-    /**
-     * @brief Rule-of-3 Part 2: Destroy the Binary Search Tree object using the internal
-     *   function makeEmpty().
-     */
+    // Destructor
     ~AvlTree()
     {
         makeEmpty();
     }
 
-    /**
-     * @brief Rule-of-3 Part 1: Copy constructor uses internal function clone().
-     */
+    // Copy constructor
+    AvlTree(const AvlTree &rhs) : root{nullptr}
+    {
+        root = clone(rhs.root);
+    }
+
+    // Move constructor
+    AvlTree(AvlTree &&rhs) noexcept : root{rhs.root}
+    {
+        rhs.root = nullptr;
+    }
+
+    // Copy assignment operator
     AvlTree &operator=(const AvlTree &rhs)
     {
-        if (this == &rhs) {
-            return *this;
+        if (this != &rhs)
+        {
+            makeEmpty();
+            root = clone(rhs.root);
         }
-        makeEmpty();
-        root = clone(rhs.root);
+        return *this;
+    }
+
+    // Move assignment operator
+    AvlTree &operator=(AvlTree &&rhs) noexcept
+    {
+        if (this != &rhs)
+        {
+            makeEmpty();
+            root = rhs.root;
+            rhs.root = nullptr;
+        }
         return *this;
     }
 
