@@ -1,8 +1,7 @@
 #ifndef AVL_TREE_H
 #define AVL_TREE_H
 
-// we define DEBUG in the main function.
-// #define DEBUG
+// #define DEBUG  // Debug macro, uncomment to enable debug mode
 
 #include <stdexcept>
 #include <algorithm>
@@ -10,8 +9,9 @@
 
 using namespace std;
 
-/* AvlTree class
- * This implementation is based on the unbalanced binary search tree and adds hight information 
+/*
+ * @class AvlTree
+ * @brief This implementation is based on the unbalanced binary search tree and adds hight information
  * to the nodes and a balance function to perform the needed rotations.
  */
 template <typename Comparable>
@@ -23,55 +23,49 @@ private:
         Comparable key;
         AvlNode *left;
         AvlNode *right;
-        int height;      // AVL tree: keeping track of the height is the difference to a unbalanced binary search tree
+        int height; // Height of the node used for balancing
 
         AvlNode(const Comparable &theKey, AvlNode *lt, AvlNode *rt, int h)
             : key{theKey}, left{lt}, right{rt}, height{h} {}
     };
 
     AvlNode *root;
-    
-    static const int ALLOWED_IMBALANCE = 1; // 1 is the default; more will make balancing cheaper
-                                            // but the search less efficient.
+
+    // Allowed imbalance in the AVL tree. A higher value will make balancing cheaper
+    // but the search less efficient.
+    static const int ALLOWED_IMBALANCE = 1;
 
 public:
-    /**
-     * @brief Default constructor
-     */
+    // Default constructor
     AvlTree() : root{nullptr}
     {
     }
 
-    /**
-     * @brief Rule-of-3 Part 1: Copy constructor uses internal function clone().
-     *
-     */
+    // Rule-of-3 Part 1: Copy constructor
     AvlTree(const AvlTree &rhs) : root{nullptr}
     {
         root = clone(rhs.root);
     }
 
-    /**
-     * @brief Rule-of-3 Part 2: Destroy the Binary Search Tree object using the internal
-     *   function makeEmpty().
-     */
+    // Rule-of-3 Part 2: Destructor
     ~AvlTree()
     {
         makeEmpty();
     }
 
-    /**
-     * @brief Rule-of-3 Part 1: Copy constructor uses internal function clone().
-     */
+    // Rule-of-3 Part 3: Copy assignment operator
     AvlTree &operator=(const AvlTree &rhs)
     {
-        if (this == &rhs) {
-            return *this;
+        if (this != &rhs)
+        {
+            makeEmpty();
+            root = clone(rhs.root);
         }
-        makeEmpty();
-        root = clone(rhs.root);
+
         return *this;
     }
+
+    // Move semantics could be implemented here.
 
     /**
      * Returns true if x is found in the tree.
@@ -89,7 +83,6 @@ public:
     {
         return root == nullptr;
     }
-
 
     /**
      * Print the tree structure.
@@ -123,16 +116,16 @@ public:
         remove(x, root);
     }
 
-    
-#ifdef DEBUG   
+#ifdef DEBUG
     /**
-     * Check if the tree is balanced and that the height of the nodes is correct. 
+     * Check if the tree is balanced and that the height of the nodes is correct.
      * Throws an exception if the tree is not balanced or the height is wrong.
      * This function is not necessary in production code since the tree is always balanced.
      * It is only compiled when DEBUG is defined.
      */
 
-    int check_balance() {
+    int check_balance()
+    {
         return check_balance(root);
     }
 #endif
@@ -221,7 +214,6 @@ private:
         return new AvlNode{t->key, clone(t->left), clone(t->right), t->height};
     }
 
-
     /**
      * Pretty print the tree structure
      * Uses preorder traversal with R and L swapped (NRL)
@@ -234,7 +226,7 @@ private:
             return;
 
         std::cout << prefix;
-        // Note: this uses unicode characters for the tree structure. They might not print correctly on 
+        // Note: this uses unicode characters for the tree structure. They might not print correctly on
         // all systems (Windows!?!) and all types of output devices.
         std::cout << (isRight ? "├──" : "└──");
         // print the value of the node
@@ -255,16 +247,15 @@ private:
         return t == nullptr ? -1 : t->height;
     }
 
-
-    /** 
-     * 1. Performs rotations if the the the difference of the height stored in t's two child nodes 
+    /**
+     * 1. Performs rotations if the the the difference of the height stored in t's two child nodes
      *    more than ALLOWED_IMBALANCE.
      * 2. Updates the height information of the note t.
-     * 
+     *
      * Assumes that the high information in the child nodes is correct. This is guaranteed by calling
-     * balance() recursively from the inserted node up to the tree node (see insert()). Rotations will 
-     * only be performed for node alpha (parent of the parent of the inserted node). For all other nodes, 
-     * only the height will be updated. 
+     * balance() recursively from the inserted node up to the tree node (see insert()). Rotations will
+     * only be performed for node alpha (parent of the parent of the inserted node). For all other nodes,
+     * only the height will be updated.
      */
     void balance(AvlNode *&t)
     {
@@ -378,10 +369,9 @@ private:
         rotateWithRightChild(k1);
     }
 
-
-#ifdef DEBUG   
+#ifdef DEBUG
     /**
-     * Check if the tree is balanced and that the height of the nodes is correct. 
+     * Check if the tree is balanced and that the height of the nodes is correct.
      * Throws an exception if the tree is not balanced or the height is wrong.
      * This function is not necessary in production code since the tree is always balanced.
      * It is only compiled when DEBUG is defined.

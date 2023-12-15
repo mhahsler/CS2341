@@ -9,15 +9,22 @@
 using namespace std;
 
 /**
+ * @class BinarySearchTree
  * @brief Simple implementation of an (unbalanced) binary search tree
  *
- * @tparam Comparable
+ * @tparam Comparable The type of the elements that will be stored in the tree.
  */
 template <typename Comparable>
 class BinarySearchTree
 {
-    // define node structure as a nested class
 private:
+    /**
+     * @class BinaryNode
+     * @brief A node in the binary search tree.
+     *
+     * Each node contains a key and pointers to its left and right children.
+     * Note that this class is a nested class defined inside the BinarySearchTree.
+     */
     class BinaryNode
     {
     public:
@@ -59,15 +66,20 @@ public:
     }
 
     /**
-     * @brief Rule-of-3 Part 3: Copy assignment
+     * @brief Rule-of-3 Part 3: Copy assignment operator
      */
     BinarySearchTree &operator=(const BinarySearchTree &rhs)
     {
-        makeEmpty();
-        root = clone(rhs.root);
+        if (this != &rhs) {
+          makeEmpty();
+          root = clone(rhs.root);
+        }
 
         return *this;
     }
+
+    // We could also implement move semantics (move copy constructor and move assignment operator), but we skip this for now.
+
 
     /**
      * @brief Test if the tree is logically empty.
@@ -179,7 +191,7 @@ private:
     /**
      * Internal method to make subtree empty uses postorder traversal (LRN)
      * Note the pointer reference for t.
-     */
+     */
     void makeEmpty(BinaryNode *&t)
     {
         if (t == nullptr)
