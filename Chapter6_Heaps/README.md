@@ -11,10 +11,10 @@ Basic Operations:
 Options:
 * Unsorted array: $O(N)$
 * Sorted array: inserting and deleting is an issue.
-* A balanced binary search tree: $O(log\ N)$. With out balancing, the tree would get right-heavy because we always delete the minimum from the left side.
+* A balanced binary search tree: $O(log\ N)$. Without balancing, the tree would get right-heavy because we always delete the minimum from the left side.
 * Use a **new specialized binary heap data structure** that has faster access to the minimum and does not need rotations for balancing.
 
-Note: This data structure is very different from regular FIFO queues and not related
+Note: This data structure is very different from regular FIFO queues and is not related
 to heap memory! 
 
 ## Binary Heap
@@ -22,25 +22,25 @@ to heap memory!
 A binary tree with
 
 1. **Structure property:** a complete tree with no missing nodes. 
-  The bottom level is filled left-to-right ending in "last element." The missing node next to the last element is called 
+  The bottom level is filled left-to-right, ending in "last element." The missing node next to the last element is called 
   the "hole."
   The structure property ensures that the tree has a height of $O(log\ N)$.
 2. **Heap-order property:** The key of each node has to be smaller than the keys 
   of its descendants. 
-  The root node always has the smallest key so finding it is "free."
+  The root node always has the smallest key, so finding it is "free."
 
-Note: This tree is always balanced (structure property) but the heap-order property makes it much simpler to maintain than a balanced binary search tree (e.g., an AVL tree). 
+Note: This tree is always balanced (structure property), but the heap-order property makes it much simpler to maintain than a balanced binary search tree (e.g., an AVL tree). 
 
 ### Operations
 
-**insert:** move the "hole" up the tree till the new element can be inserted in the hole without violating the heap-order property. This operation is called _percolate up_. The worst case is to insert a new minimum with $O(log\ N)$ because the hole has to be moved up all the way to the root.
+**insert:** Move the "hole" up the tree till the new element can be inserted in the hole without violating the heap-order property. This operation is called _percolate up_. The worst case is to insert a new minimum with $O(log\ N)$ because the hole has to be moved up all the way to the root.
 
-**deleteMin:** remove the root node (with the minimum key) and then move the resulting hole down the smaller of the children till the "last element" in the tree can be placed in the hole without violating the heap-order property. This operation is called _percolate down_. 
-Worst case is $O(log\ N)$.
+**deleteMin:** Remove the root node (with the minimum key) and then move the resulting hole down the smaller of the children till the "last element" in the tree can be placed in the hole without violating the heap-order property. This operation is called _percolate down_. 
+The worst case is $O(log\ N)$.
 
 **Note:** This data structure is not good for finding an arbitrary element. We would have to scan the complete tree with $O(N)$ operations!
 
-**Example:** Add 30, 100, 80, 25, 40 to a heap and then use delete Min to get the values back.
+**Example:** Add 30, 100, 80, 25, and 40 to a heap and then use deleteMin to get the values back.
 
 ### Implementation
 
@@ -55,7 +55,7 @@ _Note:_ This is also an effective storage format for any balanced tree.
 
 See example: [DSHeap](DSHeap)
 
-You will find often a recursive function called `heapify()` which takes an array and arranges all elements so it has the heap-order property. The insert operation above performs a local heapify only where the insertion happened. 
+You will often find a recursive function called `heapify()`, which takes an array and arranges all elements so it has the heap-order property. The insert operation above performs a local heapify only where the insertion happened. 
 
 ### Min vs. Max-Heap
 
@@ -63,7 +63,7 @@ We have described a min-heap so far. A max-heap is a heap with the largest eleme
 
 ### Other Heap Variants
 
-There exist other variants of heaps: Leftist, Binomial Fibonacci, ...
+Other variants of heaps exist, such as Leftist, Binomial Fibonacci, etc.
 
 
 ## STL Implementation
@@ -80,4 +80,4 @@ See example: [STL priority_queue](STL)
 
 Wikipedia contains a
 [comparison of asymptotic worst-case analysis (Big-O)](https://en.wikipedia.org/wiki/Search_data_structure)
-for the operations for all the data structures we have learned about in this class.
+for the operations of all the data structures we have learned about in this class.
