@@ -1,4 +1,6 @@
-# How to Run Tests
+# How to Tests Your Code
+
+By Michael Hahsler
 
 You should always write tests for every component (e.g., class or algorithm) **before
 you even write the code.** 

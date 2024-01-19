@@ -1,5 +1,7 @@
 # HOWTO Use a Shell (aka Terminal) and SSH
 
+By Michael Hahsler
+
 A [shell](https://en.wikipedia.org/wiki/Shell_(computing)) is the user-exposed outside layer for the operating system. 
 Often a command-line interface (CLI) is provided which can be accessed using a terminal emulation program. 
 It provides a more powerful way to interact with the operating system using scripts. Your computer has a shell. 

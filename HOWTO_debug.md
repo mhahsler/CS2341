@@ -1,4 +1,6 @@
-# HOWTO Debug 
+# HOWTO Debug C++ Code
+
+By Michael Hahsler
 
 You need to have `gdb` ([GNU Project Debugger](https://www.sourceware.org/gdb/)) installed. 
 

@@ -1,5 +1,7 @@
 # How to Detect Memory Leaks
 
+By Michael Hahsler
+
 Example code: [Big-Five for Classes](Chapter1_Programming/big-five)
 
 ### Option 1: Valgrind 

@@ -1,5 +1,7 @@
 # HOWTO Good Coding Practice
 
+By Michael Hahsler
+
 ## Dos
 
 * **Make a design document fist** (e.g., UML class diagram, what data structures to use and why), 

@@ -1,5 +1,6 @@
-# HOWTO Profile Code
+# HOWTO Profile Compiled Code
 
+By Michael Hahsler
 
 Looks like you want to improve the runtime of your code. Before you resort to a profiler you should:
 

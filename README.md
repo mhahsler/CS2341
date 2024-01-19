@@ -1,6 +1,7 @@
 # <img src="images/DS_Weiss_Book.jpg" align="right"> Code Examples for Data Structures
 
-This course is designed to teach basic data structures, their implementation
+This course is designed by [Michael Hahsler](https://michael.hahsler.net/) 
+for learning basic data structures, their implementation
 for current hardware, and their performance tradeoffs.  We will use C++, a
 language widely used to implement performance-critical components of
 applications.  C++ provides access to low-level memory management facilities
