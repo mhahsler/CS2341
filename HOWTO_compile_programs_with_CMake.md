@@ -1,5 +1,7 @@
 # HOWTO Compile Programs With CMake
 
+By Michael Hahsler
+
 Compiling C++ code can be done with several tool chains.
 The two popular tool chains used in this class are:
 
@@ -12,14 +14,14 @@ Compilation consists of two steps (LLVM uses a few more to allow for a source an
 1. **Compilation** of each `.cpp` file to object code ending in `.o`. During this step code optimization is typically performed. See [Compiler](https://en.wikipedia.org/wiki/Compiler).
 2. **Linking** all `.o` files and external libraries together to create the executable. See [Linker](https://en.wikipedia.org/wiki/Linker_(computing)).
 
-The GCC C++ compiler and linker can be called from the terminal as `g++ -O3 <list all .cpp files>`.
+The GCC C++ compiler and linker can be called from the terminal as `g++ -O3 -o <executable name> <list all .cpp files>`.
 
-CMake is a popular cross-platform build automation, testing and packaging tool. It organizes the compilation process. It will find/configure your compiler tool chain and produce a `Makefile` that does the actual compilation (i.e, running `g++` or `clang`). CMake is 
+CMake is a popular cross-platform build automation, testing and packaging tool for C++. It organizes the compilation process. It will find/configure your compiler tool chain and produce a `Makefile` (or configuration for a different build system) that does the actual compilation (i.e., how to run `g++` or `clang`). CMake is 
 either run by your development environment or from the terminal 
-using `cmake .` and the Makefile is run using `make`. 
+using `cmake -b build .` and the Makefile is run using `make`. 
 VS Code puts everything in the `build` subdirectory. 
-CMake is configured using the `CMakeLists.txt` file. All files `.cpp`
-files need to be specified in the `add_executable()` line or linking will fail. 
+CMake is configured using the `CMakeLists.txt` file. All `.cpp`
+files needed to build the executable need to be specified in the `add_executable()` line or linking will fail. 
 
 
 ## How to Set Up a New Program
@@ -33,7 +35,7 @@ extensions installed.
 2. Create at least a `main.cpp` and a `CMakeLists.txt` file in the directory 
 (you can use the ones from the [hello_world example](https://github.com/mhahsler/CS2341/tree/main/Chapter1_Programming/hello_world)).
 3. Configure CMake by going in the menu to `Help>Show All Commands` (or push `Shift+CTRL+P`) and type `CMake:Configure`. Choose a compiler
-   (latest version of GCC or clang), a project name and that you want to create an executable.
+   (latest version of GCC or clang), a project name, and that you want to create an executable.
 4. Add all used `.cpp` files in the `add_executable()` instruction in `CMakeLists.txt`.
 5. Make sure that the compiler options for warnings and verbose output are enabled in `CMakeLists.txt`.
 6. Choose the CMake build variant `CMake: [Debug]` (no code optimization for debugging) or `CMake: [Release]` (fast code with code optimization).
@@ -44,8 +46,7 @@ extensions installed.
 
 *Notes:* 
 
-* **Only use the buttons in the bottom task bar!** These will use CMake. There are other buttons (e.g., in VS Codes top right corner). Do not use these because they will use VS Code's internal build tools which are not compatible with CMake.
-* Steps 2 and 3 can be done using `CTRL+Shift P` `CMake:Quickstart` which will create a Hello World! program.
+* **Only use the buttons in the bottom task bar!** These will use CMake. There are other buttons (e.g., in VS Codes top right corner). Do not use these because they will use VS Code's internal build tools which are not compatible with CMake. You may need enable visibility when prompted to be able to see the CMake task bar.
 * You can also manually run `CMake` and `make`:
   Go to the project directory in your shell (a WSL shell for windows) and use 
    
