@@ -14,14 +14,14 @@ private:
     int storedValue;
 
 public:
-    explicit IntCell(int initialValue = 0); // default value can only be specified here!
+    explicit IntCell(int initialValue = 0); // default value can only be specified once!
     int read() const;
     void write(int x);
 }; // mind the ;
 
 /*
  * Notes: 
- *  * use default values
+ *  * use default values and specify them in the header file only.
  *  * explicit prevents automatic conversion of int to IntCell.
          intCell cell; cell = 10; // conversion prevented by explicit
          intCell cell = intCell{10}; // should work

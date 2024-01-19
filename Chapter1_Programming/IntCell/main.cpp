@@ -8,7 +8,7 @@ int main()
 {
     
     IntCell test = IntCell{5};
-    // C++11 can use {} for construction
+    // Since C++11 we can use {} and lists for construction
     // It is the same as IntCell test = IntCell(5);
     std::cout << test.read() << "\n"; // std::endl flushes the buffer and is slow so use it sparingly
 
