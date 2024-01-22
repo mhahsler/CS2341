@@ -18,6 +18,9 @@ project(hello_world VERSION 0.1.0)
 # C++ Standard
 set(CMAKE_CXX_STANDARD 17)
 
+# Choose a specific build system (e.g. Unix Makefiles)
+# set(CMAKE_GENERATOR "Unix Makefiles")
+
 # show compiler output and enable warnings
 set(CMAKE_VERBOSE_MAKEFILE ON)
 add_compile_options(-Wall -Wextra -pedantic)
