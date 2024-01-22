@@ -5,7 +5,7 @@
 # and push build in the bottom status bar. Choose GCC with the latest version as the compiler.
 #
 # you can also go to the directory in your shell and use
-# > cmake . -B build -G "Unix Makefile"
+# > cmake . -B build -G "Unix Makefiles"
 # to create a Makefile and
 #
 # > cd build
@@ -17,9 +17,6 @@ project(hello_world VERSION 0.1.0)
 
 # C++ Standard
 set(CMAKE_CXX_STANDARD 17)
-
-# Choose a specific build system (e.g. Unix Makefiles)
-# set(CMAKE_GENERATOR "Unix Makefiles")
 
 # show compiler output and enable warnings
 set(CMAKE_VERBOSE_MAKEFILE ON)
