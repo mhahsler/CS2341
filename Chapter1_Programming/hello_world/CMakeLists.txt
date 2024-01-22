@@ -5,7 +5,7 @@
 # and push build in the bottom status bar. Choose GCC with the latest version as the compiler.
 #
 # you can also go to the directory in your shell and use
-# > cmake . -B build -G "Unix Makefile"
+# > cmake . -B build -G "Unix Makefiles"
 # to create a Makefile and
 #
 # > cd build
