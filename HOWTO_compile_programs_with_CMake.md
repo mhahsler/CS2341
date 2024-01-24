@@ -17,8 +17,7 @@ Compilation consists of two steps (LLVM uses a few more to allow for a source an
 The GCC C++ compiler and linker can be called from the terminal as `g++ -O3 -o <executable name> <list all .cpp files>`.
 
 CMake is a popular cross-platform build automation, testing and packaging tool for C++. It organizes the compilation process. It will find/configure your compiler tool chain and produce a `Makefile` (or configuration for a different build system) that does the actual compilation (i.e., how to run `g++` or `clang`). CMake is 
-either run by your development environment or from the terminal 
-using `cmake -b build .` and the Makefile is run using `make`. 
+either run by your development environment or from the terminal. 
 VS Code puts everything in the `build` subdirectory. 
 CMake is configured using the `CMakeLists.txt` file. All `.cpp`
 files needed to build the executable need to be specified in the `add_executable()` line or linking will fail. 
@@ -51,7 +50,7 @@ extensions installed.
   Go to the project directory in your shell (a WSL shell for windows) and use 
    
    ```
-   cmake . -B build
+   cmake -B build -G "Unix Makefiles" .
    ``` 
  
   to create a Makefile in the `build` directory and use
