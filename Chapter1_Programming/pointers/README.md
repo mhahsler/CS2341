@@ -38,8 +38,11 @@ Pointers store the memory address of an object.
 * References (`int& i_ref = i;`) and 
   the address-of-operator (`&i`) are not related. A reference is unrelated to pointers. It is just a second name for an object in memory. The address-of-operator returns a pointer 
   (the memory address). 
-* The `*` has two meanings: `int* p;` creates a pointer to an int value and the dereference operator in front of a 
-  pointer (`*p`) follows the pointer and returns the value pointed to. 
+* `*` has three meanings:
+    1. Multiplication
+    2.  `int* p;` creates a pointer to an int value. 
+    3. `*p`, the dereference operator in front of a 
+      pointer, follows the pointer and returns the value pointed to. 
 * While some programmers prefer to write `int* p;` to stress that the `*` modifies the declaration to declare an int pointer,
   it is often also written as `int *p;`. The same is true for defining references.
 
@@ -63,8 +66,8 @@ int main() {
 
 # Arrays and Pointers
 
-Arrays are a relict from C. They can be allocated on the stack or on the heap. The name of the array can be assigned to a
-pointer to the first element of the array. We can add or subtract numbers from a pointer to move in the array 
+Arrays are a relict from C. They can be allocated on the stack or on the heap. The name of the array can be assigned to a pointer resulting in a pointer to the first element of the array. 
+We can add or subtract numbers from a pointer to move in the array 
 forward or backward. This is called pointer arithmetic.
 
 ```cpp
