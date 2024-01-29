@@ -1,5 +1,7 @@
 # Chapter 1: Programming
 
+Lecture notes by: Michael Hahsler
+
 This chapter is a review of important concepts and their C++ implementation 
 used in this course. Very good short explanations can be found in this
 [C++ YouTube Playlist](https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb).
@@ -13,7 +15,7 @@ used in this course. Very good short explanations can be found in this
 * Some Questions:
   - Where do programs store variables and objects?
   - Where does memory come from and how is memory returned?
-  - Why do we need dynamic memory allocation?
+  - What is dynamic memory and why do we need dynamic memory allocation?
   - What is the difference between the stack and the heap.
   - What happens when you access memory that is not yours?
 
@@ -31,17 +33,18 @@ used in this course. Very good short explanations can be found in this
     }
     ```
 
-  - What are the differences between memory management in C, C++, Java and Python? (Most programming languages use very similar mechanisms.)
-    |                | C   | C++ | Java | Python |
-    | :------------- | :-: | :-: | :--: | :----: |
-    | Request dynamic memory |  ?  |  ?  |   ?  |   ?    |
-    | Return dynamic memory  |  ?  |  ?  |   ?  |   ?    |
+
 
 * Video: How do create [memory diagrams](http://vimeo.com/58710057)
 * [Pointers and dynamic memory allocation](pointers)
 * [Call-by-value vs call-by-reference](parameters) and using `const`.
 * Reading: [References vs. pointers](https://isocpp.org/wiki/faq/references)
 * Exercise: [Memory allocation](memory)
+* What are the differences between memory management in C, C++, Java and Python? (Most programming languages use very similar mechanisms.)
+    |                | C   | C++ | Java | Python |
+    | :------------- | :-: | :-: | :--: | :----: |
+    | Request dynamic memory |  ?  |  ?  |   ?  |   ?    |
+    | Return dynamic memory  |  ?  |  ?  |   ?  |   ?    |
 * Destructor, copy constructor, assignment operator, and move semantics: [The rule of three and the big five](big-five) for classes.
 
 ## Templates (a.k.a. Generics)
