@@ -11,6 +11,8 @@ add_compile_options(-Wall -Wextra -pedantic)
 #add_compile_options(-fsanitize=address -fno-omit-frame-pointer)
 #link_libraries(asan)
 
-add_executable(big-five main.cpp IntCell.cpp IntCellPtr.cpp IntCellPtrOK.cpp)
+add_executable(test_IntCell test_IntCell_main.cpp IntCell.cpp)
+add_executable(test_IntCellPtr test_IntCellPtr_main.cpp IntCellPtr.cpp)
+add_executable(test_IntCellPtrOK test_IntCellPtrOK_main.cpp IntCellPtrOK.cpp)
 
 #set(CMAKE_VERBOSE_MAKEFILE OFF)
