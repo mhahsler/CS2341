@@ -14,14 +14,12 @@ int main()
 
     IntCellPtr A(10);
 
-    IntCellPtr B = A;
+    IntCellPtr B = A; // uses implicit copy constructor (only copies the pointers!)
 
-    B.write(20);
+    A.write(20);
 
-    IntCellPtr C;
-    C = B;
+    B = A; // uses implicit operator= (only copies the pointers!)
 
-    A.write(99);
 
     /* the pointer gets copied: we need a copy constructor and a copy assignment. Also, there is a new but no
        delete (destructor is missing) so we have a memory leak!

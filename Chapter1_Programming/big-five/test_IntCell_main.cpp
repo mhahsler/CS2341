@@ -14,7 +14,7 @@ int main()
 
     A.write(20);
 
-    B = A; // uses operator= (copy all member variables)
+    B = A; // uses implicit operator= (copy all member variables)
 
     return 0;
 }

@@ -14,14 +14,11 @@ int main()
 
     IntCellPtrOK A(10);
 
-    IntCellPtrOK B = A;
+    IntCellPtrOK B = A; // uses our copy constructor (allocates memory to copy the stored value)
 
     A.write(20);
 
-    IntCellPtrOK C;
-    C = B;
-
-    A.write(99);
+    B = A; // uses implicit operator= (allocates memory to copy the stored value)
 
     return 0;
 
@@ -31,7 +28,6 @@ int main()
        
        valgrind says: 
         ...
-        ==27246== 
         ==27246== HEAP SUMMARY:
         ==27246==     in use at exit: 0 bytes in 0 blocks
         ==27246==   total heap usage: 4 allocs, 4 frees, 73,740 bytes allocated
