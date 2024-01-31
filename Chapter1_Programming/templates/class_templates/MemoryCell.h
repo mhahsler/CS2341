@@ -6,9 +6,11 @@
  *
  * How to create a templated class:
  *  1. Write your class without templates but write all code in the headerfile (compilers currently 
- *          cannot use .cpp files for templates).
+ *          cannot use .cpp files for templates). Only use operations/functions that can handle all intended 
+ *          data types.
  *  2. Add the line `template <typename Object> in front of the class in the headerfile.
- *  3. Change the original variable datatype used in your code to `Object`.
+ *  3. Change the original variable datatype used in your code to `Object`. You may want to 
+ *          consider passing and returning objects as (const) references instead of by value.
  * Now you can create templated objects using `YourClassName<datatype> x;` 
  * 
  * You don't need to use `Object` as the type names. Popular are also `T` and `Comparable`. 
@@ -16,7 +18,6 @@
  *  1. It has a zero-parameter constructor (used in line 19)
  *  2. It has a copy constructor (used in constructor in line 20)
  *  3. It has a copy assignment operator (used in line 37)
- *
  */
 template <typename Object>
 class MemoryCell
