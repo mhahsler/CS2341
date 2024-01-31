@@ -4,13 +4,19 @@
 /**
  * A templated class for simulating a memory cell.
  *
- * It is assumed that the template Object has:
- *  1. a zero-parameter constructor (used in line 19)
- *  2. a copy constructor (used in constructor in line 20)
- *  3. a copy assignment operator (used in line 37)
+ * How to create a templated class:
+ *  1. Write your class without templates but write all code in the headerfile (compilers currently 
+ *          cannot use .cpp files for templates).
+ *  2. Add the line `template <typename Object> in front of the class in the headerfile.
+ *  3. Change the original variable datatype used in your code to `Object`.
+ * Now you can create templated objects using `YourClassName<datatype> x;` 
+ * 
+ * You don't need to use `Object` as the type names. Popular are also `T` and `Comparable`. 
+ * Assumptions about the template type when you use Object:
+ *  1. It has a zero-parameter constructor (used in line 19)
+ *  2. It has a copy constructor (used in constructor in line 20)
+ *  3. It has a copy assignment operator (used in line 37)
  *
- * for many compilers, the entire template class with the implementation has
- * to be put into a single .h file.
  */
 template <typename Object>
 class MemoryCell
