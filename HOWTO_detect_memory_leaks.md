@@ -12,9 +12,9 @@ These are issues happening at run-time and the compiler cannot find them.
 
 1. Find the compiled executable (in VSCode + CMake it is in the `build` subdirectory). use `cd build` in the terminal to get there.
 2. Run 
-    
-    ```valgrind --leak-check=full --track-origins=yes ./executable``` 
-    
+    ```
+    valgrind --leak-check=full --track-origins=yes ./executable
+    ``` 
     and look for lost bytes. `executable` is your compiled program.
 
 To make this easier, CTest automatically finds valgrind (if installed) and runs it on the tests by typing `ctest -T MemCheck` in the build directory. Note that it does not 
