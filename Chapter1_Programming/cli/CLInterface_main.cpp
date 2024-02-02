@@ -11,8 +11,10 @@ using namespace std;
  *   Remember: An array is a pointer to the first element.
  * @return int status of the program. 0 means success.
  */
-int main(int argc, char** argv) {
+int main(int argc, char* argv[]) {
     
+    // Note that char* argv[] is equivalent to char** argv
+
     if (argc < 2) {
         cout << "Usage: " << argv[0] << " <filename> [<more arguments>]\n";
         return 1;
