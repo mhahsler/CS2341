@@ -1,12 +1,13 @@
-# Command Line Interface
+# Command Line Arguments
 
-The Command Line Interface (CLI) is the most important interface for most programs. The CLI consists of a 
-number of parameters passed on to a program when it is started from the shell (terminal). Here is a 
+The Command Line Interface (CLI) is the most important interface for most programs. The command line arguments consists of a 
+number of parameters passed on to a program when it is started from the shell (terminal). Most operating systems are implemented in C, so your program gets C data structures.
+Here is a 
 [HOWTO on using the shell](https://github.com/mhahsler/CS2341/blob/main/HOWTO_shell_and_ssh.md). 
 
 Example of using the CLI: `rm file.txt` Here the program `rm` gets the command line argument `file.txt`
 
-Code Example: [Using the CLI.](CLInterface_main.cpp)
+Code Example: [Using command line arguments.](CLInterface_main.cpp)
 
 You can manually run the built executable with command line arguments. Open the terminal
 

@@ -12,7 +12,6 @@ using namespace std;
  * @return int status of the program. 0 means success.
  */
 int main(int argc, char* argv[]) {
-    
     // Note that char* argv[] is equivalent to char** argv
 
     if (argc < 2) {
