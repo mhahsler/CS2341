@@ -5,38 +5,6 @@
 
 int main()
 {
-  
-    /* STL vectors fix these issues and should be used instead
-     * C++11 lets us initialize vectors like this
-     */
-    std::cout << "\nSTL vectors" << "\n";
-    std::vector<int> squares = {1, 4, 9, 16, 25};
-    std::cout << "size: " << squares.size() << "\n"
-         << "capacity:" << squares.capacity() << "\n\n";
-
-    /* Vectors know how long they are */
-    int sum = 0;
-    for (size_t i = 0; i < squares.size(); ++i)
-    {
-        sum += squares[i];
-    }
-
-    std::cout << "The sum is (for loop): " << sum << "\n";
-
-    /* Use C++11 ranges */
-    sum = 0;
-    for (const auto& x : squares)
-        sum += x;
-    std::cout << "The sum is (ranges): " << sum << "\n";
-
-    /* .at() is [] with boundary check */
-    
-    std::cout << "\n.at() checks boundaries" << "\n";
-    try {
-        std::cout << squares.at(100) << "\n";
-    } catch (std::out_of_range &e) {
-        std::cerr << "Out of range: " << e.what() << "\n";
-    }
 
     // cstring vs. STL string
     std::cout << "\ncstrings" << "\n";
@@ -57,7 +25,7 @@ int main()
     else
         std::cout << cstr1 << " != " << cstr2 << "\n";
 
-    if (strcmp(cstr1,cstr2))
+    if (strcmp(cstr1, cstr2) == 0)
         std::cout << "strcmp: " <<  cstr1 << " == " << cstr2 << "\n";
     else
         std::cout << "strcmp: " << cstr1 << " != " << cstr2 << "\n";
@@ -80,13 +48,16 @@ int main()
     else
         std::cout << a << " != " << b << "\n";
 
-    /* get a cstring copy from a STL string */
+    /* c_str() returns a const pointer to the cstring inside 
+     * the std::string object. To get a new (non-const) cstring, we need 
+     * to copy the STL string */
     char *cstr = new char[a.length() + 1];
     strcpy(cstr, a.c_str());
     std::cout << "As cstring: " << cstr << "\n";
 
     // don't forget to delete the cstring when done
     delete[] cstr;
+    cstr = nullptr;
 
     return 0;
 }

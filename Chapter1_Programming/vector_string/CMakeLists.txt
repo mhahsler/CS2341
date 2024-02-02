@@ -6,8 +6,8 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 add_compile_options(-Wall -Wextra -pedantic)
 
 # executables
-add_executable(cstring main_cstring.cpp)
+add_executable(array_vs_vector main_array_vs_vector.cpp)
+add_executable(std_cstring_vs_string main_cstring_vs_std_string.cpp)
 add_executable(index_problem main_index_problem.cpp)
-add_executable(std_string main_std_string.cpp)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
