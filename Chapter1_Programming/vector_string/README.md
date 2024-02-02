@@ -1,6 +1,5 @@
 # Arrays and cstrings vs STL vectors and strings
 
-Example: [Arrays vs STL vectors and strings](main.cpp)
 
 ## C-style Arrays
 C-style arrays are just pointers to memory (first element of the array).
@@ -16,6 +15,8 @@ C-style arrays have several drawbacks:
 `cstrings` are character arrays terminated with a single null-character written as the escape sequence `'\0'.`
 
 
+Example: [main_cstring.cpp](main_cstring.cpp)
+
 ## STL Containers
 The C++ Standard Template Library (STL) offers containers (a.k.a. abstract data types, ADTs) to replace C-style arrays and strings. The basic idea is to use
 
@@ -27,6 +28,8 @@ The C++ Standard Template Library (STL) offers containers (a.k.a. abstract data 
 STL containers handle most of the memory management for us and make programming simpler and less error-prone.
 Details can be found at:
 https://www.geeksforgeeks.org/the-c-standard-template-library-stl/
+
+Example: [main_std_string.cpp](main_std_string.cpp)
 
 **Important Note:** Use STL containers whenever possible!
 A good replacement for arrays is [std::vector](https://en.cppreference.com/w/cpp/container/vector),
@@ -42,4 +45,4 @@ On many systems it is an `unsigned long`.
 
 You should use these two datatypes consistently instead of `int`.
 
-Example: [Indexing problem](index_problem.cpp)
+Example: [main_index_problem.cpp](main_index_problem.cpp)
