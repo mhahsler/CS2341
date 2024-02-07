@@ -12,8 +12,8 @@ We want to implement a vector which
 * Implements a member function that lets you efficiently append an element 
   to the vector. We will distinguish between length and capacity of the vector. The capacity may be larger then the length and contain empty positions that can be used for future append operations.
   We typically double the capacity if we run out of capacity. 
-* Implements move semantics.
-* Implements iterators.
+* Implements move semantics (advanced topic).
+* Implements iterators (advanced topic).
 
 __Note on templates:__ templates need to have all the code in the header
   file so the compiler can create the templated classes/functions at compile time.
@@ -100,6 +100,11 @@ public:
     ...  // make sure you have the capacity. If not, then add capacity.
   }
 
+  // look at the last element.
+  const Object &back() const {
+    ... // this is const and cannot be used to modify the last element!
+  }
+
   // remove the last element.
   void pop_back()
   {
@@ -107,10 +112,9 @@ public:
   }
 
   // Iterators for arrays are just regular pointers. operator++ and operator--
-  // are already available, so we don't need to implement a nested class iterator,
-  // but just reuse Object* using a nested type definition. 
-  // const iterators are used whenever the program wants to make sure that the
-  // object does not get modified.
+  // are already available, so we don't need to implement a nested class iterator.
+  // We can reuse Object* using a nested type definition. 
+  // const iterators are needed to work with const objects.
   typedef Object* iterator;
   typedef const Object* const_iterator;
   

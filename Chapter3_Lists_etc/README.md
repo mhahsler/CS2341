@@ -41,7 +41,8 @@ Examples:
 * `size()` number of elements.
 * `clear()` remove all elements.
 * `empty()` is the vector empty?
-* access via `operator[index]` or `at(index)`.
+* `resize()` to change the size.
+* access via iterators (`begin()`) and and index using `operator[]` or `at()`.
 
 STL provides [std::vector](https://cplusplus.com/reference/vector/vector/)
 
