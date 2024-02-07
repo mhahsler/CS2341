@@ -9,24 +9,23 @@ implementation, but a mathematical abstraction which defines
 * operations (e.g., insert, delete).
 
 Data structures are different implementations of abstract data types.
-Often the name [**container**](https://en.wikipedia.org/wiki/Container_(abstract_data_type))) is used for ATDs.
+Often the name [**container**](https://en.wikipedia.org/wiki/Container_(abstract_data_type)) is used for ATDs.
 The STL's main purpose it to provide [containers](https://cplusplus.com/reference/stl/) implementing all commonly used
-data structures.
+data structures, and basic algorithms operating on these data structures.
 
 ## Iterators
 
-[Iterators](https://en.wikipedia.org/wiki/Iterator) are an abstraction to represent a position in an ADT. This is similar to the index in an array. STL provides [std::iterator](https://cplusplus.com/reference/iterator/iterator/?kw=iterator) and we use the STL notation below.
+[Iterators](https://en.wikipedia.org/wiki/Iterator) are an abstraction to represent a position in an ADT. This is similar to a pointer to a position in an array. STL provides [std::iterator](https://cplusplus.com/reference/iterator/iterator/?kw=iterator) and we use the STL notation below.
 
-Iterators are
-* a generalization of pointers to elements in the ADT.
-* implemented as a nested class in the ADT implementation that has a `*` dereferencing operator (like pointers).
+Iterators
+* are a generalization of pointers to elements in the ADT.
+* are implemented as a nested class in the ADT implementation. An ADT can be asked for an iterator pointing to the first 
+  element (`begin()`) and an iterator pointing to the _past-the-end_ element (`end()`).
+* have a `*` dereferencing operator (like pointers) to access the current element in the ADT.
 * know how to get to the next element with an overloaded `operator++()` and `operator++(int)` 
   (bidirectional iterators also have `operator--()` and `operator--(int)`)
-* can be compared with `operator==` and `operator!=` but **do not support** `operator<`! 
-
-An ADT can be asked for an iterator pointing to the first element (`begin()`) and 
-an iterator pointing to the _past-the-end_ element (`end()`).
-
+* can be compared with `operator==` and `operator!=` but **do not support** `operator<`! This compares the position they
+  currently point to. 
 
 Examples: 
 * [STL iterator use](Iterator)
