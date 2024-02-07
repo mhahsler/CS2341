@@ -10,18 +10,19 @@ Comparing if two objects are the same or one is "larger" or before the other in 
   * `operator=`
 
 * typename `Comparable` in templates suggests that it also has an
-  * `operator<` for a total order which can also be used to infer 
-    equality (if `!(a > b) && !(b > a)` then `a == b`), and
-    `>=` (`a >= b ` if ` !(b > a)`). 
+  * `operator<` for a total order which can also be used to infer:
+      - equality (`==`): `a == b` only if `!(a < b) && !(b < a)`  
+      - greater than (`>`): `a > b` only if `!(a < b) && !(a == b)`
+      - less or equal: (`<=`): `a <= b` only if `!(a > b)`  
+      - `!=` and `>=` are defined in the same way.
 
-    `operator>` and `operator==` are often implemented in terms of `operator<`. 
 
 
   **Important:** Once a class has `operator<` overloaded, it can be used in ADTs by any algorithm that requires sorting.
 
 ## Function Objects
 
-Many algorithm implementations also allow the use of a _function object_
+Many algorithm implementations also allow the use of a [_function object_](https://en.wikipedia.org/wiki/Function_object) (related to functors in functional programming)
 to define several different ways to order object (e.g, people can be ordered by last name, height, age, income, etc.)
 
 A function object is just a class with only an overloaded `operator()` function which is called when the function object is used. Here is an example:
@@ -37,8 +38,8 @@ public:
 };
 ```
 
-
-The STL provides the templated function object [`std::less<Comparable>`](https://cplusplus.com/reference/functional/less/) which uses the object's `operator<`.
+Function object are commonly used in STL algorithms. 
+The STL provides the templated function object [`std::less<Comparable>`](https://cplusplus.com/reference/functional/less/) which uses the object's `operator<` to create a function object that can then be used with STL algorithms.
 
 The typename `Comparator` is typically used in templates used as a placeholder for a comparator
 function object. To make this clear we typically use the parameter 
