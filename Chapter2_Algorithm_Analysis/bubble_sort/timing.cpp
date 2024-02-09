@@ -6,11 +6,11 @@
 #include <chrono>
 #include <ctime> // for srand(time(NULL))
 
-
 // A function to implement bubble sort
 void bubbleSort(int array[], size_t n)
 {
-    if (n < 1) return;
+    if (n < 1)
+        return;
 
     for (size_t i = 0; i < n - 1; ++i)
         for (size_t j = 0; j < n - i - 1; ++j)
@@ -41,29 +41,31 @@ int main()
     // set the seed for the random number generator
     srand(time(NULL));
 
-    std::cout << "N, time [micro sec.]" << "\n";
+    std::cout << "N, time [micro sec.]"
+              << "\n";
 
-    //for (int N = 1; N <= 100000; N *= 10)
+    // for (int N = 1; N <= 100000; N *= 10)
     for (size_t N = 0; N <= 20000; N += 1000)
     {
-    int *array = randomArray(N);
+        int *array = randomArray(N);
 
-    auto start = std::chrono::high_resolution_clock::now();
+        auto start = std::chrono::high_resolution_clock::now();
 
-    bubbleSort(array, N);
+        bubbleSort(array, N);
 
-    auto stop = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+        auto stop = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
 
-    std::cout << N << ", "
-         << duration.count() << "\n";
+        std::cout << N << ", "
+                  << duration.count() << "\n";
 
-    // cout << "Sorted array: \n";
-    // printArray(arr, N);
+        // cout << "Sorted array: \n";
+        // printArray(arr, N);
 
-    delete[] array;
-}
+        // this needs to be in the for loop!
+        delete[] array;
+        array = nullptr;
+    }
 
-
-return 0;
+    return 0;
 }
