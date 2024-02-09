@@ -12,8 +12,11 @@ Set launch target to `bubble_sort_timing` (see targets in `CMakeLists.txt`).
 1. Run `./bubble_sort_timing  > output.csv`
 2. Open `output.csv` in Excel. 
 3. Remove all 0s (Excel trendlines don't work with 0s).
-4. Make a line chart (make sure $N$ is on the x-axis).
-5. Add a trendline (turn on the equation and R-squared).
+4. Make a chart using "scatterplot with lines" (make sure $N$ is on the x-axis).
+5. Add a trendline (turn on the equation and R-squared) and play with the power for polynomial trendlines.
+
+Here is an example: [timing.xlsx](timing.xlsx)
+
 
 ## Implementation Note
 
