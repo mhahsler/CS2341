@@ -9,7 +9,8 @@
 
 // Note: We pass a non-const reference to the vector because we want to modify the original vector
 // We could also implement is by returning a new sorted vector.
-void bubbleSort(std::vector<int>& array)
+template <typename Comparable>
+void bubbleSort(std::vector<Comparable>& array)
 {
     size_t n = array.size();
     if (n < 1) return;
@@ -20,13 +21,16 @@ void bubbleSort(std::vector<int>& array)
                 std::swap(array[j], array[j + 1]);
 }
 
-void printArray(const std::vector<int>& array)
+// Note: the Object needs to have the << operator defined
+template <typename Object>
+void printArray(const std::vector<Object>& array)
 {
     for (const auto& x : array)
         std::cout << x << " ";
     std::cout << "\n";
 }
 
+// This just generates a vector of random integers, so no template
 std::vector<int> randomIntVector(size_t size)
 {
     std::vector<int> v(size);
