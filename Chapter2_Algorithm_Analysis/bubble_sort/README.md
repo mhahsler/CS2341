@@ -14,3 +14,9 @@ Set launch target to `bubble_sort_timing` (see targets in `CMakeLists.txt`).
 3. Remove all 0s (Excel trendlines don't work with 0s).
 4. Make a line chart (make sure $N$ is on the x-axis).
 5. Add a trendline (turn on the equation and R-squared).
+
+## Implementation Note
+
+The implementations are how you typically see them with C arrays. 
+[main_STL.cpp](main_STL.cpp) has a better C++ implementation using the STL and
+avoiding the ugly memory management issues. 

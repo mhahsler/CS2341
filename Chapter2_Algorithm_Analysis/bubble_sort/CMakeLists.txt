@@ -5,6 +5,7 @@ include(CTest)
 enable_testing()
 
 add_executable(bubble_sort main.cpp)
+add_executable(bubble_sort_STL main_STL.cpp)
 add_executable(bubble_sort_timing timing.cpp)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
