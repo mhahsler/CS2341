@@ -10,6 +10,7 @@ Code can be timed using [`std::chrono`](https://en.cppreference.com/w/cpp/chrono
 
 * The time complexity of [bubble_sort](bubble_sort).
 * The time complexity of  [sorting implemented by the STL](STL_sort)
+* Using [linear and binary search with the STL](STL_find)
 
 
 ## License
