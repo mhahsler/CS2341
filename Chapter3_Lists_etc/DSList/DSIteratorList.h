@@ -42,20 +42,25 @@ public:
     /**
      * @brief Rule-of-Three 1: Copy constructor
      *
-     * This is easier in a doubly linked list where we can efficiently add to
-     * the end of the list.
+     * This is easier in a doubly-linked list where we can efficiently add to
+     * the end of the list. We move two pointers, one for the rhs and one for the lhs.
      */
     DSIteratorList<Object>(const DSIteratorList<Object> &rhs)
         : head{nullptr}
     {
-        Node **prev_next = &head; // keep a pointer to the next pointer of the
-                                  // previous node
-        Node *rhs_current = rhs.head; // start at the head of the rhs list
+        // empty rhs list
+        if (rhs.head == nullptr)
+            return;
 
+        // copy the first node
+        Node *rhs_current = rhs.head;
+        Node *lhs_current = head = new Node{rhs_current->data, nullptr};
+        rhs_current = rhs_current->next;
+
+        // copy the rest of the nodes
         while (rhs_current != nullptr)
         {
-            *prev_next = new Node{rhs_current->data, nullptr};
-            prev_next = &((*prev_next)->next);
+            lhs_current = lhs_current->next = new Node{rhs_current->data, nullptr};
             rhs_current = rhs_current->next;
         }
     }
@@ -123,7 +128,7 @@ public:
         if (empty())
             throw std::runtime_error("List is empty!");
 
-        // save the data (we move it if it is movable)
+        // save the data (mark node to be deleted as movable if it is movable)
         Object tmpObject = std::move(head->data);
 
         // delete the node

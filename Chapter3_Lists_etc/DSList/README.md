@@ -42,7 +42,7 @@ Nodes are defined as:
     };
 ```
 
-Note: In C++, `structs` are just classes with all public members. We often use them when we need to store only data and no member functions.
+Note: In C++, a `struct` is just a class with all public members. We often use structs when we need to store only data and no member functions.
 
 **Exercise:** Implement a singly liked list with the following functions:
 - `insert_front()`
