@@ -43,12 +43,13 @@ To practice applying these concepts you can:
 
 
 ## Review Software Design Concepts
-* UML [Class diagrams](https://www.smartdraw.com/class-diagram/). A good tool is [smartdraw](https://www.smartdraw.com/uml-diagram/)
+
+* UML [Class diagrams](https://www.smartdraw.com/class-diagram/). A good tool to draw UML class diagrams is [draw.io](https://www.drawio.com/). It will work with your GoogleDrive.
 * How to break a problem down into bite-sized chunks (classes, functions, etc.). Remember, you need a problem description and 
   then nouns can become classes and verbs indicate functions.
-* Good program organization means that a function should do one thing and it should only do that one thing.
+* Good program organization means that a function should do one thing, and it should only do that one thing.
 
-To brush up your knowledge you can review the Linkedin Learning course [Programming Foundations: Object-Oriented Design](https://www.linkedin.com/learning-login/share?account=2139050&forceAccount=false&redirect=https%3A%2F%2Fwww.linkedin.com%2Flearning%2Fprogramming-foundations-object-oriented-design-3%3Ftrk%3Dshare_ent_url%26shareId%3DMy0cEP4nR%252Bmk%252Fdm%252F4xNQMA%253D%253D).
+To brush up your knowledge you can review the LinkedIn Learning course [Programming Foundations: Object-Oriented Design](https://www.linkedin.com/learning-login/share?account=2139050&forceAccount=false&redirect=https%3A%2F%2Fwww.linkedin.com%2Flearning%2Fprogramming-foundations-object-oriented-design-3%3Ftrk%3Dshare_ent_url%26shareId%3DMy0cEP4nR%252Bmk%252Fdm%252F4xNQMA%253D%253D).
 
 
 ## Check Your Knowledge
