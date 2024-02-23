@@ -35,10 +35,10 @@ For the factorial problem we have (see [factorial.cpp](factorial.cpp)):
 
 * Recursion uses the **function call stack** as a stack data structure. 
   It is **slower than iteration** and stack frames **need additional memory** 
-  to store return addresses. You may run out of stack memory if the recursion is too deep. 
+  to store intermediate results, return addresses, and other function call information. You may run out of stack memory if the recursion is too deep. 
 * The use of recursion is supposed to create 
     - **shorter and simpler code** that can also be 
-    - **more efficient** (meaning that we save some computation). 
+    - **more efficient** (meaning that we avoid doing the same calculation multiple times). 
    
    Typical applications are [divide-and-conquer algorithms](https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm). Examples are search in a binary search tree (we will talk about this later) and [dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming).
 * Using recursion where simple iteration is sufficient (e.g., for calculating the factorial) 
