@@ -42,7 +42,7 @@ For the factorial problem we have (see [factorial.cpp](factorial.cpp)):
    
    Typical applications are [divide-and-conquer algorithms](https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm). Examples are search in a binary search tree (we will talk about this later) and [dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming).
 * Using recursion where simple iteration is sufficient (e.g., for calculating the factorial) 
-  is **not a good idea** since the function call stack is much slower than a loop and needs extra memory! A better implementation is in [factorial_iterative_main.cpp](factorial_iterative_main.cpp).
+  is **not a good idea** since the function call stack is much slower than a loop and needs extra memory! A better implementation is in [factorial_iterative_main.cpp](./factorial_iterative_main.cpp).
 * Many functions have good approximations that do not require iteration at all. E.g., factorial can be approximated for large $n$ using the Stirling's approximation $n! \sim \sqrt{2 \pi n} \left(\frac{n}{e}\right)^n$. 
 
 
