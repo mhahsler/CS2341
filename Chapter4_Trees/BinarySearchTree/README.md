@@ -40,8 +40,8 @@ has the same time complexity but is a better sorting algorithm (in-place with lo
 
 
 ## Complexity 
-The depth $d$ of a _binary search tree_ leads to $O(d)$ operations (for all but deleting and copying the whole tree). The **average tree depth** $d$ is $O(log\ N)$ under the
-assumption that all insertion sequences are equally likely (i.e., **random insertion**). Remember, $O(log\ N)$ means 
+A depth $d$ of a _binary search tree_ leads to $O(d)$ operations (for all but deleting and copying the whole tree). The **average tree depth** $d$ is $O(log\ N)$ under the
+assumption that all insertion sequences are equally likely (i.e., only use **random insertion**). Remember, $O(log\ N)$ means 
 that the problem size is halved with each step.
 
 The exact depth of a complete tree (every level, except possibly the deepest, is entirely filled) with $N$ nodes can be calculated using $d = log_2(N + 1) - 1$. (-1 since the root node has depth 0)

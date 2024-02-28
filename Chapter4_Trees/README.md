@@ -64,7 +64,7 @@ Example: Unix file system. Try the `tree` command on a linux machine. It perform
 ## Binary Trees
 A binary tree is a tree in which no node can have more than two children.
 
-Complexity: Operations are $O(d)$ with $d$ being the tree depth. The average depth of a binary tree is $O(\sqrt{N})$ (all possible trees are equally likely). The worst case depth is $N - 1$ (a single branch going all the way down).
+Complexity: Operations are $O(d)$ with $d$ being the tree depth. The **average** depth of a binary tree is $O(\sqrt{N})$ (all possible trees are equally likely). The worst case depth is $O(N)$, more specifically $N - 1$ with a single branch going all the way down.
 
 The node structure is similar to a linked list node
 
