@@ -11,6 +11,21 @@ You need to have `gdb` ([GNU Project Debugger](https://www.sourceware.org/gdb/))
 3. Click the debug symbol in the status bar which starts a frontend for `gdb`.
 4. Use the navigation panel (appearing on the top of VS Code) and inspect and watch variables.
 
+If you want to debug your program with the VS Code run button and command line arguments, then you can set the command line arguments in VS Code and CMake:
+   * `CTRL-SHIFT+P` type `settings.json` and choose `Preferences: Open Work Space Settings`. This creates settings.json in the .vscode folder.
+   * Add the following lines: 
+     ```
+     {
+     "cmake.debugConfig": {
+        "args": [
+            "argument_1",
+            "argument_2"
+        ]
+       }
+     }
+     ```
+
+
 ### Command Line Debugging With `gdb`
 
 1. Find the compiled executable (in VS Code it is in the build directory)

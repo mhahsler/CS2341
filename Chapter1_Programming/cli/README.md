@@ -21,19 +21,6 @@ You can manually run the built executable with command line arguments. Open the 
 
 Remember that the terminal lets you use the tab key for autocompletion and the up key to recall your previous commands so you do not have to retype long argument lists every time you run your program with command line arguments.
 
-If you want to run your program with the VS Code run button, then you can set the command line arguments in VS Code and CMake:
-   * `CTRL-SHIFT+P` type `settings.json` and choose `Preferences: Open Work Space Settings`. This creates settings.json in the .vscode folder.
-   * Add the following lines: 
-     ```
-     {
-     "cmake.debugConfig": {
-        "args": [
-            "argument_1",
-            "argument_2"
-        ]
-       }
-     }
-     ```
 
 **Notes:** 
 
