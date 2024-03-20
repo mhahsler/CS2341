@@ -54,10 +54,10 @@ Since $O(log\ N)$ is relatively small, operations can be defined/implemented rec
 
 
 ## Balance Problem
-$O(log\ N)$ average running time (= tree depth) is only true for under the **assumption of random insertion order** and if 
+$O(log\ N)$ average running time (= tree depth) is only true under the **assumption of random insertion order** and if 
 **no deletions** are used! 
 
 * Worst case insertion order is to insert sorted values.
 * Deletions for Case C replace a node with a node for the right subtree, resulting in an **unbalanced tree** that 
-  is left heavy!
+  will become increasingly left heavy!
 
