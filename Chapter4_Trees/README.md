@@ -72,12 +72,12 @@ The node structure is similar to a linked list node
 template <typename Object>
 ...
 
-class BinaryNode
+class Node
 {
 public:
     Object key;
-    BinaryNode *left;
-    BinaryNode *right;
+    Node *left;
+    Node *right;
 }
 ```
 
@@ -94,8 +94,8 @@ Depth-first traversal works for any m-ary tree, but we define it here for the sp
 We will use the following notation:
 
 * **N** stands for processing the **node.** For example, printing the value stored in the node.
-* **L** means going to the **left child.**
-* **R** means going to the **right child.**
+* **L** means process the **left subtree.**
+* **R** means process the **right subtree.**
 
 Once a leaf node is reached and processed, then we go back to the node we came from to process a different subtree. 
 This is often called _backtracking_.
@@ -112,22 +112,22 @@ The three traversal orders are:
 Recursive implementation
 
 ```cpp
-void traverseNLR(Node& n) {
-  cout << n.key;            // N
-  traverseNLR(n.leftChild);  // L
-  traverseNLR(n.rightChild); // R
+void traverseNLR(Node* n) {
+  cout << n->key;            // N
+  traverseNLR(n->left);      // L
+  traverseNLR(n->right);     // R
 }
 
-void traverseLNR(Node& n) {
-  traverseLNR(n.leftChild);  // L
-  cout << n.key;            // N
-  traverseLNR(n.rightChild); // R
+void traverseLNR(Node* n) {
+  traverseLNR(n->left);      // L
+  cout << n->key;            // N
+  traverseLNR(n->right);     // R
 }
 
-void traverseLRN(Node& n) {
-  traverseLRN(n.leftChild);  // L
-  traverseLRN(n.rightChild); // R
-  cout << n.key;            // N
+void traverseLRN(Node* n) {
+  traverseLRN(n->left);      // L
+  traverseLRN(n->right);     // R
+  cout << n->key;            // N
 }
 ```
 
