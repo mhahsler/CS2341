@@ -36,12 +36,13 @@ We need
 
 **Visualization:** Here is an [AVL tree visualization](https://www.cs.usfca.edu/~galles/visualization/AVLtree.html) for inserting and deleting integers.
 
-**Code:** Balancing using rotation is implemented in the `balance()` function in [AvlTree.h](AvlTree.h) which is performed after each `insert()`/`delete()`.
-
 
 ## Exercises
-
 Insert the following sequences into an AVL tree:
 
 * `5, 1, 6, 3, 2`
 * `1, 2, 3, 4`
+
+
+## Implementation
+Balancing using rotation is implemented in the `balance()` function in [AvlTree.h](AvlTree.h) which is performed after each `insert()`/`delete()`.
