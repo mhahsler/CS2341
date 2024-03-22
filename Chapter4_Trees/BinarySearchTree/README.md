@@ -32,6 +32,8 @@ Binary search trees are one of the most important tree structures used to find e
 2. Delete the following nodes from the tree: 3, 90
 3. Read the values in the tree using inorder traversal (LNR).
 
+
+## Binary Search Trees and Sorting
 Since keys are stored in sorted order, a simple **inorder traversal** (LNR) results in sorted output.
 If a balanced tree is used (see Balance Problem below), then inserting $N$ items takes $O(N log\ N)$ time and traversing 
 the tree takes $O(N)$ which gives a sorting algorithm called [**tree sort**](https://en.wikipedia.org/wiki/Tree_sort) that is $O(N\ log\ N)$. Note that tree sort is not used in practice since other sorting algorithms 
