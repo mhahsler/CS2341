@@ -1,6 +1,7 @@
-# Balanced Binary Search Trees: AVL Trees
+# Self-Balancing Binary Search Trees: AVL Trees
 
-An AVL (Adelson-Velskii and Landis) tree is a binary search tree with the following **balance condition:**
+An AVL (Adelson-Velskii and Landis) tree is a binary search tree that always satisfies the
+ following **balance condition:**
 
 > For every node in the tree, the height of the left and the right subtree can
 differ by at most 1.
@@ -46,3 +47,10 @@ Insert the following sequences into an AVL tree:
 
 ## Implementation
 Balancing using rotation is implemented in the `balance()` function in [AvlTree.h](AvlTree.h) which is performed after each `insert()`/`delete()`.
+
+
+## Other Self-Balancing Binary Search Trees
+
+Another popular self-balancing binary search tree is the [red-black tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree).
+Read more about different types of [self-balancing binary search trees](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree).
+
