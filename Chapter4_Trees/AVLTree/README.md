@@ -20,9 +20,9 @@ public:
 }
 ```
 
-If the difference is larger, then the tree needs to be organized where the 
-last insertion happened.
-This keeps the tree balanced with a depth close to $O(log\ N)$.
+If the difference is larger, then the tree needs to be organized. 
+This typically happens right after the insertion/deletion that creates the imbalance. 
+This keeps the tree always balanced with a depth close to $O(log\ N)$.
 
 
 ## Balancing
