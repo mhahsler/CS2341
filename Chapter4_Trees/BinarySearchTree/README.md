@@ -67,3 +67,6 @@ under the **assumption of random insertion order** and if **no deletions** are u
 * Deletions for Case C replace a node with a node for the right subtree, resulting in an **unbalanced tree** that 
   will become increasingly left heavy!
 
+We need to add functionality to keep the tree balanced so we can achieve $O(log\ N)$ time complexity. An example of a
+balanced binary search tree is the AVL tree.
+
