@@ -35,7 +35,8 @@ We need
 
 **Slides:** [Balancing AVL trees](https://github.com/mhahsler/CS2341/blob/main/Chapter4_Trees/slides/AVL_trees.pdf).
 
-**Visualization:** Here is an [AVL tree visualization](https://www.cs.usfca.edu/~galles/visualization/AVLtree.html) for inserting and deleting integers.
+**Visualization:** Here is an [AVL tree visualization](https://www.cs.usfca.edu/~galles/visualization/AVLtree.html)
+to study how the algorithm rebalances the tree. 
 
 
 ## Exercises
