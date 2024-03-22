@@ -9,7 +9,6 @@ $$L < N < R$$
 
 Binary search trees are one of the most important tree structures used to find elements quickly.
 
-See [BinarySearchTree.h](BinarySearchTree.h) for code.
 
 ## Operations
 * Insertion: Descend the tree (smaller keys go to the left and larger keys go to the right) till a new leaf can be created.
@@ -35,8 +34,11 @@ See [BinarySearchTree.h](BinarySearchTree.h) for code.
 
 Since keys are stored in sorted order, a simple **inorder traversal** (LNR) results in sorted output.
 If a balanced tree is used (see Balance Problem below), then inserting $N$ items takes $O(N log\ N)$ time and traversing 
-the tree takes $O(N)$ which gives a sorting algorithm called [**tree sort**](https://en.wikipedia.org/wiki/Tree_sort) that is $O(N\ log\ N)$. Note that [quicksort](https://en.wikipedia.org/wiki/Quicksort) 
-has the same time complexity but is a better sorting algorithm (in-place with lower overhead). You will learn more about sorting later in this course and in the algorithms course.
+the tree takes $O(N)$ which gives a sorting algorithm called [**tree sort**](https://en.wikipedia.org/wiki/Tree_sort) that is $O(N\ log\ N)$. Note that tree sort is not used in practice since other sorting algorithms 
+have the same time complexity but are a better sorting algorithm (in-place with lower overhead). You will learn more about sorting later in this course and in the algorithms course.
+
+## Implementation
+See [BinarySearchTree.h](BinarySearchTree.h) for code.
 
 
 ## Complexity 
@@ -54,10 +56,12 @@ Since $O(log\ N)$ is relatively small, operations can be defined/implemented rec
 
 
 ## Balance Problem
-$O(log\ N)$ average running time (= tree depth) is only true under the **assumption of random insertion order** and if 
-**no deletions** are used! 
+$O(log\ N)$ time complexity is only true 
+when the tree is balanced (all leave nodes are at roughly the same depth). This happens only
+under the **assumption of random insertion order** and if **no deletions** are used! 
 
-* Worst case insertion order is to insert sorted values.
+* Worst case insertion order is to insert sorted values which leads to a single branch of depth $d = N - 1$ and therefore
+ $O(N)$ time complexity.
 * Deletions for Case C replace a node with a node for the right subtree, resulting in an **unbalanced tree** that 
   will become increasingly left heavy!
 
