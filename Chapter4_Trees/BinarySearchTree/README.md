@@ -45,8 +45,11 @@ See [BinarySearchTree.h](BinarySearchTree.h) for code.
 
 ## Complexity 
 A depth $d$ of a _binary search tree_ leads to $O(d)$ operations (for all but deleting and copying the whole tree). The **average tree depth** $d$ is $O(log\ N)$ under the
-assumption that all insertion sequences are equally likely (i.e., only use **random insertion**). Remember, $O(log\ N)$ means 
-that the problem size is halved with each step.
+assumption that all insertion sequences are equally likely (i.e., only use **random insertion**). 
+The reason why this is better than regular trees (which have an average depth of $O(\sqrt{N})$) is that 
+random insertion leads to shallower, full trees. We call these **balanced** trees.
+Remember, in full trees, the left and the subtree contain 1/2 of the nodes which means
+going one level down half the number of nodes below which leads to a depth of $O(log\ N)$.
 
 The exact depth of a complete tree (every level, except possibly the deepest, is entirely filled) with $N$ nodes can be calculated using $d = log_2(N + 1) - 1$. (-1 since the root node has depth 0)
 
