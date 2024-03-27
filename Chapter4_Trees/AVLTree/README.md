@@ -43,8 +43,9 @@ to study how the algorithm rebalances the tree.
 ## Exercises
 Insert the following sequences into an AVL tree:
 
-* `5, 1, 6, 3, 2`
 * `1, 2, 3, 4`
+* `5, 1, 6, 3, 2`
+
 
 Draw the trees and show the needed rebalancing operations.
 
