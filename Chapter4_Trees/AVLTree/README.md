@@ -21,11 +21,12 @@ public:
 ```
 
 If the difference is larger, then the tree needs to be organized. 
-This typically happens right after the insertion/deletion that creates the imbalance. 
-This keeps the tree always balanced with a depth close to $O(log\ N)$.
+This can happens whenever the tree structure changes (right after the insertion/deletion). 
+This keeps the tree always balanced with a depth of $d = log(N + 1) - 1$ leading to a 
+time complexity of $O(log N)$. 
 
 
-## Balancing
+## Balancing AVL Trees
 
 Insertion/deletion may break the balancing condition and we will need to re-balance the tree using a **rotation**. 
 We need 
@@ -33,7 +34,7 @@ We need
 * a single rotation for "outside" insertions (left-left and right-right) and 
 * a double rotation for "inside" insertions (left-right and right-left).
 
-**Slides:** [Balancing AVL trees](https://github.com/mhahsler/CS2341/blob/main/Chapter4_Trees/slides/AVL_trees.pdf).
+**Slides with details on balancing:** [Balancing AVL trees](https://github.com/mhahsler/CS2341/blob/main/Chapter4_Trees/slides/AVL_trees.pdf).
 
 **Visualization:** Here is an [AVL tree visualization](https://www.cs.usfca.edu/~galles/visualization/AVLtree.html)
 to study how the algorithm rebalances the tree. 
@@ -45,6 +46,7 @@ Insert the following sequences into an AVL tree:
 * `5, 1, 6, 3, 2`
 * `1, 2, 3, 4`
 
+Draw the trees and show the needed rebalancing operations.
 
 ## Implementation
 Balancing using rotation is implemented in the `balance()` function in [AvlTree.h](AvlTree.h) which is performed after each `insert()`/`delete()`.
