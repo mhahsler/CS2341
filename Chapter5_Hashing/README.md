@@ -27,12 +27,13 @@ The worst-case time complexity to find or insert items by data structure are:
 
 ## Hash Table
 
-A hash table is a data structure with a table of size $M$ to store keys that help us with finding the stored elements again. We use a hash function
+A hash table is a data structure 
+that uses keys to organize data in 
+a table of size $M$ with the goal of finding the data associated with a key quickly. We use a hash function
 
 $$h(key)$$
 
-that maps each possible key to a valid row in the table. 
-
+that maps each possible key to a valid row in the table.
 
 ### Insert
 Insert Operation for a $(key, value)$ pair.
@@ -75,6 +76,7 @@ Has to return the **same hash value for the same key** and should be
 $$h(key) = key\ mod\ M$$ 
 
 We typically choose $M$ to be prime since this is known to greatly reduces the occurrence of collisions.
+In C++ the modulo operator (remainder of the integer division) is `%`.
 
 ### For Strings
 
@@ -83,12 +85,15 @@ Convert the string into an integer and then hash the integer using $mod$. This i
 A simple choice that works well is to use ASCII encoding for the letters to get the numbers $k_0, k_1, ..., k_{n-1}$ and then the following polynomial (remember [numeral systems](https://en.wikipedia.org/wiki/Numeral_system)):
 $$h(k) = (k_0 + 37 k_1 + 37^2 k_2, ...)\ mod\ M = \left( \sum_{i=0}^{n-1} 37^i k_i \right) \ mod\ M$$  
 
+The base 37 turned experimentally out to work well for the English language.
+
 Alternatives are cryptographic hash functions like MD5 and SHA-1. See [List of hash functions](https://en.wikipedia.org/wiki/List_of_hash_functions). These hash functions convert a sequence of byte into an integer key, and we use then the modulo to 
 calculate the index for the hash table. 
 
 ### For Objects
 
-Design a hash using hashes of all member variables and combine them into a single hash.
+Design a hash using hashes of all member variables and combine them into a single hash. The best way to do this 
+is shown in [`boost::hash_combine`](https://www.boost.org/doc/libs/1_55_0/doc/html/hash/reference.html#boost.hash_combine).
 
 
 ## Collisions
@@ -120,11 +125,11 @@ from the old table in $O(N)$ operations. Note that rehashing is very expensive!
 
 ## STL Hash Tables
 
-STL provides [`std::unordered_set`](https://cplusplus.com/reference/unordered_set/unordered_set/) and [`std::unordered_map`](https://cplusplus.com/reference/unordered_map/unordered_map/). The keys need to have `operator==` and a `hash` function (or a provided function object).
+STL provides [`std::unordered_set`](https://cplusplus.com/reference/unordered_set/unordered_set/) and [`std::unordered_map`](https://cplusplus.com/reference/unordered_map/unordered_map/). The keys need to have `operator==` and a `hash` function (or a provided function object). Key-value pairs for maps are stored in [`std::pair`](`https://en.cppreference.com/w/cpp/utility/pair`).
 
 The STL structures automatically [rehash](https://cplusplus.com/reference/unordered_set/unordered_set/rehash/) when the load factor gets too high.
 
-STL also provides hash functions as templated function objects as [`std::hash`](https://en.cppreference.com/w/cpp/utility/hash)
+STL also provides hash functions using the templated function object [`std::hash`](https://en.cppreference.com/w/cpp/utility/hash).
 
 Unordered maps (hash maps) are often faster than regular maps which use binary search trees, 
 but this depends on the data and needs to be tested in an experiment.
