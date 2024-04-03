@@ -9,6 +9,8 @@
 
 /**
  * @brief Simple hash table class for a hashed set of strings.
+ * Note: We avoid pointers and dynamic memory allocation so we do not need the rule of 3 and the code
+ * is memory safe (except possible out-of-bounds issues).
  */
 class DSHashTableSet
 {
