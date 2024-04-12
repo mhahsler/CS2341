@@ -19,9 +19,9 @@ int main()
         std::cout << myheap.delete_min() << "\n";
     std::cout << std::endl;
 
-    // myheap.delete_min(); // this throws an error
+    // myheap.delete_min(); // this throws an exception
 
-    //heapify a vector
+    //heapify a vector: This is heap sort
     std::cout << "Heapifying a vector...\n";
     std::vector<int> v = { 30, 100, 80, 25, 40 };
 

@@ -2,8 +2,6 @@
 
 **Goal:** Always find and remove the element with the smallest key in a collection quickly.
 
-
-
 Basic Operations:
 * insert (= enqueue)
 * deleteMin (= dequeue)
@@ -14,8 +12,10 @@ Options:
 * A balanced binary search tree: $O(log\ N)$. Without balancing, the tree would get right-heavy because we always delete the minimum from the left side.
 * Use a **new specialized binary heap data structure** that has faster access to the minimum and does not need rotations for balancing.
 
-Note: This data structure is very different from regular FIFO queues and is not related
-to heap memory! 
+Notes: 
+* The name priority queue describes the abstract data-type while heap is typically used as the underlying data structure. 
+* This data structure used is very different from regular FIFO queues.
+* The heap data structure is not related to heap memory. 
 
 ## Binary Heap
 
@@ -63,7 +63,8 @@ We have described a min-heap so far. A max-heap is a heap with the largest eleme
 
 ### Other Heap Variants
 
-Other variants of heaps exist, such as Leftist, Binomial Fibonacci, etc.
+Other variants of heaps exist, such as [leftist heap](https://en.wikipedia.org/wiki/Leftist_tree), 
+[binomial heap](https://en.wikipedia.org/wiki/Binomial_heap), [Fibonacci heap](https://en.wikipedia.org/wiki/Fibonacci_heap), etc.
 
 
 ## STL Implementation

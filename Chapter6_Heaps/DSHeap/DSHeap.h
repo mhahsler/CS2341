@@ -64,8 +64,9 @@ public:
 
         while ((left = left_child(hole)) < array.size())
         {
-            // find to smaller child index: left or right (if it exists)
-            right = left + 1;
+            // find smaller child index: left or right.
+            // we can use the fact that vector manages the true size and capacity to check if it exists
+            right = left + 1; // right child index is left child + 1
             if (right < array.size() && array[left] > array[right])
                 child = right;
             else
@@ -80,7 +81,7 @@ public:
             hole = child;    
         }
 
-        // move last element in hole and make heap smaller (pop_back or resize can be used) 
+        // move last element to the hole and make heap smaller using pop_back
         array[hole] = std::move(last);
         array.pop_back();
 
@@ -89,7 +90,7 @@ public:
 
     void make_empty()
     {
-        array.resize(1); // remember: The 1 element is not used!
+        array.resize(1); // remember: The 1st element is not used!
     }
 
     void print_tree() const
