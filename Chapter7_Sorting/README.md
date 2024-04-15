@@ -15,19 +15,20 @@ Here are some popular algorithms:
 
 | Algorithm      | Worst Case Time Complexity | Auxiliary Data Structure | Stable? | 
 | -------------- | -------------------------- | ---------------- | ------- |
-| Bubble Sort    |  $O(n^2)$                  | no      | yes     |
-| Selection Sort |  $O(n^2)$                  | no      | no      |
-| Insertion Sort |  $O(n^2)$                  | no      | yes     |
-| Shell Sort     |  $O(n^2)$                  | no      | no      |
-| Heap Sort      |  $O(n\ log\ n)$            | no      | no      |
-| Merge Sort     |  $O(n\ log\ n)$            | yes $O(n)$ merge list    | yes     |
-| Quicksort      |  $O(n^2)$ (avg. is $O(n\ log\ n)$ )  | yes $O(log\ n)$ for recursion   |    no     |
-| IntroSort (STL Hybrid) | $O(n\ log\ n)$     |      yes        |    no     |
+| Bubble Sort    |  $O(N^2)$                  | no      | yes     |
+| Selection Sort |  $O(N^2)$                  | no      | no      |
+| Insertion Sort |  $O(N^2)$                  | no      | yes     |
+| Shell Sort     |  $O(N^2)$                  | no      | no      |
+| Heap Sort      |  $O(N\ log\ N)$            | no      | no      |
+| Merge Sort     |  $O(N\ log\ N)$            | yes $O(N)$ merge list    | yes     |
+| Quicksort      |  $O(N^2)$ (avg. is $O(N\ log\ N)$ )  | yes $O(log\ N)$ for recursion   |    no     |
+| IntroSort (STL Hybrid) | $O(N\ log\ N)$     |      yes        |    no     |
 
+$N$ is the size of the array to sort.
 
 ## Popular Algorithms
 
-Here is a website with a useful visualization: https://math.hws.edu/eck/js/sorting/xSortLab.html
+Details about the algorithms can be found [here in Wikipedia.](https://en.wikipedia.org/wiki/Sorting_algorithm)
 
 ### Bubble Sort
 A simple sorting algorithm that repeatedly steps through the input list element by element, comparing the current element with the one after it, swapping their values if needed. Note that the last element is the maximum after the first pass and does not need to be 
@@ -35,16 +36,16 @@ checked again.
 These passes through the list are repeated until no swaps had to be performed during a pass, meaning that the list has become fully sorted. The maximum number of passes is $n$. 
 
 ### Selection Sort
-Find (i.e., select) the minimum in one pass over the array and swaps it with the first element of the unsorted part of the array, and marks it as sorted. Repeat the procedure with the unsorted part of the array till all elements are sorted. 
+Find (i.e., select) the minimum in one pass over the array, swaps it with the first element of the unsorted part of the array, and marks the element as sorted. Repeat the procedure with the unsorted part of the array till all elements are sorted. 
 Variation: Instead of the minimum, the maximum can be selected and placed at the end of the array. 
 
-This is similar to bubble sort, but it performs fewer swaps.
+This is similar to bubble sort, but it performs fewer swaps (over multiple positions).
 
 ### Insertion Sort
 Insertion sort goes through the array once from left to right.
 At each iteration, insertion sort removes the current element from the input data, finds the location it belongs within the already sorted list (to the left), and inserts it there by moving all elements after to the right.
 
-Goes only once through the array but may perform many moves to make space for the current element.
+A variation of bubble sort that goes through the array only once.
 
 ### Shell Sort
 Shell Sort can be seen as either a generalization of sorting by exchange (bubble sort) or sorting by insertion (insertion sort). Instead of sorting pairs of elements next to each other, it compares elements far apart from each other, then progressively reducing the gap between elements to be compared. 
@@ -97,6 +98,8 @@ Manually sort `4, 7, 9, 1, 2, 8, 0, 6, 3, 5` step-by-step using:
 You can use the debugger to analyze what the different sorting algorithms do. By default,
 `sort` uses a small, manually defined array which can be used for debugging. Set the breakpoint 
 in `main.cpp` right before the algorithm you are interested in.
+
+The following website provides a very good visualization of how the algorithms work: https://math.hws.edu/eck/js/sorting/xSortLab.html
 
 ### Compare Runtime
 
