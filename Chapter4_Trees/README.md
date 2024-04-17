@@ -239,6 +239,8 @@ Implementations:
 
 STL provides [std::map](https://cplusplus.com/reference/map/map/). Here is a [code example](STLSetMap).
 
+[Multimaps](https://en.wikipedia.org/wiki/Multimap) can associate multiple values with a key. The STL provides [stl::multimap](https://en.cppreference.com/w/cpp/container/multimap).
+
 
 ## B-Trees
 
