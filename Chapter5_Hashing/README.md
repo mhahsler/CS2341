@@ -7,7 +7,9 @@ the set
 $$\{3, 6, 7\}$$ 
 contains three elements. Sets cannot contain duplicate entries and the order of elements is irrelevant. Typical operations for sets are to determine if a set contains a specific element (which requires finding it) and set operations between sets (union, intersection, etc.).
 
-A [map](https://en.wikipedia.org/wiki/Associative_array) in computer science is a collection of $(key, value)$ pairs. Maps are often also called associative arrays, dictionaries,
+A [map](https://en.wikipedia.org/wiki/Associative_array) in computer science
+represents a one-to-one mapping as a collection of $(key, value)$ pairs where each key can only be contained once and have one value.
+ Maps are often also called associative arrays, dictionaries,
 or just look-up tables. In math, a map represents a function with finite domain represented by a table. 
 The map 
 
@@ -16,7 +18,8 @@ The map
 would mean that the key Michael maps to the value 80 
 (i.e., has an 80 in the class). We typically want to find values fast given that we know the key. 
 
-We can look at sets as maps that have only a key and no value. 
+We can look at sets as maps that have only a key and no value. One-to-many mappings where a key can have multiple values are stored in a 
+[multimap](https://en.wikipedia.org/wiki/Multimap). 
 
 The worst-case time complexity to find or insert items by data structure are:
 
@@ -126,6 +129,8 @@ from the old table in $O(N)$ operations. Note that rehashing is very expensive!
 ## STL Hash Tables
 
 STL provides [`std::unordered_set`](https://cplusplus.com/reference/unordered_set/unordered_set/) and [`std::unordered_map`](https://cplusplus.com/reference/unordered_map/unordered_map/). The keys need to have `operator==` and a `hash` function (or a provided function object). Key-value pairs for maps are stored in [`std::pair`](`https://en.cppreference.com/w/cpp/utility/pair`).
+In addition, [std::unordered_multimap](https://en.cppreference.com/w/cpp/container/unordered_multimap) provides a on-to-many mapping.
+
 
 The STL structures automatically [rehash](https://cplusplus.com/reference/unordered_set/unordered_set/rehash/) when the load factor gets too high.
 
