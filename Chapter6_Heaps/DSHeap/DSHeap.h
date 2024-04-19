@@ -57,7 +57,7 @@ public:
         // find last element
         Comparable& last = array[array.size() - 1];
         
-        // percolate hole down (= move child up) till it is a leaf (has no left child)
+        // percolate hole down (= move child up) till it is a leaf (i.e., has no left child in this case)
         // or the last element fits or hole
         size_t hole = 1;
         size_t left, right, child;
