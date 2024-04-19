@@ -53,7 +53,8 @@ void mergeSort(std::vector<Comparable> &a,
     if (left < right)
     {
         // find the middle of the subarray
-        std::size_t center = (left + right) / 2;
+        // (left + right) / 2 can overflow if left and right are both large
+        std::size_t center = left + (right - left) / 2;
         
         // sort the left half
         mergeSort(a, tmpArray, left, center);
