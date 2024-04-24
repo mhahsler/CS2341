@@ -175,11 +175,9 @@ Here is how to [profile with `valgrind`](../HOWTO_profile_code.md).
 
 Run (replace `xxxxx`)
 ```
-valgrind --tool=callgrind --dump-instr=yes --simulate-cache=yes --collect-jumps=yes ./sort random
+valgrind --tool=callgrind --dump-instr=yes --simulate-cache=yes --collect-jumps=yes ./sort random 1000
 kcachegrind callgrind.out.xxxxx
 ```
-
-Check the impact of optimization on profiling (use `[CMake: RelWithDebInfo]`). One important optimization is inlining functions (see bubbleSort).
 
 ## License
 

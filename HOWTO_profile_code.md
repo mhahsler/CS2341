@@ -37,6 +37,9 @@ Details on `callgrind` can be found in the [callgrind manual](https://developer.
    kcachegrind callgrind.out.xxxxx
    ```
 
+   Here is short document on [Profiling with Valgrind and visualization with KCachegrind](https://schellcode.github.io/profiling-and-visualization).
+
+
 3. Find the file/class you are interested in (e.g., `main.cpp`), click on the function below and choose [`Call Graph`](https://en.wikipedia.org/wiki/Call_graph) in the bottom right window. You should now see what gets called, how often, and how long it takes (in % of the caller). By default only calls that take long are shown. You can change his by right-click on the graph `Graph > Min. Node Cost`. 
 4. Identify the functions that takes the most time and are called often. Optimize the code (loops, used algorithms, and data structure) there and profile again to se if and by how much you have improved the runtime (this can be judged by the number of instructions fetched).
 
