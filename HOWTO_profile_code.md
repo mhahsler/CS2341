@@ -29,13 +29,14 @@ Details on `callgrind` can be found in the [callgrind manual](https://developer.
 to install the X server software on your computer (e.g., [Xming](http://www.straightrunning.com/XmingNotes/) or
 [XQuarz](https://www.xquartz.org/)) and start the X server. Now you log into the server using `ssh -X username@server` in your shell. This will forward the window of `kcachegrind` from the server to your local desktop.
 
+1. Compile your program with optimization on and debug information included (in VSCode: `[RelWithDebInfo]`)  
 
-1. Run your executable with `valgrind`:
+2. Run your executable with `valgrind`:
    ```
    valgrind --tool=callgrind --dump-instr=yes --simulate-cache=yes --collect-jumps=yes ./<executable> [args...]
    ```
 
-2. This will produce a `callgrind.out.xxxxx` file. Open the file with:
+3. This will produce a `callgrind.out.xxxxx` file. Open the file with:
    ```
    kcachegrind callgrind.out.xxxxx
    ```
