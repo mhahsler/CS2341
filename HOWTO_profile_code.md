@@ -25,7 +25,10 @@ Details on `callgrind` can be found in the [callgrind manual](https://developer.
 
 ## How to use callgrind/KCachgrind to Profile Runtime
 
-**Installation:** You need to install `valgrind` and `KCachgrind` on your machine (Linux, WSL2; not available for Mac; for use on SMU's genuse machines, you need to [set up putty and VNC](https://www.smu.edu/OIT/Services/genuse)).
+**Installation:** You need to install `valgrind` and `KCachgrind` on your machine (Linux, WSL2; not available for Mac). If you use a remote Linux servers (e.g., SMU's genuse machines) or WSL2, then you need
+to install the X server software on your computer (e.g., [Xming](http://www.straightrunning.com/XmingNotes/) or
+[XQuarz](https://www.xquartz.org/)) and start the X server. Now you log into the server using `ssh -X username@server` in your shell. This will forward the window of `kcachegrind` from the server to your local desktop.
+
 
 1. Run your executable with `valgrind`:
    ```
