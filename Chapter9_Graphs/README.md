@@ -65,7 +65,7 @@ See [Sparse matrix](https://en.wikipedia.org/wiki/Sparse_matrix).
 
 Examples for the above data structures are implemented in [main.cpp](main.cpp).
 
-[algorithm.cpp](algorithm.cpp) fives an example for a simple graph algorithm to calculate the path length in 
+[algorithm.cpp](algorithm.cpp) gives an example for a simple graph algorithm to calculate the path length in 
 an unweighted graph.
 
 ## Popular C++ Libraries 
