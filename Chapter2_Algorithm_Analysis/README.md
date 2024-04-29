@@ -1,5 +1,12 @@
 # Chapter 2: Algorithm Analysis
 
+Lecture notes by: [Michael Hahsler](https://michael.hahsler.net)
+
+Diagrams for [Chapter 2](../notes/Chapter2.pdf)
+
+This chapter introduces the basics of algorithm analysis using the Big-O notation.
+
+
 ## Slides
 
 * [Chapter 2: Algorithm Analysis](https://github.com/mhahsler/CS2341/blob/main/Chapter2_Algorithm_Analysis/slides/Chapter2_Algorithm_Analysis.pdf)
