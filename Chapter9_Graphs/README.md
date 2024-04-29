@@ -19,6 +19,9 @@ number of edges $N - 1$. **Loops** may be allowed.
 A graph is **connected** if there exists a path from every vertex to 
 every other vertex.
 
+A **graph** is called a **weighted graph** if each edge has a weight associated typically representing
+the distance between the nodes or the cost of using the edge.
+
 ## Data Structures
 
 ### Tuple Representation
@@ -60,7 +63,10 @@ See [Sparse matrix](https://en.wikipedia.org/wiki/Sparse_matrix).
 
 ## Simple Example Code
 
-See [graph](graph).
+Examples for the above data structures are implemented in [main.cpp](main.cpp).
+
+[algorithm.cpp](algorithm.cpp) fives an example for a simple graph algorithm to calculate the path length in 
+an unweighted graph.
 
 ## Popular C++ Libraries 
 

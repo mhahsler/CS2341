@@ -36,7 +36,8 @@ int main()
     std::cout << adjacencyMatrix(0, 3) << "\n";
 
 
-    // Paths of a given length can be found using matrix multiplication of the adjacency matrix.
+    // Paths of a given length in an unweighted graph can be found 
+    // using simple matrix multiplication of the adjacency matrix.
     matrix<int> m = adjacencyMatrix;
 
     std::cout << "Adjacency matrix squared (rows): ";
@@ -57,6 +58,8 @@ int main()
      * * Use a sparse matrix for large sparse graphs.
      * * Use tree search (depth-first, breadth-first) with breaking loops directly on the adjacency list.
      * * Dijkstra's algorithm for shortest paths (i.e., uniform cost search).
+     * 
+     *  see https://en.wikipedia.org/wiki/Shortest_path_problem for more information.
      */
 
     return 0;
