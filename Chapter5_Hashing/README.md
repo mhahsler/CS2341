@@ -1,5 +1,11 @@
 # Chapter 5: Hashing
 
+Lecture notes by: [Michael Hahsler](https://michael.hahsler.net)
+
+Diagrams for [Chapter 5](../notes/Chapter5.pdf)
+
+This chapter introduced hash tables to perform efficient lookup given a key.
+
 ## Recap: Sets and Maps
 
 A [set](https://en.wikipedia.org/wiki/Set_(mathematics)) is a collection of elements defined in math. For example,

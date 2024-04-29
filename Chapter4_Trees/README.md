@@ -1,5 +1,11 @@
 # Chapter 4: Trees, Sets, and Maps
 
+Lecture notes by: [Michael Hahsler](https://michael.hahsler.net)
+
+Diagrams for [Chapter 4](../notes/Chapter4.pdf)
+
+This chapter introduces data structures used for search based on trees.
+
 Lists have for many operations $O(N)$ (e.g., search, insertion at an arbitrary location) 
 which is slow for large amounts of data.
 Trees (balanced binary search trees) can have an average time complexity of $O(log\ N)$.

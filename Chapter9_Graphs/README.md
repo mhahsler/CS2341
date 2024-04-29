@@ -1,5 +1,9 @@
 # Chapter 9: Graphs
 
+Lecture notes by: [Michael Hahsler](https://michael.hahsler.net)
+
+Diagrams for [Chapter 9](../notes/Chapter9.pdf)
+
 We will focus on the data structures. Algorithms will be covered in the algorithms class.
 
 ## Definitions

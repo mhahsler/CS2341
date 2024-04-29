@@ -1,5 +1,7 @@
 # Chapter 7: Sorting
 
+Lecture notes by: [Michael Hahsler](https://michael.hahsler.net)
+
 Sorting is an important task and choosing the right sorting algorithm can make a big difference
 in performance. 
 Important characteristics of [sorting algorithms](https://en.wikipedia.org/wiki/Sorting_algorithm)

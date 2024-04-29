@@ -1,5 +1,10 @@
 # Chapter 6: Priority Queues (Heaps)
 
+Lecture notes by: [Michael Hahsler](https://michael.hahsler.net)
+
+Diagrams for [Chapter 6](../notes/Chapter6.pdf)
+
+
 **Goal:** Always find and remove the element with the smallest key in a collection quickly.
 
 Basic Operations:

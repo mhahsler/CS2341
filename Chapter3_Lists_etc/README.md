@@ -1,5 +1,11 @@
 # Chapter 3: Lists, Stacks, and Queues 
 
+Lecture notes by: [Michael Hahsler](https://michael.hahsler.net)
+
+Diagrams for [Chapter 3](../notes/Chapter3.pdf)
+
+This chapter introduced abstract data types, iterators and basic linear data structures. 
+
 # Abstract Data Types (ADT)
 
 ADT extend the idea of basic data types. They are not about the 
