@@ -1,6 +1,8 @@
 # Chapter 1: Programming
 
-Lecture notes by: Michael Hahsler
+Lecture notes by: [Michael Hahsler](https://michael.hahsler.net)
+
+Diagrams for [Chapter 1](../notes/Chapter1.pdf)
 
 This chapter is a review of important concepts and their C++ implementation 
 used in this course. Very good short explanations can be found in this
