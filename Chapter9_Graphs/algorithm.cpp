@@ -8,7 +8,6 @@
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/numeric/ublas/io.hpp>
 
-using namespace boost::numeric::ublas;
 
 // Simple example to find paths between vertices of a graph.
 
@@ -24,7 +23,7 @@ int main()
     std::vector<edge> edges = {edge(0, 1), edge(1, 0), edge(1, 2), edge(2, 2), edge(2, 3), edge(3, 3)};
 
     // Create a adjacency matrix using matrix in boost::numeric::ublas
-    matrix<int> adjacencyMatrix(vertices.size(), vertices.size());
+    boost::numeric::ublas::matrix<int> adjacencyMatrix(vertices.size(), vertices.size());
     
     for (auto &e : edges)
         adjacencyMatrix(e.first, e.second) = 1;    
@@ -38,17 +37,17 @@ int main()
 
     // Paths of a given length in an unweighted graph can be found 
     // using simple matrix multiplication of the adjacency matrix.
-    matrix<int> m = adjacencyMatrix;
+    boost::numeric::ublas::matrix<int> m = adjacencyMatrix;
 
     std::cout << "Adjacency matrix squared (rows): ";
-    m = prod(m, adjacencyMatrix);  // prod is the matrix multiplication function defined in boost::numeric::ublas
+    m = boost::numeric::ublas::prod(m, adjacencyMatrix);  // prod is the matrix multiplication function defined in boost::numeric::ublas
     std::cout << m << "\n";
 
     std::cout << "How many paths of length 2 exist between 0 and 3? ";
     std::cout << m(0, 3) << "\n";
    
     std::cout << "Adjacency matrix cubed (rows):";
-    m = prod(m, adjacencyMatrix);
+    m = boost::numeric::ublas::prod(m, adjacencyMatrix);
     std::cout << m << "\n";
 
     std::cout << "How many paths of length 3 exist between 0 and 3? ";
