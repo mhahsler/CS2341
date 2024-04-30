@@ -51,7 +51,7 @@ int main()
     std::cout << m << "\n";
 
     std::cout << "How many paths of length 3 exist between 0 and 3? ";
-    std::cout << (m(0, 3) == 1) << std::endl;
+    std::cout << m(0, 3) << std::endl;
 
     /* Matrix multiplications are expensive O(n^3)! Alternative algorithms (all are available in boost):
      * * Use a sparse matrix for large sparse graphs.
