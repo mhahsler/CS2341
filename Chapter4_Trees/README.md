@@ -108,8 +108,8 @@ This is often called _backtracking_.
 
 The three traversal orders are:
 
-* **preorder** (NLR): process node before children. **Pre** means the node is processed fist.
-* **inorder** (LNR) fist follow the left child and then process the node before following down the right child.
+* **preorder** (NLR): process node before children. **Pre** means the node is processed first.
+* **inorder** (LNR) first follow the left child and then process the node before following down the right child.
   **In** means that the node is processed in the middle. For binary search trees this results in processing the 
   nodes in sort order.
 * **postorder** (LRN): process the left and then the right subtree before the node is processed. **Post** means the node
