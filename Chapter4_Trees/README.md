@@ -105,7 +105,7 @@ We will use the following notation:
 
 Once a leaf node is reached and processed, then we go back to the node we came from to process a different subtree. 
 This is often called _backtracking_.
-
+i
 The three traversal orders are:
 
 * **preorder** (NLR): process node before children. **Pre** means the node is processed first.
@@ -149,7 +149,7 @@ You will learn more about breadth-first traversal when you learn about graphs in
 
 ## Application Examples: Expression Trees
 
-An expression tree represent an expression with binary operators like $6 * (5 + (2 + 3) * 8 + 3)$.
+An expression tree represents an expression with binary operators like $6 * (5 + (2 + 3) * 8 + 3)$.
 
 **Construction** 
 
